@@ -122,40 +122,40 @@ class LightTheme extends AppTheme {
 
 class LightColors extends AppColors {
   @override
-  Color get primary => const Color(0xFF0D078B); // Base color #050076
+  Color get primary => const Color(0xFF066046); // Base color
 
   @override
-  Color get primary2nd => const Color(0xFF0A00B8); // Lighter
+  Color get primary2nd => const Color(0xFF0A916A); // Lighter
 
   @override
-  Color get primary3rd => const Color(0xFF0F00F0); // Lighter
+  Color get primary3rd => const Color(0xFF0EC28E); // Lighter
 
   @override
-  Color get primary4th => const Color(0xFF1A1AFF); // Lightest
+  Color get primary4th => const Color(0xFF14F5B4); // Lightest
 
   @override
-  Color get primary5th => const Color(0xFF04005F); // Darker
+  Color get primary5th => const Color(0xFF044532); // Darker
 
   @override
-  Color get primary6th => const Color(0xFF03004A); // Darkest
+  Color get primary6th => const Color(0xFF022B1F); // Darkest
 
   @override
-  Color get secondary => const Color(0xFF00B8FF); // Cyan blue
+  Color get secondary => const Color(0xFF10B981); // Emerald Green
 
   @override
-  Color get secondary2nd => const Color(0xFF00A3E0); // Darker cyan
+  Color get secondary2nd => const Color(0xFF059669); // Darker emerald
 
   @override
-  Color get secondary3rd => const Color(0xFF008FC2); // Darker
+  Color get secondary3rd => const Color(0xFF047857); // Darker
 
   @override
-  Color get secondary4th => const Color(0xFF007BA5); // Darker
+  Color get secondary4th => const Color(0xFF065F46); // Darker
 
   @override
-  Color get secondary5th => const Color(0xFF006788); // Darker
+  Color get secondary5th => const Color(0xFF064E3B); // Darker
 
   @override
-  Color get secondary6th => const Color(0xFF00536B); // Darkest
+  Color get secondary6th => const Color(0xFF022C22); // Darkest
 
   @override
   Color get success => const Color(0xFF22C55E);

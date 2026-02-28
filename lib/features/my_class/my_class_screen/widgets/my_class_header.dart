@@ -10,8 +10,8 @@ import '../../../profile/multi_account/bloc/multi_account_state.dart';
 import '../../../profile/multi_account/widgets/multi_account_bottom_sheet.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-class HomeHeader extends StatelessWidget {
-  const HomeHeader({super.key});
+class MyClassHeader extends StatelessWidget {
+  const MyClassHeader({super.key});
 
   @override
   Widget build(BuildContext context) {

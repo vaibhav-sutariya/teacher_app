@@ -36,8 +36,8 @@ class _DashboardPageState extends State<DashboardPage> {
       child: AutoTabsScaffold(
         extendBody: true,
         routes: [
-          HomeRoute(bottomBarController: _bottomBarController),
           const CalendarRoute(),
+          MyClassRoute(bottomBarController: _bottomBarController),
           const SummaryRoute(),
           const NoticeRoute(),
           const ProfileRoute(),

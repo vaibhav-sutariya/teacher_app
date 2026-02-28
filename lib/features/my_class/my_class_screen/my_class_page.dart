@@ -6,15 +6,15 @@ import '../../../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../../../core/widgets/scroll_aware_bottom_bar_controller.dart';
 import '../../../cubit/theme_cubit.dart';
 import 'cubit/home_search_cubit.dart';
-import 'widgets/home_header.dart';
-import 'widgets/home_search_bar.dart';
+import 'widgets/my_class_header.dart';
+import 'widgets/my_class_search_bar.dart';
 import 'widgets/quick_menu_overlay.dart';
 
 @RoutePage()
-class HomePage extends StatelessWidget {
+class MyClassPage extends StatelessWidget {
   final ScrollAwareBottomBarController? bottomBarController;
 
-  const HomePage({super.key, this.bottomBarController});
+  const MyClassPage({super.key, this.bottomBarController});
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +45,10 @@ class HomePage extends StatelessWidget {
                 children: [
                   SizedBox(height: context.scaleHeight(5)),
                   // Header
-                  const HomeHeader(),
+                  const MyClassHeader(),
                   SizedBox(height: context.scaleHeight(12)),
                   // Search Bar
-                  const HomeSearchBar(),
+                  const MyClassSearchBar(),
                   SizedBox(
                     height: context.scaleHeight(12),
                   ), // Consitent spacing

@@ -6,14 +6,14 @@ import '../cubit/home_search_cubit.dart';
 
 /// Production-ready search bar with focus management
 /// Handles tap outside to unfocus efficiently
-class HomeSearchBar extends StatefulWidget {
-  const HomeSearchBar({super.key});
+class MyClassSearchBar extends StatefulWidget {
+  const MyClassSearchBar({super.key});
 
   @override
-  State<HomeSearchBar> createState() => _HomeSearchBarState();
+  State<MyClassSearchBar> createState() => _MyClassSearchBarState();
 }
 
-class _HomeSearchBarState extends State<HomeSearchBar> {
+class _MyClassSearchBarState extends State<MyClassSearchBar> {
   late final FocusNode _focusNode;
 
   @override
@@ -91,11 +91,7 @@ class _HomeSearchBarState extends State<HomeSearchBar> {
                 color: Colors.white.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(context.scale(8)),
               ),
-              child: Icon(
-                Icons.search,
-                color: Colors.white,
-                size: iconSize,
-              ),
+              child: Icon(Icons.search, color: Colors.white, size: iconSize),
             ),
           ],
         ),

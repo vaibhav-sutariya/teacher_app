@@ -22,78 +22,82 @@ import 'package:teachers_app/features/auth/screens/forgot_password/ui/new_passwo
 import 'package:teachers_app/features/auth/screens/forgot_password/ui/password_success_page.dart'
     as _i33;
 import 'package:teachers_app/features/auth/screens/login/ui/login_page.dart'
-    as _i25;
+    as _i24;
 import 'package:teachers_app/features/auth/screens/password_login/ui/password_login_page.dart'
     as _i32;
 import 'package:teachers_app/features/auth/screens/verification/ui/verification_page.dart'
     as _i46;
 import 'package:teachers_app/features/calendar/calendar_page.dart' as _i8;
 import 'package:teachers_app/features/dashboard/dashboard_page.dart' as _i13;
-import 'package:teachers_app/features/home/achievement/achievement_page.dart'
+import 'package:teachers_app/features/my_class/achievement/achievement_page.dart'
     as _i2;
-import 'package:teachers_app/features/home/assignment/assignment_page.dart'
+import 'package:teachers_app/features/my_class/assignment/assignment_page.dart'
     as _i6;
-import 'package:teachers_app/features/home/attendance/attendance_page.dart'
+import 'package:teachers_app/features/my_class/attendance/attendance_page.dart'
     as _i7;
-import 'package:teachers_app/features/home/class_test/class_test_page.dart'
+import 'package:teachers_app/features/my_class/class_test/class_test_page.dart'
     as _i9;
-import 'package:teachers_app/features/home/classwork/classwork_page.dart'
+import 'package:teachers_app/features/my_class/classwork/classwork_page.dart'
     as _i10;
-import 'package:teachers_app/features/home/concern/add_concern/add_concern_page.dart'
+import 'package:teachers_app/features/my_class/concern/add_concern/add_concern_page.dart'
     as _i3;
-import 'package:teachers_app/features/home/concern/concern_details/concern_details_page.dart'
+import 'package:teachers_app/features/my_class/concern/concern_details/concern_details_page.dart'
     as _i11;
-import 'package:teachers_app/features/home/concern/concern_page.dart' as _i12;
-import 'package:teachers_app/features/home/concern/models/concern_model.dart'
+import 'package:teachers_app/features/my_class/concern/concern_page.dart'
+    as _i12;
+import 'package:teachers_app/features/my_class/concern/models/concern_model.dart'
     as _i52;
-import 'package:teachers_app/features/home/exam_time_table/ui/exam_time_table_page.dart'
+import 'package:teachers_app/features/my_class/exam_time_table/ui/exam_time_table_page.dart'
     as _i14;
-import 'package:teachers_app/features/home/gallery/gallery_details_screen/gallery_detail_page.dart'
+import 'package:teachers_app/features/my_class/gallery/gallery_details_screen/gallery_detail_page.dart'
     as _i16;
-import 'package:teachers_app/features/home/gallery/gallery_screen/gallery_page.dart'
+import 'package:teachers_app/features/my_class/gallery/gallery_screen/gallery_page.dart'
     as _i18;
-import 'package:teachers_app/features/home/gallery/gallery_screen/models/gallery_image_model.dart'
+import 'package:teachers_app/features/my_class/gallery/gallery_screen/models/gallery_image_model.dart'
     as _i54;
-import 'package:teachers_app/features/home/gallery/gallery_screen/models/gallery_model.dart'
+import 'package:teachers_app/features/my_class/gallery/gallery_screen/models/gallery_model.dart'
     as _i53;
-import 'package:teachers_app/features/home/gallery/viewer_screen/gallery_image_viewer_page.dart'
+import 'package:teachers_app/features/my_class/gallery/viewer_screen/gallery_image_viewer_page.dart'
     as _i17;
-import 'package:teachers_app/features/home/gate_pass/gate_pass_page.dart'
+import 'package:teachers_app/features/my_class/gate_pass/gate_pass_page.dart'
     as _i19;
-import 'package:teachers_app/features/home/holiday_hw/holiday_hw_page.dart'
+import 'package:teachers_app/features/my_class/holiday_hw/holiday_hw_page.dart'
     as _i20;
-import 'package:teachers_app/features/home/home_screen/home_page.dart' as _i21;
-import 'package:teachers_app/features/home/homework/homework_page.dart' as _i22;
-import 'package:teachers_app/features/home/leave/add_leave/add_leave_page.dart'
+import 'package:teachers_app/features/my_class/homework/homework_page.dart'
+    as _i21;
+import 'package:teachers_app/features/my_class/leave/add_leave/add_leave_page.dart'
     as _i4;
-import 'package:teachers_app/features/home/leave/leave_detail_screen/leave_detail_page.dart'
+import 'package:teachers_app/features/my_class/leave/leave_detail_screen/leave_detail_page.dart'
+    as _i22;
+import 'package:teachers_app/features/my_class/leave/leave_screen/leave_page.dart'
     as _i23;
-import 'package:teachers_app/features/home/leave/leave_screen/leave_page.dart'
-    as _i24;
-import 'package:teachers_app/features/home/meal_menu/meal_menu_page.dart'
+import 'package:teachers_app/features/my_class/meal_menu/meal_menu_page.dart'
+    as _i25;
+import 'package:teachers_app/features/my_class/my_class_screen/my_class_page.dart'
     as _i26;
-import 'package:teachers_app/features/home/paper/paper_page.dart' as _i31;
-import 'package:teachers_app/features/home/ptm/ptm_page.dart' as _i36;
-import 'package:teachers_app/features/home/remarks/remark_details_screen/remark_detail_page.dart'
+import 'package:teachers_app/features/my_class/paper/paper_page.dart' as _i31;
+import 'package:teachers_app/features/my_class/ptm/ptm_page.dart' as _i36;
+import 'package:teachers_app/features/my_class/remarks/remark_details_screen/remark_detail_page.dart'
     as _i37;
-import 'package:teachers_app/features/home/remarks/remarks_screen/models/remark_model.dart'
+import 'package:teachers_app/features/my_class/remarks/remarks_screen/models/remark_model.dart'
     as _i57;
-import 'package:teachers_app/features/home/remarks/remarks_screen/remarks_page.dart'
+import 'package:teachers_app/features/my_class/remarks/remarks_screen/remarks_page.dart'
     as _i38;
-import 'package:teachers_app/features/home/report_card/report_card_page.dart'
+import 'package:teachers_app/features/my_class/report_card/report_card_page.dart'
     as _i39;
-import 'package:teachers_app/features/home/syllabus/syllabus_page.dart' as _i44;
-import 'package:teachers_app/features/home/time_table/ui/time_table_page.dart'
+import 'package:teachers_app/features/my_class/syllabus/syllabus_page.dart'
+    as _i44;
+import 'package:teachers_app/features/my_class/time_table/ui/time_table_page.dart'
     as _i45;
-import 'package:teachers_app/features/home/videos/detail/video_detail_page.dart'
+import 'package:teachers_app/features/my_class/videos/detail/video_detail_page.dart'
     as _i47;
-import 'package:teachers_app/features/home/videos/videos_screen/models/video_item_model.dart'
+import 'package:teachers_app/features/my_class/videos/videos_screen/models/video_item_model.dart'
     as _i59;
-import 'package:teachers_app/features/home/videos/videos_screen/models/video_model.dart'
+import 'package:teachers_app/features/my_class/videos/videos_screen/models/video_model.dart'
     as _i58;
-import 'package:teachers_app/features/home/videos/videos_screen/videos_page.dart'
+import 'package:teachers_app/features/my_class/videos/videos_screen/videos_page.dart'
     as _i49;
-import 'package:teachers_app/features/home/videos/viewer_screen/video_viewer_page.dart'
+import 'package:teachers_app/features/my_class/videos/viewer_screen/video_viewer_page.dart'
     as _i48;
 import 'package:teachers_app/features/notice/notice_page.dart' as _i28;
 import 'package:teachers_app/features/notifications/notification_page.dart'
@@ -596,62 +600,7 @@ class HolidayHwRoute extends _i50.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i21.HomePage]
-class HomeRoute extends _i50.PageRouteInfo<HomeRouteArgs> {
-  HomeRoute({
-    _i51.Key? key,
-    _i56.ScrollAwareBottomBarController? bottomBarController,
-    List<_i50.PageRouteInfo>? children,
-  }) : super(
-         HomeRoute.name,
-         args: HomeRouteArgs(
-           key: key,
-           bottomBarController: bottomBarController,
-         ),
-         initialChildren: children,
-       );
-
-  static const String name = 'HomeRoute';
-
-  static _i50.PageInfo page = _i50.PageInfo(
-    name,
-    builder: (data) {
-      final args = data.argsAs<HomeRouteArgs>(
-        orElse: () => const HomeRouteArgs(),
-      );
-      return _i21.HomePage(
-        key: args.key,
-        bottomBarController: args.bottomBarController,
-      );
-    },
-  );
-}
-
-class HomeRouteArgs {
-  const HomeRouteArgs({this.key, this.bottomBarController});
-
-  final _i51.Key? key;
-
-  final _i56.ScrollAwareBottomBarController? bottomBarController;
-
-  @override
-  String toString() {
-    return 'HomeRouteArgs{key: $key, bottomBarController: $bottomBarController}';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (other is! HomeRouteArgs) return false;
-    return key == other.key && bottomBarController == other.bottomBarController;
-  }
-
-  @override
-  int get hashCode => key.hashCode ^ bottomBarController.hashCode;
-}
-
-/// generated route for
-/// [_i22.HomeworkPage]
+/// [_i21.HomeworkPage]
 class HomeworkRoute extends _i50.PageRouteInfo<void> {
   const HomeworkRoute({List<_i50.PageRouteInfo>? children})
     : super(HomeworkRoute.name, initialChildren: children);
@@ -661,13 +610,13 @@ class HomeworkRoute extends _i50.PageRouteInfo<void> {
   static _i50.PageInfo page = _i50.PageInfo(
     name,
     builder: (data) {
-      return const _i22.HomeworkPage();
+      return const _i21.HomeworkPage();
     },
   );
 }
 
 /// generated route for
-/// [_i23.LeaveDetailPage]
+/// [_i22.LeaveDetailPage]
 class LeaveDetailRoute extends _i50.PageRouteInfo<LeaveDetailRouteArgs> {
   LeaveDetailRoute({
     _i51.Key? key,
@@ -689,7 +638,7 @@ class LeaveDetailRoute extends _i50.PageRouteInfo<LeaveDetailRouteArgs> {
       final args = data.argsAs<LeaveDetailRouteArgs>(
         orElse: () => LeaveDetailRouteArgs(leaveId: pathParams.optString('id')),
       );
-      return _i23.LeaveDetailPage(key: args.key, leaveId: args.leaveId);
+      return _i22.LeaveDetailPage(key: args.key, leaveId: args.leaveId);
     },
   );
 }
@@ -718,7 +667,7 @@ class LeaveDetailRouteArgs {
 }
 
 /// generated route for
-/// [_i24.LeavePage]
+/// [_i23.LeavePage]
 class LeaveRoute extends _i50.PageRouteInfo<void> {
   const LeaveRoute({List<_i50.PageRouteInfo>? children})
     : super(LeaveRoute.name, initialChildren: children);
@@ -728,13 +677,13 @@ class LeaveRoute extends _i50.PageRouteInfo<void> {
   static _i50.PageInfo page = _i50.PageInfo(
     name,
     builder: (data) {
-      return const _i24.LeavePage();
+      return const _i23.LeavePage();
     },
   );
 }
 
 /// generated route for
-/// [_i25.LoginPage]
+/// [_i24.LoginPage]
 class LoginRoute extends _i50.PageRouteInfo<void> {
   const LoginRoute({List<_i50.PageRouteInfo>? children})
     : super(LoginRoute.name, initialChildren: children);
@@ -744,13 +693,13 @@ class LoginRoute extends _i50.PageRouteInfo<void> {
   static _i50.PageInfo page = _i50.PageInfo(
     name,
     builder: (data) {
-      return const _i25.LoginPage();
+      return const _i24.LoginPage();
     },
   );
 }
 
 /// generated route for
-/// [_i26.MealMenuPage]
+/// [_i25.MealMenuPage]
 class MealMenuRoute extends _i50.PageRouteInfo<void> {
   const MealMenuRoute({List<_i50.PageRouteInfo>? children})
     : super(MealMenuRoute.name, initialChildren: children);
@@ -760,9 +709,64 @@ class MealMenuRoute extends _i50.PageRouteInfo<void> {
   static _i50.PageInfo page = _i50.PageInfo(
     name,
     builder: (data) {
-      return const _i26.MealMenuPage();
+      return const _i25.MealMenuPage();
     },
   );
+}
+
+/// generated route for
+/// [_i26.MyClassPage]
+class MyClassRoute extends _i50.PageRouteInfo<MyClassRouteArgs> {
+  MyClassRoute({
+    _i51.Key? key,
+    _i56.ScrollAwareBottomBarController? bottomBarController,
+    List<_i50.PageRouteInfo>? children,
+  }) : super(
+         MyClassRoute.name,
+         args: MyClassRouteArgs(
+           key: key,
+           bottomBarController: bottomBarController,
+         ),
+         initialChildren: children,
+       );
+
+  static const String name = 'MyClassRoute';
+
+  static _i50.PageInfo page = _i50.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<MyClassRouteArgs>(
+        orElse: () => const MyClassRouteArgs(),
+      );
+      return _i26.MyClassPage(
+        key: args.key,
+        bottomBarController: args.bottomBarController,
+      );
+    },
+  );
+}
+
+class MyClassRouteArgs {
+  const MyClassRouteArgs({this.key, this.bottomBarController});
+
+  final _i51.Key? key;
+
+  final _i56.ScrollAwareBottomBarController? bottomBarController;
+
+  @override
+  String toString() {
+    return 'MyClassRouteArgs{key: $key, bottomBarController: $bottomBarController}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! MyClassRouteArgs) return false;
+    return key == other.key && bottomBarController == other.bottomBarController;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ bottomBarController.hashCode;
 }
 
 /// generated route for

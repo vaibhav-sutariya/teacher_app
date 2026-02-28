@@ -90,7 +90,7 @@ class _LoginFormSheetState extends State<LoginFormSheet> {
                       index == 0
                           ? Icons.phone_android_rounded
                           : Icons.email_rounded,
-                      color: const Color(0xFF5C6BC0), // Reference blue-ish
+                      color: context.colors.primary, // Reference blue-ish
                     ),
                     keyboardType: index == 0
                         ? TextInputType.phone

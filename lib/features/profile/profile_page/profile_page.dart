@@ -9,7 +9,7 @@ import 'package:teachers_app/core/widgets/app_loader.dart';
 import 'package:teachers_app/cubit/theme_cubit.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../home/home_screen/widgets/home_header.dart';
+import '../../my_class/my_class_screen/widgets/my_class_header.dart';
 import 'bloc/profile_bloc.dart';
 import 'widgets/academic_year_bottom_sheet.dart';
 import 'widgets/profile_menu_item.dart';
@@ -57,7 +57,7 @@ class ProfilePage extends StatelessWidget {
                     children: [
                       SizedBox(height: context.scaleHeight(5)),
                       // Header
-                      const HomeHeader(),
+                      const MyClassHeader(),
                       SizedBox(height: context.scaleHeight(20)),
 
                       // Menu Items
