@@ -1,31 +1,31 @@
-part of 'notice_bloc.dart';
+part of 'service_bloc.dart';
 
-abstract class NoticeState extends Equatable {
-  const NoticeState();
+abstract class ServiceState extends Equatable {
+  const ServiceState();
 
   @override
   List<Object?> get props => [];
 }
 
-class NoticeInitial extends NoticeState {}
+class NoticeInitial extends ServiceState {}
 
-class NoticeLoadedState extends NoticeState {
-  final List<NoticeModel> noticeList;
+class ServiceLoadedState extends ServiceState {
+  final List<ServiceModel> noticeList;
   final DateTime selectedMonth;
   final bool isLoading;
 
-  const NoticeLoadedState({
+  const ServiceLoadedState({
     required this.noticeList,
     required this.selectedMonth,
     this.isLoading = false,
   });
 
-  NoticeLoadedState copyWith({
-    List<NoticeModel>? noticeList,
+  ServiceLoadedState copyWith({
+    List<ServiceModel>? noticeList,
     DateTime? selectedMonth,
     bool? isLoading,
   }) {
-    return NoticeLoadedState(
+    return ServiceLoadedState(
       noticeList: noticeList ?? this.noticeList,
       selectedMonth: selectedMonth ?? this.selectedMonth,
       isLoading: isLoading ?? this.isLoading,
@@ -36,10 +36,10 @@ class NoticeLoadedState extends NoticeState {
   List<Object?> get props => [noticeList, selectedMonth, isLoading];
 }
 
-class NoticeError extends NoticeState {
+class ServiceError extends ServiceState {
   final String message;
 
-  const NoticeError(this.message);
+  const ServiceError(this.message);
 
   @override
   List<Object?> get props => [message];

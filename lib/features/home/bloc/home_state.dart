@@ -1,18 +1,18 @@
 import 'package:equatable/equatable.dart';
-import '../models/calendar_event_model.dart';
+import '../models/home_event_model.dart';
 
-enum CalendarStatus { initial, loading, loaded, error }
+enum HomeStatus { initial, loading, loaded, error }
 
-class CalendarState extends Equatable {
-  final CalendarStatus status;
+class HomeState extends Equatable {
+  final HomeStatus status;
   final DateTime selectedDate;
   final DateTime focusedMonth;
   final Map<DateTime, List<CalendarEventModel>> eventsMap; // Map date to events
   final List<CalendarEventModel> selectedDateEvents; // Events for selected date
   final String? errorMessage;
 
-  const CalendarState({
-    this.status = CalendarStatus.initial,
+  const HomeState({
+    this.status = HomeStatus.initial,
     required this.selectedDate,
     required this.focusedMonth,
     this.eventsMap = const {},
@@ -20,23 +20,23 @@ class CalendarState extends Equatable {
     this.errorMessage,
   });
 
-  factory CalendarState.initial() {
+  factory HomeState.initial() {
     final now = DateTime.now();
-    return CalendarState(
+    return HomeState(
       selectedDate: now,
       focusedMonth: DateTime(now.year, now.month),
     );
   }
 
-  CalendarState copyWith({
-    CalendarStatus? status,
+  HomeState copyWith({
+    HomeStatus? status,
     DateTime? selectedDate,
     DateTime? focusedMonth,
     Map<DateTime, List<CalendarEventModel>>? eventsMap,
     List<CalendarEventModel>? selectedDateEvents,
     String? errorMessage,
   }) {
-    return CalendarState(
+    return HomeState(
       status: status ?? this.status,
       selectedDate: selectedDate ?? this.selectedDate,
       focusedMonth: focusedMonth ?? this.focusedMonth,

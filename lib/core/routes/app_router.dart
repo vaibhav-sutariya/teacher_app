@@ -21,10 +21,10 @@ class AppRouter extends RootStackRouter {
     AutoRoute(
       page: DashboardRoute.page,
       children: [
-        AutoRoute(page: CalendarRoute.page),
-        AutoRoute(page: SummaryRoute.page),
+        AutoRoute(page: HomeRoute.page),
+        AutoRoute(page: SchoolRoute.page),
         AutoRoute(page: MyClassRoute.page),
-        AutoRoute(page: NoticeRoute.page),
+        AutoRoute(page: ServiceRoute.page),
         AutoRoute(page: ProfileRoute.page),
       ],
     ),

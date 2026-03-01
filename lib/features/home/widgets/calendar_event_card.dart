@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/helpers/extensions/responsive_extensions.dart';
-import '../models/calendar_event_model.dart';
+import '../models/home_event_model.dart';
 
 class CalendarEventCard extends StatelessWidget {
   final CalendarEventModel event;

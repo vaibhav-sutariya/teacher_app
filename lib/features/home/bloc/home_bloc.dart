@@ -1,17 +1,17 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../models/calendar_event_model.dart';
-import 'calendar_event.dart';
-import 'calendar_state.dart';
+import '../models/home_event_model.dart';
+import 'home_event.dart';
+import 'home_state.dart';
 
-class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
-  CalendarBloc() : super(CalendarState.initial()) {
+class HomeBloc extends Bloc<HomeEvent, HomeState> {
+  HomeBloc() : super(HomeState.initial()) {
     on<LoadEvents>(_onLoadEvents);
     on<SelectDate>(_onSelectDate);
     on<ChangeMonth>(_onChangeMonth);
   }
 
-  void _onLoadEvents(LoadEvents event, Emitter<CalendarState> emit) async {
-    emit(state.copyWith(status: CalendarStatus.loading));
+  void _onLoadEvents(LoadEvents event, Emitter<HomeState> emit) async {
+    emit(state.copyWith(status: HomeStatus.loading));
     try {
       // Simulate API call
       await Future.delayed(const Duration(milliseconds: 500));
@@ -42,7 +42,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
 
       emit(
         state.copyWith(
-          status: CalendarStatus.loaded,
+          status: HomeStatus.loaded,
           eventsMap: eventsMap,
           selectedDateEvents: selectedDateEvents,
         ),
@@ -50,21 +50,21 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     } catch (e) {
       emit(
         state.copyWith(
-          status: CalendarStatus.error,
+          status: HomeStatus.error,
           errorMessage: 'Failed to load events',
         ),
       );
     }
   }
 
-  void _onSelectDate(SelectDate event, Emitter<CalendarState> emit) {
+  void _onSelectDate(SelectDate event, Emitter<HomeState> emit) {
     final dateKey = DateTime(event.date.year, event.date.month, event.date.day);
     final events = state.eventsMap[dateKey] ?? [];
 
     emit(state.copyWith(selectedDate: event.date, selectedDateEvents: events));
   }
 
-  void _onChangeMonth(ChangeMonth event, Emitter<CalendarState> emit) {
+  void _onChangeMonth(ChangeMonth event, Emitter<HomeState> emit) {
     emit(state.copyWith(focusedMonth: event.month));
   }
 }

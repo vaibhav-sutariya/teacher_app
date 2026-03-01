@@ -1,58 +1,58 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../models/notice_model.dart';
+import '../models/service_model.dart';
 
-part 'notice_event.dart';
-part 'notice_state.dart';
+part 'service_event.dart';
+part 'service_state.dart';
 
 /// Bloc for managing Notice feature state
 /// Handles month filtering and data loading with minimal rebuilds
-class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
-  final List<NoticeModel> _allNotices = NoticeModel.getMockData();
+class ServiceBloc extends Bloc<ServiceEvent, ServiceState> {
+  final List<ServiceModel> _allNotices = ServiceModel.getMockData();
 
-  NoticeBloc()
+  ServiceBloc()
     : super(
-        NoticeLoadedState(
+        ServiceLoadedState(
           noticeList: const [],
           selectedMonth: DateTime(DateTime.now().year, DateTime.now().month, 1),
           isLoading: true,
         ),
       ) {
-    on<LoadNoticeData>(_onLoadNoticeData);
-    on<NoticeMonthChanged>(_onMonthChanged);
-    on<RefreshNoticeData>(_onRefreshNoticeData);
+    on<LoadServiceData>(_onLoadServiceData);
+    on<ServiceMonthChanged>(_onMonthChanged);
+    on<RefreshServiceData>(_onRefreshServiceData);
   }
 
   /// Handle load notice data event
-  Future<void> _onLoadNoticeData(
-    LoadNoticeData event,
-    Emitter<NoticeState> emit,
+  Future<void> _onLoadServiceData(
+    LoadServiceData event,
+    Emitter<ServiceState> emit,
   ) async {
-    if (state is NoticeLoadedState) {
-      emit((state as NoticeLoadedState).copyWith(isLoading: true));
+    if (state is ServiceLoadedState) {
+      emit((state as ServiceLoadedState).copyWith(isLoading: true));
     }
 
     try {
       // Simulate API delay
       await Future.delayed(const Duration(milliseconds: 800));
 
-      final currentMonth = state is NoticeLoadedState
-          ? (state as NoticeLoadedState).selectedMonth
+      final currentMonth = state is ServiceLoadedState
+          ? (state as ServiceLoadedState).selectedMonth
           : DateTime(DateTime.now().year, DateTime.now().month, 1);
 
       final filteredNotices = _filterNoticesByMonth(currentMonth);
 
-      if (state is NoticeLoadedState) {
+      if (state is ServiceLoadedState) {
         emit(
-          (state as NoticeLoadedState).copyWith(
+          (state as ServiceLoadedState).copyWith(
             noticeList: filteredNotices,
             isLoading: false,
           ),
         );
       } else {
         emit(
-          NoticeLoadedState(
+          ServiceLoadedState(
             noticeList: filteredNotices,
             selectedMonth: currentMonth,
             isLoading: false,
@@ -60,14 +60,14 @@ class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
         );
       }
     } catch (e) {
-      emit(NoticeError(e.toString()));
+      emit(ServiceError(e.toString()));
     }
   }
 
   /// Handle month change event
-  void _onMonthChanged(NoticeMonthChanged event, Emitter<NoticeState> emit) {
-    if (state is NoticeLoadedState) {
-      final currentState = state as NoticeLoadedState;
+  void _onMonthChanged(ServiceMonthChanged event, Emitter<ServiceState> emit) {
+    if (state is ServiceLoadedState) {
+      final currentState = state as ServiceLoadedState;
 
       // Normalize month to first day
       final selectedMonth = DateTime(event.month.year, event.month.month, 1);
@@ -85,12 +85,12 @@ class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
   }
 
   /// Handle refresh notice data event
-  Future<void> _onRefreshNoticeData(
-    RefreshNoticeData event,
-    Emitter<NoticeState> emit,
+  Future<void> _onRefreshServiceData(
+    RefreshServiceData event,
+    Emitter<ServiceState> emit,
   ) async {
-    if (state is NoticeLoadedState) {
-      final currentState = state as NoticeLoadedState;
+    if (state is ServiceLoadedState) {
+      final currentState = state as ServiceLoadedState;
       try {
         emit(currentState.copyWith(isLoading: true));
         // Simulate API delay
@@ -104,13 +104,13 @@ class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
           currentState.copyWith(noticeList: filteredNotices, isLoading: false),
         );
       } catch (e) {
-        emit(NoticeError(e.toString()));
+        emit(ServiceError(e.toString()));
       }
     }
   }
 
   /// Filter notices by month
-  List<NoticeModel> _filterNoticesByMonth(DateTime month) {
+  List<ServiceModel> _filterNoticesByMonth(DateTime month) {
     return _allNotices.where((notice) {
       return notice.date.year == month.year && notice.date.month == month.month;
     }).toList();

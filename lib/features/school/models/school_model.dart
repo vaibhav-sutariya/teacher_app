@@ -1,11 +1,11 @@
 import 'package:equatable/equatable.dart';
 
-class SummaryModel extends Equatable {
-  final SummaryHeaderModel header;
+class SchoolModel extends Equatable {
+  final SchoolHeaderModel header;
   final String attendanceStatus;
   final List<AcademicPickModel> academicPicks;
 
-  const SummaryModel({
+  const SchoolModel({
     required this.header,
     required this.attendanceStatus,
     required this.academicPicks,
@@ -14,9 +14,9 @@ class SummaryModel extends Equatable {
   @override
   List<Object?> get props => [header, attendanceStatus, academicPicks];
 
-  static SummaryModel getMockData() {
-    return SummaryModel(
-      header: SummaryHeaderModel.getDynamicHeader('DHARMA'),
+  static SchoolModel getMockData() {
+    return SchoolModel(
+      header: SchoolHeaderModel.getDynamicHeader('DHARMA'),
       attendanceStatus: 'You are present today',
       academicPicks: const [
         AcademicPickModel(
@@ -30,18 +30,18 @@ class SummaryModel extends Equatable {
   }
 }
 
-class SummaryHeaderModel extends Equatable {
+class SchoolHeaderModel extends Equatable {
   final String date;
   final String greeting;
   final String userName;
 
-  const SummaryHeaderModel({
+  const SchoolHeaderModel({
     required this.date,
     required this.greeting,
     required this.userName,
   });
 
-  static SummaryHeaderModel getDynamicHeader(String userName) {
+  static SchoolHeaderModel getDynamicHeader(String userName) {
     final now = DateTime.now();
     final hour = now.hour;
     String greeting;
@@ -76,7 +76,7 @@ class SummaryHeaderModel extends Equatable {
     final month = months[now.month - 1];
     final formattedDate = '$day-$month-$year';
 
-    return SummaryHeaderModel(
+    return SchoolHeaderModel(
       date: formattedDate,
       greeting: greeting,
       userName: userName,

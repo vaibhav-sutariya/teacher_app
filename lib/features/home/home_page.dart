@@ -6,19 +6,19 @@ import '../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../core/widgets/app_app_bar.dart';
 import '../../../core/widgets/app_loader.dart';
 import '../../../core/widgets/attendance_calendar.dart';
-import 'bloc/calendar_bloc.dart';
-import 'bloc/calendar_event.dart';
-import 'bloc/calendar_state.dart';
+import 'bloc/home_bloc.dart';
+import 'bloc/home_event.dart';
+import 'bloc/home_state.dart';
 import 'widgets/calendar_event_card.dart';
 
 @RoutePage()
-class CalendarPage extends StatelessWidget {
-  const CalendarPage({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CalendarBloc()..add(LoadEvents()),
+      create: (context) => HomeBloc()..add(LoadEvents()),
       child: const CalendarView(),
     );
   }
@@ -52,7 +52,7 @@ class _CalendarSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CalendarBloc, CalendarState>(
+    return BlocBuilder<HomeBloc, HomeState>(
       buildWhen: (previous, current) {
         return previous.focusedMonth != current.focusedMonth ||
             previous.selectedDate != current.selectedDate;
@@ -69,10 +69,10 @@ class _CalendarSection extends StatelessWidget {
             vertical: context.scale(8),
           ),
           onDateSelected: (date) {
-            context.read<CalendarBloc>().add(SelectDate(date));
+            context.read<HomeBloc>().add(SelectDate(date));
           },
           onMonthChanged: (month) {
-            context.read<CalendarBloc>().add(ChangeMonth(month));
+            context.read<HomeBloc>().add(ChangeMonth(month));
           },
           dayBuilder: (context, date, isSelected, isCurrentMonth) {
             final isToday = DateUtils.isSameDay(date, DateTime.now());
@@ -116,7 +116,7 @@ class _EventListSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CalendarBloc, CalendarState>(
+    return BlocBuilder<HomeBloc, HomeState>(
       buildWhen: (previous, current) {
         return previous.selectedDateEvents != current.selectedDateEvents ||
             previous.status != current.status ||
@@ -124,7 +124,7 @@ class _EventListSection extends StatelessWidget {
                 current.selectedDate; // Update date in header
       },
       builder: (context, state) {
-        if (state.status == CalendarStatus.loading) {
+        if (state.status == HomeStatus.loading) {
           return const SliverFillRemaining(child: Center(child: AppLoader()));
         }
 

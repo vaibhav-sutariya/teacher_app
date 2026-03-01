@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../cubit/theme_cubit.dart';
-import '../models/summary_model.dart';
+import '../models/school_model.dart';
 
-class SummaryHeader extends StatelessWidget {
-  final SummaryHeaderModel model;
+class SchoolHeader extends StatelessWidget {
+  final SchoolHeaderModel model;
 
-  const SummaryHeader({super.key, required this.model});
+  const SchoolHeader({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 /// Notice model - ready for API integration
-class NoticeModel extends Equatable {
+class ServiceModel extends Equatable {
   final String id;
   final String title;
   final String description;
@@ -9,7 +9,7 @@ class NoticeModel extends Equatable {
   final String postedBy;
   final String? attachmentUrl;
 
-  const NoticeModel({
+  const ServiceModel({
     required this.id,
     required this.title,
     required this.description,
@@ -29,11 +29,11 @@ class NoticeModel extends Equatable {
   ];
 
   /// Static mock data for development
-  static List<NoticeModel> getMockData() {
+  static List<ServiceModel> getMockData() {
     final now = DateTime.now();
     return [
       // Current month notices
-      NoticeModel(
+      ServiceModel(
         id: '1',
         title: 'Annual Sports Meet 2024',
         description:
@@ -41,7 +41,7 @@ class NoticeModel extends Equatable {
         date: DateTime(now.year, now.month, 10),
         postedBy: 'Admin Office',
       ),
-      NoticeModel(
+      ServiceModel(
         id: '2',
         title: 'Parent-Teacher Meeting',
         description:
@@ -49,7 +49,7 @@ class NoticeModel extends Equatable {
         date: DateTime(now.year, now.month, 12),
         postedBy: 'Principal',
       ),
-      NoticeModel(
+      ServiceModel(
         id: '3',
         title: 'Holiday Notice: Independence Day',
         description:
@@ -57,7 +57,7 @@ class NoticeModel extends Equatable {
         date: DateTime(now.year, now.month, 15),
         postedBy: 'Principal',
       ),
-      NoticeModel(
+      ServiceModel(
         id: '7',
         title: 'Library Book Return',
         description:
@@ -65,7 +65,7 @@ class NoticeModel extends Equatable {
         date: DateTime(now.year, now.month, 18),
         postedBy: 'Librarian',
       ),
-      NoticeModel(
+      ServiceModel(
         id: '8',
         title: 'School Fees Reminder',
         description:
@@ -73,7 +73,7 @@ class NoticeModel extends Equatable {
         date: DateTime(now.year, now.month, 20),
         postedBy: 'Accounts Dept',
       ),
-      NoticeModel(
+      ServiceModel(
         id: '9',
         title: 'Drama Club Auditions',
         description:
@@ -83,7 +83,7 @@ class NoticeModel extends Equatable {
       ),
 
       // Previous month notices
-      NoticeModel(
+      ServiceModel(
         id: '4',
         title: 'Final Exam Results',
         description:
@@ -91,7 +91,7 @@ class NoticeModel extends Equatable {
         date: DateTime(now.year, now.month - 1, 25),
         postedBy: 'Examination Dept',
       ),
-      NoticeModel(
+      ServiceModel(
         id: '5',
         title: 'Summer Vacation Announcement',
         description:
@@ -99,7 +99,7 @@ class NoticeModel extends Equatable {
         date: DateTime(now.year, now.month - 1, 5),
         postedBy: 'Admin Office',
       ),
-      NoticeModel(
+      ServiceModel(
         id: '10',
         title: 'Internal Assessment Schedule',
         description:
@@ -109,7 +109,7 @@ class NoticeModel extends Equatable {
       ),
 
       // Next month notices
-      NoticeModel(
+      ServiceModel(
         id: '6',
         title: 'Science Fair Enrollment',
         description:
@@ -117,7 +117,7 @@ class NoticeModel extends Equatable {
         date: DateTime(now.year, now.month + 1, 1),
         postedBy: 'Science Dept',
       ),
-      NoticeModel(
+      ServiceModel(
         id: '11',
         title: 'Teacher Training Workshop',
         description:

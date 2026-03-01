@@ -3,12 +3,12 @@ import 'package:intl/intl.dart';
 import 'package:teachers_app/core/helpers/extensions/responsive_extensions.dart';
 import 'package:teachers_app/cubit/theme_cubit.dart';
 
-import '../models/notice_model.dart';
+import '../models/service_model.dart';
 
-class NoticeCard extends StatelessWidget {
-  final NoticeModel notice;
+class ServiceCard extends StatelessWidget {
+  final ServiceModel notice;
 
-  const NoticeCard({super.key, required this.notice});
+  const ServiceCard({super.key, required this.notice});
 
   @override
   Widget build(BuildContext context) {

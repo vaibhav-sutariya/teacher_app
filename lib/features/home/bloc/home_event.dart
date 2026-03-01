@@ -1,15 +1,15 @@
 import 'package:equatable/equatable.dart';
 
-abstract class CalendarEvent extends Equatable {
-  const CalendarEvent();
+abstract class HomeEvent extends Equatable {
+  const HomeEvent();
 
   @override
   List<Object?> get props => [];
 }
 
-class LoadEvents extends CalendarEvent {}
+class LoadEvents extends HomeEvent {}
 
-class SelectDate extends CalendarEvent {
+class SelectDate extends HomeEvent {
   final DateTime date;
   const SelectDate(this.date);
 
@@ -17,7 +17,7 @@ class SelectDate extends CalendarEvent {
   List<Object?> get props => [date];
 }
 
-class ChangeMonth extends CalendarEvent {
+class ChangeMonth extends HomeEvent {
   final DateTime month;
   const ChangeMonth(this.month);
 
