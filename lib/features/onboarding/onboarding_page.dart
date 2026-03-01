@@ -24,22 +24,22 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   final List<OnboardingItem> _items = [
     OnboardingItem(
-      icon: Icons.hub, // Placeholder for "Stay Connected" icon
-      title: 'Stay Connected',
+      icon: Icons.event_note, // Placeholder for "Class Management" icon
+      title: 'Efficient Class Management',
       description:
-          'Real-time updates and seamless communication between teachers, parents, and students.',
+          'Streamline your daily routines. Effortlessly take attendance, manage class schedules, and organize assignments all in one central location.',
     ),
     OnboardingItem(
-      icon: Icons.analytics, // Placeholder for "Track Progress" icon
-      title: 'Track Progress',
+      icon: Icons.assessment, // Placeholder for "Performance Tracking" icon
+      title: 'Academic Performance Tracking',
       description:
-          'Monitor real-time academic results, attendance trends, and detailed performance reports in one place.',
+          'Monitor student progress with comprehensive analytics. Evaluate exams, record grades, and generate insightful academic reports with ease.',
     ),
     OnboardingItem(
-      icon: Icons.directions_bus, // Placeholder for "Smart Management" icon
-      title: 'Smart Management',
+      icon: Icons.forum, // Placeholder for "Seamless Communication" icon
+      title: 'Seamless Communication',
       description:
-          'Track school transport, manage attendance, and stay updated with real-time notifications effortlessly.',
+          'Bridge the gap between home and school. Communicate effectively with parents, colleagues, and administration through instant updates.',
     ),
   ];
 

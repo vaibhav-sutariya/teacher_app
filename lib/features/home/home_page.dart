@@ -1,15 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 import '../../../core/helpers/extensions/responsive_extensions.dart';
-import '../../../core/widgets/app_app_bar.dart';
 import '../../../core/widgets/app_loader.dart';
-import '../../../core/widgets/attendance_calendar.dart';
+import '../my_class/my_class_screen/widgets/my_class_header.dart';
 import 'bloc/home_bloc.dart';
 import 'bloc/home_event.dart';
 import 'bloc/home_state.dart';
-import 'widgets/calendar_event_card.dart';
+import 'widgets/dashboard_cards.dart';
 
 @RoutePage()
 class HomePage extends StatelessWidget {
@@ -18,200 +17,84 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeBloc()..add(LoadEvents()),
-      child: const CalendarView(),
+      create: (context) => HomeBloc()..add(LoadDashboardData()),
+      child: const DashboardView(),
     );
   }
 }
 
-class CalendarView extends StatelessWidget {
-  const CalendarView({super.key});
+class DashboardView extends StatelessWidget {
+  const DashboardView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F6F9),
-      appBar: const AppAppBar(title: 'Event List', showBackButton: false),
-      body: CustomScrollView(
-        slivers: [
-          // Calendar Section - Only rebuilds when month/date changes
-          const SliverToBoxAdapter(child: _CalendarSection()),
+      backgroundColor: context.colors.background,
+      body: BlocBuilder<HomeBloc, HomeState>(
+        buildWhen: (previous, current) => previous.status != current.status,
+        builder: (context, state) {
+          if (state.status == HomeStatus.initial ||
+              state.status == HomeStatus.loading) {
+            return const Center(child: AppLoader());
+          }
 
-          SliverToBoxAdapter(child: SizedBox(height: context.scaleHeight(16))),
+          if (state.status == HomeStatus.error) {
+            return Center(
+              child: Text(state.errorMessage ?? 'An error occurred'),
+            );
+          }
 
-          // Event List Section - Handled by SliverList
-          const _EventListSection(),
-        ],
-      ),
-    );
-  }
-}
-
-class _CalendarSection extends StatelessWidget {
-  const _CalendarSection();
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, HomeState>(
-      buildWhen: (previous, current) {
-        return previous.focusedMonth != current.focusedMonth ||
-            previous.selectedDate != current.selectedDate;
-      },
-      builder: (context, state) {
-        return AttendanceCalendar(
-          selectedDate: state.selectedDate,
-          showElevation: false,
-          allowFutureDates: true, // Allow selecting future dates
-          showLegend: false,
-          margin: EdgeInsets.all(context.scale(16)), // Reduce white space
-          padding: EdgeInsets.symmetric(
-            horizontal: context.scale(8),
-            vertical: context.scale(8),
-          ),
-          onDateSelected: (date) {
-            context.read<HomeBloc>().add(SelectDate(date));
-          },
-          onMonthChanged: (month) {
-            context.read<HomeBloc>().add(ChangeMonth(month));
-          },
-          dayBuilder: (context, date, isSelected, isCurrentMonth) {
-            final isToday = DateUtils.isSameDay(date, DateTime.now());
-            // Custom builder for Calendar Page
-            return Container(
-              margin: EdgeInsets.all(context.scale(4)),
-              decoration: BoxDecoration(
-                color: isSelected
-                    ? const Color(0xFF303F9F)
-                    : Colors.transparent,
-                shape: BoxShape.circle,
-                border: isToday && !isSelected
-                    ? Border.all(
-                        color: const Color(0xFF303F9F),
-                        width: 1.5,
-                      ) // Rounded border for today
-                    : null,
-              ),
-              child: Center(
-                child: Text(
-                  '${date.day}',
-                  style: TextStyle(
-                    fontSize: context.scaleFont(14),
-                    color: isSelected ? Colors.white : Colors.black87,
-                    fontWeight: isSelected
-                        ? FontWeight.bold
-                        : FontWeight.normal,
+          return Stack(
+            children: [
+              // Header Background
+              Container(
+                height: context.scaleHeight(185),
+                decoration: BoxDecoration(
+                  color: context.colors.primary,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(context.scale(20)),
+                    bottomRight: Radius.circular(context.scale(20)),
                   ),
                 ),
               ),
-            );
-          },
-        );
-      },
-    );
-  }
-}
 
-class _EventListSection extends StatelessWidget {
-  const _EventListSection();
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, HomeState>(
-      buildWhen: (previous, current) {
-        return previous.selectedDateEvents != current.selectedDateEvents ||
-            previous.status != current.status ||
-            previous.selectedDate !=
-                current.selectedDate; // Update date in header
-      },
-      builder: (context, state) {
-        if (state.status == HomeStatus.loading) {
-          return const SliverFillRemaining(child: Center(child: AppLoader()));
-        }
-
-        return SliverMainAxisGroup(
-          slivers: [
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: context.scale(20)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // Content
+              SafeArea(
+                bottom: false,
+                child: Column(
                   children: [
-                    Text(
-                      'Events for ${DateFormat('Today').format(state.selectedDate) == DateFormat('Today').format(DateTime.now()) ? 'Today' : DateFormat('MMM d').format(state.selectedDate)}',
-                      style: TextStyle(
-                        fontSize: context.scaleFont(18),
-                        fontWeight: FontWeight.bold,
-                        color: const Color(0xFF263238),
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: context.scale(12),
-                        vertical: context.scale(4),
-                      ),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFE8EAF6),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Text(
-                        '${state.selectedDateEvents.length} EVENTS',
-                        style: TextStyle(
-                          fontSize: context.scaleFont(10),
-                          fontWeight: FontWeight.bold,
-                          color: const Color(0xFF303F9F),
-                        ),
+                    SizedBox(height: context.scaleHeight(5)),
+                    // Header
+                    const MyClassHeader(),
+                    SizedBox(height: context.scaleHeight(20)),
+
+                    // Scrollable Cards
+                    Expanded(
+                      child: CustomScrollView(
+                        slivers: [
+                          const SliverToBoxAdapter(child: CheckInCard()),
+                          const SliverToBoxAdapter(child: EventsCard()),
+                          const SliverToBoxAdapter(child: AnnouncementsCard()),
+                          const SliverToBoxAdapter(child: BirthdaysCard()),
+                          const SliverToBoxAdapter(child: PendingLeavesCard()),
+                          const SliverToBoxAdapter(child: AttendanceCard()),
+                          const SliverToBoxAdapter(child: HomeworkCard()),
+
+                          SliverToBoxAdapter(
+                            child: SizedBox(
+                              height: context.scaleHeight(100),
+                            ), // Bottom padding
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
               ),
-            ),
-
-            SliverToBoxAdapter(
-              child: SizedBox(height: context.scaleHeight(16)),
-            ),
-
-            if (state.selectedDateEvents.isEmpty)
-              SliverFillRemaining(
-                hasScrollBody: false,
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.event_available,
-                        size: 48,
-                        color: Colors.grey[300],
-                      ),
-                      const SizedBox(height: 16),
-                      Text(
-                        "No events for this day",
-                        style: TextStyle(color: Colors.grey[500]),
-                      ),
-                    ],
-                  ),
-                ),
-              )
-            else
-              SliverList(
-                delegate: SliverChildBuilderDelegate((context, index) {
-                  return Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: context.scale(20),
-                    ),
-                    child: CalendarEventCard(
-                      event: state.selectedDateEvents[index],
-                    ),
-                  );
-                }, childCount: state.selectedDateEvents.length),
-              ),
-
-            SliverToBoxAdapter(
-              child: SizedBox(height: context.scaleHeight(80)),
-            ),
-          ],
-        );
-      },
+            ],
+          );
+        },
+      ),
     );
   }
 }
