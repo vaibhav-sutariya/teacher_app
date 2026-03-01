@@ -7,6 +7,7 @@ import '../../../../../../core/widgets/app_outlined_button.dart';
 import '../../../../../../core/widgets/app_primary_button.dart';
 import '../../../../../../core/widgets/app_text_field.dart';
 import '../../../../../../cubit/theme_cubit.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class PasswordLoginForm extends StatefulWidget {
   const PasswordLoginForm({super.key});
@@ -53,7 +54,7 @@ class _PasswordLoginFormState extends State<PasswordLoginForm> {
                 _isPasswordVisible
                     ? Icons.visibility_outlined
                     : Icons.visibility_off_outlined,
-                color: Colors.grey,
+                color: context.colors.textTertiary,
               ),
             ),
           ),
@@ -100,7 +101,7 @@ class _PasswordLoginFormState extends State<PasswordLoginForm> {
                 child: Text(
                   'Trouble logging in?',
                   style: TextStyle(
-                    color: Colors.grey[600],
+                    color: context.colors.textSecondary,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -122,12 +123,16 @@ class _PasswordLoginFormState extends State<PasswordLoginForm> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.lock_rounded, size: 16, color: Colors.grey[500]),
+              Icon(
+                Icons.lock_rounded,
+                size: 16,
+                color: context.colors.textSecondary,
+              ),
               const SizedBox(width: 8),
               Text(
                 'Secure encrypted connection',
                 style: TextStyle(
-                  color: Colors.grey[600],
+                  color: context.colors.textSecondary,
                   fontWeight: FontWeight.w500,
                   fontSize: 12,
                 ),

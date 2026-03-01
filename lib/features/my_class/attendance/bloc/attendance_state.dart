@@ -11,7 +11,7 @@ class AttendanceState extends Equatable {
   final DateTime currentMonth;
   final String? errorMessage;
   final Map<DateTime, AttendanceStatus> calendarData;
-  
+
   // Yearly summary fields
   final int? yearlyTotalDays;
   final int? yearlyPresentDays;
@@ -61,20 +61,21 @@ class AttendanceState extends Equatable {
       calendarData: calendarData ?? this.calendarData,
       yearlyTotalDays: yearlyTotalDays ?? this.yearlyTotalDays,
       yearlyPresentDays: yearlyPresentDays ?? this.yearlyPresentDays,
-      yearlyOverallPercentage: yearlyOverallPercentage ?? this.yearlyOverallPercentage,
+      yearlyOverallPercentage:
+          yearlyOverallPercentage ?? this.yearlyOverallPercentage,
     );
   }
 
   @override
   List<Object?> get props => [
-        isLoading,
-        attendanceData,
-        selectedDate,
-        currentMonth,
-        errorMessage,
-        calendarData,
-        yearlyTotalDays,
-        yearlyPresentDays,
-        yearlyOverallPercentage,
-      ];
+    isLoading,
+    attendanceData,
+    selectedDate,
+    currentMonth,
+    errorMessage,
+    calendarData,
+    yearlyTotalDays,
+    yearlyPresentDays,
+    yearlyOverallPercentage,
+  ];
 }

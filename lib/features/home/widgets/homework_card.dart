@@ -6,6 +6,7 @@ import '../bloc/home_bloc.dart';
 import '../bloc/home_state.dart';
 import '../models/dashboard_models.dart';
 import 'dashboard_card.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class HomeworkCard extends StatelessWidget {
   const HomeworkCard({super.key});
@@ -23,7 +24,7 @@ class HomeworkCard extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.assignment_outlined,
-                    color: Colors.redAccent.shade200,
+                    color: context.colors.error,
                     size: context.scale(28),
                   ),
                   Expanded(
@@ -33,20 +34,20 @@ class HomeworkCard extends StatelessWidget {
                       style: TextStyle(
                         fontSize: context.scaleFont(16),
                         fontWeight: FontWeight.w600,
-                        color: Colors.grey.shade500,
+                        color: context.colors.textSecondary,
                       ),
                     ),
                   ),
                   Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.amber.shade600,
+                    color: context.colors.warning,
                     size: context.scale(16),
                   ),
                 ],
               ),
               Divider(
                 height: context.scaleHeight(24),
-                color: Colors.grey.shade200,
+                color: context.colors.divider,
               ),
 
               Text(
@@ -54,12 +55,12 @@ class HomeworkCard extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: context.scaleFont(14),
-                  color: Colors.black87,
+                  color: context.colors.textPrimary,
                 ),
               ),
               Divider(
                 height: context.scaleHeight(24),
-                color: Colors.grey.shade200,
+                color: context.colors.divider,
               ),
               Text(
                 stats.date != null
@@ -67,7 +68,7 @@ class HomeworkCard extends StatelessWidget {
                     : '-',
                 style: TextStyle(
                   fontSize: context.scaleFont(12),
-                  color: Colors.grey.shade400,
+                  color: context.colors.textTertiary,
                   fontWeight: FontWeight.w500,
                 ),
               ),

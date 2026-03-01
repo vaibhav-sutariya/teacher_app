@@ -9,6 +9,7 @@ import '../../../core/widgets/end_of_list_indicator.dart';
 import '../../../core/widgets/reusable_calendar_strip.dart';
 import 'bloc/homework_bloc.dart';
 import 'widgets/homework_card.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
 class HomeworkPage extends StatelessWidget {
@@ -64,7 +65,7 @@ class HomeworkPage extends StatelessWidget {
                               'No Homework Assigned',
                               style: TextStyle(
                                 fontSize: context.scaleFont(16),
-                                color: Colors.grey,
+                                color: context.colors.textTertiary,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),

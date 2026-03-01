@@ -205,4 +205,22 @@ class DarkColors extends AppColors {
 
   @override
   Color get buttonTextColor => const Color(0xFF020035); // Dark blue text for white buttons
+
+  @override
+  Color get textPrimary => const Color(0xFFFFFFFF); // White
+
+  @override
+  Color get textSecondary => const Color(0xFFB3B3FF); // surface900
+
+  @override
+  Color get textTertiary => const Color(0xFF9999FF); // surface800
+
+  @override
+  Color get textInverse => const Color(0xFF020035); // background
+
+  @override
+  Color get border => const Color(0xFF3333FF); // surface400
+
+  @override
+  Color get divider => const Color(0xFF3333FF); // surface400
 }

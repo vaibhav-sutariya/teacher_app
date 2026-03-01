@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/helpers/extensions/responsive_extensions.dart';
 import '../models/meal_menu_model.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class MealMenuCard extends StatelessWidget {
   final MealMenuEntity meal;
@@ -13,7 +14,7 @@ class MealMenuCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: context.scaleHeight(16)),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.textInverse,
         borderRadius: BorderRadius.circular(context.scale(16)),
         boxShadow: [
           BoxShadow(
@@ -77,7 +78,7 @@ class MealMenuCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: context.scaleFont(15), // Large enough to read
                       fontWeight: FontWeight.bold,
-                      color: const Color(0xFF263238), // Dark text
+                      color: context.colors.textPrimary, // Dark text
                       height: 1.3,
                     ),
                   ),

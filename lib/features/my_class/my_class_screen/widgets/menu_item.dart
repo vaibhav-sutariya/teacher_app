@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/helpers/extensions/responsive_extensions.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 /// Production-optimized menu item widget
 /// Uses const where possible and optimized layout
@@ -31,7 +32,7 @@ class MenuItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Card(
-        color: Colors.white,
+        color: context.colors.textInverse,
         elevation: 4,
         shadowColor: Colors.black.withOpacity(0.5),
         shape: RoundedRectangleBorder(
@@ -57,7 +58,7 @@ class MenuItem extends StatelessWidget {
               style: TextStyle(
                 fontSize: fontSize,
                 fontWeight: FontWeight.w600,
-                color: Colors.black87,
+                color: context.colors.textPrimary,
                 letterSpacing: 0.3,
               ),
               textAlign: TextAlign.center,

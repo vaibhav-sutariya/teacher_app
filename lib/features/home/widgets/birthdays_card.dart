@@ -6,6 +6,7 @@ import '../bloc/home_bloc.dart';
 import '../bloc/home_state.dart';
 import '../models/dashboard_models.dart';
 import 'dashboard_card.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class BirthdaysCard extends StatelessWidget {
   const BirthdaysCard({super.key});
@@ -47,7 +48,7 @@ class BirthdaysCard extends StatelessWidget {
                           child: Text(
                             bd.studentName[0],
                             style: TextStyle(
-                              color: Colors.white,
+                              color: context.colors.textInverse,
                               fontWeight: FontWeight.bold,
                               fontSize: context.scaleFont(20),
                             ),
@@ -63,7 +64,7 @@ class BirthdaysCard extends StatelessWidget {
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: context.scaleFont(12),
-                                  color: Colors.black87,
+                                  color: context.colors.textPrimary,
                                 ),
                               ),
                               SizedBox(height: context.scaleHeight(4)),
@@ -71,7 +72,7 @@ class BirthdaysCard extends StatelessWidget {
                                 DateFormat('dd/MMM/yyyy').format(bd.date),
                                 style: TextStyle(
                                   fontSize: context.scaleFont(11),
-                                  color: Colors.grey.shade400,
+                                  color: context.colors.textTertiary,
                                 ),
                               ),
                             ],

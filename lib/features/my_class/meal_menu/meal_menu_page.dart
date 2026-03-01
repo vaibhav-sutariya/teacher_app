@@ -8,6 +8,7 @@ import '../../../core/widgets/app_loader.dart';
 import '../../../core/widgets/reusable_calendar_strip.dart';
 import 'bloc/meal_menu_bloc.dart';
 import 'widgets/meal_menu_card.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
 class MealMenuPage extends StatelessWidget {
@@ -61,7 +62,7 @@ class MealMenuPage extends StatelessWidget {
                               'No Menu Available',
                               style: TextStyle(
                                 fontSize: context.scaleFont(16),
-                                color: Colors.grey,
+                                color: context.colors.textTertiary,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),

@@ -4,6 +4,7 @@ import '../../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../../cubit/theme_cubit.dart';
 import '../models/homework_model.dart';
 import '../../../../core/widgets/app_capsule_button.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class HomeworkCard extends StatelessWidget {
   final HomeworkEntity homework;
@@ -15,7 +16,7 @@ class HomeworkCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: context.scaleHeight(16)),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.textInverse,
         borderRadius: BorderRadius.circular(context.scale(16)),
         boxShadow: [
           BoxShadow(
@@ -66,7 +67,7 @@ class HomeworkCard extends StatelessWidget {
               context,
               label: 'Subject Teacher',
               value: homework.teacherName,
-              valueColor: const Color(0xFF263238),
+              valueColor: context.colors.textPrimary,
               isBoldValue: true,
             ),
             SizedBox(height: context.scaleHeight(12)),
@@ -74,7 +75,7 @@ class HomeworkCard extends StatelessWidget {
               context,
               label: 'Submission Date',
               value: DateFormat('dd/MM/yyyy').format(homework.submissionDate),
-              valueColor: const Color(0xFF263238),
+              valueColor: context.colors.textPrimary,
               isBoldValue: true,
             ),
             SizedBox(height: context.scaleHeight(12)),

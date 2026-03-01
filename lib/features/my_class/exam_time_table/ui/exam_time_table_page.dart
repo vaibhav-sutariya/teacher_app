@@ -7,6 +7,7 @@ import '../../../../core/widgets/app_app_bar.dart';
 import '../../../../core/widgets/app_loader.dart';
 import '../../../../core/widgets/app_pdf_viewer.dart';
 import '../bloc/exam_time_table_bloc.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
 class ExamTimeTablePage extends StatelessWidget implements AutoRouteWrapper {
@@ -39,7 +40,7 @@ class ExamTimeTablePage extends StatelessWidget implements AutoRouteWrapper {
                     Text(
                       state.message,
                       textAlign: TextAlign.center,
-                      style: const TextStyle(color: Colors.red),
+                      style: TextStyle(color: context.colors.error),
                     ),
                     const SizedBox(height: 16),
                     TextButton(

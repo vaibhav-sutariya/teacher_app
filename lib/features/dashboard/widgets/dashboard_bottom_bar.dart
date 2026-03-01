@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../../cubit/theme_cubit.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class DashboardBottomBar extends StatelessWidget {
   final int activeIndex;
@@ -18,7 +19,7 @@ class DashboardBottomBar extends StatelessWidget {
     return Container(
       height: context.scaleHeight(60),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.textInverse,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.04),

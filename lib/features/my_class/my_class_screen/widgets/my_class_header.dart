@@ -9,6 +9,7 @@ import '../../../profile/multi_account/bloc/multi_account_bloc.dart';
 import '../../../profile/multi_account/bloc/multi_account_state.dart';
 import '../../../profile/multi_account/widgets/multi_account_bottom_sheet.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class MyClassHeader extends StatelessWidget {
   const MyClassHeader({super.key});
@@ -45,7 +46,7 @@ class MyClassHeader extends StatelessWidget {
                       child: account?.profileImageUrl == null
                           ? Icon(
                               Icons.person,
-                              color: Colors.white,
+                              color: context.colors.textInverse,
                               size: context.scale(24),
                             )
                           : null,
@@ -57,14 +58,16 @@ class MyClassHeader extends StatelessWidget {
                         Text(
                           'Good Morning,',
                           style: TextStyle(
-                            color: Colors.white.withValues(alpha: 0.7),
+                            color: context.colors.textInverse.withValues(
+                              alpha: 0.7,
+                            ),
                             fontSize: context.scaleFont(12),
                           ),
                         ),
                         Text(
                           account?.name ?? 'User',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: context.colors.textInverse,
                             fontSize: context.scaleFont(18),
                             fontWeight: FontWeight.bold,
                           ),
@@ -82,12 +85,12 @@ class MyClassHeader extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.all(context.scale(8)),
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.1),
+                    color: context.colors.textInverse.withValues(alpha: 0.1),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
                     Icons.notifications_rounded,
-                    color: Colors.white,
+                    color: context.colors.textInverse,
                     size: context.scale(24),
                   ),
                 ),

@@ -8,6 +8,7 @@ import 'models/leave_detail_model.dart';
 import 'widgets/activity_log_item.dart';
 import 'widgets/leave_info_row.dart';
 import 'widgets/leave_status_badge.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 /// Leave Detail Page
 /// Shows complete information about a leave request
@@ -38,7 +39,7 @@ class LeaveDetailPage extends StatelessWidget {
             RepaintBoundary(
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: context.colors.textInverse,
                   borderRadius: BorderRadius.circular(context.scale(16)),
                   boxShadow: [
                     BoxShadow(
@@ -68,7 +69,7 @@ class LeaveDetailPage extends StatelessWidget {
                         value: DateFormat(
                           'dd MMM yyyy',
                         ).format(leaveDetail.approvalDate!),
-                        iconColor: Colors.green[600],
+                        iconColor: context.colors.success,
                       ),
 
                     // Request Date
@@ -78,7 +79,7 @@ class LeaveDetailPage extends StatelessWidget {
                       value: DateFormat(
                         'dd MMM yyyy, HH:mm',
                       ).format(leaveDetail.requestDate),
-                      iconColor: Colors.grey[600],
+                      iconColor: context.colors.textSecondary,
                     ),
 
                     SizedBox(height: context.scaleHeight(16)),
@@ -138,7 +139,7 @@ class LeaveDetailPage extends StatelessWidget {
                     child: Icon(
                       Icons.check,
                       size: context.scale(14),
-                      color: Colors.white,
+                      color: context.colors.textInverse,
                     ),
                   ),
                 ),
@@ -156,7 +157,7 @@ class LeaveDetailPage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: context.scaleFont(11),
                   fontWeight: FontWeight.w600,
-                  color: Colors.grey[500],
+                  color: context.colors.textSecondary,
                   letterSpacing: 0.5,
                 ),
               ),
@@ -210,7 +211,7 @@ class LeaveDetailPage extends StatelessWidget {
                   style: TextStyle(
                     fontSize: context.scaleFont(11),
                     fontWeight: FontWeight.w600,
-                    color: Colors.grey[600],
+                    color: context.colors.textSecondary,
                     letterSpacing: 0.5,
                   ),
                 ),
@@ -220,7 +221,7 @@ class LeaveDetailPage extends StatelessWidget {
                   style: TextStyle(
                     fontSize: context.scaleFont(14),
                     fontWeight: FontWeight.bold,
-                    color: Colors.black87,
+                    color: context.colors.textPrimary,
                   ),
                 ),
               ],
@@ -234,7 +235,7 @@ class LeaveDetailPage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: context.scaleFont(10),
                   fontWeight: FontWeight.w600,
-                  color: Colors.grey[500],
+                  color: context.colors.textSecondary,
                   letterSpacing: 0.5,
                 ),
               ),
@@ -264,7 +265,7 @@ class LeaveDetailPage extends StatelessWidget {
           style: TextStyle(
             fontSize: context.scaleFont(11),
             fontWeight: FontWeight.w600,
-            color: Colors.grey[500],
+            color: context.colors.textSecondary,
             letterSpacing: 0.5,
           ),
         ),
@@ -304,7 +305,7 @@ class LeaveDetailPage extends StatelessWidget {
             style: TextStyle(
               fontSize: context.scaleFont(11),
               fontWeight: FontWeight.w600,
-              color: Colors.grey[500],
+              color: context.colors.textSecondary,
               letterSpacing: 0.5,
             ),
           ),

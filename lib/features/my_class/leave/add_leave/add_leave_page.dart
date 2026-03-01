@@ -16,6 +16,7 @@ import 'bloc/add_leave_state.dart';
 import 'models/add_leave_request_model.dart';
 import 'models/leave_type_model.dart';
 import 'repositories/add_leave_repository.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 /// Add leave page with Bloc state management
 @RoutePage()
@@ -161,12 +162,12 @@ class _AddLeaveViewState extends State<_AddLeaveView> {
                         style: TextStyle(
                           fontSize: context.scaleFont(14),
                           fontWeight: FontWeight.w500,
-                          color: Colors.black87,
+                          color: context.colors.textPrimary,
                         ),
-                        children: const [
+                        children: [
                           TextSpan(
                             text: ' *',
-                            style: TextStyle(color: Colors.red),
+                            style: TextStyle(color: context.colors.error),
                           ),
                         ],
                       ),

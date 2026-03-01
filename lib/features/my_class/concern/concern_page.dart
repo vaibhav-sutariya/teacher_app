@@ -11,6 +11,7 @@ import '../../../../cubit/theme_cubit.dart';
 import '../../../core/routes/app_router.gr.dart';
 import 'bloc/concern_bloc.dart';
 import 'widgets/concern_item.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
 class ConcernPage extends StatelessWidget {
@@ -61,12 +62,12 @@ class ConcernPageContent extends StatelessWidget {
             child: BlocBuilder<ConcernBloc, ConcernState>(
               builder: (context, state) {
                 if (state is ConcernLoading) {
-                  return const Center(child: AppLoader());
+                  return Center(child: AppLoader());
                 } else if (state is ConcernError) {
                   return Center(
                     child: Text(
                       state.message,
-                      style: const TextStyle(color: Colors.red),
+                      style: TextStyle(color: context.colors.error),
                     ),
                   );
                 } else if (state is ConcernLoaded) {
@@ -120,14 +121,14 @@ class ConcernPageContent extends StatelessWidget {
           Icon(
             Icons.inbox_outlined,
             size: context.scale(48),
-            color: Colors.grey[400],
+            color: context.colors.textTertiary,
           ),
           SizedBox(height: context.scaleHeight(16)),
           Text(
             'No concerns found',
             style: TextStyle(
               fontSize: context.scaleFont(16),
-              color: Colors.grey[600],
+              color: context.colors.textSecondary,
             ),
           ),
         ],

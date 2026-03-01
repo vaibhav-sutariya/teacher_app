@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/helpers/extensions/responsive_extensions.dart';
 import '../models/gate_pass_model.dart';
 import 'package:intl/intl.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class GatePassItem extends StatelessWidget {
   final GatePassModel gatePass;
@@ -14,7 +15,7 @@ class GatePassItem extends StatelessWidget {
       margin: EdgeInsets.only(bottom: context.scale(16)),
       padding: EdgeInsets.all(context.scale(16)),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.textInverse,
         borderRadius: BorderRadius.circular(context.scale(16)),
         boxShadow: [
           BoxShadow(
@@ -71,14 +72,14 @@ class GatePassItem extends StatelessWidget {
                     Icon(
                       Icons.calendar_today_outlined,
                       size: context.scale(14),
-                      color: Colors.grey[500],
+                      color: context.colors.textSecondary,
                     ),
                     SizedBox(width: context.scale(6)),
                     Text(
                       DateFormat('MMM dd, yyyy').format(gatePass.date),
                       style: TextStyle(
                         fontSize: context.scaleFont(12),
-                        color: Colors.grey[500],
+                        color: context.colors.textSecondary,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -90,14 +91,14 @@ class GatePassItem extends StatelessWidget {
                   Icon(
                     Icons.access_time,
                     size: context.scale(14),
-                    color: Colors.grey[500],
+                    color: context.colors.textSecondary,
                   ),
                   SizedBox(width: context.scale(6)),
                   Text(
                     gatePass.formattedTime,
                     style: TextStyle(
                       fontSize: context.scaleFont(12),
-                      color: Colors.grey[500],
+                      color: context.colors.textSecondary,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -152,7 +153,7 @@ class GatePassItem extends StatelessWidget {
                   style: TextStyle(
                     fontSize: context.scaleFont(13),
                     fontWeight: FontWeight.w500,
-                    color: Colors.grey[600],
+                    color: context.colors.textSecondary,
                     fontFamily: 'Manrope', // Assuming font family
                   ),
                 ),
@@ -161,7 +162,7 @@ class GatePassItem extends StatelessWidget {
                   style: TextStyle(
                     fontSize: context.scaleFont(13),
                     fontWeight: FontWeight.bold,
-                    color: Colors.black87,
+                    color: context.colors.textPrimary,
                     fontFamily: 'Manrope',
                   ),
                 ),

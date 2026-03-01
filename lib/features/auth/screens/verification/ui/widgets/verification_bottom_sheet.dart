@@ -5,6 +5,7 @@ import '../../../../../../core/routes/app_router.gr.dart';
 import '../../../../../../core/widgets/app_primary_button.dart';
 import '../../../../../../cubit/theme_cubit.dart';
 import 'otp_input_row.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class VerificationBottomSheet extends StatelessWidget {
   const VerificationBottomSheet({super.key});
@@ -13,8 +14,8 @@ class VerificationBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: const BoxDecoration(
-        color: Colors.white,
+      decoration: BoxDecoration(
+        color: context.colors.textInverse,
         borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
       ),
       padding: const EdgeInsets.all(24),
@@ -36,7 +37,10 @@ class VerificationBottomSheet extends StatelessWidget {
             RichText(
               textAlign: TextAlign.center,
               text: TextSpan(
-                style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                style: TextStyle(
+                  fontSize: 14,
+                  color: context.colors.textSecondary,
+                ),
                 children: [
                   TextSpan(
                     text:
@@ -64,7 +68,10 @@ class VerificationBottomSheet extends StatelessWidget {
             Center(
               child: Text(
                 'Didn\'t receive the code?',
-                style: TextStyle(color: Colors.grey[600], fontSize: 14),
+                style: TextStyle(
+                  color: context.colors.textSecondary,
+                  fontSize: 14,
+                ),
               ),
             ),
             const SizedBox(height: 12),
@@ -109,7 +116,7 @@ class VerificationBottomSheet extends StatelessWidget {
                 context.router.push(DashboardRoute());
               },
               // borderRadius: 16, // Already default, can function without explicitness, but file had 16. Cleaning up consistency.
-              child: const Row(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
@@ -117,14 +124,14 @@ class VerificationBottomSheet extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: context.colors.textInverse,
                     ),
                   ),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                   Icon(
                     Icons.arrow_forward_rounded,
                     size: 20,
-                    color: Colors.white,
+                    color: context.colors.textInverse,
                   ),
                 ],
               ),

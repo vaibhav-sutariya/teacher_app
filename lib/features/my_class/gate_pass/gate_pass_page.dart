@@ -10,6 +10,7 @@ import 'bloc/gate_pass_bloc.dart';
 import 'bloc/gate_pass_event.dart';
 import 'bloc/gate_pass_state.dart';
 import 'widgets/gate_pass_item.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
 class GatePassPage extends StatelessWidget {
@@ -52,12 +53,12 @@ class GatePassView extends StatelessWidget {
             child: BlocBuilder<GatePassBloc, GatePassState>(
               builder: (context, state) {
                 if (state.status == GatePassPageStatus.loading) {
-                  return const Center(child: AppLoader());
+                  return Center(child: AppLoader());
                 } else if (state.status == GatePassPageStatus.error) {
                   return Center(
                     child: Text(
                       state.errorMessage ?? 'Something went wrong',
-                      style: const TextStyle(color: Colors.red),
+                      style: TextStyle(color: context.colors.error),
                     ),
                   );
                 } else if (state.filteredGatePasses.isEmpty) {
@@ -92,14 +93,14 @@ class GatePassView extends StatelessWidget {
           Icon(
             Icons.no_accounts_outlined,
             size: context.scale(48),
-            color: Colors.grey[400],
+            color: context.colors.textTertiary,
           ),
           SizedBox(height: context.scaleHeight(16)),
           Text(
             'No gate passes found',
             style: TextStyle(
               fontSize: context.scaleFont(16),
-              color: Colors.grey[600],
+              color: context.colors.textSecondary,
             ),
           ),
         ],

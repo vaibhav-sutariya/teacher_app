@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import '../../../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../../../core/routes/app_router.gr.dart';
 import '../models/remark_model.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 /// Production-ready remark card widget
 /// Optimized for performance with RepaintBoundary and ValueKey
@@ -29,7 +30,7 @@ class RemarkCard extends StatelessWidget {
             bottom: context.scaleHeight(8),
           ),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: context.colors.textInverse,
             borderRadius: BorderRadius.circular(context.scale(12)),
             boxShadow: [
               BoxShadow(
@@ -132,7 +133,7 @@ class RemarkCard extends StatelessWidget {
                 _formatDate(remark.date),
                 style: TextStyle(
                   fontSize: context.scaleFont(12),
-                  color: Colors.grey[600],
+                  color: context.colors.textSecondary,
                   fontWeight: FontWeight.w500,
                 ),
               ),

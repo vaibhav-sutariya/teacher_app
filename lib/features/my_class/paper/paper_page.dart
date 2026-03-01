@@ -7,6 +7,7 @@ import '../../../core/widgets/app_app_bar.dart';
 import '../../../core/widgets/app_loader.dart';
 import '../../../core/widgets/pdf_document_card.dart';
 import 'bloc/paper_bloc.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
 class PaperPage extends StatelessWidget {
@@ -39,7 +40,7 @@ class PaperPage extends StatelessWidget {
                         'No Papers Available',
                         style: TextStyle(
                           fontSize: context.scaleFont(16),
-                          color: Colors.grey,
+                          color: context.colors.textTertiary,
                           fontWeight: FontWeight.w500,
                         ),
                       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../../cubit/theme_cubit.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 /// Production-ready attendance summary widget with circular indicators
 class AttendanceSummary extends StatelessWidget {
@@ -40,7 +41,7 @@ class AttendanceSummary extends StatelessWidget {
                 width: context.scale(20),
                 height: context.scale(20),
                 decoration: BoxDecoration(
-                  color: Colors.grey[300],
+                  color: context.colors.border,
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
@@ -112,7 +113,7 @@ class AttendanceSummary extends StatelessWidget {
                   value: 1.0,
                   strokeWidth: strokeWidth,
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    Colors.grey[200]!,
+                    context.colors.divider!,
                   ),
                 ),
               ),
@@ -151,7 +152,7 @@ class AttendanceSummary extends StatelessWidget {
           label,
           style: TextStyle(
             fontSize: context.scaleFont(11),
-            color: Colors.grey[600],
+            color: context.colors.textSecondary,
             fontWeight: FontWeight.w500,
           ),
         ),

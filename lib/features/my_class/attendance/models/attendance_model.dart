@@ -31,14 +31,18 @@ extension AttendanceModelExtension on AttendanceModel {
   /// Converts attendance data from API format to calendar format
   Map<DateTime, AttendanceStatus> getCalendarData() {
     final calendarData = <DateTime, AttendanceStatus>{};
-    
+
     if (attendanceData == null) return calendarData;
 
     attendanceData!.forEach((dateString, statusString) {
       try {
         final parsedDate = DateTime.parse(dateString);
         // Normalize date to only include year, month, day (remove time component)
-        final date = DateTime(parsedDate.year, parsedDate.month, parsedDate.day);
+        final date = DateTime(
+          parsedDate.year,
+          parsedDate.month,
+          parsedDate.day,
+        );
         final status = _parseStatus(statusString);
         calendarData[date] = status;
       } catch (e) {

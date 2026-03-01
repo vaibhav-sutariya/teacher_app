@@ -204,4 +204,22 @@ class LightColors extends AppColors {
 
   @override
   Color get buttonTextColor => const Color(0xFFFFFFFF);
+
+  @override
+  Color get textPrimary => const Color(0xFF1E293B); // surface800
+
+  @override
+  Color get textSecondary => const Color(0xFF64748B); // surface500
+
+  @override
+  Color get textTertiary => const Color(0xFF94A3B8); // surface400
+
+  @override
+  Color get textInverse => const Color(0xFFFFFFFF); // white text
+
+  @override
+  Color get border => const Color(0xFFE2E8F0); // surface200
+
+  @override
+  Color get divider => const Color(0xFFE2E8F0); // surface200 (light divider)
 }

@@ -13,6 +13,7 @@ import 'bloc/video_event.dart';
 import 'bloc/video_state.dart';
 import 'models/video_model.dart';
 import 'widgets/video_card.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 /// Production-ready videos page
 /// Optimized for performance with proper state management using BLoC
@@ -127,14 +128,14 @@ class _VideosScrollView extends StatelessWidget {
                           Icon(
                             Icons.video_library_outlined,
                             size: context.scale(64),
-                            color: Colors.grey[400],
+                            color: context.colors.textTertiary,
                           ),
                           SizedBox(height: context.scaleHeight(16)),
                           Text(
                             'No video albums found',
                             style: TextStyle(
                               fontSize: context.scaleFont(16),
-                              color: Colors.grey[600],
+                              color: context.colors.textSecondary,
                             ),
                             textAlign: TextAlign.center,
                           ),

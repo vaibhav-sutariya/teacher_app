@@ -8,6 +8,7 @@ import 'bloc/ptm_bloc.dart';
 import 'bloc/ptm_event.dart';
 import 'bloc/ptm_state.dart';
 import 'widgets/ptm_card.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
 class PtmPage extends StatelessWidget {
@@ -40,7 +41,7 @@ class PtmPage extends StatelessWidget {
               return Center(
                 child: Text(
                   state.message,
-                  style: const TextStyle(color: Colors.red),
+                  style: TextStyle(color: context.colors.error),
                 ),
               );
             }

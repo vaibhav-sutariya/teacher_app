@@ -33,6 +33,14 @@ abstract class AppColors {
 
   Color get background;
   Color get buttonTextColor;
+
+  // Semantic Typography and UI Elements
+  Color get textPrimary;
+  Color get textSecondary;
+  Color get textTertiary;
+  Color get textInverse;
+  Color get border;
+  Color get divider;
 }
 
 abstract class AppTheme {

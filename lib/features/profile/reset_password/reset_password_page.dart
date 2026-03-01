@@ -34,9 +34,9 @@ class ResetPasswordView extends StatelessWidget {
         listener: (context, state) {
           if (state.status == ResetPasswordStatus.success) {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
+              SnackBar(
                 content: Text('Password reset successfully'),
-                backgroundColor: Colors.green,
+                backgroundColor: context.colors.success,
               ),
             );
             context.router.maybePop();
@@ -153,8 +153,8 @@ class ResetPasswordView extends StatelessWidget {
                         ? SizedBox(
                             width: context.scale(24),
                             height: context.scale(24),
-                            child: const CircularProgressIndicator(
-                              color: Colors.white,
+                            child: CircularProgressIndicator(
+                              color: context.colors.textInverse,
                               strokeWidth: 2.5,
                             ),
                           )

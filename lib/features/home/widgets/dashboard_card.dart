@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/helpers/extensions/responsive_extensions.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class DashboardSectionTitle extends StatelessWidget {
   final IconData icon;
@@ -29,14 +30,14 @@ class DashboardSectionTitle extends StatelessWidget {
               style: TextStyle(
                 fontSize: context.scaleFont(16),
                 fontWeight: FontWeight.bold,
-                color: const Color(0xFF263238),
+                color: context.colors.textPrimary,
               ),
             ),
           ),
           Icon(
             Icons.arrow_forward_ios,
             size: context.scale(16),
-            color: Colors.orange,
+            color: context.colors.warning,
           ),
         ],
       ),
@@ -53,7 +54,7 @@ class DashboardCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white,
+      color: context.colors.textInverse,
       margin: EdgeInsets.symmetric(
         horizontal: context.scale(20),
         vertical: context.scaleHeight(8),

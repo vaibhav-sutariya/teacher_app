@@ -6,6 +6,7 @@ import '../../../../../core/widgets/app_primary_button.dart';
 import '../../../../../core/widgets/app_text_field.dart';
 import '../../../../../cubit/theme_cubit.dart';
 import '../../../common/auth_header.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
 class ForgotPasswordPage extends StatefulWidget {
@@ -39,8 +40,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             Expanded(
               child: Container(
                 width: double.infinity,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
+                decoration: BoxDecoration(
+                  color: context.colors.textInverse,
                   borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
                 ),
                 padding: const EdgeInsets.all(24),
@@ -64,7 +65,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                         'Enter your email or phone number to reset\nyour password',
                         style: TextStyle(
                           fontSize: 14,
-                          color: Colors.grey[600],
+                          color: context.colors.textSecondary,
                           height: 1.5,
                         ),
                       ),
@@ -73,9 +74,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       AppTextField(
                         controller: _emailController,
                         hintText: 'Email or Phone Number',
-                        prefixIcon: const Icon(
+                        prefixIcon: Icon(
                           Icons.alternate_email_rounded,
-                          color: Colors.grey,
+                          color: context.colors.textTertiary,
                         ),
                       ),
                       const SizedBox(height: 32),
@@ -85,7 +86,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           context.router.push(const NewPasswordRoute());
                         },
                         borderRadius: 16,
-                        child: const Row(
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
@@ -93,14 +94,14 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                                color: context.colors.textInverse,
                               ),
                             ),
-                            SizedBox(width: 8),
+                            const SizedBox(width: 8),
                             Icon(
                               Icons.send_rounded,
                               size: 18,
-                              color: Colors.white,
+                              color: context.colors.textInverse,
                             ),
                           ],
                         ),

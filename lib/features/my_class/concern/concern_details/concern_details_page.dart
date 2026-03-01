@@ -4,6 +4,7 @@ import '../../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../../core/widgets/app_app_bar.dart';
 import '../models/concern_model.dart';
 import 'package:intl/intl.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
 class ConcernDetailsPage extends StatelessWidget {
@@ -37,7 +38,7 @@ class ConcernDetailsPage extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.all(context.scale(16)),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.textInverse,
         borderRadius: BorderRadius.circular(context.scale(16)),
         boxShadow: [
           BoxShadow(
@@ -71,7 +72,7 @@ class ConcernDetailsPage extends StatelessWidget {
             style: TextStyle(
               fontSize: context.scaleFont(18),
               fontWeight: FontWeight.bold,
-              color: Colors.black87,
+              color: context.colors.textPrimary,
             ),
           ),
           SizedBox(height: context.scaleHeight(8)),
@@ -80,14 +81,14 @@ class ConcernDetailsPage extends StatelessWidget {
               Icon(
                 Icons.calendar_today_outlined,
                 size: context.scale(14),
-                color: Colors.grey[600],
+                color: context.colors.textSecondary,
               ),
               SizedBox(width: context.scale(6)),
               Text(
                 DateFormat('MMM dd, yyyy  hh:mm a').format(concern.date),
                 style: TextStyle(
                   fontSize: context.scaleFont(12),
-                  color: Colors.grey[600],
+                  color: context.colors.textSecondary,
                 ),
               ),
             ],
@@ -123,7 +124,7 @@ class ConcernDetailsPage extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.all(context.scale(16)),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.textInverse,
         borderRadius: BorderRadius.circular(context.scale(16)),
         boxShadow: [
           BoxShadow(
@@ -158,7 +159,7 @@ class ConcernDetailsPage extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.all(context.scale(16)),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.textInverse,
         borderRadius: BorderRadius.circular(context.scale(16)),
         boxShadow: [
           BoxShadow(
@@ -194,7 +195,7 @@ class ConcernDetailsPage extends StatelessWidget {
             concern.description!,
             style: TextStyle(
               fontSize: context.scaleFont(14),
-              color: Colors.black87,
+              color: context.colors.textPrimary,
               height: 1.5,
             ),
           ),
@@ -212,7 +213,11 @@ class ConcernDetailsPage extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(icon, size: context.scale(18), color: Colors.grey[500]),
+        Icon(
+          icon,
+          size: context.scale(18),
+          color: context.colors.textSecondary,
+        ),
         SizedBox(width: context.scale(12)),
         Expanded(
           child: Column(
@@ -222,7 +227,7 @@ class ConcernDetailsPage extends StatelessWidget {
                 label,
                 style: TextStyle(
                   fontSize: context.scaleFont(12),
-                  color: Colors.grey[500],
+                  color: context.colors.textSecondary,
                 ),
               ),
               SizedBox(height: context.scaleHeight(4)),
@@ -231,7 +236,7 @@ class ConcernDetailsPage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: context.scaleFont(14),
                   fontWeight: FontWeight.w500,
-                  color: Colors.black87,
+                  color: context.colors.textPrimary,
                 ),
               ),
             ],

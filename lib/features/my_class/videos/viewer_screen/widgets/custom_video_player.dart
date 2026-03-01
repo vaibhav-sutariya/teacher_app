@@ -5,6 +5,7 @@ import 'package:video_player/video_player.dart';
 
 import '../../../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../../../core/widgets/app_loader.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 /// Production-ready custom video player widget
 /// Optimized for performance with proper lifecycle management
@@ -148,14 +149,14 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
           allowMuting: true,
           allowPlaybackSpeedChanging: true,
           materialProgressColors: ChewieProgressColors(
-            playedColor: Colors.red,
-            handleColor: Colors.red,
-            backgroundColor: Colors.grey,
+            playedColor: context.colors.error,
+            handleColor: context.colors.error,
+            backgroundColor: context.colors.textTertiary,
             bufferedColor: Colors.lightGreen,
           ),
           placeholder: Container(
             color: Colors.black,
-            child: const Center(child: AppLoader(color: Colors.white)),
+            child: Center(child: AppLoader(color: context.colors.textInverse)),
           ),
           errorBuilder: (context, errorMessage) {
             return _buildErrorWidget(errorMessage);
@@ -235,14 +236,14 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
           children: [
             Icon(
               Icons.error_outline,
-              color: Colors.white.withValues(alpha: 0.7),
+              color: context.colors.textInverse.withValues(alpha: 0.7),
               size: context.scale(48),
             ),
             SizedBox(height: context.scaleHeight(12)),
             Text(
               'Error loading video',
               style: TextStyle(
-                color: Colors.white.withValues(alpha: 0.7),
+                color: context.colors.textInverse.withValues(alpha: 0.7),
                 fontSize: context.scaleFont(14),
               ),
             ),
@@ -252,7 +253,7 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
               child: Text(
                 errorMessage,
                 style: TextStyle(
-                  color: Colors.white.withValues(alpha: 0.5),
+                  color: context.colors.textInverse.withValues(alpha: 0.5),
                   fontSize: context.scaleFont(12),
                 ),
                 textAlign: TextAlign.center,
@@ -293,14 +294,14 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
             children: [
               Icon(
                 Icons.error_outline,
-                color: Colors.white.withValues(alpha: 0.7),
+                color: context.colors.textInverse.withValues(alpha: 0.7),
                 size: context.scale(64),
               ),
               SizedBox(height: context.scaleHeight(16)),
               Text(
                 'Failed to load video',
                 style: TextStyle(
-                  color: Colors.white.withValues(alpha: 0.7),
+                  color: context.colors.textInverse.withValues(alpha: 0.7),
                   fontSize: context.scaleFont(16),
                 ),
               ),
@@ -310,7 +311,7 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
                 child: Text(
                   widget.videoUrl,
                   style: TextStyle(
-                    color: Colors.white.withValues(alpha: 0.5),
+                    color: context.colors.textInverse.withValues(alpha: 0.5),
                     fontSize: context.scaleFont(12),
                   ),
                   textAlign: TextAlign.center,
@@ -325,7 +326,7 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
                   child: Text(
                     _errorMessage!,
                     style: TextStyle(
-                      color: Colors.white.withValues(alpha: 0.6),
+                      color: context.colors.textInverse.withValues(alpha: 0.6),
                       fontSize: context.scaleFont(12),
                     ),
                     textAlign: TextAlign.center,
@@ -357,12 +358,12 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const AppLoader(color: Colors.white),
+              AppLoader(color: context.colors.textInverse),
               SizedBox(height: context.scaleHeight(16)),
               Text(
                 'Loading video...',
                 style: TextStyle(
-                  color: Colors.white.withValues(alpha: 0.7),
+                  color: context.colors.textInverse.withValues(alpha: 0.7),
                   fontSize: context.scaleFont(14),
                 ),
               ),

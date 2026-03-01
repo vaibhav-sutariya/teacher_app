@@ -4,6 +4,7 @@ import '../../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../../cubit/theme_cubit.dart';
 import '../models/classwork_model.dart';
 import '../../../../core/widgets/app_capsule_button.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class ClassworkCard extends StatelessWidget {
   final ClassworkEntity classwork;
@@ -15,7 +16,7 @@ class ClassworkCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: context.scaleHeight(16)),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.textInverse,
         borderRadius: BorderRadius.circular(context.scale(12)),
         boxShadow: [
           BoxShadow(
@@ -37,7 +38,7 @@ class ClassworkCard extends StatelessWidget {
                   width: context.scale(8),
                   height: context.scale(8),
                   decoration: BoxDecoration(
-                    color: Colors.orange, // Or dynamic color
+                    color: context.colors.warning, // Or dynamic color
                     shape: BoxShape.circle,
                   ),
                 ),
@@ -47,7 +48,7 @@ class ClassworkCard extends StatelessWidget {
                   style: TextStyle(
                     fontSize: context.scaleFont(14),
                     fontWeight: FontWeight.bold,
-                    color: const Color(0xFF263238),
+                    color: context.colors.textPrimary,
                   ),
                 ),
               ],
@@ -91,7 +92,7 @@ class ClassworkCard extends StatelessWidget {
                       ),
                       child: Icon(
                         Icons.picture_as_pdf,
-                        color: Colors.red,
+                        color: context.colors.error,
                         size: context.scale(24),
                       ),
                     ),
@@ -105,7 +106,7 @@ class ClassworkCard extends StatelessWidget {
                             style: TextStyle(
                               fontSize: context.scaleFont(12),
                               fontWeight: FontWeight.bold,
-                              color: const Color(0xFF263238),
+                              color: context.colors.textPrimary,
                             ),
                           ),
                           Text(

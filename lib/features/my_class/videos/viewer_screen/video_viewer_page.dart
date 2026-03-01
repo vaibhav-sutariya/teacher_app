@@ -7,6 +7,7 @@ import '../../../../core/widgets/app_loader.dart';
 import '../videos_screen/models/video_item_model.dart';
 import '../videos_screen/repositories/video_repository.dart';
 import 'widgets/custom_video_player.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 /// Production-ready full-screen video viewer with swiper
 /// Optimized for performance with proper state management
@@ -107,7 +108,7 @@ class _VideoViewerPageState extends State<VideoViewerPage> {
     if (_isLoading || _videos == null) {
       return Scaffold(
         backgroundColor: Colors.black,
-        body: const AppLoader(color: Colors.white, center: true),
+        body: AppLoader(color: context.colors.textInverse, center: true),
       );
     }
 
@@ -118,7 +119,7 @@ class _VideoViewerPageState extends State<VideoViewerPage> {
           child: Text(
             'No videos found',
             style: TextStyle(
-              color: Colors.white.withValues(alpha: 0.5),
+              color: context.colors.textInverse.withValues(alpha: 0.5),
               fontSize: context.scaleFont(16),
             ),
           ),
@@ -243,7 +244,7 @@ class _VideoViewItemState extends State<_VideoViewItem> {
                 child: Text(
                   widget.video.duration ?? '',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: context.colors.textInverse,
                     fontSize: context.scaleFont(14),
                     fontWeight: FontWeight.w600,
                   ),
@@ -267,7 +268,10 @@ class _VideoViewItemState extends State<_VideoViewItem> {
             placeholder: (context, url) => Container(
               color: Colors.black,
               child: Center(
-                child: AppLoader(strokeWidth: 2.5, color: Colors.white),
+                child: AppLoader(
+                  strokeWidth: 2.5,
+                  color: context.colors.textInverse,
+                ),
               ),
             ),
             errorWidget: (context, url, error) => Container(
@@ -278,14 +282,16 @@ class _VideoViewItemState extends State<_VideoViewItem> {
                   children: [
                     Icon(
                       Icons.video_library_outlined,
-                      color: Colors.white.withValues(alpha: 0.5),
+                      color: context.colors.textInverse.withValues(alpha: 0.5),
                       size: context.scale(64),
                     ),
                     SizedBox(height: context.scaleHeight(16)),
                     Text(
                       'Failed to load video thumbnail',
                       style: TextStyle(
-                        color: Colors.white.withValues(alpha: 0.5),
+                        color: context.colors.textInverse.withValues(
+                          alpha: 0.5,
+                        ),
                         fontSize: context.scaleFont(16),
                       ),
                     ),
@@ -304,7 +310,7 @@ class _VideoViewItemState extends State<_VideoViewItem> {
               ),
               child: Icon(
                 Icons.play_arrow,
-                color: Colors.white,
+                color: context.colors.textInverse,
                 size: context.scale(64),
               ),
             ),
@@ -326,7 +332,7 @@ class _VideoViewItemState extends State<_VideoViewItem> {
                 child: Text(
                   widget.video.duration ?? '',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: context.colors.textInverse,
                     fontSize: context.scaleFont(14),
                     fontWeight: FontWeight.w600,
                   ),
@@ -369,7 +375,7 @@ class _TopBar extends StatelessWidget {
           children: [
             // Back button
             IconButton(
-              icon: const Icon(Icons.arrow_back, color: Colors.white),
+              icon: Icon(Icons.arrow_back, color: context.colors.textInverse),
               onPressed: () => context.router.maybePop(),
             ),
             const Spacer(),
@@ -386,7 +392,7 @@ class _TopBar extends StatelessWidget {
               child: Text(
                 '${currentIndex + 1} / $totalVideos',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: context.colors.textInverse,
                   fontSize: context.scaleFont(14),
                   fontWeight: FontWeight.w600,
                 ),

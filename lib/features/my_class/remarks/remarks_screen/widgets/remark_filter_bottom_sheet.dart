@@ -4,6 +4,7 @@ import '../../../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../../../core/widgets/app_primary_button.dart';
 import '../../../../../cubit/theme_cubit.dart';
 import '../models/remark_model.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 /// Production-ready filter bottom sheet widget with checkbox support
 /// Optimized for performance with proper state management
@@ -74,7 +75,7 @@ class _RemarkFilterBottomSheetState extends State<RemarkFilterBottomSheet> {
 
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.textInverse,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(context.scale(20)),
           topRight: Radius.circular(context.scale(20)),
@@ -89,7 +90,7 @@ class _RemarkFilterBottomSheetState extends State<RemarkFilterBottomSheet> {
             width: context.scale(40),
             height: context.scaleHeight(4),
             decoration: BoxDecoration(
-              color: Colors.grey[300],
+              color: context.colors.border,
               borderRadius: BorderRadius.circular(context.scale(2)),
             ),
           ),

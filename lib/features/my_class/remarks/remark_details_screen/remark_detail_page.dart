@@ -9,6 +9,7 @@ import '../remarks_screen/models/remark_model.dart';
 import 'widgets/action_required_card.dart';
 import 'widgets/remark_detail_item.dart';
 import 'widgets/teacher_info_section.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 /// Production-ready remark detail page
 /// Optimized for performance with const widgets and minimal rebuilds
@@ -35,7 +36,7 @@ class RemarkDetailPage extends StatelessWidget {
             Container(
               margin: EdgeInsets.all(context.scale(16)),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: context.colors.textInverse,
                 borderRadius: BorderRadius.circular(context.scale(16)),
                 boxShadow: [
                   BoxShadow(
@@ -82,7 +83,7 @@ class RemarkDetailPage extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.chat_bubble_outline,
-                            color: Colors.white,
+                            color: context.colors.textInverse,
                             size: context.scale(20),
                           ),
                           SizedBox(width: context.scale(8)),
@@ -91,7 +92,7 @@ class RemarkDetailPage extends StatelessWidget {
                             style: TextStyle(
                               fontSize: context.scaleFont(16),
                               fontWeight: FontWeight.w600,
-                              color: Colors.white,
+                              color: context.colors.textInverse,
                             ),
                           ),
                         ],
@@ -111,7 +112,7 @@ class RemarkDetailPage extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: context.scaleFont(14),
                                 fontWeight: FontWeight.w500,
-                                color: Colors.grey[600],
+                                color: context.colors.textSecondary,
                                 decoration: TextDecoration.underline,
                               ),
                             ),
@@ -119,7 +120,7 @@ class RemarkDetailPage extends StatelessWidget {
                             Container(
                               width: context.scale(100),
                               height: context.scaleHeight(1),
-                              color: Colors.grey[300],
+                              color: context.colors.border,
                             ),
                           ],
                         ),

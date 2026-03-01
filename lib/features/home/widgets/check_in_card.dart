@@ -37,7 +37,9 @@ class CheckInCard extends StatelessWidget {
                 child: AppPrimaryButton(
                   onPressed: () {},
                   text: isCheckedIn ? 'CLOCK OUT' : 'CHECK-IN',
-                  color: isCheckedIn ? Colors.orange : const Color(0xFFFFCA28),
+                  color: isCheckedIn
+                      ? context.colors.warning
+                      : const Color(0xFFFFCA28),
                   textColor: Colors.white,
                   borderRadius: context.scale(24),
                   height: context.scaleHeight(44),

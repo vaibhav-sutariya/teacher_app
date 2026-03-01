@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../cubit/theme_cubit.dart';
 import '../models/school_model.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class SchoolHeader extends StatelessWidget {
   final SchoolHeaderModel model;
@@ -65,7 +66,7 @@ class SchoolHeader extends StatelessWidget {
           left: context.scale(100),
           child: Opacity(
             opacity: 0.3,
-            child: const Icon(Icons.star, color: Colors.amber, size: 24),
+            child: Icon(Icons.star, color: context.colors.warning, size: 24),
           ),
         ),
         Positioned(
@@ -83,7 +84,11 @@ class SchoolHeader extends StatelessWidget {
             opacity: 0.2,
             child: Transform.rotate(
               angle: 0.5,
-              child: const Icon(Icons.category, color: Colors.orange, size: 30),
+              child: Icon(
+                Icons.category,
+                color: context.colors.warning,
+                size: 30,
+              ),
             ),
           ),
         ),
@@ -240,9 +245,9 @@ class AcademicCard extends StatelessWidget {
                 ],
               ),
             ),
-            child: const Icon(
+            child: Icon(
               Icons.arrow_forward,
-              color: Colors.white,
+              color: context.colors.textInverse,
               size: 16,
             ),
           ),

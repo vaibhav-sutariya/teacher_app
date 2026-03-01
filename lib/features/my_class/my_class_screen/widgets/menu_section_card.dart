@@ -24,7 +24,7 @@ class MenuSectionCard extends StatelessWidget {
     final borderRadius = BorderRadius.circular(context.scale(16));
 
     return Card(
-      color: Colors.white,
+      color: context.colors.textInverse,
       elevation: 2,
       shadowColor: Colors.black.withValues(alpha: 0.1),
       shape: RoundedRectangleBorder(
@@ -72,7 +72,7 @@ class MenuSectionCard extends StatelessWidget {
           style: TextStyle(
             fontSize: context.scaleFont(15),
             fontWeight: FontWeight.bold,
-            color: const Color(0xFF263238),
+            color: context.colors.textPrimary,
             letterSpacing: 0.5,
           ),
         ),

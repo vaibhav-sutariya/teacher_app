@@ -20,9 +20,9 @@ class OnboardingSlide extends StatelessWidget {
           Container(
             width: context.scale(200),
             height: context.scale(200),
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Colors.white,
+              color: context.colors.textInverse,
             ),
             padding: const EdgeInsets.all(24), // Outer white ring padding
             child: Container(
@@ -33,7 +33,7 @@ class OnboardingSlide extends StatelessWidget {
               child: Icon(
                 item.icon,
                 size: context.scale(80),
-                color: Colors.white,
+                color: context.colors.textInverse,
               ),
             ),
           ),
@@ -44,7 +44,7 @@ class OnboardingSlide extends StatelessWidget {
           Text(
             item.title,
             style: TextStyle(
-              color: Colors.white,
+              color: context.colors.textInverse,
               fontSize: context.scaleFont(28),
               fontWeight: FontWeight.bold,
             ),
@@ -57,7 +57,7 @@ class OnboardingSlide extends StatelessWidget {
           Text(
             item.description,
             style: TextStyle(
-              color: Colors.white.withOpacity(0.8),
+              color: context.colors.textInverse.withOpacity(0.8),
               fontSize: context.scaleFont(16),
               height: 1.5,
             ),

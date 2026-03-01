@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class OnboardingIndicator extends StatelessWidget {
   final bool isActive;
@@ -13,7 +14,7 @@ class OnboardingIndicator extends StatelessWidget {
       height: 6,
       width: isActive ? 24 : 6,
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(isActive ? 1 : 0.5),
+        color: context.colors.textInverse.withOpacity(isActive ? 1 : 0.5),
         borderRadius: BorderRadius.circular(3),
       ),
     );

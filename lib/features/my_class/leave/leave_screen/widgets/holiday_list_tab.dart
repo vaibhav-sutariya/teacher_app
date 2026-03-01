@@ -6,6 +6,7 @@ import '../../../../../core/widgets/app_loader.dart';
 import '../../../../../core/widgets/end_of_list_indicator.dart';
 import '../bloc/leave_bloc.dart';
 import '../models/holiday_model.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 /// HOLIDAY LIST tab content - displays school holidays
 class HolidayListTab extends StatelessWidget {
@@ -37,7 +38,7 @@ class HolidayListTab extends StatelessWidget {
                     'No Holidays',
                     style: TextStyle(
                       fontSize: context.scaleFont(16),
-                      color: Colors.grey,
+                      color: context.colors.textTertiary,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -78,7 +79,7 @@ class HolidayListTab extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(context.scale(16)),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: context.colors.textInverse,
           borderRadius: BorderRadius.circular(context.scale(12)),
           boxShadow: [
             BoxShadow(
@@ -130,7 +131,7 @@ class HolidayListTab extends StatelessWidget {
                     style: TextStyle(
                       fontSize: context.scaleFont(14),
                       fontWeight: FontWeight.w600,
-                      color: Colors.black87,
+                      color: context.colors.textPrimary,
                     ),
                   ),
                   SizedBox(height: context.scaleHeight(4)),

@@ -15,6 +15,7 @@ import 'bloc/video_detail_bloc.dart';
 import 'bloc/video_detail_event.dart';
 import 'bloc/video_detail_state.dart';
 import 'repositories/video_detail_repository.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 /// Production-ready video detail page with 3-column grid
 /// Optimized for performance with proper state management using BLoC
@@ -154,14 +155,14 @@ class _VideoDetailScrollView extends StatelessWidget {
                           Icon(
                             Icons.video_library_outlined,
                             size: context.scale(64),
-                            color: Colors.grey[400],
+                            color: context.colors.textTertiary,
                           ),
                           SizedBox(height: context.scaleHeight(16)),
                           Text(
                             'No videos found',
                             style: TextStyle(
                               fontSize: context.scaleFont(16),
-                              color: Colors.grey[600],
+                              color: context.colors.textSecondary,
                             ),
                             textAlign: TextAlign.center,
                           ),
@@ -291,7 +292,7 @@ class _VideoItemState extends State<_VideoItem> {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey[200],
+          color: context.colors.divider,
           borderRadius: BorderRadius.circular(context.scale(4)),
         ),
         child: ClipRRect(
@@ -303,17 +304,20 @@ class _VideoItemState extends State<_VideoItem> {
                 imageUrl: widget.video.thumbnailUrl ?? '',
                 fit: BoxFit.cover,
                 placeholder: (context, url) => Container(
-                  color: Colors.grey[200],
+                  color: context.colors.divider,
                   child: Center(
-                    child: AppLoader(strokeWidth: 2.0, color: Colors.grey[400]),
+                    child: AppLoader(
+                      strokeWidth: 2.0,
+                      color: context.colors.textTertiary,
+                    ),
                   ),
                 ),
 
                 errorWidget: (context, url, error) => Container(
-                  color: Colors.grey[200],
+                  color: context.colors.divider,
                   child: Icon(
                     Icons.video_library_outlined,
-                    color: Colors.grey[400],
+                    color: context.colors.textTertiary,
                     size: context.scale(24),
                   ),
                 ),
@@ -330,7 +334,7 @@ class _VideoItemState extends State<_VideoItem> {
                   ),
                   child: Icon(
                     Icons.play_arrow,
-                    color: Colors.white,
+                    color: context.colors.textInverse,
                     size: context.scale(24),
                   ),
                 ),
@@ -352,7 +356,7 @@ class _VideoItemState extends State<_VideoItem> {
                     child: Text(
                       widget.video.duration ?? '',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: context.colors.textInverse,
                         fontSize: context.scaleFont(10),
                         fontWeight: FontWeight.w600,
                       ),

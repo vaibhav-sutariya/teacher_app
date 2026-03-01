@@ -11,6 +11,7 @@ import 'bloc/student_profile_event.dart';
 import 'bloc/student_profile_state.dart';
 import 'widgets/family_info_widget.dart';
 import 'widgets/profile_info_card.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
 class StudentProfilePage extends StatelessWidget {
@@ -471,8 +472,8 @@ class StudentProfilePage extends StatelessWidget {
                   margin: EdgeInsets.only(right: context.scale(6)),
                   width: context.scale(8),
                   height: context.scale(8),
-                  decoration: const BoxDecoration(
-                    color: Colors.orange,
+                  decoration: BoxDecoration(
+                    color: context.colors.warning,
                     shape: BoxShape.circle,
                   ),
                 ),

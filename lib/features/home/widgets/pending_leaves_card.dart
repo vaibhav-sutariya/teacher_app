@@ -5,6 +5,7 @@ import '../bloc/home_bloc.dart';
 import '../bloc/home_state.dart';
 import '../models/dashboard_models.dart';
 import 'dashboard_card.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class PendingLeavesCard extends StatelessWidget {
   const PendingLeavesCard({super.key});
@@ -59,14 +60,14 @@ class PendingLeavesCard extends StatelessWidget {
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: context.scaleFont(13),
-                                    color: Colors.black87,
+                                    color: context.colors.textPrimary,
                                   ),
                                 ),
                                 Text(
                                   leave.gradeSection,
                                   style: TextStyle(
                                     fontSize: context.scaleFont(11),
-                                    color: Colors.grey.shade500,
+                                    color: context.colors.textSecondary,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
@@ -84,7 +85,7 @@ class PendingLeavesCard extends StatelessWidget {
                 child: Text(
                   'View more...',
                   style: TextStyle(
-                    color: Colors.redAccent,
+                    color: context.colors.error,
                     fontWeight: FontWeight.bold,
                     fontSize: context.scaleFont(12),
                   ),

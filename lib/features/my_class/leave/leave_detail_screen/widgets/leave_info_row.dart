@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/helpers/extensions/responsive_extensions.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 /// Reusable info row widget for displaying leave information
 /// Shows icon, label, and value in a row
@@ -30,13 +31,15 @@ class LeaveInfoRow extends StatelessWidget {
               width: context.scale(40),
               height: context.scale(40),
               decoration: BoxDecoration(
-                color: (iconColor ?? Colors.grey[400])!.withOpacity(0.1),
+                color: (iconColor ?? context.colors.textTertiary)!.withOpacity(
+                  0.1,
+                ),
                 borderRadius: BorderRadius.circular(context.scale(8)),
               ),
               child: Icon(
                 icon,
                 size: context.scale(20),
-                color: iconColor ?? Colors.grey[600],
+                color: iconColor ?? context.colors.textSecondary,
               ),
             ),
             SizedBox(width: context.scale(12)),
@@ -57,7 +60,7 @@ class LeaveInfoRow extends StatelessWidget {
                     style: TextStyle(
                       fontSize: context.scaleFont(13),
                       fontWeight: FontWeight.w600,
-                      color: Colors.black87,
+                      color: context.colors.textPrimary,
                     ),
                   ),
                 ],

@@ -7,6 +7,7 @@ import '../../core/widgets/app_app_bar.dart';
 import '../../core/widgets/app_loader.dart';
 import '../../core/widgets/app_pdf_viewer.dart';
 import 'bloc/pdf_bloc.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
 class PdfViewerPage extends StatelessWidget {
@@ -32,7 +33,7 @@ class PdfViewerPage extends StatelessWidget {
               return Center(
                 child: Text(
                   state.message,
-                  style: const TextStyle(color: Colors.red),
+                  style: TextStyle(color: context.colors.error),
                 ),
               );
             }

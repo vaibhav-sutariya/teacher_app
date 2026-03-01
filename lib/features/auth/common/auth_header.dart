@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class AuthPageHeader extends StatelessWidget {
   final String title;
@@ -21,12 +22,12 @@ class AuthPageHeader extends StatelessWidget {
               icon: Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.1),
+                  color: context.colors.textInverse.withValues(alpha: 0.1),
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.arrow_back_ios_new_rounded,
-                  color: Colors.white,
+                  color: context.colors.textInverse,
                   size: 20,
                 ),
               ),
@@ -34,10 +35,10 @@ class AuthPageHeader extends StatelessWidget {
           ),
           Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: context.colors.textInverse,
             ),
           ),
         ],

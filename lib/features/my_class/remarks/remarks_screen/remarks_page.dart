@@ -14,6 +14,7 @@ import 'bloc/remark_state.dart';
 import 'models/remark_model.dart';
 import 'widgets/remark_card.dart';
 import 'widgets/remark_filter_bottom_sheet.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 /// Production-ready remarks page
 /// Optimized for performance with proper state management using BLoC
@@ -67,7 +68,7 @@ class _FilterFAB extends StatelessWidget {
           backgroundColor: context.colors.primary,
           child: Stack(
             children: [
-              const Icon(Icons.filter_list, color: Colors.white),
+              Icon(Icons.filter_list, color: context.colors.textInverse),
               if (hasActiveFilters)
                 Positioned(
                   right: 0,
@@ -75,8 +76,8 @@ class _FilterFAB extends StatelessWidget {
                   child: Container(
                     width: 12,
                     height: 12,
-                    decoration: const BoxDecoration(
-                      color: Colors.red,
+                    decoration: BoxDecoration(
+                      color: context.colors.error,
                       shape: BoxShape.circle,
                     ),
                   ),
@@ -176,14 +177,14 @@ class _RemarksContent extends StatelessWidget {
                           Icon(
                             Icons.comment_outlined,
                             size: context.scale(64),
-                            color: Colors.grey[400],
+                            color: context.colors.textTertiary,
                           ),
                           SizedBox(height: context.scaleHeight(16)),
                           Text(
                             'No remarks found',
                             style: TextStyle(
                               fontSize: context.scaleFont(16),
-                              color: Colors.grey[600],
+                              color: context.colors.textSecondary,
                             ),
                             textAlign: TextAlign.center,
                           ),

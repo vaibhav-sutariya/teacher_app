@@ -9,6 +9,7 @@ import '../../../core/widgets/end_of_list_indicator.dart';
 import '../../../core/widgets/reusable_calendar_strip.dart';
 import 'bloc/classwork_bloc.dart';
 import 'widgets/classwork_card.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
 class ClassworkPage extends StatelessWidget {
@@ -68,7 +69,7 @@ class ClassworkPage extends StatelessWidget {
                                   'No Class Work Assigned',
                                   style: TextStyle(
                                     fontSize: context.scaleFont(16),
-                                    color: Colors.grey,
+                                    color: context.colors.textTertiary,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),

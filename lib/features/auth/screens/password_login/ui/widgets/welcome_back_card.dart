@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../cubit/theme_cubit.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class WelcomeBackCard extends StatelessWidget {
   final String email;
@@ -14,7 +15,7 @@ class WelcomeBackCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 24),
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.textInverse,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
@@ -38,7 +39,7 @@ class WelcomeBackCard extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             'Please enter your password to continue',
-            style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+            style: TextStyle(fontSize: 14, color: context.colors.textSecondary),
           ),
           const SizedBox(height: 24),
           Container(
@@ -52,7 +53,11 @@ class WelcomeBackCard extends StatelessWidget {
                 CircleAvatar(
                   radius: 12,
                   backgroundColor: context.colors.primary, // Primary Blue
-                  child: Icon(Icons.person, size: 16, color: Colors.white),
+                  child: Icon(
+                    Icons.person,
+                    size: 16,
+                    color: context.colors.textInverse,
+                  ),
                 ),
                 const SizedBox(width: 12),
                 Expanded(

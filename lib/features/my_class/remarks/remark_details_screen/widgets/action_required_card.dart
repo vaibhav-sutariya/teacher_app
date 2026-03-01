@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/helpers/extensions/responsive_extensions.dart';
-
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 /// Production-ready action required card widget
 /// Optimized for performance with const constructor
@@ -37,7 +37,7 @@ class ActionRequiredCard extends StatelessWidget {
                 style: TextStyle(
                   fontSize: context.scale(120),
                   fontWeight: FontWeight.w900,
-                  color: Colors.red[900],
+                  color: context.colors.error,
                 ),
               ),
             ),
@@ -54,7 +54,7 @@ class ActionRequiredCard extends StatelessWidget {
                 ),
                 child: Icon(
                   Icons.info_outline,
-                  color: Colors.white,
+                  color: context.colors.textInverse,
                   size: context.scale(20),
                 ),
               ),

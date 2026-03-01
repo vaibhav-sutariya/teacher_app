@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/helpers/extensions/responsive_extensions.dart';
 import '../cubit/home_search_cubit.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 /// Production-ready search bar with focus management
 /// Handles tap outside to unfocus efficiently
@@ -42,9 +43,12 @@ class _MyClassSearchBarState extends State<MyClassSearchBar> {
       child: Container(
         height: containerHeight,
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.15),
+          color: context.colors.textInverse.withOpacity(0.15),
           borderRadius: BorderRadius.circular(borderRadius),
-          border: Border.all(color: Colors.white.withOpacity(0.15), width: 1),
+          border: Border.all(
+            color: context.colors.textInverse.withOpacity(0.15),
+            width: 1,
+          ),
         ),
         child: Row(
           children: [
@@ -60,7 +64,7 @@ class _MyClassSearchBarState extends State<MyClassSearchBar> {
                   _focusNode.unfocus();
                 },
                 style: TextStyle(
-                  color: Colors.white,
+                  color: context.colors.textInverse,
                   fontSize: fontSize,
                   letterSpacing: 0.3,
                 ),
@@ -68,7 +72,7 @@ class _MyClassSearchBarState extends State<MyClassSearchBar> {
                   fillColor: Colors.transparent,
                   hintText: 'Search here...',
                   hintStyle: TextStyle(
-                    color: Colors.white.withOpacity(0.6),
+                    color: context.colors.textInverse.withOpacity(0.6),
                     fontSize: hintFontSize,
                     letterSpacing: 0.3,
                   ),
@@ -88,10 +92,14 @@ class _MyClassSearchBarState extends State<MyClassSearchBar> {
               margin: EdgeInsets.all(context.scale(6)),
               padding: EdgeInsets.all(context.scale(6)),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.1),
+                color: context.colors.textInverse.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(context.scale(8)),
               ),
-              child: Icon(Icons.search, color: Colors.white, size: iconSize),
+              child: Icon(
+                Icons.search,
+                color: context.colors.textInverse,
+                size: iconSize,
+              ),
             ),
           ],
         ),

@@ -5,6 +5,7 @@ import '../bloc/home_bloc.dart';
 import '../bloc/home_state.dart';
 import '../models/dashboard_models.dart';
 import 'dashboard_card.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class AttendanceCard extends StatelessWidget {
   const AttendanceCard({super.key});
@@ -26,7 +27,7 @@ class AttendanceCard extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.assignment_turned_in_outlined,
-                    color: Colors.green.shade800,
+                    color: context.colors.success,
                     size: context.scale(28),
                   ),
                   Expanded(
@@ -36,20 +37,20 @@ class AttendanceCard extends StatelessWidget {
                       style: TextStyle(
                         fontSize: context.scaleFont(16),
                         fontWeight: FontWeight.w600,
-                        color: Colors.grey.shade500,
+                        color: context.colors.textSecondary,
                       ),
                     ),
                   ),
                   Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.amber.shade600,
+                    color: context.colors.warning,
                     size: context.scale(16),
                   ),
                 ],
               ),
               Divider(
                 height: context.scaleHeight(24),
-                color: Colors.grey.shade200,
+                color: context.colors.divider,
               ),
 
               Text(
@@ -57,12 +58,12 @@ class AttendanceCard extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: context.scaleFont(14),
-                  color: Colors.black87,
+                  color: context.colors.textPrimary,
                 ),
               ),
               Divider(
                 height: context.scaleHeight(24),
-                color: Colors.grey.shade300,
+                color: context.colors.border,
               ),
 
               Row(
@@ -71,15 +72,23 @@ class AttendanceCard extends StatelessWidget {
                   _StatColumn(
                     'Total',
                     stats.totalStudents.toString(),
-                    Colors.black87,
+                    context.colors.textPrimary,
                   ),
                   _StatColumn('Marked', stats.markedStudents, Colors.blue),
-                  _StatColumn('P', stats.present.toString(), Colors.green),
-                  _StatColumn('A', stats.absent.toString(), Colors.red),
+                  _StatColumn(
+                    'P',
+                    stats.present.toString(),
+                    context.colors.success,
+                  ),
+                  _StatColumn(
+                    'A',
+                    stats.absent.toString(),
+                    context.colors.error,
+                  ),
                   _StatColumn(
                     'L',
                     stats.leave.toString(),
-                    Colors.amber.shade600,
+                    context.colors.warning,
                   ),
                   _StatColumn('%', stats.percentage.toString(), Colors.blue),
                 ],
@@ -107,7 +116,7 @@ class _StatColumn extends StatelessWidget {
           label,
           style: TextStyle(
             fontSize: context.scaleFont(12),
-            color: Colors.grey.shade600,
+            color: context.colors.textSecondary,
             fontWeight: FontWeight.w500,
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/helpers/extensions/responsive_extensions.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class AcademicYearSelector extends StatelessWidget {
   final String selectedYear;
@@ -23,7 +24,7 @@ class AcademicYearSelector extends StatelessWidget {
         ), // Reduced vertical padding for DropdownButton
       ),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.textInverse,
         borderRadius: BorderRadius.circular(context.scale(12)),
         boxShadow: [
           BoxShadow(
@@ -44,7 +45,7 @@ class AcademicYearSelector extends StatelessWidget {
             ),
             child: Icon(
               Icons.keyboard_arrow_down_rounded,
-              color: const Color(0xFF1A237E),
+              color: context.colors.primary,
               size: context.scale(24),
             ),
           ),
@@ -52,7 +53,7 @@ class AcademicYearSelector extends StatelessWidget {
           style: TextStyle(
             fontSize: context.scaleFont(18),
             fontWeight: FontWeight.bold,
-            color: const Color(0xFF1A237E), // Deep Blue
+            color: context.colors.primary, // Deep Blue
             fontFamily: 'Inter', // Assuming Inter is used, or default
           ),
           items: years.map<DropdownMenuItem<String>>((String value) {
@@ -67,7 +68,7 @@ class AcademicYearSelector extends StatelessWidget {
                     style: TextStyle(
                       fontSize: context.scaleFont(10),
                       fontWeight: FontWeight.w600,
-                      color: Colors.grey[600],
+                      color: context.colors.textSecondary,
                       letterSpacing: 1.0,
                     ),
                   ),
@@ -89,7 +90,7 @@ class AcademicYearSelector extends StatelessWidget {
                     style: TextStyle(
                       fontSize: context.scaleFont(10),
                       fontWeight: FontWeight.w600,
-                      color: Colors.grey[600],
+                      color: context.colors.textSecondary,
                       letterSpacing: 1.0,
                     ),
                   ),
@@ -99,7 +100,7 @@ class AcademicYearSelector extends StatelessWidget {
                     style: TextStyle(
                       fontSize: context.scaleFont(18),
                       fontWeight: FontWeight.bold,
-                      color: const Color(0xFF1A237E), // Deep Blue
+                      color: context.colors.primary, // Deep Blue
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),

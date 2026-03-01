@@ -58,7 +58,7 @@ class LoginTabSwitcher extends StatelessWidget {
           child: Text(
             title,
             style: TextStyle(
-              color: isSelected ? Colors.white : Colors.grey[600],
+              color: isSelected ? Colors.white : context.colors.textSecondary,
               fontWeight: FontWeight.bold,
               fontSize: 14,
             ),

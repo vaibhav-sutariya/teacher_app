@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import '../../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../models/concern_model.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class ConcernItem extends StatelessWidget {
   final ConcernModel concern;
@@ -19,7 +20,7 @@ class ConcernItem extends StatelessWidget {
         margin: EdgeInsets.only(bottom: context.scale(16)),
         padding: EdgeInsets.all(context.scale(16)),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: context.colors.textInverse,
           borderRadius: BorderRadius.circular(context.scale(20)),
           boxShadow: [
             BoxShadow(
@@ -53,7 +54,7 @@ class ConcernItem extends StatelessWidget {
               style: TextStyle(
                 fontSize: context.scaleFont(16),
                 fontWeight: FontWeight.bold,
-                color: Colors.black87,
+                color: context.colors.textPrimary,
               ),
             ),
             SizedBox(height: context.scaleHeight(8)),
@@ -86,14 +87,14 @@ class ConcernItem extends StatelessWidget {
                     Icon(
                       Icons.calendar_today_outlined,
                       size: context.scale(14),
-                      color: Colors.grey[500],
+                      color: context.colors.textSecondary,
                     ),
                     SizedBox(width: context.scale(6)),
                     Text(
                       _formatDate(concern.date),
                       style: TextStyle(
                         fontSize: context.scaleFont(12),
-                        color: Colors.grey[500],
+                        color: context.colors.textSecondary,
                       ),
                     ),
                   ],

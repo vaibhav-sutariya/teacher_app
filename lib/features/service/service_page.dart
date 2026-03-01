@@ -8,6 +8,7 @@ import 'package:teachers_app/core/widgets/month_calendar.dart';
 
 import 'bloc/service_bloc.dart';
 import 'widgets/service_card.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
 class ServicePage extends StatelessWidget {
@@ -57,14 +58,14 @@ class ServicePage extends StatelessWidget {
                             Icon(
                               Icons.notifications_off_outlined,
                               size: context.scale(60),
-                              color: Colors.grey[300],
+                              color: context.colors.border,
                             ),
                             SizedBox(height: context.scaleHeight(16)),
                             Text(
                               'No notices for this month',
                               style: TextStyle(
                                 fontSize: context.scaleFont(16),
-                                color: Colors.grey[500],
+                                color: context.colors.textSecondary,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),

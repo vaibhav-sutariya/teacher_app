@@ -15,6 +15,7 @@ import 'bloc/gallery_detail_bloc.dart';
 import 'bloc/gallery_detail_event.dart';
 import 'bloc/gallery_detail_state.dart';
 import 'repositories/gallery_detail_repository.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 /// Production-ready gallery detail page with 3-column grid
 /// Optimized for performance with proper state management using BLoC
@@ -151,14 +152,14 @@ class _GalleryDetailScrollView extends StatelessWidget {
                           Icon(
                             Icons.photo_outlined,
                             size: context.scale(64),
-                            color: Colors.grey[400],
+                            color: context.colors.textTertiary,
                           ),
                           SizedBox(height: context.scaleHeight(16)),
                           Text(
                             'No images found',
                             style: TextStyle(
                               fontSize: context.scaleFont(16),
-                              color: Colors.grey[600],
+                              color: context.colors.textSecondary,
                             ),
                             textAlign: TextAlign.center,
                           ),
@@ -288,7 +289,7 @@ class _GalleryImageItemState extends State<_GalleryImageItem> {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey[200],
+          color: context.colors.divider,
           borderRadius: BorderRadius.circular(context.scale(4)),
         ),
         child: ClipRRect(
@@ -297,14 +298,17 @@ class _GalleryImageItemState extends State<_GalleryImageItem> {
             imageUrl: widget.image.thumbnailUrl ?? widget.image.imageUrl ?? '',
             fit: BoxFit.cover,
             placeholder: (context, url) => Container(
-              color: Colors.grey[200],
-              child: AppLoader(strokeWidth: 2.0, color: Colors.grey[400]),
+              color: context.colors.divider,
+              child: AppLoader(
+                strokeWidth: 2.0,
+                color: context.colors.textTertiary,
+              ),
             ),
             errorWidget: (context, url, error) => Container(
-              color: Colors.grey[200],
+              color: context.colors.divider,
               child: Icon(
                 Icons.image_not_supported,
-                color: Colors.grey[400],
+                color: context.colors.textTertiary,
                 size: context.scale(24),
               ),
             ),

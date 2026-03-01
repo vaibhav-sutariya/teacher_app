@@ -13,6 +13,7 @@ import 'bloc/add_concern_event.dart';
 import 'bloc/add_concern_state.dart';
 import 'models/add_concern_request_model.dart';
 import 'widgets/attachment_upload_area.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
 class AddConcernPage extends StatelessWidget {
@@ -207,19 +208,19 @@ class _AddConcernViewState extends State<AddConcernView> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text(
+                          Text(
                             'Submit Concern',
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                              color: context.colors.textInverse,
                             ),
                           ),
                           SizedBox(width: context.scale(8)),
                           Icon(
                             Icons.send_rounded,
                             size: context.scale(18),
-                            color: Colors.white,
+                            color: context.colors.textInverse,
                           ),
                         ],
                       ),

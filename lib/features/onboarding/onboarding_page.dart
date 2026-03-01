@@ -86,7 +86,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       child: Text(
                         'Skip',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: context.colors.textInverse,
                           fontSize: context.scaleFont(16),
                           fontWeight: FontWeight.w500,
                         ),
@@ -135,7 +135,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 height: context.scaleHeight(40),
                 child: AppPrimaryButton(
                   onPressed: _onNext,
-                  color: Colors.white,
+                  color: context.colors.textInverse,
                   textColor: context.colors.primary,
                   text: _currentIndex == _items.length - 1
                       ? 'Get Started'

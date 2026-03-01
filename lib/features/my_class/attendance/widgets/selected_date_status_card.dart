@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 
 import '../../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../../core/widgets/attendance_calendar.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 /// Modern, user-friendly widget to display selected date's attendance status
 /// Features gradient backgrounds, smooth animations, and intuitive design
@@ -44,7 +45,7 @@ class SelectedDateStatusCard extends StatelessWidget {
     }
   }
 
-  Color _getStatusColor() {
+  Color _getStatusColor(BuildContext context) {
     switch (status) {
       case AttendanceStatus.present:
         return const Color(0xFF4CAF50); // Green
@@ -54,11 +55,11 @@ class SelectedDateStatusCard extends StatelessWidget {
         return const Color(0xFFFF9800); // Orange
       case AttendanceStatus.notMarked:
       case null:
-        return Colors.grey;
+        return const Color(0xFF9E9E9E);
     }
   }
 
-  List<Color> _getStatusGradient() {
+  List<Color> _getStatusGradient(BuildContext context) {
     switch (status) {
       case AttendanceStatus.present:
         return [
@@ -77,10 +78,7 @@ class SelectedDateStatusCard extends StatelessWidget {
         ];
       case AttendanceStatus.notMarked:
       case null:
-        return [
-          Colors.grey.withOpacity(0.1),
-          Colors.grey.withOpacity(0.05),
-        ];
+        return [Colors.grey.withOpacity(0.1), Colors.grey.withOpacity(0.05)];
     }
   }
 
@@ -106,9 +104,9 @@ class SelectedDateStatusCard extends StatelessWidget {
     final formattedDate = dayFormat.format(selectedDate);
     final statusText = _getStatusText();
     final statusSubtext = _getStatusSubtext();
-    final statusColor = _getStatusColor();
+    final statusColor = _getStatusColor(context);
     final statusIcon = _getStatusIcon();
-    final gradientColors = _getStatusGradient();
+    final gradientColors = _getStatusGradient(context);
     final borderRadius = BorderRadius.circular(context.scale(20));
 
     return Padding(
@@ -139,7 +137,7 @@ class SelectedDateStatusCard extends StatelessWidget {
           borderRadius: borderRadius,
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.95),
+              color: context.colors.textInverse.withOpacity(0.95),
               borderRadius: borderRadius,
             ),
             child: Padding(
@@ -161,7 +159,7 @@ class SelectedDateStatusCard extends StatelessWidget {
                               dayName,
                               style: TextStyle(
                                 fontSize: context.scaleFont(12),
-                                color: Colors.grey[600],
+                                color: context.colors.textSecondary,
                                 fontWeight: FontWeight.w600,
                                 letterSpacing: 0.5,
                               ),
@@ -186,12 +184,11 @@ class SelectedDateStatusCard extends StatelessWidget {
                         ),
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
-                            colors: [
-                              statusColor,
-                              statusColor.withOpacity(0.8),
-                            ],
+                            colors: [statusColor, statusColor.withOpacity(0.8)],
                           ),
-                          borderRadius: BorderRadius.circular(context.scale(20)),
+                          borderRadius: BorderRadius.circular(
+                            context.scale(20),
+                          ),
                           boxShadow: [
                             BoxShadow(
                               color: statusColor.withOpacity(0.3),
@@ -205,7 +202,7 @@ class SelectedDateStatusCard extends StatelessWidget {
                           children: [
                             Icon(
                               statusIcon,
-                              color: Colors.white,
+                              color: context.colors.textInverse,
                               size: context.scale(16),
                             ),
                             SizedBox(width: context.scale(6)),
@@ -214,7 +211,7 @@ class SelectedDateStatusCard extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: context.scaleFont(11),
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                                color: context.colors.textInverse,
                                 letterSpacing: 0.8,
                               ),
                             ),
@@ -261,7 +258,7 @@ class SelectedDateStatusCard extends StatelessWidget {
                           ),
                           child: Icon(
                             statusIcon,
-                            color: Colors.white,
+                            color: context.colors.textInverse,
                             size: context.scale(24),
                           ),
                         ),

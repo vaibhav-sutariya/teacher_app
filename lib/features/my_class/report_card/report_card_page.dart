@@ -7,6 +7,7 @@ import '../../../../core/widgets/app_loader.dart';
 import 'bloc/report_card_bloc.dart';
 import 'widgets/academic_year_selector.dart';
 import 'widgets/report_card_item.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
 class ReportCardPage extends StatelessWidget {
@@ -54,7 +55,7 @@ class ReportCardPage extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.assignment_turned_in_outlined,
-                        color: const Color(0xFF1A237E),
+                        color: context.colors.primary,
                         size: context.scale(20),
                       ),
                       SizedBox(width: context.scale(8)),
@@ -63,7 +64,7 @@ class ReportCardPage extends StatelessWidget {
                         style: TextStyle(
                           fontSize: context.scaleFont(16),
                           fontWeight: FontWeight.bold,
-                          color: const Color(0xFF1A237E),
+                          color: context.colors.primary,
                         ),
                       ),
                     ],
@@ -80,7 +81,7 @@ class ReportCardPage extends StatelessWidget {
                           children: [
                             Icon(
                               Icons.verified,
-                              color: Colors.grey[400],
+                              color: context.colors.textTertiary,
                               size: context.scale(16),
                             ),
                             SizedBox(width: context.scale(4)),
@@ -90,7 +91,7 @@ class ReportCardPage extends StatelessWidget {
                                 fontSize: context.scaleFont(10),
                                 fontWeight: FontWeight.bold,
                                 letterSpacing: 1.2,
-                                color: Colors.grey[400],
+                                color: context.colors.textTertiary,
                               ),
                             ),
                           ],
@@ -102,7 +103,7 @@ class ReportCardPage extends StatelessWidget {
                           style: TextStyle(
                             fontSize: context.scaleFont(10),
                             fontStyle: FontStyle.italic,
-                            color: Colors.grey[500],
+                            color: context.colors.textSecondary,
                           ),
                         ),
                       ],
@@ -120,12 +121,15 @@ class ReportCardPage extends StatelessWidget {
 
   Widget _buildContent(BuildContext context, ReportCardState state) {
     if (state is ReportCardLoading) {
-      return const Center(
+      return Center(
         child: Padding(padding: EdgeInsets.all(32.0), child: AppLoader()),
       );
     } else if (state is ReportCardError) {
       return Center(
-        child: Text(state.message, style: const TextStyle(color: Colors.red)),
+        child: Text(
+          state.message,
+          style: TextStyle(color: context.colors.error),
+        ),
       );
     } else if (state is ReportCardLoaded) {
       if (state.reportCards.isEmpty) {

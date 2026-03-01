@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class PortalHeader extends StatelessWidget {
   const PortalHeader({super.key});
@@ -13,22 +14,22 @@ class PortalHeader extends StatelessWidget {
           width: 80,
           height: 80,
           decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.1),
+            color: context.colors.textInverse.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(16),
           ),
-          child: const Icon(
+          child: Icon(
             Icons.school_rounded,
             size: 40,
-            color: Colors.white,
+            color: context.colors.textInverse,
           ),
         ),
         const SizedBox(height: 16),
-        const Text(
+        Text(
           'Elite Academy',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: context.colors.textInverse,
             letterSpacing: 0.5,
           ),
         ),
@@ -38,7 +39,7 @@ class PortalHeader extends StatelessWidget {
           style: TextStyle(
             fontSize: 12,
             fontWeight: FontWeight.w600,
-            color: Colors.white.withValues(alpha: 0.7),
+            color: context.colors.textInverse.withValues(alpha: 0.7),
             letterSpacing: 1.5,
           ),
         ),

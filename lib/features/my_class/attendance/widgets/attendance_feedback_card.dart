@@ -2,17 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../../cubit/theme_cubit.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 /// Production-ready feedback card widget
 class AttendanceFeedbackCard extends StatelessWidget {
   final String message;
   final String? title;
 
-  const AttendanceFeedbackCard({
-    super.key,
-    required this.message,
-    this.title,
-  });
+  const AttendanceFeedbackCard({super.key, required this.message, this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +35,7 @@ class AttendanceFeedbackCard extends StatelessWidget {
                 ),
                 child: Icon(
                   Icons.trending_up,
-                  color: Colors.white,
+                  color: context.colors.textInverse,
                   size: context.scale(24),
                 ),
               ),

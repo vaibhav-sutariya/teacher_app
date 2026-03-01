@@ -5,6 +5,7 @@ import '../bloc/home_bloc.dart';
 import '../bloc/home_state.dart';
 import '../models/dashboard_models.dart';
 import 'dashboard_card.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class AnnouncementsCard extends StatelessWidget {
   const AnnouncementsCard({super.key});
@@ -18,9 +19,9 @@ class AnnouncementsCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const DashboardSectionTitle(
+              DashboardSectionTitle(
                 icon: Icons.campaign_outlined,
-                iconColor: Colors.orange,
+                iconColor: context.colors.warning,
                 title: 'Announcements',
               ),
               SizedBox(height: context.scaleHeight(24)),
@@ -28,10 +29,10 @@ class AnnouncementsCard extends StatelessWidget {
                 Container(
                   height: context.scaleHeight(80),
                   width: context.scale(100),
-                  color: Colors.grey.shade200,
+                  color: context.colors.divider,
                   child: Icon(
                     Icons.image,
-                    color: Colors.grey.shade400,
+                    color: context.colors.textTertiary,
                     size: 48,
                   ),
                 ),
@@ -49,7 +50,7 @@ class AnnouncementsCard extends StatelessWidget {
                   'Any new Details will appear here!',
                   style: TextStyle(
                     fontSize: context.scaleFont(12),
-                    color: Colors.grey.shade500,
+                    color: context.colors.textSecondary,
                   ),
                 ),
                 SizedBox(height: context.scaleHeight(16)),

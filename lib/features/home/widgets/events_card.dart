@@ -5,6 +5,7 @@ import '../bloc/home_bloc.dart';
 import '../bloc/home_state.dart';
 import '../models/dashboard_models.dart';
 import 'dashboard_card.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class EventsCard extends StatelessWidget {
   const EventsCard({super.key});
@@ -44,7 +45,7 @@ class EventsCard extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.access_time_filled,
-                            color: Colors.grey.shade400,
+                            color: context.colors.textTertiary,
                             size: context.scale(18),
                           ),
                           SizedBox(width: context.scale(12)),
@@ -57,7 +58,7 @@ class EventsCard extends StatelessWidget {
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: context.scaleFont(14),
-                                    color: Colors.black87,
+                                    color: context.colors.textPrimary,
                                   ),
                                 ),
                                 SizedBox(height: context.scaleHeight(4)),
@@ -66,21 +67,21 @@ class EventsCard extends StatelessWidget {
                                     Icon(
                                       Icons.schedule,
                                       size: context.scale(12),
-                                      color: Colors.grey.shade600,
+                                      color: context.colors.textSecondary,
                                     ),
                                     SizedBox(width: context.scale(4)),
                                     Text(
                                       ev.time,
                                       style: TextStyle(
                                         fontSize: context.scaleFont(12),
-                                        color: Colors.grey.shade600,
+                                        color: context.colors.textSecondary,
                                       ),
                                     ),
                                     SizedBox(width: context.scale(12)),
                                     Icon(
                                       Icons.location_on,
                                       size: context.scale(12),
-                                      color: Colors.grey.shade600,
+                                      color: context.colors.textSecondary,
                                     ),
                                     SizedBox(width: context.scale(4)),
                                     Expanded(
@@ -88,7 +89,7 @@ class EventsCard extends StatelessWidget {
                                         ev.location,
                                         style: TextStyle(
                                           fontSize: context.scaleFont(12),
-                                          color: Colors.grey.shade600,
+                                          color: context.colors.textSecondary,
                                         ),
                                         overflow: TextOverflow.ellipsis,
                                       ),

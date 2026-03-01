@@ -8,6 +8,7 @@ import 'bloc/achievement_bloc.dart';
 import 'bloc/achievement_event.dart';
 import 'bloc/achievement_state.dart';
 import 'widgets/achievement_card.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
 class AchievementPage extends StatelessWidget {
@@ -40,7 +41,7 @@ class AchievementPage extends StatelessWidget {
               return Center(
                 child: Text(
                   state.message,
-                  style: const TextStyle(color: Colors.red),
+                  style: TextStyle(color: context.colors.error),
                 ),
               );
             }

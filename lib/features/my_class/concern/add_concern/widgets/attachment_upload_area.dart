@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../../../../../core/helpers/extensions/responsive_extensions.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class AttachmentUploadArea extends StatelessWidget {
   final VoidCallback onTap;
@@ -41,7 +42,7 @@ class AttachmentUploadArea extends StatelessWidget {
                         ),
                         child: Icon(
                           Icons.edit,
-                          color: Colors.white,
+                          color: context.colors.textInverse,
                           size: context.scale(24),
                         ),
                       ),
@@ -77,7 +78,7 @@ class AttachmentUploadArea extends StatelessWidget {
                       child: Icon(
                         Icons.cloud_upload_outlined,
                         size: context.scale(28),
-                        color: const Color(0xFF1A237E), // Deep Blue
+                        color: context.colors.primary, // Deep Blue
                       ),
                     ),
                     SizedBox(height: context.scaleHeight(12)),
@@ -86,7 +87,7 @@ class AttachmentUploadArea extends StatelessWidget {
                       style: TextStyle(
                         fontSize: context.scaleFont(14),
                         fontWeight: FontWeight.w600,
-                        color: const Color(0xFF1A237E),
+                        color: context.colors.primary,
                       ),
                       textAlign: TextAlign.center,
                       maxLines: 1,
@@ -97,7 +98,7 @@ class AttachmentUploadArea extends StatelessWidget {
                       'Maximum file size: 10MB',
                       style: TextStyle(
                         fontSize: context.scaleFont(12),
-                        color: Colors.grey[500],
+                        color: context.colors.textSecondary,
                       ),
                     ),
                   ],

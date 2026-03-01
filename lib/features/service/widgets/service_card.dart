@@ -19,7 +19,7 @@ class ServiceCard extends StatelessWidget {
       ),
       padding: EdgeInsets.all(context.scale(16)),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.textInverse,
         borderRadius: BorderRadius.circular(context.scale(15)),
         boxShadow: [
           BoxShadow(
@@ -41,7 +41,7 @@ class ServiceCard extends StatelessWidget {
                   style: TextStyle(
                     fontSize: context.scaleFont(16),
                     fontWeight: FontWeight.bold,
-                    color: Colors.black87,
+                    color: context.colors.textPrimary,
                   ),
                 ),
               ),
@@ -83,14 +83,14 @@ class ServiceCard extends StatelessWidget {
                   Icon(
                     Icons.person_outline,
                     size: context.scale(16),
-                    color: Colors.grey,
+                    color: context.colors.textTertiary,
                   ),
                   SizedBox(width: context.scale(4)),
                   Text(
                     notice.postedBy,
                     style: TextStyle(
                       fontSize: context.scaleFont(12),
-                      color: Colors.grey,
+                      color: context.colors.textTertiary,
                     ),
                   ),
                 ],

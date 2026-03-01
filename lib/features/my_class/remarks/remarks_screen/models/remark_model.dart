@@ -37,7 +37,9 @@ abstract class RemarkModel with _$RemarkModel {
   const factory RemarkModel({
     @JsonKey(name: 'id') String? id,
     @JsonKey(name: 'date') String? date,
-    @JsonKey(name: 'category') @Default(RemarkCategory.dailyRoutine) RemarkCategory category,
+    @JsonKey(name: 'category')
+    @Default(RemarkCategory.dailyRoutine)
+    RemarkCategory category,
     @JsonKey(name: 'type') @Default(RemarkType.negative) RemarkType type,
     @JsonKey(name: 'severity') RemarkSeverity? severity,
     @JsonKey(name: 'description') String? description,

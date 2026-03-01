@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/style/text_styles.dart';
 import '../../../../../cubit/theme_cubit.dart';
 import '../../../../../gen/assets.gen.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class SplashContent extends StatelessWidget {
   final Animation<double> scaleAnimation;
@@ -52,7 +53,7 @@ class SplashContent extends StatelessWidget {
                       'Powerful and Intuitive Education Management Software',
                       textAlign: TextAlign.center,
                       style: TextStyles.bodyMedium.copyWith(
-                        color: Colors.grey,
+                        color: context.colors.textTertiary,
                         height: 1.5,
                       ),
                     ),

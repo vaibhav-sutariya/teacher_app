@@ -9,6 +9,7 @@ import '../bloc/multi_account_event.dart';
 import '../bloc/multi_account_state.dart';
 import '../models/account_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class MultiAccountBottomSheet extends StatelessWidget {
   const MultiAccountBottomSheet({super.key});
@@ -121,14 +122,20 @@ class MultiAccountBottomSheet extends StatelessWidget {
                       placeholder: (context, url) => Container(
                         width: context.scale(48),
                         height: context.scale(48),
-                        color: Colors.grey[300],
-                        child: Icon(Icons.person, color: Colors.grey[600]),
+                        color: context.colors.border,
+                        child: Icon(
+                          Icons.person,
+                          color: context.colors.textSecondary,
+                        ),
                       ),
                       errorWidget: (context, url, error) => Container(
                         width: context.scale(48),
                         height: context.scale(48),
-                        color: Colors.grey[300],
-                        child: Icon(Icons.person, color: Colors.grey[600]),
+                        color: context.colors.border,
+                        child: Icon(
+                          Icons.person,
+                          color: context.colors.textSecondary,
+                        ),
                       ),
                     )
                   : CircleAvatar(
