@@ -72,7 +72,7 @@ class MyApp extends StatelessWidget {
                   statusBarBrightness: Brightness.dark, // White icons (iOS)
                 ),
                 child: MaterialApp.router(
-                  title: 'Vendox',
+                  title: 'Teachers App',
                   debugShowCheckedModeBanner: false,
                   theme: themeState.theme,
                   locale: localeState ?? const Locale('en'),
