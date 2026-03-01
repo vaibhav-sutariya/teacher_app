@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/> 
     <uses-permission android:name="android.permission.VIBRATE"/>    
     <application
-        android:label="starter_app"
+        android:label="teachers_app"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon"
         android:usesCleartextTraffic="true"

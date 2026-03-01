@@ -1,4 +1,4 @@
-# starter_app
+# teachers_app
 
 A new Flutter project.
 
