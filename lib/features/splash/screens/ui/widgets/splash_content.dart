@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/style/text_styles.dart';
+import '../../../../../cubit/theme_cubit.dart';
 import '../../../../../gen/assets.gen.dart';
 
 class SplashContent extends StatelessWidget {
@@ -38,7 +39,7 @@ class SplashContent extends StatelessWidget {
                       Text(
                         'ED-admin+',
                         style: TextStyles.headlineSmall.copyWith(
-                          color: Colors.black,
+                          color: context.colors.primary,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

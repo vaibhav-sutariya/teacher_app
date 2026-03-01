@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../cubit/theme_cubit.dart';
 import 'splash_bubble.dart';
 
 class SplashBackground extends StatelessWidget {
@@ -7,9 +8,6 @@ class SplashBackground extends StatelessWidget {
   final Animation<double> fadeAnimation;
   final Animation<double> breatheAnimation;
   final AnimationController breathingController;
-
-  static const Color _primaryColor = Color(0xFF0D078B);
-  static const Color _secondaryColor = Color(0xFF00B8FF);
 
   const SplashBackground({
     super.key,
@@ -29,9 +27,9 @@ class SplashBackground extends StatelessWidget {
           right: -80,
           child: ScaleTransition(
             scale: scaleAnimation,
-            child: const SplashBubble(
+            child: SplashBubble(
               size: 280,
-              color: _primaryColor,
+              color: context.colors.primary,
               shape: BoxShape.circle,
             ),
           ),
@@ -43,9 +41,9 @@ class SplashBackground extends StatelessWidget {
           right: 30,
           child: FadeTransition(
             opacity: fadeAnimation,
-            child: const SplashBubble(
+            child: SplashBubble(
               size: 50,
-              color: _secondaryColor,
+              color: context.colors.secondary,
               shape: BoxShape.circle,
               isOutlined: true,
               strokeWidth: 3,
@@ -59,9 +57,9 @@ class SplashBackground extends StatelessWidget {
           right: 90,
           child: ScaleTransition(
             scale: scaleAnimation,
-            child: const SplashBubble(
+            child: SplashBubble(
               size: 18,
-              color: _secondaryColor,
+              color: context.colors.secondary,
               shape: BoxShape.circle,
             ),
           ),
@@ -73,9 +71,9 @@ class SplashBackground extends StatelessWidget {
           left: -80,
           child: ScaleTransition(
             scale: scaleAnimation,
-            child: const SplashBubble(
+            child: SplashBubble(
               size: 380,
-              color: _primaryColor,
+              color: context.colors.primary,
               shape: BoxShape.circle,
             ),
           ),
@@ -87,9 +85,9 @@ class SplashBackground extends StatelessWidget {
           left: 60,
           child: FadeTransition(
             opacity: fadeAnimation,
-            child: const SplashBubble(
+            child: SplashBubble(
               size: 45,
-              color: _secondaryColor,
+              color: context.colors.secondary,
               shape: BoxShape.circle,
               isOutlined: true,
               strokeWidth: 3,
@@ -108,7 +106,7 @@ class SplashBackground extends StatelessWidget {
                 opacity: fadeAnimation,
                 child: SplashBubble(
                   size: 25,
-                  color: _secondaryColor,
+                  color: context.colors.secondary,
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(4),
                 ),
@@ -132,7 +130,7 @@ class SplashBackground extends StatelessWidget {
                   shape: BoxShape.circle,
                   border: Border(
                     bottom: BorderSide(
-                      color: _secondaryColor.withValues(alpha: 0.3),
+                      color: context.colors.secondary.withValues(alpha: 0.3),
                       width: 2,
                     ),
                   ),
@@ -157,7 +155,7 @@ class SplashBackground extends StatelessWidget {
                   shape: BoxShape.circle,
                   border: Border(
                     top: BorderSide(
-                      color: _secondaryColor.withValues(alpha: 0.3),
+                      color: context.colors.secondary.withValues(alpha: 0.3),
                       width: 2,
                     ),
                   ),
@@ -174,7 +172,7 @@ class SplashBackground extends StatelessWidget {
           context,
           top: 150,
           right: 150,
-          color: _secondaryColor.withValues(alpha: 0.2),
+          color: context.colors.secondary.withValues(alpha: 0.2),
         ),
         _buildScatteredDot(context, bottom: 200, right: 30),
         _buildScatteredDot(context, bottom: 300, left: 100, size: 6),
@@ -200,7 +198,7 @@ class SplashBackground extends StatelessWidget {
         opacity: fadeAnimation,
         child: SplashBubble(
           size: size,
-          color: color ?? const Color(0xFF00B8FF).withValues(alpha: 0.2),
+          color: color ?? context.colors.secondary.withValues(alpha: 0.2),
           shape: BoxShape.circle,
         ),
       ),
