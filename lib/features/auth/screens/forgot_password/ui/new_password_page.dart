@@ -135,7 +135,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                         Container(
                           padding: const EdgeInsets.all(16),
                           decoration: BoxDecoration(
-                            color: const Color(0xFFF8F9FB),
+                            color: context.colors.surface100,
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Column(
@@ -240,7 +240,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
         ),
         onPressed: onToggleVisibility,
       ),
-      fillColor: const Color(0xFFF8F9FB),
+      fillColor: context.colors.surface100,
       borderSide:
           null, // Default border handling in widget or override here if needed, AppTextField defaults to greyish border
     );

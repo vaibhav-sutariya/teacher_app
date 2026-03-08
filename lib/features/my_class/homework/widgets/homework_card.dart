@@ -4,7 +4,6 @@ import '../../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../../cubit/theme_cubit.dart';
 import '../models/homework_model.dart';
 import '../../../../core/widgets/app_capsule_button.dart';
-import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class HomeworkCard extends StatelessWidget {
   final HomeworkEntity homework;
@@ -56,7 +55,7 @@ class HomeworkCard extends StatelessWidget {
               homework.description,
               style: TextStyle(
                 fontSize: context.scaleFont(14),
-                color: const Color(0xFF455A64),
+                color: context.colors.surface600,
                 height: 1.5,
               ),
             ),
@@ -86,8 +85,8 @@ class HomeworkCard extends StatelessWidget {
                   ? 'Pending'
                   : 'Submitted',
               valueColor: homework.status == HomeworkStatus.pending
-                  ? const Color(0xFFFF6D00)
-                  : const Color(0xFF2E7D32),
+                  ? context.colors.warningDark
+                  : context.colors.successDark,
               isBoldValue: true,
               hasBullet: true,
             ),
@@ -128,7 +127,7 @@ class HomeworkCard extends StatelessWidget {
           label,
           style: TextStyle(
             fontSize: context.scaleFont(14),
-            color: const Color(0xFF90A4AE),
+            color: context.colors.textTertiary,
           ),
         ),
         Row(

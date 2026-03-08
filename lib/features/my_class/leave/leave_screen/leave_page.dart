@@ -27,7 +27,7 @@ class LeavePage extends StatelessWidget {
     return BlocProvider(
       create: (context) => LeaveBloc()..add(LoadLeaveData()),
       child: Scaffold(
-        backgroundColor: const Color(0xFFF5F5F5),
+        backgroundColor: context.colors.surface100,
         appBar: const AppAppBar(title: 'My Leave'),
         body: Column(
           children: [

@@ -15,7 +15,7 @@ class ConcernDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F7),
+      backgroundColor: context.colors.surface100,
       appBar: const AppAppBar(title: 'Concern Details'),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(context.scale(16)),
@@ -59,7 +59,7 @@ class ConcernDetailsPage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: context.scaleFont(14),
                   fontWeight: FontWeight.w600,
-                  color: const Color(0xFF5C6BC0),
+                  color: context.colors.secondary,
                   letterSpacing: 0.5,
                 ),
               ),
@@ -177,7 +177,7 @@ class ConcernDetailsPage extends StatelessWidget {
               Icon(
                 Icons.description_outlined,
                 size: context.scale(18),
-                color: const Color(0xFF5C6BC0),
+                color: context.colors.secondary,
               ),
               SizedBox(width: context.scale(8)),
               Text(
@@ -185,7 +185,7 @@ class ConcernDetailsPage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: context.scaleFont(14),
                   fontWeight: FontWeight.bold,
-                  color: const Color(0xFF3F51B5),
+                  color: context.colors.secondary,
                 ),
               ),
             ],

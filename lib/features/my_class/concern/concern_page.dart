@@ -11,7 +11,6 @@ import '../../../../cubit/theme_cubit.dart';
 import '../../../core/routes/app_router.gr.dart';
 import 'bloc/concern_bloc.dart';
 import 'widgets/concern_item.dart';
-import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
 class ConcernPage extends StatelessWidget {
@@ -32,7 +31,7 @@ class ConcernPageContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F7),
+      backgroundColor: context.colors.surface100,
       appBar: AppAppBar(
         title: 'My Concerns',
         profileImageUrl: 'https://i.pravatar.cc/300', // Placeholder

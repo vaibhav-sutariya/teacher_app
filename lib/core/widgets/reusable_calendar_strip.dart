@@ -204,7 +204,7 @@ class _ReusableCalendarStripState extends State<ReusableCalendarStrip> {
                             fontWeight: FontWeight.w600,
                             color: isSelected && !isDisabled
                                 ? Colors.white
-                                : const Color(0xFF90A4AE),
+                                : context.colors.textTertiary,
                           ),
                         ),
                         SizedBox(height: context.scaleHeight(4)),
@@ -215,7 +215,7 @@ class _ReusableCalendarStripState extends State<ReusableCalendarStrip> {
                             fontWeight: FontWeight.bold,
                             color: isSelected && !isDisabled
                                 ? Colors.white
-                                : const Color(0xFF455A64),
+                                : context.colors.surface600,
                           ),
                         ),
                       ],

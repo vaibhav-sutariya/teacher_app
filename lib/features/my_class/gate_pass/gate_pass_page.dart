@@ -31,7 +31,7 @@ class GatePassView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F7), // Light grey background
+      backgroundColor: context.colors.surface100, // Light grey background
       appBar: const AppAppBar(title: 'Gate Pass'),
       body: Column(
         children: [

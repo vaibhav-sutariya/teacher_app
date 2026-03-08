@@ -57,12 +57,12 @@ class _AttendanceEntryContent extends StatelessWidget {
         final dateStr = DateFormat('dd-MMM-yyyy').format(state.date);
 
         return Scaffold(
-          backgroundColor: const Color(0xFFF8F9FB),
+          backgroundColor: context.colors.surface100,
           appBar: AppAppBar(
             title: 'Attendance Entry',
             actions: [
               IconButton(
-                icon: const Icon(Icons.edit, color: Color(0xFF006D44)),
+                icon: Icon(Icons.edit, color: context.colors.primary),
                 onPressed: () {},
               ),
             ],
@@ -84,7 +84,7 @@ class _AttendanceEntryContent extends StatelessWidget {
                       style: TextStyle(
                         fontSize: context.scaleFont(24),
                         fontWeight: FontWeight.w900,
-                        color: const Color(0xFF006D44),
+                        color: context.colors.primary,
                       ),
                     ),
                     Text(
@@ -92,7 +92,7 @@ class _AttendanceEntryContent extends StatelessWidget {
                       style: TextStyle(
                         fontSize: context.scaleFont(14),
                         fontWeight: FontWeight.w600,
-                        color: const Color(0xFF6F7482), // Slate Grey
+                        color: context.colors.textSecondary, // Slate Grey
                       ),
                     ),
                   ],
@@ -129,7 +129,7 @@ class _AttendanceEntryContent extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: context.scaleFont(14),
                                 fontWeight: FontWeight.bold,
-                                color: const Color(0xFF233240),
+                                color: context.colors.iconDefault,
                                 letterSpacing: 0.5,
                               ),
                             ),
@@ -147,7 +147,7 @@ class _AttendanceEntryContent extends StatelessWidget {
                       Switch(
                         value: state.sendSms,
                         activeColor: Colors.white,
-                        activeTrackColor: const Color(0xFF006D44),
+                        activeTrackColor: context.colors.primary,
                         inactiveThumbColor: Colors.white,
                         inactiveTrackColor: Colors.grey.shade300,
                         onChanged: (value) {

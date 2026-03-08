@@ -52,7 +52,7 @@ class _MealMenuClassesContent extends StatelessWidget {
                   child: ListView.separated(
                     itemCount: state.classes.length,
                     separatorBuilder: (context, index) =>
-                        const Divider(height: 1, color: Color(0xFFF3F4F6)),
+                        Divider(height: 1, color: context.colors.surfaceMedium),
                     itemBuilder: (context, index) {
                       final className = state.classes[index];
                       return ListTile(
@@ -78,13 +78,13 @@ class _MealMenuClassesContent extends StatelessWidget {
                           style: TextStyle(
                             fontSize: context.scaleFont(15),
                             fontWeight: FontWeight.w600,
-                            color: const Color(0xFF111827),
+                            color: context.colors.textPrimary,
                           ),
                         ),
                         trailing: Icon(
                           Icons.arrow_forward_ios,
                           size: context.scale(16),
-                          color: const Color(0xFF111827),
+                          color: context.colors.textPrimary,
                         ),
                         onTap: () {
                           // TODO: Navigate to details with class and date context
@@ -258,7 +258,7 @@ class _MealMenuCalendarState extends State<_MealMenuCalendar> {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: isSelected
-                            ? const Color(0xFF66BB6A)
+                            ? context.colors.success
                             : Colors.transparent,
                         border: isToday && !isSelected
                             ? Border.all(color: context.colors.primary)

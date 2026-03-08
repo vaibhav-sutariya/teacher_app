@@ -48,14 +48,14 @@ class SelectedDateStatusCard extends StatelessWidget {
   Color _getStatusColor(BuildContext context) {
     switch (status) {
       case AttendanceStatus.present:
-        return const Color(0xFF4CAF50); // Green
+        return context.colors.success; // Green
       case AttendanceStatus.absent:
-        return const Color(0xFFF44336); // Red
+        return context.colors.error; // Red
       case AttendanceStatus.holiday:
-        return const Color(0xFFFF9800); // Orange
+        return context.colors.warningDark; // Orange
       case AttendanceStatus.notMarked:
       case null:
-        return const Color(0xFF9E9E9E);
+        return context.colors.textTertiary;
     }
   }
 
@@ -63,17 +63,17 @@ class SelectedDateStatusCard extends StatelessWidget {
     switch (status) {
       case AttendanceStatus.present:
         return [
-          const Color(0xFF4CAF50).withOpacity(0.15),
-          const Color(0xFF66BB6A).withOpacity(0.08),
+          context.colors.success.withOpacity(0.15),
+          context.colors.success.withOpacity(0.08),
         ];
       case AttendanceStatus.absent:
         return [
-          const Color(0xFFF44336).withOpacity(0.15),
-          const Color(0xFFE57373).withOpacity(0.08),
+          context.colors.error.withOpacity(0.15),
+          context.colors.error.withOpacity(0.08),
         ];
       case AttendanceStatus.holiday:
         return [
-          const Color(0xFFFF9800).withOpacity(0.15),
+          context.colors.warningDark.withOpacity(0.15),
           const Color(0xFFFFB74D).withOpacity(0.08),
         ];
       case AttendanceStatus.notMarked:

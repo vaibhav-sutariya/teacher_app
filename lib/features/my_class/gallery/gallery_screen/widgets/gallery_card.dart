@@ -191,7 +191,7 @@ class _GalleryCardState extends State<GalleryCard>
             style: TextStyle(
               fontSize: context.scaleFont(15),
               fontWeight: FontWeight.w700,
-              color: const Color(0xFF1A1A1A),
+              color: context.colors.textPrimary,
               letterSpacing: -0.2,
               height: 1.3,
             ),

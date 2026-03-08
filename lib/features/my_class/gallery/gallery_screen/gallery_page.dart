@@ -36,7 +36,7 @@ class _GalleryPageContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F5),
+      backgroundColor: context.colors.surface100,
       appBar: AppAppBar(
         title: 'Gallery',
         profileImageUrl: 'https://i.pravatar.cc/150?u=a042581f4e29026024d',

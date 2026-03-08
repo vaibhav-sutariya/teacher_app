@@ -222,4 +222,40 @@ class LightColors extends AppColors {
 
   @override
   Color get divider => const Color(0xFFE2E8F0); // surface200 (light divider)
+
+  @override
+  Color get textBody => const Color(0xFF546E7A); // Blue-grey body text
+
+  @override
+  Color get textCaption => const Color(0xFF78909C); // Blue-grey caption text
+
+  @override
+  Color get successDark => const Color(0xFF2E7D32); // Dark green
+
+  @override
+  Color get successLight => const Color(0xFFE8F5E9); // Light green bg
+
+  @override
+  Color get errorDark => const Color(0xFFC62828); // Dark red
+
+  @override
+  Color get errorLight => const Color(0xFFFFEBEE); // Light red bg
+
+  @override
+  Color get warningDark => const Color(0xFFF57C00); // Dark amber
+
+  @override
+  Color get warningLight => const Color(0xFFFFF3E0); // Light amber bg
+
+  @override
+  Color get infoLight => const Color(0xFFE3F2FD); // Light blue bg
+
+  @override
+  Color get surfaceLight => const Color(0xFFF8F9FA); // Very light grey
+
+  @override
+  Color get surfaceMedium => const Color(0xFFF3F5F7); // Medium grey
+
+  @override
+  Color get iconDefault => const Color(0xFF233240); // Dark navy icon
 }

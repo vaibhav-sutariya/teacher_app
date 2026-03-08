@@ -157,7 +157,7 @@ class ReportCardItem extends StatelessWidget {
         vertical: context.scale(4),
       ),
       decoration: BoxDecoration(
-        color: const Color(0xFFE8F5E9), // Light Green
+        color: context.colors.successLight, // Light Green
         borderRadius: BorderRadius.circular(context.scale(4)),
       ),
       child: Text(
@@ -165,7 +165,7 @@ class ReportCardItem extends StatelessWidget {
         style: TextStyle(
           fontSize: context.scaleFont(10),
           fontWeight: FontWeight.bold,
-          color: const Color(0xFF2E7D32), // Dark Green
+          color: context.colors.successDark, // Dark Green
         ),
       ),
     );
@@ -176,7 +176,7 @@ class ReportCardItem extends StatelessWidget {
       margin: EdgeInsets.only(bottom: context.scale(16)),
       padding: EdgeInsets.all(context.scale(16)),
       decoration: BoxDecoration(
-        color: const Color(0xFFF8F9FA), // Very light grey
+        color: context.colors.surfaceLight, // Very light grey
         borderRadius: BorderRadius.circular(context.scale(16)),
         border: Border.all(
           color: Colors.grey.withValues(alpha: 0.2),

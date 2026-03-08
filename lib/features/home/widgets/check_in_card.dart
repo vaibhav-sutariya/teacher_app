@@ -39,7 +39,7 @@ class CheckInCard extends StatelessWidget {
                   text: isCheckedIn ? 'CLOCK OUT' : 'CHECK-IN',
                   color: isCheckedIn
                       ? context.colors.warning
-                      : const Color(0xFFFFCA28),
+                      : context.colors.warning,
                   textColor: Colors.white,
                   borderRadius: context.scale(24),
                   height: context.scaleHeight(44),

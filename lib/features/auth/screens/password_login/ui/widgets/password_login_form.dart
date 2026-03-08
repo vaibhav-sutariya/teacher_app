@@ -7,7 +7,6 @@ import '../../../../../../core/widgets/app_outlined_button.dart';
 import '../../../../../../core/widgets/app_primary_button.dart';
 import '../../../../../../core/widgets/app_text_field.dart';
 import '../../../../../../cubit/theme_cubit.dart';
-import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class PasswordLoginForm extends StatefulWidget {
   const PasswordLoginForm({super.key});
@@ -30,12 +29,12 @@ class _PasswordLoginFormState extends State<PasswordLoginForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Text(
+          Text(
             'Password',
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w600,
-              color: Color(0xFF1A1F36),
+              color: context.colors.textPrimary,
             ),
           ),
           const SizedBox(height: 8),

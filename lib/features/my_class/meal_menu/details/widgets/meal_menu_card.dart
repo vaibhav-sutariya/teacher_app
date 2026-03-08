@@ -61,7 +61,7 @@ class MealMenuCard extends StatelessWidget {
                             style: TextStyle(
                               fontSize: context.scaleFont(12),
                               fontWeight: FontWeight.bold,
-                              color: const Color(0xFF90A4AE), // Subtitle color
+                              color: context.colors.textTertiary, // Subtitle color
                               letterSpacing: 1.2,
                             ),
                           ),
@@ -93,7 +93,7 @@ class MealMenuCard extends StatelessWidget {
               width: context.scale(48),
               height: context.scale(48),
               decoration: BoxDecoration(
-                color: const Color(0xFFF8F9FA), // Very light grey bg
+                color: context.colors.surfaceLight, // Very light grey bg
                 shape: BoxShape.circle,
               ),
               child: Center(
@@ -113,11 +113,11 @@ class MealMenuCard extends StatelessWidget {
   Color _getMealColor(BuildContext context, MealType type) {
     switch (type) {
       case MealType.breakfast:
-        return const Color(0xFF5C6BC0); // Indigo
+        return context.colors.secondary; // Indigo
       case MealType.lunch:
-        return const Color(0xFF66BB6A); // Green
+        return context.colors.success; // Green
       case MealType.snacks:
-        return const Color(0xFFFFA726); // Orange
+        return context.colors.warningDark; // Orange
       case MealType.dinner:
         return const Color(0xFFEF5350); // Red
     }

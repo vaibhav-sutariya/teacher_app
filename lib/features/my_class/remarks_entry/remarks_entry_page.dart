@@ -14,6 +14,7 @@ import '../../../../core/widgets/app_primary_button.dart';
 import 'bloc/remarks_entry_bloc.dart';
 import 'bloc/remarks_entry_event.dart';
 import 'bloc/remarks_entry_state.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
 class RemarksEntryPage extends StatelessWidget {
@@ -37,7 +38,7 @@ class _RemarksEntryContent extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppAppBar(
         title: 'Remarks Entry',
-        backgroundColor: const Color(0xFF006D44), // Dark Green
+        backgroundColor: context.colors.primary, // Dark Green
         foregroundColor: Colors.white,
       ),
       body: CustomScrollView(
@@ -134,8 +135,8 @@ class _RemarksEntryContent extends StatelessWidget {
                             builder: (context, child) {
                               return Theme(
                                 data: Theme.of(context).copyWith(
-                                  colorScheme: const ColorScheme.light(
-                                    primary: Color(0xFF006D44),
+                                  colorScheme: ColorScheme.light(
+                                    primary: context.colors.primary,
                                   ),
                                 ),
                                 child: child!,
@@ -156,7 +157,7 @@ class _RemarksEntryContent extends StatelessWidget {
                           ),
                           decoration: BoxDecoration(
                             border: Border.all(
-                              color: const Color(0xFFE5E7EB),
+                              color: context.colors.border,
                               width: 1.5,
                             ),
                             borderRadius: BorderRadius.circular(
@@ -170,13 +171,13 @@ class _RemarksEntryContent extends StatelessWidget {
                                 DateFormat('dd/MM/yyyy').format(date),
                                 style: TextStyle(
                                   fontSize: context.scaleFont(14),
-                                  color: const Color(0xFF111827),
+                                  color: context.colors.textPrimary,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                               Icon(
                                 Icons.calendar_today_outlined,
-                                color: const Color(0xFF006D44),
+                                color: context.colors.primary,
                                 size: context.scale(20),
                               ),
                             ],
@@ -276,35 +277,35 @@ class _RemarksEntryContent extends StatelessWidget {
                     },
                     style: TextStyle(
                       fontSize: context.scaleFont(14),
-                      color: const Color(0xFF111827),
+                      color: context.colors.textPrimary,
                     ),
                     decoration: InputDecoration(
                       hintText: 'Write your comment',
                       hintStyle: TextStyle(
                         fontSize: context.scaleFont(14),
-                        color: const Color(0xFF6B7280),
+                        color: context.colors.textSecondary,
                       ),
                       filled: true,
                       fillColor: Colors.white,
                       contentPadding: EdgeInsets.all(context.scale(16)),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(context.scale(12)),
-                        borderSide: const BorderSide(
-                          color: Color(0xFFE5E7EB),
+                        borderSide: BorderSide(
+                          color: context.colors.border,
                           width: 1.5,
                         ),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(context.scale(12)),
-                        borderSide: const BorderSide(
-                          color: Color(0xFFE5E7EB),
+                        borderSide: BorderSide(
+                          color: context.colors.border,
                           width: 1.5,
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(context.scale(12)),
-                        borderSide: const BorderSide(
-                          color: Color(0xFF006D44),
+                        borderSide: BorderSide(
+                          color: context.colors.primary,
                           width: 1.5,
                         ),
                       ),
@@ -347,7 +348,7 @@ class _RemarksEntryContent extends StatelessWidget {
                           vertical: context.scaleHeight(4),
                         ),
                         decoration: BoxDecoration(
-                          color: const Color(0xFFE8F5E9), // Light Green Base
+                          color: context.colors.successLight, // Light Green Base
                           borderRadius: BorderRadius.circular(
                             context.scale(12),
                           ),
@@ -357,7 +358,7 @@ class _RemarksEntryContent extends StatelessWidget {
                           style: TextStyle(
                             fontSize: context.scaleFont(10),
                             fontWeight: FontWeight.bold,
-                            color: const Color(0xFF006D44),
+                            color: context.colors.primary,
                             letterSpacing: 0.5,
                           ),
                         ),
@@ -368,16 +369,16 @@ class _RemarksEntryContent extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.all(context.scale(16)),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFF9FAFB),
+                      color: context.colors.surface100,
                       borderRadius: BorderRadius.circular(context.scale(12)),
-                      border: Border.all(color: const Color(0xFFE5E7EB)),
+                      border: Border.all(color: context.colors.border),
                     ),
                     child: Text(
                       'Dear Parent, your ward has received a new remark regarding their performance. Please check the portal for details.',
                       style: TextStyle(
                         fontSize: context.scaleFont(14),
                         fontStyle: FontStyle.italic,
-                        color: const Color(0xFF6B7280),
+                        color: context.colors.textSecondary,
                         height: 1.4,
                       ),
                     ),
@@ -408,7 +409,7 @@ class _RemarksEntryContent extends StatelessWidget {
                       );
                     },
                     text: 'NEXT',
-                    color: const Color(0xFF006D44),
+                    color: context.colors.primary,
                     borderRadius: context.scale(12),
                   ),
                   SizedBox(height: context.scaleHeight(40)),
@@ -433,7 +434,7 @@ class _SectionLabel extends StatelessWidget {
       style: TextStyle(
         fontSize: context.scaleFont(14),
         fontWeight: FontWeight.w600,
-        color: const Color(0xFF4B5563),
+        color: context.colors.surface600,
         letterSpacing: 0.3,
       ),
     );

@@ -37,7 +37,7 @@ class MenuItem extends StatelessWidget {
         shadowColor: Colors.black.withOpacity(0.5),
         shape: RoundedRectangleBorder(
           borderRadius: borderRadius,
-          side: const BorderSide(color: Color(0xFFEEEEEE), width: 1),
+          side: BorderSide(color: context.colors.divider, width: 1),
         ),
         margin: EdgeInsets.zero,
         child: Column(

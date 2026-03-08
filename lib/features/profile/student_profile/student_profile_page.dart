@@ -11,7 +11,6 @@ import 'bloc/student_profile_event.dart';
 import 'bloc/student_profile_state.dart';
 import 'widgets/family_info_widget.dart';
 import 'widgets/profile_info_card.dart';
-import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
 class StudentProfilePage extends StatelessWidget {

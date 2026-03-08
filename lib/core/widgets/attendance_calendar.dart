@@ -138,14 +138,14 @@ class _AttendanceCalendarState extends State<AttendanceCalendar> {
     return days;
   }
 
-  Color _getStatusColor(AttendanceStatus status) {
+  Color _getStatusColor(BuildContext context, AttendanceStatus status) {
     switch (status) {
       case AttendanceStatus.present:
-        return const Color(0xFF4CAF50); // Green
+        return context.colors.success;
       case AttendanceStatus.absent:
-        return const Color(0xFFF44336); // Red
+        return context.colors.error;
       case AttendanceStatus.holiday:
-        return const Color(0xFFFF9800); // Orange
+        return context.colors.warningDark;
       case AttendanceStatus.notMarked:
         return Colors.transparent;
     }
@@ -399,7 +399,7 @@ class _AttendanceCalendarState extends State<AttendanceCalendar> {
             color: isSelected
                 ? context.colors.primary
                 : effectiveHasStatus
-                ? _getStatusColor(effectiveStatus)
+                ? _getStatusColor(context, effectiveStatus)
                 : Colors.transparent,
             // Add border for today's date when not selected
             border: isToday && !isSelected
@@ -440,21 +440,21 @@ class _AttendanceCalendarState extends State<AttendanceCalendar> {
       children: [
         _buildLegendItem(
           context,
-          const Color(0xFF4CAF50),
+          context.colors.success,
           'PRESENT',
           legendTextStyle,
         ),
         SizedBox(width: context.scale(16)),
         _buildLegendItem(
           context,
-          const Color(0xFFF44336),
+          context.colors.error,
           'ABSENT',
           legendTextStyle,
         ),
         SizedBox(width: context.scale(16)),
         _buildLegendItem(
           context,
-          const Color(0xFFFF9800),
+          context.colors.warningDark,
           'HOLIDAY',
           legendTextStyle,
         ),

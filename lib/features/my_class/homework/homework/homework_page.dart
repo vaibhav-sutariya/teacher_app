@@ -10,6 +10,7 @@ import 'bloc/homework_bloc.dart';
 import 'bloc/homework_event.dart';
 import 'bloc/homework_state.dart';
 import '../../../../core/routes/app_router.gr.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
 class HomeworkPage extends StatelessWidget {
@@ -55,14 +56,14 @@ class _HomeworkPageContent extends StatelessWidget {
             child: BlocBuilder<HomeworkBloc, HomeworkState>(
               builder: (context, state) {
                 if (state is HomeworkLoading) {
-                  return const Center(
-                    child: AppLoader(color: Color(0xFFFFB300)),
+                  return Center(
+                    child: AppLoader(color: context.colors.warning),
                   );
                 } else if (state is HomeworkLoadedState) {
                   return ListView.separated(
                     itemCount: state.classes.length,
                     separatorBuilder: (context, index) =>
-                        const Divider(height: 1, color: Color(0xFFF3F4F6)),
+                        Divider(height: 1, color: context.colors.surfaceMedium),
                     itemBuilder: (context, index) {
                       final className = state.classes[index];
                       return ListTile(
@@ -75,14 +76,14 @@ class _HomeworkPageContent extends StatelessWidget {
                           style: TextStyle(
                             fontSize: context.scaleFont(14),
                             fontWeight: FontWeight.w600,
-                            color: const Color(0xFF111827),
+                            color: context.colors.textPrimary,
                             letterSpacing: 0.5,
                           ),
                         ),
                         trailing: Icon(
                           Icons.arrow_forward_ios,
                           size: context.scale(16),
-                          color: const Color(0xFF111827),
+                          color: context.colors.textPrimary,
                         ),
                         onTap: () {
                           final selectedDate =

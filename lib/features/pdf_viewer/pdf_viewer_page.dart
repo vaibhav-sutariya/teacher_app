@@ -21,7 +21,7 @@ class PdfViewerPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => PdfBloc(repository: sl())..add(LoadPdf(pdfUrl)),
       child: Scaffold(
-        backgroundColor: const Color(0xFFF5F5F5),
+        backgroundColor: context.colors.surface100,
         appBar: AppAppBar(title: title),
         body: BlocBuilder<PdfBloc, PdfState>(
           builder: (context, state) {

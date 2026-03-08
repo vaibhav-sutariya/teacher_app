@@ -80,7 +80,7 @@ class _SubjectWiseHomeworkSubjectContent extends StatelessWidget {
               ],
             ),
           ),
-          const Divider(height: 1, color: Color(0xFFEEEEEE)),
+          Divider(height: 1, color: context.colors.divider),
           Expanded(
             child:
                 BlocBuilder<
@@ -89,14 +89,16 @@ class _SubjectWiseHomeworkSubjectContent extends StatelessWidget {
                 >(
                   builder: (context, state) {
                     if (state is SubjectWiseHomeworkSubjectLoading) {
-                      return const Center(
-                        child: AppLoader(color: Color(0xFFFFB300)),
+                      return Center(
+                        child: AppLoader(color: context.colors.warning),
                       );
                     } else if (state is SubjectWiseHomeworkSubjectLoaded) {
                       return ListView.separated(
                         itemCount: state.subjects.length,
-                        separatorBuilder: (context, index) =>
-                            const Divider(height: 1, color: Color(0xFFF3F4F6)),
+                        separatorBuilder: (context, index) => Divider(
+                          height: 1,
+                          color: context.colors.surfaceMedium,
+                        ),
                         itemBuilder: (context, index) {
                           final subjectName = state.subjects[index];
                           return ListTile(
@@ -109,14 +111,14 @@ class _SubjectWiseHomeworkSubjectContent extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: context.scaleFont(14),
                                 fontWeight: FontWeight.w600,
-                                color: const Color(0xFF111827),
+                                color: context.colors.textPrimary,
                                 letterSpacing: 0.5,
                               ),
                             ),
                             trailing: Icon(
                               Icons.arrow_forward_ios,
                               size: context.scale(16),
-                              color: const Color(0xFF111827),
+                              color: context.colors.textPrimary,
                             ),
                             onTap: () {
                               context.router.push(

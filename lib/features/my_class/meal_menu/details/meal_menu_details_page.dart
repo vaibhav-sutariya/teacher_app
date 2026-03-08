@@ -19,7 +19,7 @@ class MealMenuDetailsPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => MealMenuBloc()..add(MealMenuLoaded()),
       child: Scaffold(
-        backgroundColor: const Color(0xFFF5F5F5),
+        backgroundColor: context.colors.surface100,
         appBar: const AppAppBar(title: 'Meal Menu'),
         body: Column(
           children: [

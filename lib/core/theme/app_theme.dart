@@ -39,8 +39,26 @@ abstract class AppColors {
   Color get textSecondary;
   Color get textTertiary;
   Color get textInverse;
+  Color get textBody;
+  Color get textCaption;
   Color get border;
   Color get divider;
+
+  // Status Badge Colors
+  Color get successDark;
+  Color get successLight;
+  Color get errorDark;
+  Color get errorLight;
+  Color get warningDark;
+  Color get warningLight;
+  Color get infoLight;
+
+  // Surface Variants
+  Color get surfaceLight;
+  Color get surfaceMedium;
+
+  // Icon Colors
+  Color get iconDefault;
 }
 
 abstract class AppTheme {

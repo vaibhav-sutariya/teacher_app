@@ -10,6 +10,7 @@ import '../../../core/widgets/app_primary_button.dart';
 import 'bloc/remarks_entry_bloc.dart';
 import 'bloc/remarks_entry_event.dart';
 import 'bloc/remarks_entry_state.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
 class RemarksStudentSelectionPage extends StatelessWidget {
@@ -64,10 +65,10 @@ class _RemarksStudentSelectionContent extends StatelessWidget {
         appBar: AppAppBar(
           title: 'Remarks Entry',
           backgroundColor: Colors.white,
-          foregroundColor: const Color(0xFF111827),
+          foregroundColor: context.colors.textPrimary,
           actions: [
             IconButton(
-              icon: const Icon(Icons.more_vert, color: Color(0xFF006D44)),
+              icon: Icon(Icons.more_vert, color: context.colors.primary),
               onPressed: () {},
             ),
           ],
@@ -80,7 +81,7 @@ class _RemarksStudentSelectionContent extends StatelessWidget {
                 horizontal: context.scale(20),
                 vertical: context.scaleHeight(16),
               ),
-              color: const Color(0xFFF6F8F6),
+              color: context.colors.surface100,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -89,7 +90,7 @@ class _RemarksStudentSelectionContent extends StatelessWidget {
                     style: TextStyle(
                       fontSize: context.scaleFont(11),
                       fontWeight: FontWeight.bold,
-                      color: const Color(0xFF006D44),
+                      color: context.colors.primary,
                       letterSpacing: 1.0,
                     ),
                   ),
@@ -99,7 +100,7 @@ class _RemarksStudentSelectionContent extends StatelessWidget {
                     style: TextStyle(
                       fontSize: context.scaleFont(15),
                       fontWeight: FontWeight.bold,
-                      color: const Color(0xFF111827),
+                      color: context.colors.textPrimary,
                       letterSpacing: 0.5,
                     ),
                   ),
@@ -120,20 +121,20 @@ class _RemarksStudentSelectionContent extends StatelessWidget {
                       },
                       style: TextStyle(
                         fontSize: context.scaleFont(14),
-                        color: const Color(0xFF111827),
+                        color: context.colors.textPrimary,
                       ),
                       decoration: InputDecoration(
                         hintText: 'Search students by name',
                         hintStyle: TextStyle(
                           fontSize: context.scaleFont(14),
-                          color: const Color(0xFF9CA3AF),
+                          color: context.colors.textTertiary,
                         ),
                         prefixIcon: Icon(
                           Icons.search,
-                          color: const Color(0xFF006D44).withValues(alpha: 0.7),
+                          color: context.colors.primary.withValues(alpha: 0.7),
                         ),
                         filled: true,
-                        fillColor: const Color(0xFFF9FAFB),
+                        fillColor: context.colors.surface100,
                         contentPadding: EdgeInsets.symmetric(
                           vertical: context.scaleHeight(14),
                           horizontal: context.scale(16),
@@ -142,8 +143,8 @@ class _RemarksStudentSelectionContent extends StatelessWidget {
                           borderRadius: BorderRadius.circular(
                             context.scale(12),
                           ),
-                          borderSide: const BorderSide(
-                            color: Color(0xFFE5E7EB),
+                          borderSide: BorderSide(
+                            color: context.colors.border,
                             width: 1.5,
                           ),
                         ),
@@ -151,8 +152,8 @@ class _RemarksStudentSelectionContent extends StatelessWidget {
                           borderRadius: BorderRadius.circular(
                             context.scale(12),
                           ),
-                          borderSide: const BorderSide(
-                            color: Color(0xFFE5E7EB),
+                          borderSide: BorderSide(
+                            color: context.colors.border,
                             width: 1.5,
                           ),
                         ),
@@ -160,8 +161,8 @@ class _RemarksStudentSelectionContent extends StatelessWidget {
                           borderRadius: BorderRadius.circular(
                             context.scale(12),
                           ),
-                          borderSide: const BorderSide(
-                            color: Color(0xFF006D44),
+                          borderSide: BorderSide(
+                            color: context.colors.primary,
                             width: 1.5,
                           ),
                         ),
@@ -179,7 +180,7 @@ class _RemarksStudentSelectionContent extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: context.scaleFont(13),
                                 fontWeight: FontWeight.bold,
-                                color: const Color(0xFF006D44),
+                                color: context.colors.primary,
                               ),
                             );
                           },
@@ -214,7 +215,7 @@ class _RemarksStudentSelectionContent extends StatelessWidget {
                                     style: TextStyle(
                                       fontSize: context.scaleFont(12),
                                       fontWeight: FontWeight.bold,
-                                      color: const Color(0xFF006D44),
+                                      color: context.colors.primary,
                                     ),
                                   );
                                 },
@@ -227,8 +228,8 @@ class _RemarksStudentSelectionContent extends StatelessWidget {
                       child: BlocBuilder<RemarksEntryBloc, RemarksEntryState>(
                         builder: (context, state) {
                           if (state.isLoadingStudents) {
-                            return const Center(
-                              child: AppLoader(color: Color(0xFF006D44)),
+                            return Center(
+                              child: AppLoader(color: context.colors.primary),
                             );
                           }
                           if (state.filteredStudents.isEmpty) {
@@ -266,7 +267,7 @@ class _RemarksStudentSelectionContent extends StatelessWidget {
                                               style: TextStyle(
                                                 fontSize: context.scaleFont(15),
                                                 fontWeight: FontWeight.w600,
-                                                color: const Color(0xFF111827),
+                                                color: context.colors.textPrimary,
                                               ),
                                             ),
                                             SizedBox(
@@ -276,7 +277,7 @@ class _RemarksStudentSelectionContent extends StatelessWidget {
                                               'Roll No: ${student.rollNo} • ${student.className}',
                                               style: TextStyle(
                                                 fontSize: context.scaleFont(13),
-                                                color: const Color(0xFF6B7280),
+                                                color: context.colors.textSecondary,
                                               ),
                                             ),
                                           ],
@@ -287,12 +288,12 @@ class _RemarksStudentSelectionContent extends StatelessWidget {
                                         height: context.scale(24),
                                         decoration: BoxDecoration(
                                           color: isSelected
-                                              ? const Color(0xFF006D44)
+                                              ? context.colors.primary
                                               : Colors.white,
                                           border: Border.all(
                                             color: isSelected
-                                                ? const Color(0xFF006D44)
-                                                : const Color(0xFFD1D5DB),
+                                                ? context.colors.primary
+                                                : context.colors.border,
                                             width: 1.5,
                                           ),
                                           borderRadius: BorderRadius.circular(
@@ -345,9 +346,9 @@ class _RemarksStudentSelectionContent extends StatelessWidget {
                           context.router.maybePopTop();
                         },
                         text: 'CANCEL',
-                        color: const Color(0xFF006D44),
-                        side: const BorderSide(
-                          color: Color(0xFF006D44),
+                        color: context.colors.primary,
+                        side: BorderSide(
+                          color: context.colors.primary,
                           width: 1.5,
                         ),
                         borderRadius: context.scale(12),
@@ -380,7 +381,7 @@ class _RemarksStudentSelectionContent extends StatelessWidget {
                                 },
                                 text: 'SUBMIT',
                                 isLoading: isSubmitting,
-                                color: const Color(0xFF006D44),
+                                color: context.colors.primary,
                                 borderRadius: context.scale(12),
                               );
                             },

@@ -34,7 +34,7 @@ class PasswordSuccessPage extends StatelessWidget {
                     width: 70,
                     height: 70,
                     decoration: BoxDecoration(
-                      color: Color(0xFF00C853), // Green
+                      color: context.colors.success, // Green
                       shape: BoxShape.circle,
                     ),
                     child: Icon(

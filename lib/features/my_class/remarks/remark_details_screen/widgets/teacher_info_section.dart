@@ -78,7 +78,7 @@ class TeacherInfoSection extends StatelessWidget {
                     width: context.scale(16),
                     height: context.scale(16),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF4CAF50),
+                      color: context.colors.success,
                       shape: BoxShape.circle,
                       border: Border.all(
                         color: context.colors.textInverse,
@@ -100,7 +100,7 @@ class TeacherInfoSection extends StatelessWidget {
                     style: TextStyle(
                       fontSize: context.scaleFont(18),
                       fontWeight: FontWeight.w700,
-                      color: const Color(0xFF1A1A1A),
+                      color: context.colors.textPrimary,
                     ),
                   ),
                   SizedBox(height: context.scaleHeight(4)),

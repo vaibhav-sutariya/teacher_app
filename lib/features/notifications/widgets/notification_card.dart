@@ -81,20 +81,20 @@ class NotificationCard extends StatelessWidget {
 
     switch (notification.type) {
       case NotificationType.attendance:
-        bgColor = const Color(0xFFE8F5E9); // Light Green
-        iconColor = const Color(0xFF2E7D32); // Dark Green
+        bgColor = context.colors.successLight; // Light Green
+        iconColor = context.colors.successDark; // Dark Green
         break;
       case NotificationType.leave:
-        bgColor = const Color(0xFFE3F2FD); // Light Blue
+        bgColor = context.colors.infoLight; // Light Blue
         iconColor = context.colors.primary;
         break;
       case NotificationType.feeAlert:
-        bgColor = const Color(0xFFFFEBEE); // Light Red
-        iconColor = const Color(0xFFD32F2F); // Dark Red
+        bgColor = context.colors.errorLight; // Light Red
+        iconColor = context.colors.errorDark; // Dark Red
         break;
       case NotificationType.schoolEvent:
-        bgColor = const Color(0xFFFFF8E1); // Light Amber
-        iconColor = const Color(0xFFF57F17); // Dark Amber
+        bgColor = context.colors.warningLight; // Light Amber
+        iconColor = context.colors.warningDark; // Dark Amber
         break;
       case NotificationType.general:
         bgColor = context.colors.surface200;
@@ -116,16 +116,16 @@ class NotificationCard extends StatelessWidget {
 
     switch (notification.type) {
       case NotificationType.attendance:
-        bgColor = const Color(0xFFE8F5E9);
-        textColor = const Color(0xFF2E7D32);
+        bgColor = context.colors.successLight;
+        textColor = context.colors.successDark;
         break;
       case NotificationType.leave:
-        bgColor = const Color(0xFFE3F2FD);
+        bgColor = context.colors.infoLight;
         textColor = context.colors.primary;
         break;
       case NotificationType.feeAlert:
-        bgColor = const Color(0xFFFFEBEE);
-        textColor = const Color(0xFFD32F2F);
+        bgColor = context.colors.errorLight;
+        textColor = context.colors.errorDark;
         break;
       default:
         bgColor = context.colors.surface200;
@@ -170,7 +170,7 @@ class NotificationCard extends StatelessWidget {
               color:
                   notification.type == NotificationType.attendance &&
                       parts[i].toLowerCase() == 'present'
-                  ? const Color(0xFF2E7D32)
+                  ? context.colors.successDark
                   : context.colors.surface900,
             ),
           ),

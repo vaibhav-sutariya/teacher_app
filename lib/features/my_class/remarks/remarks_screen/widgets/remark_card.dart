@@ -119,7 +119,7 @@ class RemarkCard extends StatelessWidget {
               color: Colors.white,
               borderRadius: BorderRadius.circular(context.scale(16)),
               border: Border.all(
-                color: const Color(0xFF138C9B), // Teal border
+                color: context.colors.secondary, // Teal border
                 width: 1,
               ),
             ),
@@ -128,7 +128,7 @@ class RemarkCard extends StatelessWidget {
               style: TextStyle(
                 fontSize: context.scaleFont(10),
                 fontWeight: FontWeight.bold,
-                color: const Color(0xFF138C9B), // Teal text
+                color: context.colors.secondary, // Teal text
               ),
             ),
           ),

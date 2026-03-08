@@ -101,7 +101,7 @@ class _AddConcernViewState extends State<AddConcernView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F7), // Light grey background
+      backgroundColor: context.colors.surface100, // Light grey background
       appBar: const AppAppBar(title: 'Add Concern'),
       body: BlocListener<AddConcernBloc, AddConcernState>(
         listenWhen: (previous, current) => previous.status != current.status,
@@ -244,7 +244,7 @@ class _AddConcernViewState extends State<AddConcernView> {
         style: TextStyle(
           fontSize: context.scaleFont(12), // Small caps style
           fontWeight: FontWeight.bold,
-          color: const Color(0xFF3F51B5), // Indigo color
+          color: context.colors.secondary, // Indigo color
           letterSpacing: 1.0,
         ),
       ),

@@ -21,7 +21,7 @@ class ActionRequiredCard extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.all(context.scale(16)),
       decoration: BoxDecoration(
-        color: const Color(0xFFFFEBEE),
+        color: context.colors.errorLight,
         borderRadius: BorderRadius.circular(context.scale(12)),
       ),
       child: Stack(
@@ -49,7 +49,7 @@ class ActionRequiredCard extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(context.scale(8)),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFE53935),
+                  color: context.colors.errorDark,
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
@@ -68,7 +68,7 @@ class ActionRequiredCard extends StatelessWidget {
                       style: TextStyle(
                         fontSize: context.scaleFont(11),
                         fontWeight: FontWeight.w700,
-                        color: const Color(0xFFE53935),
+                        color: context.colors.errorDark,
                         letterSpacing: 0.5,
                       ),
                     ),
@@ -78,7 +78,7 @@ class ActionRequiredCard extends StatelessWidget {
                       style: TextStyle(
                         fontSize: context.scaleFont(16),
                         fontWeight: FontWeight.w700,
-                        color: const Color(0xFF1A1A1A),
+                        color: context.colors.textPrimary,
                       ),
                     ),
                   ],

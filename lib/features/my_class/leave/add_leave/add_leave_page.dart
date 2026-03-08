@@ -65,7 +65,7 @@ class _AddLeaveViewState extends State<_AddLeaveView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F5),
+      backgroundColor: context.colors.surface100,
       appBar: const AppAppBar(title: 'Apply Leave'),
       body: BlocListener<AddLeaveBloc, AddLeaveState>(
         listener: (context, state) {

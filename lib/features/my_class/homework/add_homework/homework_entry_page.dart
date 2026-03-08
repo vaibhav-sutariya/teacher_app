@@ -95,7 +95,7 @@ class _HomeworkEntryContent extends StatelessWidget {
                 ],
               ),
               SizedBox(height: context.scaleHeight(20)),
-              const Divider(color: Color(0xFFEEEEEE), height: 1),
+              Divider(color: context.colors.divider, height: 1),
               SizedBox(height: context.scaleHeight(20)),
 
               // Homework Content
@@ -179,7 +179,7 @@ class _SectionLabel extends StatelessWidget {
           style: TextStyle(
             fontSize: context.scaleFont(14),
             fontWeight: FontWeight.w600,
-            color: const Color(0xFF111827),
+            color: context.colors.textPrimary,
           ),
         ),
         if (isRequired)

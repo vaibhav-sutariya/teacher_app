@@ -4,7 +4,6 @@ import '../../../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../../../core/widgets/app_primary_button.dart';
 import '../../../../../cubit/theme_cubit.dart';
 import '../models/remark_model.dart';
-import 'package:teachers_app/cubit/theme_cubit.dart';
 
 /// Production-ready filter bottom sheet widget with checkbox support
 /// Optimized for performance with proper state management
@@ -106,7 +105,7 @@ class _RemarkFilterBottomSheetState extends State<RemarkFilterBottomSheet> {
                   style: TextStyle(
                     fontSize: context.scaleFont(20),
                     fontWeight: FontWeight.w700,
-                    color: const Color(0xFF1A1A1A),
+                    color: context.colors.textPrimary,
                   ),
                 ),
                 // Always reserve space for Clear button to prevent size changes
@@ -219,7 +218,7 @@ class _FilterSection extends StatelessWidget {
             style: TextStyle(
               fontSize: context.scaleFont(16),
               fontWeight: FontWeight.w700,
-              color: const Color(0xFF1A1A1A),
+              color: context.colors.textPrimary,
             ),
           ),
         ),
@@ -275,7 +274,7 @@ class _FilterItem extends StatelessWidget {
                 style: TextStyle(
                   fontSize: context.scaleFont(16),
                   fontWeight: FontWeight.w500,
-                  color: const Color(0xFF1A1A1A),
+                  color: context.colors.textPrimary,
                 ),
               ),
             ),

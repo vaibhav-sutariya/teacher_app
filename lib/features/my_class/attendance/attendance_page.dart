@@ -43,7 +43,7 @@ class _AttendancePageContent extends StatelessWidget {
           previous.selectedDate != current.selectedDate,
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: const Color(0xFFF8F9FB), // Light grey background
+          backgroundColor: context.colors.surface100, // Light grey background
           appBar: AppAppBar(title: 'Attendance'),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -150,7 +150,7 @@ class _AttendancePageContent extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.all(context.scale(16)),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFE8F2EF),
+                  color: context.colors.successLight,
                   borderRadius: BorderRadius.circular(context.scale(12)),
                   border: Border.all(
                     color: context.colors.primary.withValues(alpha: 0.1),

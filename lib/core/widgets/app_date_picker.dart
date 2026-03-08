@@ -129,7 +129,7 @@ class AppDatePickerField extends StatelessWidget {
 
     // Use same color logic as AppTextField
     final effectiveColor =
-        inputDecorationTheme.fillColor ?? const Color(0xFFF8F9FB);
+        inputDecorationTheme.fillColor ?? context.colors.surface100;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -168,11 +168,11 @@ class AppDatePickerField extends StatelessWidget {
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(context.scale(16)),
-                borderSide: const BorderSide(color: Color(0xFFE0E0E0)),
+                borderSide: BorderSide(color: context.colors.border),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(context.scale(16)),
-                borderSide: const BorderSide(color: Color(0xFFE0E0E0)),
+                borderSide: BorderSide(color: context.colors.border),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(context.scale(16)),
@@ -266,7 +266,7 @@ class AppInlineDatePicker extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(context.scale(8)),
               decoration: BoxDecoration(
-                color: const Color(0xFFE8F2EF), // Light green tint
+                color: context.colors.primary.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(context.scale(8)),
               ),
               child: Icon(

@@ -52,7 +52,7 @@ class AppDropdownField<T> extends StatelessWidget {
                     ? TextStyle(
                         fontSize: context.scaleFont(14),
                         fontWeight: FontWeight.w600,
-                        color: const Color(0xFF4B5563),
+                        color: context.colors.surface600,
                         letterSpacing: 0.3,
                       )
                     : TextStyle(
@@ -83,7 +83,7 @@ class AppDropdownField<T> extends StatelessWidget {
                     ? TextStyle(
                         fontSize: context.scaleFont(14),
                         fontWeight: FontWeight.w500,
-                        color: const Color(0xFF111827),
+                        color: context.colors.textPrimary,
                       )
                     : TextStyle(
                         fontSize: context.scaleFont(14),
@@ -101,14 +101,14 @@ class AppDropdownField<T> extends StatelessWidget {
                 ? TextStyle(
                     fontSize: context.scaleFont(14),
                     fontWeight: FontWeight.w500,
-                    color: const Color(0xFF111827).withValues(alpha: 0.8),
+                    color: context.colors.textPrimary.withValues(alpha: 0.8),
                   )
                 : TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                     color: Colors.black87,
                   ),
-            fillColor: isOutlined ? Colors.white : const Color(0xFFF8F9FB),
+            fillColor: isOutlined ? Colors.white : context.colors.surface100,
             filled: true,
             contentPadding: EdgeInsets.symmetric(
               horizontal: context.scale(16),
@@ -122,7 +122,7 @@ class AppDropdownField<T> extends StatelessWidget {
                 context.scale(isOutlined ? 12 : 16),
               ),
               borderSide: isOutlined
-                  ? const BorderSide(color: Color(0xFFE5E7EB), width: 1.5)
+                  ? BorderSide(color: context.colors.border, width: 1.5)
                   : BorderSide.none,
             ),
             enabledBorder: OutlineInputBorder(
@@ -130,7 +130,7 @@ class AppDropdownField<T> extends StatelessWidget {
                 context.scale(isOutlined ? 12 : 16),
               ),
               borderSide: isOutlined
-                  ? const BorderSide(color: Color(0xFFE5E7EB), width: 1.5)
+                  ? BorderSide(color: context.colors.border, width: 1.5)
                   : BorderSide.none,
             ),
             focusedBorder: OutlineInputBorder(
@@ -163,7 +163,7 @@ class AppDropdownField<T> extends StatelessWidget {
           ),
           icon: Icon(
             Icons.keyboard_arrow_down,
-            color: isOutlined ? const Color(0xFF006D44) : Colors.black87,
+            color: isOutlined ? context.colors.primary : Colors.black87,
             size: context.scale(isOutlined ? 22 : 24),
           ),
           dropdownColor: Colors.white,

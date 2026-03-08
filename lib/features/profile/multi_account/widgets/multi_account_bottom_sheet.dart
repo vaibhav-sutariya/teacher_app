@@ -9,7 +9,6 @@ import '../bloc/multi_account_event.dart';
 import '../bloc/multi_account_state.dart';
 import '../models/account_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class MultiAccountBottomSheet extends StatelessWidget {
   const MultiAccountBottomSheet({super.key});

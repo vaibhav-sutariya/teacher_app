@@ -18,7 +18,7 @@ class ReportCardPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => ReportCardBloc()..add(const LoadReportCards()),
       child: Scaffold(
-        backgroundColor: const Color(0xFFF5F5F7), // Light grey background
+        backgroundColor: context.colors.surface100, // Light grey background
         appBar: const AppAppBar(
           title: 'Report Card',
           // Profile image logic would be here if available

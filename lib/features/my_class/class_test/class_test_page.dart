@@ -18,7 +18,7 @@ class ClassTestPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => ClassTestBloc()..add(ClassTestLoaded()),
       child: Scaffold(
-        backgroundColor: const Color(0xFFF5F5F5),
+        backgroundColor: context.colors.surface100,
         appBar: const AppAppBar(title: 'Class Test'),
         body: BlocBuilder<ClassTestBloc, ClassTestState>(
           builder: (context, state) {

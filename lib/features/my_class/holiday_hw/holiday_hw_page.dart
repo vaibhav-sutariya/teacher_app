@@ -18,7 +18,7 @@ class HolidayHwPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => HolidayHwBloc()..add(HolidayHwLoaded()),
       child: Scaffold(
-        backgroundColor: const Color(0xFFF5F5F5),
+        backgroundColor: context.colors.surface100,
         appBar: const AppAppBar(title: 'Holiday HW'),
         body: BlocBuilder<HolidayHwBloc, HolidayHwState>(
           builder: (context, state) {

@@ -63,7 +63,7 @@ class AttachmentUploadArea extends StatelessWidget {
                   vertical: context.scaleHeight(24),
                 ),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFF0F2F5), // Very light background
+                  color: context.colors.surfaceMedium, // Very light background
                   borderRadius: BorderRadius.circular(context.scale(16)),
                 ),
                 child: Column(
@@ -72,7 +72,7 @@ class AttachmentUploadArea extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.all(context.scale(12)),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFE8EAF6), // Lighter Indigo
+                        color: context.colors.infoLight, // Lighter Indigo
                         borderRadius: BorderRadius.circular(context.scale(30)),
                       ),
                       child: Icon(

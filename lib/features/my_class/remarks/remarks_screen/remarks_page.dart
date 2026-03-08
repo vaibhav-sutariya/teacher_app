@@ -11,6 +11,7 @@ import 'bloc/remark_bloc.dart';
 import 'bloc/remark_event.dart';
 import 'bloc/remark_state.dart';
 import 'widgets/remark_card.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
 class RemarksPage extends StatelessWidget {

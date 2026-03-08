@@ -11,7 +11,7 @@ class LoginTabSwitcher extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
-        color: Color(0xFFF8F9FB), // Light grey background
+        color: context.colors.surface100, // Light grey background
         borderRadius: BorderRadius.circular(16),
       ),
       child: ValueListenableBuilder<int>(

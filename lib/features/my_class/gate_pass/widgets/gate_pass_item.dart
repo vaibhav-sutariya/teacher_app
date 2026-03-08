@@ -36,7 +36,7 @@ class GatePassItem extends StatelessWidget {
                 style: TextStyle(
                   fontSize: context.scaleFont(12),
                   fontWeight: FontWeight.w600,
-                  color: const Color(0xFF5C6BC0),
+                  color: context.colors.secondary,
                   letterSpacing: 0.5,
                 ),
               ),
@@ -142,7 +142,7 @@ class GatePassItem extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(icon, size: context.scale(16), color: const Color(0xFF5C6BC0)),
+        Icon(icon, size: context.scale(16), color: context.colors.secondary),
         SizedBox(width: context.scale(8)),
         Expanded(
           child: RichText(

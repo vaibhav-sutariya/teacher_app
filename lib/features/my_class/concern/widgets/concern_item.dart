@@ -41,7 +41,7 @@ class ConcernItem extends StatelessWidget {
                   style: TextStyle(
                     fontSize: context.scaleFont(12),
                     fontWeight: FontWeight.w600,
-                    color: const Color(0xFF5C6BC0), // Indigo based color
+                    color: context.colors.secondary, // Indigo based color
                     letterSpacing: 0.5,
                   ),
                 ),
@@ -63,7 +63,7 @@ class ConcernItem extends StatelessWidget {
                 Icon(
                   _getDepartmentIcon(concern.department),
                   size: context.scale(16),
-                  color: const Color(0xFF5C6BC0),
+                  color: context.colors.secondary,
                 ),
                 SizedBox(width: context.scale(6)),
                 Text(
@@ -71,7 +71,7 @@ class ConcernItem extends StatelessWidget {
                   style: TextStyle(
                     fontSize: context.scaleFont(14),
                     fontWeight: FontWeight.w500,
-                    color: const Color(0xFF5C6BC0),
+                    color: context.colors.secondary,
                   ),
                 ),
               ],

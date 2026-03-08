@@ -19,9 +19,9 @@ class PendingLeavesCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const DashboardSectionTitle(
+              DashboardSectionTitle(
                 icon: Icons.business_center_outlined,
-                iconColor: Color(0xFF0288D1), // Blue
+                iconColor: context.colors.secondary, // Blue
                 title: 'Student Pending Leave Approvals',
               ),
               SizedBox(height: context.scaleHeight(16)),

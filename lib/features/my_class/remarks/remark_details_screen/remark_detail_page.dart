@@ -9,7 +9,6 @@ import '../remarks_screen/models/remark_model.dart';
 import 'widgets/action_required_card.dart';
 import 'widgets/remark_detail_item.dart';
 import 'widgets/teacher_info_section.dart';
-import 'package:teachers_app/cubit/theme_cubit.dart';
 
 /// Production-ready remark detail page
 /// Optimized for performance with const widgets and minimal rebuilds
@@ -22,7 +21,7 @@ class RemarkDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F5),
+      backgroundColor: context.colors.surface100,
       appBar: AppAppBar(
         title: 'Remark Detail',
         profileImageUrl: 'https://i.pravatar.cc/150?u=a042581f4e29026024d',
@@ -151,14 +150,14 @@ class _RemarkDetailsSection extends StatelessWidget {
       children: [
         RemarkDetailItem(
           icon: Icons.calendar_today_outlined,
-          iconColor: const Color(0xFF1976D2),
+          iconColor: context.colors.secondary,
           label: 'Date',
           value: _formatDate(remark.date),
         ),
         SizedBox(height: context.scaleHeight(16)),
         RemarkDetailItem(
           icon: Icons.category_outlined,
-          iconColor: const Color(0xFFFF9800),
+          iconColor: context.colors.warningDark,
           label: 'Category',
           value: _getCategoryLabel(remark.category),
         ),
@@ -166,15 +165,15 @@ class _RemarkDetailsSection extends StatelessWidget {
         RemarkDetailItem(
           icon: Icons.trending_down_outlined,
           iconColor: remark.type == RemarkType.positive
-              ? const Color(0xFF4CAF50)
-              : const Color(0xFFE53935),
+              ? context.colors.success
+              : context.colors.errorDark,
           label: 'Evaluation Type',
           value: remark.type == RemarkType.positive
               ? 'Positive Remark'
               : 'Negative Remark',
           valueColor: remark.type == RemarkType.positive
-              ? const Color(0xFF4CAF50)
-              : const Color(0xFFE53935),
+              ? context.colors.success
+              : context.colors.errorDark,
           showDot: true,
         ),
       ],
@@ -242,7 +241,7 @@ class _TeachersNoteSection extends StatelessWidget {
               style: TextStyle(
                 fontSize: context.scaleFont(16),
                 fontWeight: FontWeight.w700,
-                color: const Color(0xFF1A1A1A),
+                color: context.colors.textPrimary,
               ),
             ),
           ],

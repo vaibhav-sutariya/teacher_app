@@ -10,6 +10,7 @@ import 'bloc/subject_wise_homework_bloc.dart';
 import 'bloc/subject_wise_homework_event.dart';
 import 'bloc/subject_wise_homework_state.dart';
 import '../../../../core/routes/app_router.gr.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
 class SubjectWiseHomeworkPage extends StatelessWidget {
@@ -64,14 +65,16 @@ class _SubjectWiseHomeworkPageContent extends StatelessWidget {
                 BlocBuilder<SubjectWiseHomeworkBloc, SubjectWiseHomeworkState>(
                   builder: (context, state) {
                     if (state is SubjectWiseHomeworkLoading) {
-                      return const Center(
-                        child: AppLoader(color: Color(0xFFFFB300)),
+                      return Center(
+                        child: AppLoader(color: context.colors.warning),
                       );
                     } else if (state is SubjectWiseHomeworkLoadedState) {
                       return ListView.separated(
                         itemCount: state.classes.length,
-                        separatorBuilder: (context, index) =>
-                            const Divider(height: 1, color: Color(0xFFF3F4F6)),
+                        separatorBuilder: (context, index) => Divider(
+                          height: 1,
+                          color: context.colors.surfaceMedium,
+                        ),
                         itemBuilder: (context, index) {
                           final className = state.classes[index];
                           return ListTile(
@@ -84,14 +87,14 @@ class _SubjectWiseHomeworkPageContent extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: context.scaleFont(14),
                                 fontWeight: FontWeight.w600,
-                                color: const Color(0xFF111827),
+                                color: context.colors.textPrimary,
                                 letterSpacing: 0.5,
                               ),
                             ),
                             trailing: Icon(
                               Icons.arrow_forward_ios,
                               size: context.scale(16),
-                              color: const Color(0xFF111827),
+                              color: context.colors.textPrimary,
                             ),
                             onTap: () {
                               final selectedDate =

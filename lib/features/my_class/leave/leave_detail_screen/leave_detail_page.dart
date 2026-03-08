@@ -25,7 +25,7 @@ class LeaveDetailPage extends StatelessWidget {
     final leaveDetail = _getMockLeaveDetail();
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F5),
+      backgroundColor: context.colors.surface100,
       appBar: const AppAppBar(
         title: 'Leave Details',
         profileImageUrl: 'https://i.pravatar.cc/150?img=1',
@@ -122,7 +122,7 @@ class LeaveDetailPage extends StatelessWidget {
                 child: Icon(
                   Icons.calendar_today,
                   size: context.scale(28),
-                  color: const Color(0xFF66BB6A),
+                  color: context.colors.success,
                 ),
               ),
               if (leaveDetail.isApproved)
@@ -132,8 +132,8 @@ class LeaveDetailPage extends StatelessWidget {
                   child: Container(
                     width: context.scale(20),
                     height: context.scale(20),
-                    decoration: const BoxDecoration(
-                      color: Color(0xFF4CAF50),
+                    decoration: BoxDecoration(
+                      color: context.colors.success,
                       shape: BoxShape.circle,
                     ),
                     child: Icon(
@@ -181,7 +181,7 @@ class LeaveDetailPage extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(context.scale(16)),
       decoration: BoxDecoration(
-        color: const Color(0xFF5C6BC0).withOpacity(0.08),
+        color: context.colors.secondary.withOpacity(0.08),
         borderRadius: BorderRadius.circular(context.scale(12)),
       ),
       child: Row(
@@ -191,13 +191,13 @@ class LeaveDetailPage extends StatelessWidget {
             width: context.scale(48),
             height: context.scale(48),
             decoration: BoxDecoration(
-              color: const Color(0xFF5C6BC0).withOpacity(0.15),
+              color: context.colors.secondary.withOpacity(0.15),
               borderRadius: BorderRadius.circular(context.scale(10)),
             ),
             child: Icon(
               Icons.calendar_month,
               size: context.scale(24),
-              color: const Color(0xFF5C6BC0),
+              color: context.colors.secondary,
             ),
           ),
           SizedBox(width: context.scale(16)),
@@ -245,7 +245,7 @@ class LeaveDetailPage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: context.scaleFont(24),
                   fontWeight: FontWeight.bold,
-                  color: const Color(0xFF5C6BC0),
+                  color: context.colors.secondary,
                 ),
               ),
             ],

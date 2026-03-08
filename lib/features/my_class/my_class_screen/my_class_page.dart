@@ -21,7 +21,7 @@ class MyClassPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => HomeSearchCubit(),
       child: Scaffold(
-        backgroundColor: const Color(0xFFF5F5F5),
+        backgroundColor: context.colors.surface100,
         body: Stack(
           children: [
             // Blue Header Background with Bottom Radius

@@ -30,7 +30,7 @@ class ActivityLogItemWidget extends StatelessWidget {
                 width: context.scale(12),
                 height: context.scale(12),
                 decoration: BoxDecoration(
-                  color: _getDotColor(),
+                  color: _getDotColor(context),
                   shape: BoxShape.circle,
                 ),
               ),
@@ -76,14 +76,14 @@ class ActivityLogItemWidget extends StatelessWidget {
     );
   }
 
-  Color _getDotColor() {
+  Color _getDotColor(BuildContext context) {
     switch (item.type) {
       case ActivityType.approved:
-        return const Color(0xFF4CAF50);
+        return context.colors.success;
       case ActivityType.submitted:
         return const Color(0xFF9C27B0);
       case ActivityType.rejected:
-        return const Color(0xFFF44336);
+        return context.colors.error;
     }
   }
 }

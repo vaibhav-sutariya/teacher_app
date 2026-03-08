@@ -33,7 +33,7 @@ class ClassSectionCard extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(context.scale(6)),
               decoration: BoxDecoration(
-                color: const Color(0xFFE8F2EF),
+                color: context.colors.successLight,
                 shape: BoxShape.circle,
               ),
               child: Icon(

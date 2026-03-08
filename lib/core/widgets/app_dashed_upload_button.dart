@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 import '../helpers/extensions/responsive_extensions.dart';
 
 class AppDashedUploadButton extends StatelessWidget {
@@ -21,7 +22,7 @@ class AppDashedUploadButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(context.scale(12)),
       child: CustomPaint(
         painter: _DashBorderPainter(
-          color: const Color(0xFFA7D5A4), // Light Green Border
+          color: context.colors.secondary.withValues(alpha: 0.4),
           strokeWidth: 1.5,
           gap: 4.0,
           radius: context.scale(12),
@@ -29,7 +30,7 @@ class AppDashedUploadButton extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.symmetric(vertical: context.scaleHeight(14)),
           decoration: BoxDecoration(
-            color: const Color(0xFFF3FAF4), // Very Light Green bg
+            color: context.colors.successLight,
             borderRadius: BorderRadius.circular(context.scale(12)),
           ),
           child: Row(
@@ -37,7 +38,7 @@ class AppDashedUploadButton extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                color: const Color(0xFF006D44),
+                color: context.colors.primary,
                 size: context.scale(20),
               ),
               SizedBox(width: context.scale(8)),
@@ -46,7 +47,7 @@ class AppDashedUploadButton extends StatelessWidget {
                 style: TextStyle(
                   fontSize: context.scaleFont(14),
                   fontWeight: FontWeight.w600,
-                  color: const Color(0xFF006D44),
+                  color: context.colors.primary,
                 ),
               ),
             ],

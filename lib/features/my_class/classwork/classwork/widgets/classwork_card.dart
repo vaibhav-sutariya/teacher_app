@@ -4,7 +4,6 @@ import '../../../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../../../cubit/theme_cubit.dart';
 import '../../models/classwork_model.dart';
 import '../../../../../core/widgets/app_capsule_button.dart';
-import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class ClassworkCard extends StatelessWidget {
   final ClassworkEntity classwork;
@@ -63,7 +62,7 @@ class ClassworkCard extends StatelessWidget {
               classwork.description,
               style: TextStyle(
                 fontSize: context.scaleFont(14),
-                color: const Color(0xFF546E7A),
+                color: context.colors.textBody,
                 height: 1.5,
               ),
             ),
@@ -113,7 +112,7 @@ class ClassworkCard extends StatelessWidget {
                             '${classwork.attachments.first.name} (${classwork.attachments.first.size})',
                             style: TextStyle(
                               fontSize: context.scaleFont(12),
-                              color: const Color(0xFF78909C),
+                              color: context.colors.textCaption,
                             ),
                           ),
                         ],

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../cubit/theme_cubit.dart';
 import '../models/school_model.dart';
-import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class SchoolHeader extends StatelessWidget {
   final SchoolHeaderModel model;

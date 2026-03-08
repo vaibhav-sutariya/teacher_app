@@ -19,7 +19,7 @@ class ServicePage extends StatelessWidget {
     return BlocProvider(
       create: (context) => ServiceBloc()..add(LoadServiceData()),
       child: Scaffold(
-        backgroundColor: const Color(0xFFF8F9FA),
+        backgroundColor: context.colors.surfaceLight,
         appBar: const AppAppBar(title: 'Notice Board', showBackButton: false),
         body: Column(
           children: [

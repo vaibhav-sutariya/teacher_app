@@ -5,7 +5,6 @@ import '../../../../../../core/routes/app_router.gr.dart';
 import '../../../../../../core/widgets/app_primary_button.dart';
 import '../../../../../../cubit/theme_cubit.dart';
 import 'otp_input_row.dart';
-import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class VerificationBottomSheet extends StatelessWidget {
   const VerificationBottomSheet({super.key});
@@ -83,7 +82,7 @@ class VerificationBottomSheet extends StatelessWidget {
                   vertical: 10,
                 ),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFF4F6F9),
+                  color: context.colors.surface100,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Row(

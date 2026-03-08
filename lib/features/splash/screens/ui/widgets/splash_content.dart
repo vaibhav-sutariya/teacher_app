@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../../../core/style/text_styles.dart';
 import '../../../../../cubit/theme_cubit.dart';
 import '../../../../../gen/assets.gen.dart';
-import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class SplashContent extends StatelessWidget {
   final Animation<double> scaleAnimation;

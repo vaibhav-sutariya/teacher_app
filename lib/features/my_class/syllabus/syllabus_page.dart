@@ -18,7 +18,7 @@ class SyllabusPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => SyllabusBloc()..add(SyllabusLoaded()),
       child: Scaffold(
-        backgroundColor: const Color(0xFFF5F5F5),
+        backgroundColor: context.colors.surface100,
         appBar: const AppAppBar(title: 'Syllabus'),
         body: BlocBuilder<SyllabusBloc, SyllabusState>(
           builder: (context, state) {

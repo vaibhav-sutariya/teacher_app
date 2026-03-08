@@ -40,7 +40,7 @@ class AcademicYearSelector extends StatelessWidget {
           icon: Container(
             padding: EdgeInsets.all(context.scale(8)),
             decoration: BoxDecoration(
-              color: const Color(0xFFF0F2F5),
+              color: context.colors.surfaceMedium,
               borderRadius: BorderRadius.circular(context.scale(8)),
             ),
             child: Icon(

@@ -18,7 +18,7 @@ class AssignmentPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => AssignmentBloc()..add(AssignmentLoaded()),
       child: Scaffold(
-        backgroundColor: const Color(0xFFF5F5F5),
+        backgroundColor: context.colors.surface100,
         appBar: const AppAppBar(title: 'Assignment'),
         body: BlocBuilder<AssignmentBloc, AssignmentState>(
           builder: (context, state) {

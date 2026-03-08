@@ -18,7 +18,7 @@ class PaperPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => PaperBloc()..add(PaperLoaded()),
       child: Scaffold(
-        backgroundColor: const Color(0xFFF5F5F5),
+        backgroundColor: context.colors.surface100,
         appBar: const AppAppBar(title: 'Paper'),
         body: BlocBuilder<PaperBloc, PaperState>(
           builder: (context, state) {

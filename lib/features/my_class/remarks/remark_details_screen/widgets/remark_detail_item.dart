@@ -61,7 +61,7 @@ class RemarkDetailItem extends StatelessWidget {
                       style: TextStyle(
                         fontSize: context.scaleFont(14),
                         fontWeight: FontWeight.w600,
-                        color: valueColor ?? const Color(0xFF1A1A1A),
+                        color: valueColor ?? context.colors.textPrimary,
                         height: 1.3,
                       ),
                     ),
@@ -75,7 +75,7 @@ class RemarkDetailItem extends StatelessWidget {
                       width: context.scale(6),
                       height: context.scale(6),
                       decoration: BoxDecoration(
-                        color: valueColor ?? const Color(0xFFE53935),
+                        color: valueColor ?? context.colors.errorDark,
                         shape: BoxShape.circle,
                       ),
                     ),

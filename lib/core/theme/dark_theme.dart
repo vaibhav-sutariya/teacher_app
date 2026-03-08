@@ -223,4 +223,40 @@ class DarkColors extends AppColors {
 
   @override
   Color get divider => const Color(0xFF3333FF); // surface400
+
+  @override
+  Color get textBody => const Color(0xFFB0BEC5); // Light blue-grey body text
+
+  @override
+  Color get textCaption => const Color(0xFF90A4AE); // Light blue-grey caption
+
+  @override
+  Color get successDark => const Color(0xFF66BB6A); // Softer green for dark
+
+  @override
+  Color get successLight => const Color(0xFF1B5E20); // Deep green bg
+
+  @override
+  Color get errorDark => const Color(0xFFEF5350); // Softer red for dark
+
+  @override
+  Color get errorLight => const Color(0xFF4E1212); // Deep red bg
+
+  @override
+  Color get warningDark => const Color(0xFFFFB74D); // Softer amber for dark
+
+  @override
+  Color get warningLight => const Color(0xFF4E3B12); // Deep amber bg
+
+  @override
+  Color get infoLight => const Color(0xFF0D47A1); // Deep blue bg
+
+  @override
+  Color get surfaceLight => const Color(0xFF04005F); // Slightly lighter surface
+
+  @override
+  Color get surfaceMedium => const Color(0xFF050076); // Medium surface
+
+  @override
+  Color get iconDefault => const Color(0xFFB3B3FF); // Light icon for dark theme
 }

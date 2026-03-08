@@ -80,7 +80,7 @@ class _ClassworkSubjectContent extends StatelessWidget {
               ],
             ),
           ),
-          const Divider(height: 1, color: Color(0xFFEEEEEE)),
+          Divider(height: 1, color: context.colors.divider),
           Expanded(
             child: BlocBuilder<ClassworkSubjectBloc, ClassworkSubjectState>(
               builder: (context, state) {
@@ -103,14 +103,14 @@ class _ClassworkSubjectContent extends StatelessWidget {
                           style: TextStyle(
                             fontSize: context.scaleFont(14),
                             fontWeight: FontWeight.w600,
-                            color: const Color(0xFF111827),
+                            color: context.colors.textPrimary,
                             letterSpacing: 0.5,
                           ),
                         ),
                         trailing: Icon(
                           Icons.arrow_forward_ios,
                           size: context.scale(16),
-                          color: const Color(0xFF111827),
+                          color: context.colors.textPrimary,
                         ),
                         onTap: () {
                           context.router.push(

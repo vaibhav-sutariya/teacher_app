@@ -84,7 +84,7 @@ class StudentAttendanceCard extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: isNotMarked
                           ? context.colors.textSecondary.withValues(alpha: 0.5)
-                          : const Color(0xFF006D44), // Dark Green
+                          : context.colors.primary, // Dark Green
                       borderRadius: BorderRadius.circular(context.scale(8)),
                       border: Border.all(color: Colors.white, width: 2),
                     ),
@@ -115,7 +115,7 @@ class StudentAttendanceCard extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: isNotMarked
                         ? context.colors.textSecondary
-                        : const Color(0xFF233240), // Dark Navy
+                        : context.colors.iconDefault, // Dark Navy
                   ),
                 ),
                 SizedBox(height: context.scaleHeight(4)),
@@ -141,7 +141,7 @@ class StudentAttendanceCard extends StatelessWidget {
                 vertical: context.scaleHeight(4),
               ),
               decoration: BoxDecoration(
-                color: const Color(0xFFF3F5F7), // Light GrayBg
+                color: context.colors.surfaceMedium, // Light GrayBg
                 borderRadius: BorderRadius.circular(context.scale(6)),
               ),
               child: Row(
@@ -152,7 +152,7 @@ class StudentAttendanceCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: context.scaleFont(12),
                       fontWeight: FontWeight.bold,
-                      color: const Color(0xFF233240),
+                      color: context.colors.iconDefault,
                     ),
                   ),
                   SizedBox(width: context.scale(2)),
@@ -188,7 +188,7 @@ class StudentAttendanceCard extends StatelessWidget {
           width: context.scale(40),
           height: context.scale(40),
           decoration: BoxDecoration(
-            color: const Color(0xFF006D44), // Solid Green
+            color: context.colors.primary, // Solid Green
             shape: BoxShape.circle,
           ),
           alignment: Alignment.center,
@@ -225,7 +225,7 @@ class StudentAttendanceCard extends StatelessWidget {
           width: context.scale(40),
           height: context.scale(40),
           decoration: BoxDecoration(
-            color: const Color(0xFFF3F5F7), // Light grey
+            color: context.colors.surfaceMedium, // Light grey
             shape: BoxShape.circle,
             border: Border.all(
               color: context.colors.textSecondary.withValues(alpha: 0.2),

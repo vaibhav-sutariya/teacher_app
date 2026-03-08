@@ -44,7 +44,7 @@ class BirthdaysCard extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           radius: context.scale(22),
-                          backgroundColor: const Color(0xFFFFCA28),
+                          backgroundColor: context.colors.warning,
                           child: Text(
                             bd.studentName[0],
                             style: TextStyle(

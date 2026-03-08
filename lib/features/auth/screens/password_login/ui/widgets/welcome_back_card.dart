@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../cubit/theme_cubit.dart';
-import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class WelcomeBackCard extends StatelessWidget {
   final String email;
@@ -45,7 +44,7 @@ class WelcomeBackCard extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: BoxDecoration(
-              color: const Color(0xFFF4F6F9),
+              color: context.colors.surface100,
               borderRadius: BorderRadius.circular(30),
             ),
             child: Row(
@@ -63,18 +62,18 @@ class WelcomeBackCard extends StatelessWidget {
                 Expanded(
                   child: Text(
                     email,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
-                      color: Color(0xFF1A1F36),
+                      color: context.colors.textPrimary,
                     ),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 const SizedBox(width: 8),
-                const Icon(
+                Icon(
                   Icons.check_circle,
-                  color: Color(0xFF00C853), // Green check
+                  color: context.colors.success, // Green check
                   size: 20,
                 ),
               ],

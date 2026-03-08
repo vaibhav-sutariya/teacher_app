@@ -70,7 +70,7 @@ class _AppTextFieldState extends State<AppTextField> {
     final effectiveColor =
         widget.fillColor ??
         inputDecorationTheme.fillColor ??
-        const Color(0xFFF8F9FB);
+        context.colors.surface100;
 
     return TextFormField(
       key: _fieldKey,
