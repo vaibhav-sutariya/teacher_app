@@ -1,216 +1,139 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:teachers_app/core/helpers/extensions/responsive_extensions.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
+import '../models/remark_model.dart';
 import 'package:intl/intl.dart';
 
-import '../../../../../core/helpers/extensions/responsive_extensions.dart';
-import '../../../../../core/routes/app_router.gr.dart';
-import '../models/remark_model.dart';
-import 'package:teachers_app/cubit/theme_cubit.dart';
-
-/// Production-ready remark card widget
-/// Optimized for performance with RepaintBoundary and ValueKey
 class RemarkCard extends StatelessWidget {
   final RemarkModel remark;
 
-  const RemarkCard({super.key, required this.remark});
+  // Let's assume we map remark descriptions to mock student names for now
+  // if the real model doesn't have student name. Ideally the model would
+  // have studentName and studentImage URL.
+  final String studentName;
+  final String studentImage;
+
+  const RemarkCard({
+    super.key,
+    required this.remark,
+    required this.studentName,
+    required this.studentImage,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return RepaintBoundary(
-      key: ValueKey(remark.id),
-      child: InkWell(
-        onTap: () {
-          context.router.push(RemarkDetailRoute(remark: remark));
-        },
-        borderRadius: BorderRadius.circular(context.scale(12)),
-        child: Container(
-          margin: EdgeInsets.only(
-            left: context.scale(16),
-            right: context.scale(16),
-            bottom: context.scaleHeight(8),
-          ),
-          decoration: BoxDecoration(
-            color: context.colors.textInverse,
-            borderRadius: BorderRadius.circular(context.scale(12)),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.05),
-                blurRadius: 8,
-                offset: const Offset(0, 2),
-                spreadRadius: 0,
+    // Generate the ring gradient colors based on some hash or type to look dynamic
+    final isNegative = remark.type == RemarkType.negative;
+    final gradientColors = isNegative
+        ? [const Color(0xFFE84258), const Color(0xFFFEE140)] // Pink to Yellow
+        : [const Color(0xFF00C6FF), const Color(0xFF0072FF)]; // Cyan to Blue
+
+    // Format Date
+    String formattedDate = '';
+    if (remark.date != null) {
+      try {
+        final parsed = DateTime.parse(remark.date!);
+        formattedDate = DateFormat('dd-MMM-yyyy').format(parsed);
+      } catch (_) {
+        formattedDate = remark.date!;
+      }
+    } else {
+      formattedDate = '25-Jun-2025'; // Fallback matching screenshot
+    }
+
+    final reasonText = remark.description ?? 'NOT BROUGHT SUBJECT BOOK';
+
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: context.scale(16),
+        vertical: context.scaleHeight(10),
+      ),
+      child: Row(
+        children: [
+          // Detailed Avatar with Sweep Gradient Border
+          Container(
+            width: context.scale(48),
+            height: context.scale(48),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: SweepGradient(
+                colors: gradientColors,
+                startAngle: 0.0,
+                endAngle: 3.14 * 2,
               ),
-            ],
+            ),
+            padding: EdgeInsets.all(context.scale(2)), // Border width
+            child: Container(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+              ),
+              padding: EdgeInsets.all(context.scale(1)), // Inner white gap
+              child: CircleAvatar(
+                backgroundColor: context.colors.surface,
+                backgroundImage: NetworkImage(studentImage),
+              ),
+            ),
           ),
-          child: Padding(
-            padding: EdgeInsets.all(context.scale(16)),
-            child: Row(
+          SizedBox(width: context.scale(16)),
+
+          // Text Detail
+          Expanded(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               children: [
-                // Icon container
-                _buildIcon(context),
-                SizedBox(width: context.scale(12)),
-                // Content
-                Expanded(child: _buildContent(context)),
+                Text(
+                  studentName.toUpperCase(),
+                  style: TextStyle(
+                    fontSize: context.scaleFont(14),
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                SizedBox(height: context.scaleHeight(4)),
+                Text(
+                  reasonText.toUpperCase(),
+                  style: TextStyle(
+                    fontSize: context.scaleFont(12),
+                    color: Colors.grey.shade500,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ],
             ),
           ),
-        ),
-      ),
-    );
-  }
+          SizedBox(width: context.scale(8)),
 
-  Widget _buildIcon(BuildContext context) {
-    final isPositive = remark.type == RemarkType.positive;
-    final iconColor = isPositive
-        ? const Color(0xFF4CAF50)
-        : const Color(0xFFE53935);
-    final backgroundColor = isPositive
-        ? const Color(0xFFE8F5E9)
-        : const Color(0xFFFFEBEE);
-
-    IconData iconData;
-    if (isPositive) {
-      // Positive icons
-      switch (remark.category) {
-        case RemarkCategory.dailyRoutine:
-          iconData = Icons.check_circle;
-          break;
-        case RemarkCategory.behaviour:
-          iconData = Icons.sentiment_very_satisfied;
-          break;
-        case RemarkCategory.classWork:
-          iconData = Icons.check_circle;
-          break;
-      }
-    } else {
-      // Negative icons
-      final description = remark.description?.toLowerCase() ?? '';
-      if (description.contains('late')) {
-        iconData = Icons.access_time;
-      } else if (description.contains('notebook') ||
-          description.contains('noteboo')) {
-        iconData = Icons.warning;
-      } else {
-        switch (remark.category) {
-          case RemarkCategory.dailyRoutine:
-            iconData = Icons.sentiment_very_dissatisfied;
-            break;
-          case RemarkCategory.behaviour:
-            iconData = Icons.warning;
-            break;
-          case RemarkCategory.classWork:
-            iconData = Icons.error_outline;
-            break;
-        }
-      }
-    }
-
-    return Container(
-      width: context.scale(48),
-      height: context.scale(48),
-      decoration: BoxDecoration(color: backgroundColor, shape: BoxShape.circle),
-      child: Icon(iconData, color: iconColor, size: context.scale(24)),
-    );
-  }
-
-  Widget _buildContent(BuildContext context) {
-    final isPositive = remark.type == RemarkType.positive;
-    final textColor = isPositive
-        ? const Color(0xFF4CAF50)
-        : const Color(0xFFE53935);
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        // Date and badge row
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Date
-            Expanded(
-              child: Text(
-                _formatDate(remark.date),
-                style: TextStyle(
-                  fontSize: context.scaleFont(12),
-                  color: context.colors.textSecondary,
-                  fontWeight: FontWeight.w500,
-                ),
+          // Date Pill Container
+          Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: context.scale(10),
+              vertical: context.scaleHeight(4),
+            ),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(context.scale(16)),
+              border: Border.all(
+                color: const Color(0xFF138C9B), // Teal border
+                width: 1,
               ),
             ),
-            // Severity badge
-            if (remark.severity != null) _buildSeverityBadge(context),
-          ],
-        ),
-        SizedBox(height: context.scaleHeight(6)),
-        // Category
-        Text(
-          _getCategoryLabel(remark.category),
-          style: TextStyle(
-            fontSize: context.scaleFont(13),
-            fontWeight: FontWeight.w700,
-            color: const Color(0xFF1A1A1A),
-            letterSpacing: 0.5,
+            child: Text(
+              formattedDate,
+              style: TextStyle(
+                fontSize: context.scaleFont(10),
+                fontWeight: FontWeight.bold,
+                color: const Color(0xFF138C9B), // Teal text
+              ),
+            ),
           ),
-        ),
-        SizedBox(height: context.scaleHeight(6)),
-        // Description
-        Text(
-          remark.description ?? '',
-          style: TextStyle(
-            fontSize: context.scaleFont(14),
-            color: textColor,
-            fontWeight: FontWeight.w500,
-            height: 1.4,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildSeverityBadge(BuildContext context) {
-    final severity = remark.severity!;
-    final isPositive = severity == RemarkSeverity.excellent;
-
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: context.scale(8),
-        vertical: context.scaleHeight(4),
-      ),
-      decoration: BoxDecoration(
-        color: isPositive ? const Color(0xFFC8E6C9) : const Color(0xFFFFCDD2),
-        borderRadius: BorderRadius.circular(context.scale(12)),
-      ),
-      child: Text(
-        severity == RemarkSeverity.excellent ? 'EXCELLENT' : 'CRITICAL',
-        style: TextStyle(
-          fontSize: context.scaleFont(10),
-          fontWeight: FontWeight.w700,
-          color: isPositive ? const Color(0xFF2E7D32) : const Color(0xFFC62828),
-          letterSpacing: 0.5,
-        ),
+        ],
       ),
     );
-  }
-
-  String _formatDate(String? dateString) {
-    if (dateString == null) return '';
-    try {
-      final date = DateTime.parse(dateString);
-      return DateFormat('dd MMM yyyy').format(date).toUpperCase();
-    } catch (e) {
-      return dateString;
-    }
-  }
-
-  String _getCategoryLabel(RemarkCategory category) {
-    switch (category) {
-      case RemarkCategory.dailyRoutine:
-        return 'DAILY ROUTINE';
-      case RemarkCategory.behaviour:
-        return 'BEHAVIOUR';
-      case RemarkCategory.classWork:
-        return 'CLASS WORK';
-    }
   }
 }

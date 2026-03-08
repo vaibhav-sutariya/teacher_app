@@ -8,7 +8,8 @@ import '../../../../core/widgets/app_app_bar.dart';
 import '../../../../core/widgets/app_loader.dart';
 import '../../../../cubit/theme_cubit.dart';
 import 'bloc/attendance_entry_bloc.dart';
-import 'bloc/attendance_entry_event_state.dart';
+import 'bloc/attendance_entry_event.dart';
+import 'bloc/attendance_entry_state.dart';
 import 'models/student_attendance_model.dart';
 import 'widgets/student_attendance_card.dart';
 

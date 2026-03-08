@@ -1,0 +1,547 @@
+import 'dart:ui';
+
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
+
+import '../../../../core/helpers/extensions/responsive_extensions.dart';
+import '../../../../core/routes/app_router.gr.dart';
+import '../../../../core/widgets/app_app_bar.dart';
+import '../../../../core/widgets/app_dropdown_field.dart';
+import '../../../../core/widgets/app_primary_button.dart';
+import 'bloc/remarks_entry_bloc.dart';
+import 'bloc/remarks_entry_event.dart';
+import 'bloc/remarks_entry_state.dart';
+
+@RoutePage()
+class RemarksEntryPage extends StatelessWidget {
+  const RemarksEntryPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => RemarksEntryBloc(),
+      child: const _RemarksEntryContent(),
+    );
+  }
+}
+
+class _RemarksEntryContent extends StatelessWidget {
+  const _RemarksEntryContent();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppAppBar(
+        title: 'Remarks Entry',
+        backgroundColor: const Color(0xFF006D44), // Dark Green
+        foregroundColor: Colors.white,
+      ),
+      body: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
+        slivers: [
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: context.scale(20),
+                vertical: context.scaleHeight(20),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  // 1. Class & Section Row
+                  Row(
+                    children: [
+                      Expanded(
+                        child:
+                            BlocSelector<
+                              RemarksEntryBloc,
+                              RemarksEntryState,
+                              String?
+                            >(
+                              selector: (state) => state.selectedClass,
+                              builder: (context, selectedClass) {
+                                return AppDropdownField<String>(
+                                  isOutlined: true,
+                                  label: 'Class',
+                                  hint: 'Select Class',
+                                  value: selectedClass,
+                                  items: const [
+                                    'Class 1',
+                                    'Class 2',
+                                    'Class 3',
+                                  ],
+                                  itemLabel: (String v) => v,
+                                  onChanged: (val) {
+                                    if (val != null) {
+                                      context.read<RemarksEntryBloc>().add(
+                                        SelectClassEvent(val),
+                                      );
+                                    }
+                                  },
+                                );
+                              },
+                            ),
+                      ),
+                      SizedBox(width: context.scale(16)),
+                      Expanded(
+                        child:
+                            BlocSelector<
+                              RemarksEntryBloc,
+                              RemarksEntryState,
+                              String?
+                            >(
+                              selector: (state) => state.section,
+                              builder: (context, section) {
+                                return AppDropdownField<String>(
+                                  isOutlined: true,
+                                  label: 'Section',
+                                  hint: 'Select Section',
+                                  value: section,
+                                  items: const ['A', 'B', 'C'],
+                                  itemLabel: (String v) => v,
+                                  onChanged: (val) {
+                                    if (val != null) {
+                                      context.read<RemarksEntryBloc>().add(
+                                        SelectSectionEvent(val),
+                                      );
+                                    }
+                                  },
+                                );
+                              },
+                            ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: context.scaleHeight(20)),
+
+                  // 2. Date Picker Field
+                  _SectionLabel('Date'),
+                  SizedBox(height: context.scaleHeight(6)),
+                  BlocSelector<RemarksEntryBloc, RemarksEntryState, DateTime>(
+                    selector: (state) => state.date,
+                    builder: (context, date) {
+                      return InkWell(
+                        onTap: () async {
+                          final picked = await showDatePicker(
+                            context: context,
+                            initialDate: date,
+                            firstDate: DateTime(2000),
+                            lastDate: DateTime(2100),
+                            builder: (context, child) {
+                              return Theme(
+                                data: Theme.of(context).copyWith(
+                                  colorScheme: const ColorScheme.light(
+                                    primary: Color(0xFF006D44),
+                                  ),
+                                ),
+                                child: child!,
+                              );
+                            },
+                          );
+                          if (picked != null && context.mounted) {
+                            context.read<RemarksEntryBloc>().add(
+                              SelectDateEvent(picked),
+                            );
+                          }
+                        },
+                        borderRadius: BorderRadius.circular(context.scale(12)),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: context.scale(16),
+                            vertical: context.scaleHeight(14),
+                          ),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: const Color(0xFFE5E7EB),
+                              width: 1.5,
+                            ),
+                            borderRadius: BorderRadius.circular(
+                              context.scale(12),
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                DateFormat('dd/MM/yyyy').format(date),
+                                style: TextStyle(
+                                  fontSize: context.scaleFont(14),
+                                  color: const Color(0xFF111827),
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              Icon(
+                                Icons.calendar_today_outlined,
+                                color: const Color(0xFF006D44),
+                                size: context.scale(20),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  SizedBox(height: context.scaleHeight(20)),
+
+                  // 3. Category Dropdown
+                  BlocSelector<RemarksEntryBloc, RemarksEntryState, String?>(
+                    selector: (state) => state.category,
+                    builder: (context, category) {
+                      return AppDropdownField<String>(
+                        isOutlined: true,
+                        label: 'Remarks Category',
+                        hint: 'Select Category',
+                        value: category,
+                        items: const [
+                          'Discipline',
+                          'Academics',
+                          'Extracurricular',
+                        ],
+                        itemLabel: (String v) => v,
+                        onChanged: (val) {
+                          if (val != null) {
+                            context.read<RemarksEntryBloc>().add(
+                              SelectCategoryEvent(val),
+                            );
+                          }
+                        },
+                      );
+                    },
+                  ),
+                  SizedBox(height: context.scaleHeight(20)),
+
+                  // 4. Name Dropdown
+                  BlocSelector<RemarksEntryBloc, RemarksEntryState, String?>(
+                    selector: (state) => state.remarkName,
+                    builder: (context, remarkName) {
+                      return AppDropdownField<String>(
+                        isOutlined: true,
+                        label: 'Remark Name',
+                        hint: 'Select Name',
+                        value: remarkName,
+                        items: const [
+                          'Late Arrival',
+                          'Homework Not Done',
+                          'Excellent Work',
+                        ],
+                        itemLabel: (String v) => v,
+                        onChanged: (val) {
+                          if (val != null) {
+                            context.read<RemarksEntryBloc>().add(
+                              SelectRemarkNameEvent(val),
+                            );
+                          }
+                        },
+                      );
+                    },
+                  ),
+                  SizedBox(height: context.scaleHeight(20)),
+
+                  // 5. Type Dropdown
+                  BlocSelector<RemarksEntryBloc, RemarksEntryState, String?>(
+                    selector: (state) => state.remarkType,
+                    builder: (context, remarkType) {
+                      return AppDropdownField<String>(
+                        isOutlined: true,
+                        label: 'Remark Type',
+                        hint: 'Select Type',
+                        value: remarkType,
+                        items: const ['Warning', 'Positive', 'Informative'],
+                        itemLabel: (String v) => v,
+                        onChanged: (val) {
+                          if (val != null) {
+                            context.read<RemarksEntryBloc>().add(
+                              SelectRemarkTypeEvent(val),
+                            );
+                          }
+                        },
+                      );
+                    },
+                  ),
+                  SizedBox(height: context.scaleHeight(20)),
+
+                  // 6. Note Area
+                  _SectionLabel('Note'),
+                  SizedBox(height: context.scaleHeight(6)),
+                  TextFormField(
+                    maxLines: 4,
+                    onChanged: (val) {
+                      context.read<RemarksEntryBloc>().add(
+                        UpdateNoteEvent(val),
+                      );
+                    },
+                    style: TextStyle(
+                      fontSize: context.scaleFont(14),
+                      color: const Color(0xFF111827),
+                    ),
+                    decoration: InputDecoration(
+                      hintText: 'Write your comment',
+                      hintStyle: TextStyle(
+                        fontSize: context.scaleFont(14),
+                        color: const Color(0xFF6B7280),
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                      contentPadding: EdgeInsets.all(context.scale(16)),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(context.scale(12)),
+                        borderSide: const BorderSide(
+                          color: Color(0xFFE5E7EB),
+                          width: 1.5,
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(context.scale(12)),
+                        borderSide: const BorderSide(
+                          color: Color(0xFFE5E7EB),
+                          width: 1.5,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(context.scale(12)),
+                        borderSide: const BorderSide(
+                          color: Color(0xFF006D44),
+                          width: 1.5,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: context.scaleHeight(20)),
+
+                  // 7. Choose File
+                  _SectionLabel('Choose File'),
+                  SizedBox(height: context.scaleHeight(8)),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: _DashedUploadButton(
+                          icon: Icons.image,
+                          label: 'Image',
+                          onTap: () {},
+                        ),
+                      ),
+                      SizedBox(width: context.scale(16)),
+                      Expanded(
+                        child: _DashedUploadButton(
+                          icon: Icons.description,
+                          label: 'Document',
+                          onTap: () {},
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: context.scaleHeight(20)),
+
+                  // 8. SMS Content
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _SectionLabel('SMS Content'),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: context.scale(8),
+                          vertical: context.scaleHeight(4),
+                        ),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFE8F5E9), // Light Green Base
+                          borderRadius: BorderRadius.circular(
+                            context.scale(12),
+                          ),
+                        ),
+                        child: Text(
+                          'AUTO-GENERATED',
+                          style: TextStyle(
+                            fontSize: context.scaleFont(10),
+                            fontWeight: FontWeight.bold,
+                            color: const Color(0xFF006D44),
+                            letterSpacing: 0.5,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: context.scaleHeight(6)),
+                  Container(
+                    padding: EdgeInsets.all(context.scale(16)),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFF9FAFB),
+                      borderRadius: BorderRadius.circular(context.scale(12)),
+                      border: Border.all(color: const Color(0xFFE5E7EB)),
+                    ),
+                    child: Text(
+                      'Dear Parent, your ward has received a new remark regarding their performance. Please check the portal for details.',
+                      style: TextStyle(
+                        fontSize: context.scaleFont(14),
+                        fontStyle: FontStyle.italic,
+                        color: const Color(0xFF6B7280),
+                        height: 1.4,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: context.scaleHeight(32)),
+
+                  // 9. Next Button
+                  AppPrimaryButton(
+                    onPressed: () {
+                      final blocState = context.read<RemarksEntryBloc>().state;
+                      if (blocState.category == null ||
+                          blocState.remarkName == null) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text(
+                              'Please select category and name first',
+                            ),
+                          ),
+                        );
+                        return;
+                      }
+                      context.router.push(
+                        RemarksStudentSelectionRoute(
+                          remarkCategory: blocState.category!,
+                          remarkName: blocState.remarkName!,
+                          remarksEntryBloc: context.read<RemarksEntryBloc>(),
+                        ),
+                      );
+                    },
+                    text: 'NEXT',
+                    color: const Color(0xFF006D44),
+                    borderRadius: context.scale(12),
+                  ),
+                  SizedBox(height: context.scaleHeight(40)),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _SectionLabel extends StatelessWidget {
+  final String text;
+  const _SectionLabel(this.text);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: context.scaleFont(14),
+        fontWeight: FontWeight.w600,
+        color: const Color(0xFF4B5563),
+        letterSpacing: 0.3,
+      ),
+    );
+  }
+}
+
+class _DashedUploadButton extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+
+  const _DashedUploadButton({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(context.scale(12)),
+      child: CustomPaint(
+        painter: _DashBorderPainter(
+          color: const Color(0xFFA7D5A4), // Light Green Border
+          strokeWidth: 1.5,
+          gap: 4.0,
+          radius: context.scale(12),
+        ),
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: context.scaleHeight(14)),
+          decoration: BoxDecoration(
+            color: const Color(0xFFF3FAF4), // Very Light Green bg
+            borderRadius: BorderRadius.circular(context.scale(12)),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                icon,
+                color: const Color(0xFF006D44),
+                size: context.scale(20),
+              ),
+              SizedBox(width: context.scale(8)),
+              Text(
+                label,
+                style: TextStyle(
+                  fontSize: context.scaleFont(14),
+                  fontWeight: FontWeight.w600,
+                  color: const Color(0xFF006D44),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _DashBorderPainter extends CustomPainter {
+  final Color color;
+  final double strokeWidth;
+  final double gap;
+  final double radius;
+
+  _DashBorderPainter({
+    required this.color,
+    required this.strokeWidth,
+    required this.gap,
+    required this.radius,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final Paint paint = Paint()
+      ..color = color
+      ..strokeWidth = strokeWidth
+      ..style = PaintingStyle.stroke;
+
+    final RRect rrect = RRect.fromLTRBR(
+      0,
+      0,
+      size.width,
+      size.height,
+      Radius.circular(radius),
+    );
+
+    final Path path = Path()..addRRect(rrect);
+    final PathMetrics pathMetrics = path.computeMetrics();
+
+    for (PathMetric pathMetric in pathMetrics) {
+      double distance = 0.0;
+      bool draw = true;
+      while (distance < pathMetric.length) {
+        final double segmentLength = draw ? gap * 2 : gap;
+        if (draw) {
+          final Path extractPath = pathMetric.extractPath(
+            distance,
+            distance + segmentLength,
+          );
+          canvas.drawPath(extractPath, paint);
+        }
+        distance += segmentLength;
+        draw = !draw;
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+}

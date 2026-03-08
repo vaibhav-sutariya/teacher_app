@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../models/student_attendance_model.dart';
-import 'attendance_entry_event_state.dart';
+import 'attendance_entry_event.dart';
+import 'attendance_entry_state.dart';
 
 class AttendanceEntryBloc
     extends Bloc<AttendanceEntryEvent, AttendanceEntryState> {
