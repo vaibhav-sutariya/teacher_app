@@ -224,3 +224,76 @@ class AppDatePickerField extends StatelessWidget {
     }
   }
 }
+
+/// Inline date picker widget matching the Attendance screen design
+class AppInlineDatePicker extends StatelessWidget {
+  final DateTime selectedDate;
+  final ValueChanged<DateTime> onDateSelected;
+
+  const AppInlineDatePicker({
+    super.key,
+    required this.selectedDate,
+    required this.onDateSelected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final dateFormatted = DateFormat('dd/MM/yyyy').format(selectedDate);
+
+    return InkWell(
+      onTap: () async {
+        final date = await AppDatePicker.show(
+          context,
+          initialDate: selectedDate,
+        );
+        if (date != null) {
+          onDateSelected(date);
+        }
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: context.scale(16),
+          vertical: context.scaleHeight(16),
+        ),
+        decoration: BoxDecoration(
+          color: context.colors.surface,
+          border: Border(
+            bottom: BorderSide(color: context.colors.divider, width: 1),
+          ),
+        ),
+        child: Row(
+          children: [
+            Container(
+              padding: EdgeInsets.all(context.scale(8)),
+              decoration: BoxDecoration(
+                color: const Color(0xFFE8F2EF), // Light green tint
+                borderRadius: BorderRadius.circular(context.scale(8)),
+              ),
+              child: Icon(
+                Icons.calendar_today_outlined,
+                color: context.colors.primary,
+                size: context.scale(20),
+              ),
+            ),
+            SizedBox(width: context.scale(16)),
+            Expanded(
+              child: Text(
+                dateFormatted,
+                style: TextStyle(
+                  fontSize: context.scaleFont(16),
+                  fontWeight: FontWeight.bold,
+                  color: context.colors.textPrimary,
+                ),
+              ),
+            ),
+            Icon(
+              Icons.keyboard_arrow_down,
+              color: context.colors.textSecondary,
+              size: context.scale(24),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

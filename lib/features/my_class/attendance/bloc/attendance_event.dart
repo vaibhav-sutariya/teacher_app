@@ -47,3 +47,13 @@ class LoadAttendanceForMonthEvent extends AttendanceEvent {
   @override
   List<Object?> get props => [month];
 }
+
+/// Event to change the currently selected tab (e.g. 0 for Pending, 1 for Marked)
+class ChangeTabEvent extends AttendanceEvent {
+  final int index;
+
+  const ChangeTabEvent(this.index);
+
+  @override
+  List<Object?> get props => [index];
+}

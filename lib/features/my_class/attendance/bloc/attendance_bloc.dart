@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/widgets/attendance_calendar.dart';
 import '../models/attendance_model.dart';
+import '../models/class_section_model.dart';
 import '../repositories/attendance_repository.dart';
 import 'attendance_event.dart';
 import 'attendance_state.dart';
@@ -18,6 +19,7 @@ class AttendanceBloc extends Bloc<AttendanceEvent, AttendanceState> {
     on<LoadAttendanceEvent>(_onLoadAttendance);
     on<RefreshAttendanceEvent>(_onRefreshAttendance);
     on<SelectDateEvent>(_onSelectDate);
+    on<ChangeTabEvent>(_onChangeTab);
     on<ChangeMonthEvent>(_onChangeMonth);
     on<LoadAttendanceForMonthEvent>(_onLoadAttendanceForMonth);
 
@@ -74,6 +76,8 @@ class AttendanceBloc extends Bloc<AttendanceEvent, AttendanceState> {
           isLoading: false,
           attendanceData: calculatedData,
           calendarData: calendarData,
+          pendingClasses: _getMockPendingClasses(),
+          markedClasses: [], // None marked yet in mock
           yearlyTotalDays: yearlySummary['totalDays'] as int,
           yearlyPresentDays: yearlySummary['presentDays'] as int,
           yearlyOverallPercentage: yearlySummary['overallPercentage'] as double,
@@ -102,6 +106,11 @@ class AttendanceBloc extends Bloc<AttendanceEvent, AttendanceState> {
     emit(state.copyWith(selectedDate: event.date));
   }
 
+  /// Handle change tab event
+  void _onChangeTab(ChangeTabEvent event, Emitter<AttendanceState> emit) {
+    emit(state.copyWith(selectedTabIndex: event.index));
+  }
+
   /// Handle change month event
   void _onChangeMonth(ChangeMonthEvent event, Emitter<AttendanceState> emit) {
     emit(state.copyWith(currentMonth: event.month));
@@ -115,29 +124,34 @@ class AttendanceBloc extends Bloc<AttendanceEvent, AttendanceState> {
     Emitter<AttendanceState> emit,
   ) async {
     // TODO: Implement when API is ready
-    // emit(state.copyWith(isLoading: true));
-    // final result = await _attendanceRepository!.getAttendance(
-    //   studentId: 'current_student_id',
-    //   month: event.month,
-    //   year: event.month.year,
-    // );
-    // result.fold(
-    //   (failure) => emit(state.copyWith(
-    //     isLoading: false,
-    //     errorMessage: failure.message,
-    //   )),
-    //   (data) {
-    //     final calendarData = data.getCalendarData();
-    //     emit(state.copyWith(
-    //       isLoading: false,
-    //       attendanceData: data,
-    //       calendarData: calendarData,
-    //     ));
-    //   },
-    // );
   }
 
   /// Mock data for UI development - remove when API is ready
+  List<ClassSectionModel> _getMockPendingClasses() {
+    return [
+      const ClassSectionModel(
+        sectionName: 'Little Champs-Jal',
+        studentCount: 24,
+        category: 'Pre-Primary',
+      ),
+      const ClassSectionModel(
+        sectionName: 'Little Champs-Vayu',
+        studentCount: 22,
+        category: 'Pre-Primary',
+      ),
+      const ClassSectionModel(
+        sectionName: 'Little Champs-Agni',
+        studentCount: 20,
+        category: 'Pre-Primary',
+      ),
+      const ClassSectionModel(
+        sectionName: 'Little Champs-Prithvi',
+        studentCount: 25,
+        category: 'Pre-Primary',
+      ),
+    ];
+  }
+
   AttendanceModel _getMockAttendanceData() {
     final now = DateTime.now();
     final currentYear = now.year;

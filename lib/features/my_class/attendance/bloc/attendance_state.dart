@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 
 import '../../../../core/widgets/attendance_calendar.dart';
 import '../models/attendance_model.dart';
+import '../models/class_section_model.dart';
 
 /// Production-ready attendance state with proper equality
 class AttendanceState extends Equatable {
@@ -11,6 +12,11 @@ class AttendanceState extends Equatable {
   final DateTime currentMonth;
   final String? errorMessage;
   final Map<DateTime, AttendanceStatus> calendarData;
+
+  // New fields for redefined Attendance UI
+  final int selectedTabIndex;
+  final List<ClassSectionModel> pendingClasses;
+  final List<ClassSectionModel> markedClasses;
 
   // Yearly summary fields
   final int? yearlyTotalDays;
@@ -24,6 +30,9 @@ class AttendanceState extends Equatable {
     required this.currentMonth,
     this.errorMessage,
     this.calendarData = const {},
+    this.selectedTabIndex = 0,
+    this.pendingClasses = const [],
+    this.markedClasses = const [],
     this.yearlyTotalDays,
     this.yearlyPresentDays,
     this.yearlyOverallPercentage,
@@ -47,6 +56,9 @@ class AttendanceState extends Equatable {
     DateTime? currentMonth,
     String? errorMessage,
     Map<DateTime, AttendanceStatus>? calendarData,
+    int? selectedTabIndex,
+    List<ClassSectionModel>? pendingClasses,
+    List<ClassSectionModel>? markedClasses,
     int? yearlyTotalDays,
     int? yearlyPresentDays,
     double? yearlyOverallPercentage,
@@ -59,6 +71,9 @@ class AttendanceState extends Equatable {
       currentMonth: currentMonth ?? this.currentMonth,
       errorMessage: clearError ? null : (errorMessage ?? this.errorMessage),
       calendarData: calendarData ?? this.calendarData,
+      selectedTabIndex: selectedTabIndex ?? this.selectedTabIndex,
+      pendingClasses: pendingClasses ?? this.pendingClasses,
+      markedClasses: markedClasses ?? this.markedClasses,
       yearlyTotalDays: yearlyTotalDays ?? this.yearlyTotalDays,
       yearlyPresentDays: yearlyPresentDays ?? this.yearlyPresentDays,
       yearlyOverallPercentage:
@@ -74,6 +89,9 @@ class AttendanceState extends Equatable {
     currentMonth,
     errorMessage,
     calendarData,
+    selectedTabIndex,
+    pendingClasses,
+    markedClasses,
     yearlyTotalDays,
     yearlyPresentDays,
     yearlyOverallPercentage,
