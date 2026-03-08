@@ -63,5 +63,15 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: PtmRoute.page),
     AutoRoute(page: AchievementRoute.page),
     AutoRoute(page: ReportCardRoute.page),
+    AutoRoute(page: ParentPhotoRoute.page),
+    AutoRoute(page: EmployeePhotoRoute.page),
+    AutoRoute(page: StudentPhotoUploadRoute.page),
+    AutoRoute(page: NewAdmissionRoute.page),
+    AutoRoute(page: BirthdayRoute.page),
+    AutoRoute(page: CalendarRoute.page),
+    AutoRoute(page: StudentInfoRoute.page),
+    AutoRoute(page: ViewTransportAttendanceRoute.page),
+    AutoRoute(page: TransportAttendanceRoute.page),
+    AutoRoute(page: StudentNoticeRoute.page),
   ];
 }

@@ -186,13 +186,14 @@ class MenuSectionCard extends StatelessWidget {
       case 'class work':
         context.router.push(const ClassworkRoute());
         break;
-      case 'subjectwise homework':
+      case 'homework':
+      case 'subject wise homework':
         context.router.push(const HomeworkRoute());
         break;
       case 'gallery':
         context.router.push(const GalleryRoute());
         break;
-      case 'videos':
+      case 'video gallery':
         context.router.push(const VideosRoute());
         break;
       case 'remarks':
@@ -206,7 +207,7 @@ class MenuSectionCard extends StatelessWidget {
         break;
       case 'time table':
         context.router.push(const TimeTableRoute());
-      case 'concern':
+      case 'concerns':
       case 'academics -> concern':
         context.router.push(const ConcernRoute());
         break;
@@ -219,7 +220,7 @@ class MenuSectionCard extends StatelessWidget {
       case 'achievement':
         context.router.push(const AchievementRoute());
         break;
-      case 'holiday hw':
+      case 'holiday homework':
         context.router.push(const HolidayHwRoute());
         break;
 
@@ -254,7 +255,7 @@ class MenuSectionCard extends StatelessWidget {
         );
         break;
 
-      case 'gatepass':
+      case 'gatepass details':
         context.router.push(const GatePassRoute());
         break;
 
@@ -271,7 +272,7 @@ class MenuSectionCard extends StatelessWidget {
         context.router.push(const ExamTimeTableRoute());
         break;
 
-      case 'paper':
+      case 'exam paper':
         context.router.push(const PaperRoute());
         break;
 
@@ -289,6 +290,36 @@ class MenuSectionCard extends StatelessWidget {
         context.router.push(const SyllabusRoute());
         break;
 
+      case 'student notice':
+        context.router.push(const StudentNoticeRoute());
+        break;
+      case 'transport attendance':
+        context.router.push(const TransportAttendanceRoute());
+        break;
+      case 'view transport attendance':
+        context.router.push(const ViewTransportAttendanceRoute());
+        break;
+      case 'student info':
+        context.router.push(const StudentInfoRoute());
+        break;
+      case 'calendar':
+        context.router.push(const CalendarRoute());
+        break;
+      case 'birthday':
+        context.router.push(const BirthdayRoute());
+        break;
+      case 'new admission':
+        context.router.push(const NewAdmissionRoute());
+        break;
+      case 'student photo upload':
+        context.router.push(const StudentPhotoUploadRoute());
+        break;
+      case 'employee photo':
+        context.router.push(const EmployeePhotoRoute());
+        break;
+      case 'parent photo':
+        context.router.push(const ParentPhotoRoute());
+        break;
       default:
         // Handle other menu items
         break;
