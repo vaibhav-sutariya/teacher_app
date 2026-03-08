@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/helpers/extensions/responsive_extensions.dart';
-import '../models/meal_menu_model.dart';
+import '../../../../../core/helpers/extensions/responsive_extensions.dart';
+import '../../models/meal_menu_model.dart';
 import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class MealMenuCard extends StatelessWidget {
