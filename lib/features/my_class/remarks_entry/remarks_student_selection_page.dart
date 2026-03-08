@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../core/widgets/app_app_bar.dart';
 import '../../../core/widgets/app_loader.dart';
+import '../../../core/widgets/app_outlined_button.dart';
 import '../../../core/widgets/app_primary_button.dart';
 import 'bloc/remarks_entry_bloc.dart';
 import 'bloc/remarks_entry_event.dart';
@@ -339,34 +340,17 @@ class _RemarksStudentSelectionContent extends StatelessWidget {
                 child: Row(
                   children: [
                     Expanded(
-                      child: OutlinedButton(
+                      child: AppOutlinedButton(
                         onPressed: () {
                           context.router.maybePopTop();
                         },
-                        style: OutlinedButton.styleFrom(
-                          side: const BorderSide(
-                            color: Color(0xFF006D44),
-                            width: 1.5,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                              context.scale(12),
-                            ),
-                          ),
-                          padding: EdgeInsets.symmetric(
-                            vertical: context.scaleHeight(16),
-                          ),
-                          backgroundColor: Colors.white,
+                        text: 'CANCEL',
+                        color: const Color(0xFF006D44),
+                        side: const BorderSide(
+                          color: Color(0xFF006D44),
+                          width: 1.5,
                         ),
-                        child: Text(
-                          'CANCEL',
-                          style: TextStyle(
-                            fontSize: context.scaleFont(15),
-                            fontWeight: FontWeight.bold,
-                            color: const Color(0xFF006D44),
-                            letterSpacing: 1.0,
-                          ),
-                        ),
+                        borderRadius: context.scale(12),
                       ),
                     ),
                     SizedBox(width: context.scale(16)),
@@ -397,7 +381,6 @@ class _RemarksStudentSelectionContent extends StatelessWidget {
                                 text: 'SUBMIT',
                                 isLoading: isSubmitting,
                                 color: const Color(0xFF006D44),
-                                height: context.scaleHeight(52),
                                 borderRadius: context.scale(12),
                               );
                             },
