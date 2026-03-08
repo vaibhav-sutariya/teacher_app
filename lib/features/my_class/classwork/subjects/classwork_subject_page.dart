@@ -90,7 +90,7 @@ class _ClassworkSubjectContent extends StatelessWidget {
                   return ListView.separated(
                     itemCount: state.subjects.length,
                     separatorBuilder: (context, index) =>
-                        const Divider(height: 1, color: Color(0xFFF3F4F6)),
+                        Divider(height: 1, color: context.colors.divider),
                     itemBuilder: (context, index) {
                       final subjectName = state.subjects[index];
                       return ListTile(
