@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../../../../core/helpers/extensions/responsive_extensions.dart';
-import '../../../../cubit/theme_cubit.dart';
-import '../models/classwork_model.dart';
-import '../../../../core/widgets/app_capsule_button.dart';
+import '../../../../../core/helpers/extensions/responsive_extensions.dart';
+import '../../../../../cubit/theme_cubit.dart';
+import '../../models/classwork_model.dart';
+import '../../../../../core/widgets/app_capsule_button.dart';
 import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class ClassworkCard extends StatelessWidget {

@@ -184,7 +184,7 @@ class MenuSectionCard extends StatelessWidget {
         context.router.push(const AttendanceRoute());
         break;
       case 'class work':
-        context.router.push(const ClassworkRoute());
+        context.router.push(const ClassworkClassesRoute());
         break;
       case 'homework':
         context.router.push(const HomeworkRoute());
