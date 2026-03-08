@@ -1,14 +1,25 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../models/homework_model.dart';
-
-part 'homework_event.dart';
-part 'homework_state.dart';
+import 'homework_event.dart';
+import 'homework_state.dart';
 
 class HomeworkBloc extends Bloc<HomeworkEvent, HomeworkState> {
-  final List<HomeworkEntity> _allHomework = HomeworkEntity.getMockData();
+  final List<String> _allClasses = [
+    'LITTLE CHAMPS - JAL',
+    'LITTLE CHAMPS - VAYU',
+    'LITTLE CHAMPS - AAKASH',
+    'LITTLE CHAMPS - PRITHVI',
+    'LITTLE CHAMPS - TEJ',
+    'JR.KG - JAL',
+    'JR.KG - VAYU',
+    'JR.KG - AAKASH',
+    'JR.KG - PRITHVI',
+    'SR.KG - JAL',
+    'SR.KG - VAYU',
+    'SR.KG - AAKASH',
+    'SR.KG - PRITHVI',
+  ];
 
   HomeworkBloc() : super(HomeworkInitial()) {
     on<HomeworkLoaded>(_onLoaded);
@@ -21,15 +32,13 @@ class HomeworkBloc extends Bloc<HomeworkEvent, HomeworkState> {
   ) async {
     emit(HomeworkLoading());
     // Simulate API delay
-    await Future.delayed(const Duration(milliseconds: 800));
+    await Future.delayed(const Duration(milliseconds: 500));
 
     // Default to today
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);
 
-    final filteredList = _filterHomeworkByDate(today);
-
-    emit(HomeworkLoadedState(homeworkList: filteredList, selectedDate: today));
+    emit(HomeworkLoadedState(classes: _allClasses, selectedDate: today));
   }
 
   void _onDateChanged(HomeworkDateChanged event, Emitter<HomeworkState> emit) {
@@ -40,19 +49,7 @@ class HomeworkBloc extends Bloc<HomeworkEvent, HomeworkState> {
         return;
       }
 
-      final filteredList = _filterHomeworkByDate(event.date);
-      emit(
-        currentState.copyWith(
-          selectedDate: event.date,
-          homeworkList: filteredList,
-        ),
-      );
+      emit(currentState.copyWith(selectedDate: event.date));
     }
-  }
-
-  List<HomeworkEntity> _filterHomeworkByDate(DateTime date) {
-    return _allHomework.where((homework) {
-      return DateUtils.isSameDay(homework.date, date);
-    }).toList();
   }
 }

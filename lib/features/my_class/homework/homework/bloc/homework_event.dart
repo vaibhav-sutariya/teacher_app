@@ -1,4 +1,4 @@
-part of 'homework_bloc.dart';
+import 'package:equatable/equatable.dart';
 
 abstract class HomeworkEvent extends Equatable {
   const HomeworkEvent();

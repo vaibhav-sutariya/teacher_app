@@ -1,4 +1,4 @@
-part of 'homework_bloc.dart';
+import 'package:equatable/equatable.dart';
 
 abstract class HomeworkState extends Equatable {
   const HomeworkState();
@@ -12,26 +12,26 @@ class HomeworkInitial extends HomeworkState {}
 class HomeworkLoading extends HomeworkState {}
 
 class HomeworkLoadedState extends HomeworkState {
-  final List<HomeworkEntity> homeworkList;
+  final List<String> classes;
   final DateTime selectedDate;
 
   const HomeworkLoadedState({
-    required this.homeworkList,
+    required this.classes,
     required this.selectedDate,
   });
 
   HomeworkLoadedState copyWith({
-    List<HomeworkEntity>? homeworkList,
+    List<String>? classes,
     DateTime? selectedDate,
   }) {
     return HomeworkLoadedState(
-      homeworkList: homeworkList ?? this.homeworkList,
+      classes: classes ?? this.classes,
       selectedDate: selectedDate ?? this.selectedDate,
     );
   }
 
   @override
-  List<Object?> get props => [homeworkList, selectedDate];
+  List<Object?> get props => [classes, selectedDate];
 }
 
 class HomeworkError extends HomeworkState {
