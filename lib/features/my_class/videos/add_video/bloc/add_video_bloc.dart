@@ -1,10 +1,15 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import '../../videos_screen/repositories/video_repository.dart';
 import 'add_video_event.dart';
 import 'add_video_state.dart';
 
 class AddVideoBloc extends Bloc<AddVideoEvent, AddVideoState> {
-  AddVideoBloc() : super(const AddVideoState()) {
+  final VideoRepository _videoRepository;
+
+  AddVideoBloc({VideoRepository? videoRepository})
+    : _videoRepository = videoRepository ?? MockVideoRepository(),
+      super(const AddVideoState()) {
     on<TitleChanged>(_onTitleChanged);
     on<VideosSelected>(_onVideosSelected);
     on<VideoRemoved>(_onVideoRemoved);
@@ -54,8 +59,10 @@ class AddVideoBloc extends Bloc<AddVideoEvent, AddVideoState> {
     emit(state.copyWith(isLoading: true, error: null));
 
     try {
-      // Simulate API call
-      await Future.delayed(const Duration(seconds: 2));
+      await _videoRepository.createVideoAlbum(
+        title: state.title,
+        videoPaths: state.videos.map((vid) => vid.path).toList(),
+      );
 
       emit(state.copyWith(isLoading: false, isSuccess: true));
     } catch (e) {

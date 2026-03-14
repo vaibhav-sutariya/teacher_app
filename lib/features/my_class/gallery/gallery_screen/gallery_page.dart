@@ -50,10 +50,20 @@ class _GalleryPageContent extends StatelessWidget {
           return const _GalleryBody();
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => context.router.push(const AddGalleryRoute()),
-        backgroundColor: context.colors.primary,
-        child: const Icon(Icons.add, color: Colors.white),
+      floatingActionButton: Builder(
+        builder: (context) {
+          return FloatingActionButton(
+            onPressed: () => context.router.push(const AddGalleryRoute()).then((
+              _,
+            ) {
+              if (context.mounted) {
+                context.read<GalleryBloc>().add(const RefreshGalleryEvent());
+              }
+            }),
+            backgroundColor: context.colors.primary,
+            child: const Icon(Icons.add, color: Colors.white),
+          );
+        },
       ),
     );
   }

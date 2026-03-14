@@ -1,12 +1,17 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../models/concern_model.dart';
+import '../repositories/concern_repository.dart';
 
 part 'concern_event.dart';
 part 'concern_state.dart';
 
 class ConcernBloc extends Bloc<ConcernEvent, ConcernState> {
-  ConcernBloc() : super(ConcernInitial()) {
+  final ConcernRepository _concernRepository;
+
+  ConcernBloc({ConcernRepository? concernRepository})
+    : _concernRepository = concernRepository ?? MockConcernRepository(),
+      super(ConcernInitial()) {
     on<LoadConcerns>(_onLoadConcerns);
     on<FilterConcerns>(_onFilterConcerns);
   }
@@ -17,10 +22,8 @@ class ConcernBloc extends Bloc<ConcernEvent, ConcernState> {
   ) async {
     emit(ConcernLoading());
     try {
-      // Simulate network delay
-      await Future.delayed(const Duration(milliseconds: 800));
+      final allConcerns = await _concernRepository.getConcerns();
 
-      final allConcerns = ConcernModel.getMockData();
       // Initial filter for 'Open' (index 0)
       final filtered = allConcerns
           .where((c) => c.status == ConcernStatus.open)

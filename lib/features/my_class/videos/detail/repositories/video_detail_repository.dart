@@ -26,4 +26,15 @@ class VideoDetailRepository implements VideoRepository {
       pageSize: pageSize,
     );
   }
+
+  @override
+  Future<void> createVideoAlbum({
+    required String title,
+    required List<String> videoPaths,
+  }) {
+    return _mockRepository.createVideoAlbum(
+      title: title,
+      videoPaths: videoPaths,
+    );
+  }
 }

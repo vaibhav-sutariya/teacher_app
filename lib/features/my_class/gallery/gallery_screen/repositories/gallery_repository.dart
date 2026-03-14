@@ -15,12 +15,18 @@ abstract class GalleryRepository {
     required int page,
     required int pageSize,
   });
+
+  /// Create a new gallery album
+  Future<void> createGalleryAlbum({
+    required String title,
+    required List<String> imagePaths,
+  });
 }
 
 /// Mock implementation of GalleryRepository
 class MockGalleryRepository implements GalleryRepository {
   // All mock data - will be paginated
-  static final List<Map<String, dynamic>> _allMockData = [
+  static List<Map<String, dynamic>> _allMockData = [
     {
       'id': 'gallery_001',
       'title': 'Fireless Cooking',
@@ -323,5 +329,26 @@ class MockGalleryRepository implements GalleryRepository {
       startIndex,
       endIndex > allImages.length ? allImages.length : endIndex,
     );
+  }
+
+  @override
+  Future<void> createGalleryAlbum({
+    required String title,
+    required List<String> imagePaths,
+  }) async {
+    // Simulate API delay
+    await Future.delayed(const Duration(seconds: 1));
+
+    final newAlbum = {
+      'id': 'gallery_${DateTime.now().millisecondsSinceEpoch}',
+      'title': title,
+      'imageUrl':
+          'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=400', // Using mock image URL
+      'photoCount': imagePaths.length,
+      'createdAt': DateTime.now().toIso8601String().split('T').first,
+    };
+
+    // Add to the beginning of the list to show recently added first
+    _allMockData.insert(0, newAlbum);
   }
 }

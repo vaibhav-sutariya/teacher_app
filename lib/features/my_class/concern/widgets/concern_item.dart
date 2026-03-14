@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../models/concern_model.dart';
+import '../bloc/concern_bloc.dart';
 import 'package:teachers_app/cubit/theme_cubit.dart';
 
 class ConcernItem extends StatelessWidget {
@@ -13,8 +15,13 @@ class ConcernItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        context.router.push(ConcernDetailsRoute(concern: concern));
+      onTap: () async {
+        final result = await context.router.push(
+          ConcernDetailsRoute(concern: concern),
+        );
+        if (result == true && context.mounted) {
+          context.read<ConcernBloc>().add(LoadConcerns());
+        }
       },
       child: Container(
         margin: EdgeInsets.only(bottom: context.scale(16)),
@@ -36,19 +43,11 @@ class ConcernItem extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  concern.ticketNumber,
-                  style: TextStyle(
-                    fontSize: context.scaleFont(12),
-                    fontWeight: FontWeight.w600,
-                    color: context.colors.secondary, // Indigo based color
-                    letterSpacing: 0.5,
-                  ),
-                ),
+                _buildStudentInfo(context),
                 _buildStatusBadge(context),
               ],
             ),
-            SizedBox(height: context.scaleHeight(8)),
+            SizedBox(height: context.scaleHeight(16)),
             Text(
               concern.title,
               style: TextStyle(
@@ -60,18 +59,27 @@ class ConcernItem extends StatelessWidget {
             SizedBox(height: context.scaleHeight(8)),
             Row(
               children: [
+                Text(
+                  concern.ticketNumber,
+                  style: TextStyle(
+                    fontSize: context.scaleFont(12),
+                    fontWeight: FontWeight.w600,
+                    color: context.colors.secondary,
+                    letterSpacing: 0.5,
+                  ),
+                ),
+                SizedBox(width: context.scale(12)),
                 Icon(
                   _getDepartmentIcon(concern.department),
-                  size: context.scale(16),
-                  color: context.colors.secondary,
+                  size: context.scale(14),
+                  color: context.colors.textSecondary,
                 ),
-                SizedBox(width: context.scale(6)),
+                SizedBox(width: context.scale(4)),
                 Text(
                   concern.department,
                   style: TextStyle(
-                    fontSize: context.scaleFont(14),
-                    fontWeight: FontWeight.w500,
-                    color: context.colors.secondary,
+                    fontSize: context.scaleFont(12),
+                    color: context.colors.textSecondary,
                   ),
                 ),
               ],
@@ -99,16 +107,56 @@ class ConcernItem extends StatelessWidget {
                     ),
                   ],
                 ),
-                Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  size: context.scale(14),
-                  color: Colors.blue[300],
+                Text(
+                  'View Details',
+                  style: TextStyle(
+                    fontSize: context.scaleFont(12),
+                    fontWeight: FontWeight.w600,
+                    color: context.colors.primary,
+                  ),
                 ),
               ],
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildStudentInfo(BuildContext context) {
+    return Row(
+      children: [
+        CircleAvatar(
+          radius: context.scale(18),
+          backgroundImage: concern.studentAvatar != null
+              ? NetworkImage(concern.studentAvatar!)
+              : null,
+          child: concern.studentAvatar == null
+              ? Icon(Icons.person, size: context.scale(20))
+              : null,
+        ),
+        SizedBox(width: context.scale(10)),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              concern.studentName,
+              style: TextStyle(
+                fontSize: context.scaleFont(14),
+                fontWeight: FontWeight.w600,
+                color: context.colors.textPrimary,
+              ),
+            ),
+            Text(
+              concern.studentGrade,
+              style: TextStyle(
+                fontSize: context.scaleFont(12),
+                color: context.colors.textSecondary,
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 
@@ -149,7 +197,6 @@ class ConcernItem extends StatelessWidget {
   }
 
   String _formatDate(DateTime date) {
-    // Simple formatting, could use intl package if available
     final months = [
       'Jan',
       'Feb',

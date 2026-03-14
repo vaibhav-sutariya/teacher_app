@@ -26,4 +26,15 @@ class GalleryDetailRepository implements GalleryRepository {
       pageSize: pageSize,
     );
   }
+
+  @override
+  Future<void> createGalleryAlbum({
+    required String title,
+    required List<String> imagePaths,
+  }) {
+    return _mockRepository.createGalleryAlbum(
+      title: title,
+      imagePaths: imagePaths,
+    );
+  }
 }

@@ -1,10 +1,15 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import '../../gallery_screen/repositories/gallery_repository.dart';
 import 'add_gallery_event.dart';
 import 'add_gallery_state.dart';
 
 class AddGalleryBloc extends Bloc<AddGalleryEvent, AddGalleryState> {
-  AddGalleryBloc() : super(const AddGalleryState()) {
+  final GalleryRepository _galleryRepository;
+
+  AddGalleryBloc({GalleryRepository? galleryRepository})
+    : _galleryRepository = galleryRepository ?? MockGalleryRepository(),
+      super(const AddGalleryState()) {
     on<TitleChanged>(_onTitleChanged);
     on<ImagesSelected>(_onImagesSelected);
     on<ImageRemoved>(_onImageRemoved);
@@ -57,10 +62,10 @@ class AddGalleryBloc extends Bloc<AddGalleryEvent, AddGalleryState> {
     emit(state.copyWith(isLoading: true, error: null));
 
     try {
-      // Simulate API call
-      await Future.delayed(const Duration(seconds: 2));
-
-      // In a real app, we would upload images and send the title to the server
+      await _galleryRepository.createGalleryAlbum(
+        title: state.title,
+        imagePaths: state.images.map((img) => img.path).toList(),
+      );
 
       emit(state.copyWith(isLoading: false, isSuccess: true));
     } catch (e) {

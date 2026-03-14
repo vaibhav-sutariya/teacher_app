@@ -6,10 +6,9 @@ import '../../../../core/widgets/app_app_bar.dart';
 import '../../../../core/widgets/app_loader.dart';
 import '../../../../core/widgets/end_of_list_indicator.dart';
 import '../../../../core/widgets/app_tab_bar.dart';
-import '../../../../core/utils/show_snackbar.dart';
 import '../../../../cubit/theme_cubit.dart';
-import '../../../core/routes/app_router.gr.dart';
 import 'bloc/concern_bloc.dart';
+import 'models/concern_model.dart';
 import 'widgets/concern_item.dart';
 
 @RoutePage()
@@ -32,8 +31,8 @@ class ConcernPageContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.colors.surface100,
-      appBar: AppAppBar(
-        title: 'My Concerns',
+      appBar: const AppAppBar(
+        title: 'Student Concerns',
         profileImageUrl: 'https://i.pravatar.cc/300', // Placeholder
       ),
       body: Column(
@@ -58,61 +57,61 @@ class ConcernPageContent extends StatelessWidget {
           ),
 
           Expanded(
-            child: BlocBuilder<ConcernBloc, ConcernState>(
-              builder: (context, state) {
-                if (state is ConcernLoading) {
-                  return Center(child: AppLoader());
-                } else if (state is ConcernError) {
-                  return Center(
-                    child: Text(
-                      state.message,
-                      style: TextStyle(color: context.colors.error),
-                    ),
-                  );
-                } else if (state is ConcernLoaded) {
-                  if (state.filteredConcerns.isEmpty) {
-                    return _buildEmptyState(context);
-                  }
-
-                  return ListView.builder(
-                    padding: EdgeInsets.all(context.scale(16)),
-                    itemCount: state.filteredConcerns.length + 1,
-                    itemBuilder: (context, index) {
-                      if (index == state.filteredConcerns.length) {
-                        return const EndOfListIndicator();
-                      }
-                      return ConcernItem(
-                        concern: state.filteredConcerns[index],
-                      );
-                    },
-                  );
+            child: BlocSelector<ConcernBloc, ConcernState, bool>(
+              selector: (state) => state is ConcernLoading,
+              builder: (context, isLoading) {
+                if (isLoading) {
+                  return const Center(child: AppLoader());
                 }
-                return const SizedBox.shrink();
+                return const _ConcernList();
               },
             ),
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          final result = await context.router.push(const AddConcernRoute());
-          if (result == true && context.mounted) {
-            showFlushbar(
-              context: context,
-              message: 'Concern submitted successfully',
-              isError: false,
-            );
-          }
-        },
-        backgroundColor: context.colors.primary,
-        foregroundColor: Colors.white,
-        elevation: 4,
-        child: const Icon(Icons.add),
-      ),
     );
   }
+}
 
-  Widget _buildEmptyState(BuildContext context) {
+class _ConcernList extends StatelessWidget {
+  const _ConcernList();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocSelector<ConcernBloc, ConcernState, List<ConcernModel>>(
+      selector: (state) {
+        if (state is ConcernLoaded) return state.filteredConcerns;
+        return [];
+      },
+      builder: (context, filteredConcerns) {
+        if (filteredConcerns.isEmpty) {
+          return const _EmptyConcerns();
+        }
+
+        return ListView.builder(
+          padding: EdgeInsets.all(context.scale(16)),
+          itemCount: filteredConcerns.length + 1,
+          itemBuilder: (context, index) {
+            if (index == filteredConcerns.length) {
+              return const EndOfListIndicator();
+            }
+            final concern = filteredConcerns[index];
+            return RepaintBoundary(
+              key: ValueKey('concern_${concern.id}'),
+              child: ConcernItem(concern: concern),
+            );
+          },
+        );
+      },
+    );
+  }
+}
+
+class _EmptyConcerns extends StatelessWidget {
+  const _EmptyConcerns();
+
+  @override
+  Widget build(BuildContext context) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

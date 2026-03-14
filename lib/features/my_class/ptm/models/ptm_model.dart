@@ -1,4 +1,6 @@
-class PtmModel {
+import 'package:equatable/equatable.dart';
+
+class PtmModel extends Equatable {
   final String id;
   final String title;
   final String date;
@@ -16,6 +18,17 @@ class PtmModel {
     required this.teacherName,
     required this.location,
   });
+
+  @override
+  List<Object?> get props => [
+    id,
+    title,
+    date,
+    time,
+    description,
+    teacherName,
+    location,
+  ];
 
   static List<PtmModel> getMockData() {
     return const [

@@ -15,12 +15,18 @@ abstract class VideoRepository {
     required int page,
     required int pageSize,
   });
+
+  /// Create a new video album
+  Future<void> createVideoAlbum({
+    required String title,
+    required List<String> videoPaths,
+  });
 }
 
 /// Mock implementation of VideoRepository
 class MockVideoRepository implements VideoRepository {
   // All mock data - will be paginated
-  static final List<Map<String, dynamic>> _allMockData = [
+  static List<Map<String, dynamic>> _allMockData = [
     {
       'id': 'video_001',
       'title': 'Annual Day Performance',
@@ -334,5 +340,26 @@ class MockVideoRepository implements VideoRepository {
       startIndex,
       endIndex > allVideos.length ? allVideos.length : endIndex,
     );
+  }
+
+  @override
+  Future<void> createVideoAlbum({
+    required String title,
+    required List<String> videoPaths,
+  }) async {
+    // Simulate API delay
+    await Future.delayed(const Duration(seconds: 1));
+
+    final newAlbum = {
+      'id': 'video_${DateTime.now().millisecondsSinceEpoch}',
+      'title': title,
+      'thumbnailUrl':
+          'https://images.unsplash.com/photo-1511578314322-379afb476865?w=400', // Mock thumbnail
+      'videoCount': videoPaths.length,
+      'createdAt': DateTime.now().toIso8601String().split('T').first,
+    };
+
+    // Add to the beginning of the list
+    _allMockData.insert(0, newAlbum);
   }
 }

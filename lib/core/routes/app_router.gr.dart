@@ -49,8 +49,6 @@ import 'package:teachers_app/features/my_class/classwork/classwork/classwork_cla
     as _i14;
 import 'package:teachers_app/features/my_class/classwork/subjects/classwork_subject_page.dart'
     as _i16;
-import 'package:teachers_app/features/my_class/concern/add_concern/add_concern_page.dart'
-    as _i3;
 import 'package:teachers_app/features/my_class/concern/concern_details/concern_details_page.dart'
     as _i17;
 import 'package:teachers_app/features/my_class/concern/concern_page.dart'
@@ -62,7 +60,7 @@ import 'package:teachers_app/features/my_class/employee_photo/employee_photo_pag
 import 'package:teachers_app/features/my_class/exam_time_table/ui/exam_time_table_page.dart'
     as _i21;
 import 'package:teachers_app/features/my_class/gallery/add_gallery/add_gallery_page.dart'
-    as _i4;
+    as _i3;
 import 'package:teachers_app/features/my_class/gallery/gallery_details_screen/gallery_detail_page.dart'
     as _i23;
 import 'package:teachers_app/features/my_class/gallery/gallery_screen/gallery_page.dart'
@@ -82,7 +80,7 @@ import 'package:teachers_app/features/my_class/homework/add_homework/homework_en
 import 'package:teachers_app/features/my_class/homework/homework/homework_page.dart'
     as _i30;
 import 'package:teachers_app/features/my_class/leave/add_leave/add_leave_page.dart'
-    as _i5;
+    as _i4;
 import 'package:teachers_app/features/my_class/leave/leave_detail_screen/leave_detail_page.dart'
     as _i31;
 import 'package:teachers_app/features/my_class/leave/leave_screen/leave_page.dart'
@@ -98,6 +96,8 @@ import 'package:teachers_app/features/my_class/new_admission/new_admission_page.
 import 'package:teachers_app/features/my_class/paper/paper_page.dart' as _i41;
 import 'package:teachers_app/features/my_class/parent_photo/parent_photo_page.dart'
     as _i42;
+import 'package:teachers_app/features/my_class/ptm/add_ptm/add_ptm_page.dart'
+    as _i5;
 import 'package:teachers_app/features/my_class/ptm/ptm_page.dart' as _i47;
 import 'package:teachers_app/features/my_class/remarks/remark_details_screen/remark_detail_page.dart'
     as _i48;
@@ -195,23 +195,7 @@ class AchievementRoute extends _i72.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i3.AddConcernPage]
-class AddConcernRoute extends _i72.PageRouteInfo<void> {
-  const AddConcernRoute({List<_i72.PageRouteInfo>? children})
-    : super(AddConcernRoute.name, initialChildren: children);
-
-  static const String name = 'AddConcernRoute';
-
-  static _i72.PageInfo page = _i72.PageInfo(
-    name,
-    builder: (data) {
-      return const _i3.AddConcernPage();
-    },
-  );
-}
-
-/// generated route for
-/// [_i4.AddGalleryPage]
+/// [_i3.AddGalleryPage]
 class AddGalleryRoute extends _i72.PageRouteInfo<void> {
   const AddGalleryRoute({List<_i72.PageRouteInfo>? children})
     : super(AddGalleryRoute.name, initialChildren: children);
@@ -221,13 +205,13 @@ class AddGalleryRoute extends _i72.PageRouteInfo<void> {
   static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i4.AddGalleryPage();
+      return const _i3.AddGalleryPage();
     },
   );
 }
 
 /// generated route for
-/// [_i5.AddLeavePage]
+/// [_i4.AddLeavePage]
 class AddLeaveRoute extends _i72.PageRouteInfo<void> {
   const AddLeaveRoute({List<_i72.PageRouteInfo>? children})
     : super(AddLeaveRoute.name, initialChildren: children);
@@ -237,7 +221,23 @@ class AddLeaveRoute extends _i72.PageRouteInfo<void> {
   static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i5.AddLeavePage();
+      return const _i4.AddLeavePage();
+    },
+  );
+}
+
+/// generated route for
+/// [_i5.AddPtmPage]
+class AddPtmRoute extends _i72.PageRouteInfo<void> {
+  const AddPtmRoute({List<_i72.PageRouteInfo>? children})
+    : super(AddPtmRoute.name, initialChildren: children);
+
+  static const String name = 'AddPtmRoute';
+
+  static _i72.PageInfo page = _i72.PageInfo(
+    name,
+    builder: (data) {
+      return const _i5.AddPtmPage();
     },
   );
 }
