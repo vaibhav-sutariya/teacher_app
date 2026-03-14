@@ -50,6 +50,11 @@ class _VideosPageContent extends StatelessWidget {
           return const _VideosBody();
         },
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => context.router.push(const AddVideoRoute()),
+        backgroundColor: context.colors.primary,
+        child: const Icon(Icons.add, color: Colors.white),
+      ),
     );
   }
 }

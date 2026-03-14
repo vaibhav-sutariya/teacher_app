@@ -9,164 +9,168 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i70;
-import 'package:collection/collection.dart' as _i75;
-import 'package:flutter/material.dart' as _i71;
-import 'package:teachers_app/core/widgets/app_web_view_page.dart' as _i5;
+import 'package:auto_route/auto_route.dart' as _i72;
+import 'package:collection/collection.dart' as _i77;
+import 'package:flutter/material.dart' as _i73;
+import 'package:teachers_app/core/widgets/app_web_view_page.dart' as _i7;
 import 'package:teachers_app/core/widgets/scroll_aware_bottom_bar_controller.dart'
-    as _i76;
+    as _i78;
 import 'package:teachers_app/features/auth/screens/forgot_password/ui/forgot_password_page.dart'
-    as _i20;
+    as _i22;
 import 'package:teachers_app/features/auth/screens/forgot_password/ui/new_password_page.dart'
-    as _i36;
+    as _i38;
 import 'package:teachers_app/features/auth/screens/forgot_password/ui/password_success_page.dart'
-    as _i42;
+    as _i44;
 import 'package:teachers_app/features/auth/screens/login/ui/login_page.dart'
-    as _i31;
+    as _i33;
 import 'package:teachers_app/features/auth/screens/password_login/ui/password_login_page.dart'
-    as _i41;
+    as _i43;
 import 'package:teachers_app/features/auth/screens/verification/ui/verification_page.dart'
-    as _i65;
-import 'package:teachers_app/features/dashboard/dashboard_page.dart' as _i17;
-import 'package:teachers_app/features/home/home_page.dart' as _i26;
+    as _i67;
+import 'package:teachers_app/features/dashboard/dashboard_page.dart' as _i19;
+import 'package:teachers_app/features/home/home_page.dart' as _i28;
 import 'package:teachers_app/features/my_class/achievement/achievement_page.dart'
     as _i2;
 import 'package:teachers_app/features/my_class/assignment/assignment_page.dart'
-    as _i6;
-import 'package:teachers_app/features/my_class/attendance/attendance_page.dart'
     as _i8;
-import 'package:teachers_app/features/my_class/attendance_entry/attendance_entry_page.dart'
-    as _i7;
-import 'package:teachers_app/features/my_class/birthday/birthday_page.dart'
-    as _i9;
-import 'package:teachers_app/features/my_class/calendar/calendar_page.dart'
+import 'package:teachers_app/features/my_class/attendance/attendance_page.dart'
     as _i10;
-import 'package:teachers_app/features/my_class/class_test/class_test_page.dart'
+import 'package:teachers_app/features/my_class/attendance_entry/attendance_entry_page.dart'
+    as _i9;
+import 'package:teachers_app/features/my_class/birthday/birthday_page.dart'
     as _i11;
-import 'package:teachers_app/features/my_class/classwork/add_classwork/classwork_entry_page.dart'
-    as _i13;
-import 'package:teachers_app/features/my_class/classwork/classwork/classwork_classes_page.dart'
+import 'package:teachers_app/features/my_class/calendar/calendar_page.dart'
     as _i12;
-import 'package:teachers_app/features/my_class/classwork/subjects/classwork_subject_page.dart'
+import 'package:teachers_app/features/my_class/class_test/class_test_page.dart'
+    as _i13;
+import 'package:teachers_app/features/my_class/classwork/add_classwork/classwork_entry_page.dart'
+    as _i15;
+import 'package:teachers_app/features/my_class/classwork/classwork/classwork_classes_page.dart'
     as _i14;
+import 'package:teachers_app/features/my_class/classwork/subjects/classwork_subject_page.dart'
+    as _i16;
 import 'package:teachers_app/features/my_class/concern/add_concern/add_concern_page.dart'
     as _i3;
 import 'package:teachers_app/features/my_class/concern/concern_details/concern_details_page.dart'
-    as _i15;
+    as _i17;
 import 'package:teachers_app/features/my_class/concern/concern_page.dart'
-    as _i16;
-import 'package:teachers_app/features/my_class/concern/models/concern_model.dart'
-    as _i72;
-import 'package:teachers_app/features/my_class/employee_photo/employee_photo_page.dart'
     as _i18;
-import 'package:teachers_app/features/my_class/exam_time_table/ui/exam_time_table_page.dart'
-    as _i19;
-import 'package:teachers_app/features/my_class/gallery/gallery_details_screen/gallery_detail_page.dart'
-    as _i21;
-import 'package:teachers_app/features/my_class/gallery/gallery_screen/gallery_page.dart'
-    as _i23;
-import 'package:teachers_app/features/my_class/gallery/gallery_screen/models/gallery_image_model.dart'
+import 'package:teachers_app/features/my_class/concern/models/concern_model.dart'
     as _i74;
-import 'package:teachers_app/features/my_class/gallery/gallery_screen/models/gallery_model.dart'
-    as _i73;
-import 'package:teachers_app/features/my_class/gallery/viewer_screen/gallery_image_viewer_page.dart'
-    as _i22;
-import 'package:teachers_app/features/my_class/gate_pass/gate_pass_page.dart'
-    as _i24;
-import 'package:teachers_app/features/my_class/holiday_hw/holiday_hw_page.dart'
-    as _i25;
-import 'package:teachers_app/features/my_class/homework/add_homework/homework_entry_page.dart'
-    as _i27;
-import 'package:teachers_app/features/my_class/homework/homework/homework_page.dart'
-    as _i28;
-import 'package:teachers_app/features/my_class/leave/add_leave/add_leave_page.dart'
+import 'package:teachers_app/features/my_class/employee_photo/employee_photo_page.dart'
+    as _i20;
+import 'package:teachers_app/features/my_class/exam_time_table/ui/exam_time_table_page.dart'
+    as _i21;
+import 'package:teachers_app/features/my_class/gallery/add_gallery/add_gallery_page.dart'
     as _i4;
-import 'package:teachers_app/features/my_class/leave/leave_detail_screen/leave_detail_page.dart'
+import 'package:teachers_app/features/my_class/gallery/gallery_details_screen/gallery_detail_page.dart'
+    as _i23;
+import 'package:teachers_app/features/my_class/gallery/gallery_screen/gallery_page.dart'
+    as _i25;
+import 'package:teachers_app/features/my_class/gallery/gallery_screen/models/gallery_image_model.dart'
+    as _i76;
+import 'package:teachers_app/features/my_class/gallery/gallery_screen/models/gallery_model.dart'
+    as _i75;
+import 'package:teachers_app/features/my_class/gallery/viewer_screen/gallery_image_viewer_page.dart'
+    as _i24;
+import 'package:teachers_app/features/my_class/gate_pass/gate_pass_page.dart'
+    as _i26;
+import 'package:teachers_app/features/my_class/holiday_hw/holiday_hw_page.dart'
+    as _i27;
+import 'package:teachers_app/features/my_class/homework/add_homework/homework_entry_page.dart'
     as _i29;
-import 'package:teachers_app/features/my_class/leave/leave_screen/leave_page.dart'
+import 'package:teachers_app/features/my_class/homework/homework/homework_page.dart'
     as _i30;
-import 'package:teachers_app/features/my_class/meal_menu/details/meal_menu_details_page.dart'
-    as _i33;
-import 'package:teachers_app/features/my_class/meal_menu/mean_menu_screen/meal_menu_classes_page.dart'
+import 'package:teachers_app/features/my_class/leave/add_leave/add_leave_page.dart'
+    as _i5;
+import 'package:teachers_app/features/my_class/leave/leave_detail_screen/leave_detail_page.dart'
+    as _i31;
+import 'package:teachers_app/features/my_class/leave/leave_screen/leave_page.dart'
     as _i32;
-import 'package:teachers_app/features/my_class/my_class_screen/my_class_page.dart'
-    as _i34;
-import 'package:teachers_app/features/my_class/new_admission/new_admission_page.dart'
+import 'package:teachers_app/features/my_class/meal_menu/details/meal_menu_details_page.dart'
     as _i35;
-import 'package:teachers_app/features/my_class/paper/paper_page.dart' as _i39;
-import 'package:teachers_app/features/my_class/parent_photo/parent_photo_page.dart'
-    as _i40;
-import 'package:teachers_app/features/my_class/ptm/ptm_page.dart' as _i45;
-import 'package:teachers_app/features/my_class/remarks/remark_details_screen/remark_detail_page.dart'
-    as _i46;
-import 'package:teachers_app/features/my_class/remarks/remarks_screen/models/remark_model.dart'
-    as _i77;
-import 'package:teachers_app/features/my_class/remarks/remarks_screen/remarks_page.dart'
-    as _i48;
-import 'package:teachers_app/features/my_class/remarks_entry/bloc/remarks_entry_bloc.dart'
-    as _i78;
-import 'package:teachers_app/features/my_class/remarks_entry/remarks_entry_page.dart'
-    as _i47;
-import 'package:teachers_app/features/my_class/remarks_entry/remarks_student_selection_page.dart'
-    as _i49;
-import 'package:teachers_app/features/my_class/report_card/report_card_page.dart'
-    as _i50;
-import 'package:teachers_app/features/my_class/student_info/student_info_page.dart'
-    as _i55;
-import 'package:teachers_app/features/my_class/student_notice/student_notice_page.dart'
-    as _i56;
-import 'package:teachers_app/features/my_class/student_photo_upload/student_photo_upload_page.dart'
-    as _i57;
-import 'package:teachers_app/features/my_class/subject_wise_homework/add_homework/subject_wise_homework_entry_page.dart'
-    as _i59;
-import 'package:teachers_app/features/my_class/subject_wise_homework/subject_wise_homework/subject_wise_homework_page.dart'
-    as _i60;
-import 'package:teachers_app/features/my_class/subject_wise_homework/subjects/subject_wise_homework_subject_page.dart'
-    as _i61;
-import 'package:teachers_app/features/my_class/syllabus/syllabus_page.dart'
-    as _i62;
-import 'package:teachers_app/features/my_class/time_table/ui/time_table_page.dart'
-    as _i63;
-import 'package:teachers_app/features/my_class/transport_attendance/transport_attendance_page.dart'
-    as _i64;
-import 'package:teachers_app/features/my_class/videos/detail/video_detail_page.dart'
-    as _i66;
-import 'package:teachers_app/features/my_class/videos/videos_screen/models/video_item_model.dart'
-    as _i80;
-import 'package:teachers_app/features/my_class/videos/videos_screen/models/video_model.dart'
-    as _i79;
-import 'package:teachers_app/features/my_class/videos/videos_screen/videos_page.dart'
-    as _i68;
-import 'package:teachers_app/features/my_class/videos/viewer_screen/video_viewer_page.dart'
-    as _i67;
-import 'package:teachers_app/features/my_class/view_transport_attendance/view_transport_attendance_page.dart'
-    as _i69;
-import 'package:teachers_app/features/notifications/notification_page.dart'
+import 'package:teachers_app/features/my_class/meal_menu/mean_menu_screen/meal_menu_classes_page.dart'
+    as _i34;
+import 'package:teachers_app/features/my_class/my_class_screen/my_class_page.dart'
+    as _i36;
+import 'package:teachers_app/features/my_class/new_admission/new_admission_page.dart'
     as _i37;
-import 'package:teachers_app/features/onboarding/onboarding_page.dart' as _i38;
-import 'package:teachers_app/features/pdf_viewer/pdf_viewer_page.dart' as _i43;
+import 'package:teachers_app/features/my_class/paper/paper_page.dart' as _i41;
+import 'package:teachers_app/features/my_class/parent_photo/parent_photo_page.dart'
+    as _i42;
+import 'package:teachers_app/features/my_class/ptm/ptm_page.dart' as _i47;
+import 'package:teachers_app/features/my_class/remarks/remark_details_screen/remark_detail_page.dart'
+    as _i48;
+import 'package:teachers_app/features/my_class/remarks/remarks_screen/models/remark_model.dart'
+    as _i79;
+import 'package:teachers_app/features/my_class/remarks/remarks_screen/remarks_page.dart'
+    as _i50;
+import 'package:teachers_app/features/my_class/remarks_entry/bloc/remarks_entry_bloc.dart'
+    as _i80;
+import 'package:teachers_app/features/my_class/remarks_entry/remarks_entry_page.dart'
+    as _i49;
+import 'package:teachers_app/features/my_class/remarks_entry/remarks_student_selection_page.dart'
+    as _i51;
+import 'package:teachers_app/features/my_class/report_card/report_card_page.dart'
+    as _i52;
+import 'package:teachers_app/features/my_class/student_info/student_info_page.dart'
+    as _i57;
+import 'package:teachers_app/features/my_class/student_notice/student_notice_page.dart'
+    as _i58;
+import 'package:teachers_app/features/my_class/student_photo_upload/student_photo_upload_page.dart'
+    as _i59;
+import 'package:teachers_app/features/my_class/subject_wise_homework/add_homework/subject_wise_homework_entry_page.dart'
+    as _i61;
+import 'package:teachers_app/features/my_class/subject_wise_homework/subject_wise_homework/subject_wise_homework_page.dart'
+    as _i62;
+import 'package:teachers_app/features/my_class/subject_wise_homework/subjects/subject_wise_homework_subject_page.dart'
+    as _i63;
+import 'package:teachers_app/features/my_class/syllabus/syllabus_page.dart'
+    as _i64;
+import 'package:teachers_app/features/my_class/time_table/ui/time_table_page.dart'
+    as _i65;
+import 'package:teachers_app/features/my_class/transport_attendance/transport_attendance_page.dart'
+    as _i66;
+import 'package:teachers_app/features/my_class/videos/add_video/add_video_page.dart'
+    as _i6;
+import 'package:teachers_app/features/my_class/videos/detail/video_detail_page.dart'
+    as _i68;
+import 'package:teachers_app/features/my_class/videos/videos_screen/models/video_item_model.dart'
+    as _i82;
+import 'package:teachers_app/features/my_class/videos/videos_screen/models/video_model.dart'
+    as _i81;
+import 'package:teachers_app/features/my_class/videos/videos_screen/videos_page.dart'
+    as _i70;
+import 'package:teachers_app/features/my_class/videos/viewer_screen/video_viewer_page.dart'
+    as _i69;
+import 'package:teachers_app/features/my_class/view_transport_attendance/view_transport_attendance_page.dart'
+    as _i71;
+import 'package:teachers_app/features/notifications/notification_page.dart'
+    as _i39;
+import 'package:teachers_app/features/onboarding/onboarding_page.dart' as _i40;
+import 'package:teachers_app/features/pdf_viewer/pdf_viewer_page.dart' as _i45;
 import 'package:teachers_app/features/profile/about_app/about_app_page.dart'
     as _i1;
 import 'package:teachers_app/features/profile/profile_page/profile_page.dart'
-    as _i44;
+    as _i46;
 import 'package:teachers_app/features/profile/reset_password/reset_password_page.dart'
-    as _i51;
+    as _i53;
 import 'package:teachers_app/features/profile/student_profile/student_profile_page.dart'
-    as _i58;
-import 'package:teachers_app/features/school/school_page.dart' as _i52;
-import 'package:teachers_app/features/service/service_page.dart' as _i53;
+    as _i60;
+import 'package:teachers_app/features/school/school_page.dart' as _i54;
+import 'package:teachers_app/features/service/service_page.dart' as _i55;
 import 'package:teachers_app/features/splash/screens/ui/splash_screen.dart'
-    as _i54;
+    as _i56;
 
 /// generated route for
 /// [_i1.AboutAppPage]
-class AboutAppRoute extends _i70.PageRouteInfo<void> {
-  const AboutAppRoute({List<_i70.PageRouteInfo>? children})
+class AboutAppRoute extends _i72.PageRouteInfo<void> {
+  const AboutAppRoute({List<_i72.PageRouteInfo>? children})
     : super(AboutAppRoute.name, initialChildren: children);
 
   static const String name = 'AboutAppRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
       return const _i1.AboutAppPage();
@@ -176,13 +180,13 @@ class AboutAppRoute extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.AchievementPage]
-class AchievementRoute extends _i70.PageRouteInfo<void> {
-  const AchievementRoute({List<_i70.PageRouteInfo>? children})
+class AchievementRoute extends _i72.PageRouteInfo<void> {
+  const AchievementRoute({List<_i72.PageRouteInfo>? children})
     : super(AchievementRoute.name, initialChildren: children);
 
   static const String name = 'AchievementRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
       return const _i2.AchievementPage();
@@ -192,13 +196,13 @@ class AchievementRoute extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.AddConcernPage]
-class AddConcernRoute extends _i70.PageRouteInfo<void> {
-  const AddConcernRoute({List<_i70.PageRouteInfo>? children})
+class AddConcernRoute extends _i72.PageRouteInfo<void> {
+  const AddConcernRoute({List<_i72.PageRouteInfo>? children})
     : super(AddConcernRoute.name, initialChildren: children);
 
   static const String name = 'AddConcernRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
       return const _i3.AddConcernPage();
@@ -207,29 +211,61 @@ class AddConcernRoute extends _i70.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i4.AddLeavePage]
-class AddLeaveRoute extends _i70.PageRouteInfo<void> {
-  const AddLeaveRoute({List<_i70.PageRouteInfo>? children})
-    : super(AddLeaveRoute.name, initialChildren: children);
+/// [_i4.AddGalleryPage]
+class AddGalleryRoute extends _i72.PageRouteInfo<void> {
+  const AddGalleryRoute({List<_i72.PageRouteInfo>? children})
+    : super(AddGalleryRoute.name, initialChildren: children);
 
-  static const String name = 'AddLeaveRoute';
+  static const String name = 'AddGalleryRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i4.AddLeavePage();
+      return const _i4.AddGalleryPage();
     },
   );
 }
 
 /// generated route for
-/// [_i5.AppWebViewPage]
-class AppWebViewRoute extends _i70.PageRouteInfo<AppWebViewRouteArgs> {
+/// [_i5.AddLeavePage]
+class AddLeaveRoute extends _i72.PageRouteInfo<void> {
+  const AddLeaveRoute({List<_i72.PageRouteInfo>? children})
+    : super(AddLeaveRoute.name, initialChildren: children);
+
+  static const String name = 'AddLeaveRoute';
+
+  static _i72.PageInfo page = _i72.PageInfo(
+    name,
+    builder: (data) {
+      return const _i5.AddLeavePage();
+    },
+  );
+}
+
+/// generated route for
+/// [_i6.AddVideoPage]
+class AddVideoRoute extends _i72.PageRouteInfo<void> {
+  const AddVideoRoute({List<_i72.PageRouteInfo>? children})
+    : super(AddVideoRoute.name, initialChildren: children);
+
+  static const String name = 'AddVideoRoute';
+
+  static _i72.PageInfo page = _i72.PageInfo(
+    name,
+    builder: (data) {
+      return const _i6.AddVideoPage();
+    },
+  );
+}
+
+/// generated route for
+/// [_i7.AppWebViewPage]
+class AppWebViewRoute extends _i72.PageRouteInfo<AppWebViewRouteArgs> {
   AppWebViewRoute({
-    _i71.Key? key,
+    _i73.Key? key,
     required String url,
     required String title,
-    List<_i70.PageRouteInfo>? children,
+    List<_i72.PageRouteInfo>? children,
   }) : super(
          AppWebViewRoute.name,
          args: AppWebViewRouteArgs(key: key, url: url, title: title),
@@ -238,11 +274,11 @@ class AppWebViewRoute extends _i70.PageRouteInfo<AppWebViewRouteArgs> {
 
   static const String name = 'AppWebViewRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<AppWebViewRouteArgs>();
-      return _i5.AppWebViewPage(
+      return _i7.AppWebViewPage(
         key: args.key,
         url: args.url,
         title: args.title,
@@ -254,7 +290,7 @@ class AppWebViewRoute extends _i70.PageRouteInfo<AppWebViewRouteArgs> {
 class AppWebViewRouteArgs {
   const AppWebViewRouteArgs({this.key, required this.url, required this.title});
 
-  final _i71.Key? key;
+  final _i73.Key? key;
 
   final String url;
 
@@ -277,30 +313,30 @@ class AppWebViewRouteArgs {
 }
 
 /// generated route for
-/// [_i6.AssignmentPage]
-class AssignmentRoute extends _i70.PageRouteInfo<void> {
-  const AssignmentRoute({List<_i70.PageRouteInfo>? children})
+/// [_i8.AssignmentPage]
+class AssignmentRoute extends _i72.PageRouteInfo<void> {
+  const AssignmentRoute({List<_i72.PageRouteInfo>? children})
     : super(AssignmentRoute.name, initialChildren: children);
 
   static const String name = 'AssignmentRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i6.AssignmentPage();
+      return const _i8.AssignmentPage();
     },
   );
 }
 
 /// generated route for
-/// [_i7.AttendanceEntryPage]
+/// [_i9.AttendanceEntryPage]
 class AttendanceEntryRoute
-    extends _i70.PageRouteInfo<AttendanceEntryRouteArgs> {
+    extends _i72.PageRouteInfo<AttendanceEntryRouteArgs> {
   AttendanceEntryRoute({
-    _i71.Key? key,
+    _i73.Key? key,
     required String className,
     required DateTime date,
-    List<_i70.PageRouteInfo>? children,
+    List<_i72.PageRouteInfo>? children,
   }) : super(
          AttendanceEntryRoute.name,
          args: AttendanceEntryRouteArgs(
@@ -313,11 +349,11 @@ class AttendanceEntryRoute
 
   static const String name = 'AttendanceEntryRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<AttendanceEntryRouteArgs>();
-      return _i7.AttendanceEntryPage(
+      return _i9.AttendanceEntryPage(
         key: args.key,
         className: args.className,
         date: args.date,
@@ -333,7 +369,7 @@ class AttendanceEntryRouteArgs {
     required this.date,
   });
 
-  final _i71.Key? key;
+  final _i73.Key? key;
 
   final String className;
 
@@ -358,94 +394,94 @@ class AttendanceEntryRouteArgs {
 }
 
 /// generated route for
-/// [_i8.AttendancePage]
-class AttendanceRoute extends _i70.PageRouteInfo<void> {
-  const AttendanceRoute({List<_i70.PageRouteInfo>? children})
+/// [_i10.AttendancePage]
+class AttendanceRoute extends _i72.PageRouteInfo<void> {
+  const AttendanceRoute({List<_i72.PageRouteInfo>? children})
     : super(AttendanceRoute.name, initialChildren: children);
 
   static const String name = 'AttendanceRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i8.AttendancePage();
+      return const _i10.AttendancePage();
     },
   );
 }
 
 /// generated route for
-/// [_i9.BirthdayPage]
-class BirthdayRoute extends _i70.PageRouteInfo<void> {
-  const BirthdayRoute({List<_i70.PageRouteInfo>? children})
+/// [_i11.BirthdayPage]
+class BirthdayRoute extends _i72.PageRouteInfo<void> {
+  const BirthdayRoute({List<_i72.PageRouteInfo>? children})
     : super(BirthdayRoute.name, initialChildren: children);
 
   static const String name = 'BirthdayRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i9.BirthdayPage();
+      return const _i11.BirthdayPage();
     },
   );
 }
 
 /// generated route for
-/// [_i10.CalendarPage]
-class CalendarRoute extends _i70.PageRouteInfo<void> {
-  const CalendarRoute({List<_i70.PageRouteInfo>? children})
+/// [_i12.CalendarPage]
+class CalendarRoute extends _i72.PageRouteInfo<void> {
+  const CalendarRoute({List<_i72.PageRouteInfo>? children})
     : super(CalendarRoute.name, initialChildren: children);
 
   static const String name = 'CalendarRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i10.CalendarPage();
+      return const _i12.CalendarPage();
     },
   );
 }
 
 /// generated route for
-/// [_i11.ClassTestPage]
-class ClassTestRoute extends _i70.PageRouteInfo<void> {
-  const ClassTestRoute({List<_i70.PageRouteInfo>? children})
+/// [_i13.ClassTestPage]
+class ClassTestRoute extends _i72.PageRouteInfo<void> {
+  const ClassTestRoute({List<_i72.PageRouteInfo>? children})
     : super(ClassTestRoute.name, initialChildren: children);
 
   static const String name = 'ClassTestRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i11.ClassTestPage();
+      return const _i13.ClassTestPage();
     },
   );
 }
 
 /// generated route for
-/// [_i12.ClassworkClassesPage]
-class ClassworkClassesRoute extends _i70.PageRouteInfo<void> {
-  const ClassworkClassesRoute({List<_i70.PageRouteInfo>? children})
+/// [_i14.ClassworkClassesPage]
+class ClassworkClassesRoute extends _i72.PageRouteInfo<void> {
+  const ClassworkClassesRoute({List<_i72.PageRouteInfo>? children})
     : super(ClassworkClassesRoute.name, initialChildren: children);
 
   static const String name = 'ClassworkClassesRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i12.ClassworkClassesPage();
+      return const _i14.ClassworkClassesPage();
     },
   );
 }
 
 /// generated route for
-/// [_i13.ClassworkEntryPage]
-class ClassworkEntryRoute extends _i70.PageRouteInfo<ClassworkEntryRouteArgs> {
+/// [_i15.ClassworkEntryPage]
+class ClassworkEntryRoute extends _i72.PageRouteInfo<ClassworkEntryRouteArgs> {
   ClassworkEntryRoute({
-    _i71.Key? key,
+    _i73.Key? key,
     required String className,
     required DateTime selectedDate,
     required String subjectName,
-    List<_i70.PageRouteInfo>? children,
+    List<_i72.PageRouteInfo>? children,
   }) : super(
          ClassworkEntryRoute.name,
          args: ClassworkEntryRouteArgs(
@@ -459,11 +495,11 @@ class ClassworkEntryRoute extends _i70.PageRouteInfo<ClassworkEntryRouteArgs> {
 
   static const String name = 'ClassworkEntryRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<ClassworkEntryRouteArgs>();
-      return _i13.ClassworkEntryPage(
+      return _i15.ClassworkEntryPage(
         key: args.key,
         className: args.className,
         selectedDate: args.selectedDate,
@@ -481,7 +517,7 @@ class ClassworkEntryRouteArgs {
     required this.subjectName,
   });
 
-  final _i71.Key? key;
+  final _i73.Key? key;
 
   final String className;
 
@@ -513,14 +549,14 @@ class ClassworkEntryRouteArgs {
 }
 
 /// generated route for
-/// [_i14.ClassworkSubjectPage]
+/// [_i16.ClassworkSubjectPage]
 class ClassworkSubjectRoute
-    extends _i70.PageRouteInfo<ClassworkSubjectRouteArgs> {
+    extends _i72.PageRouteInfo<ClassworkSubjectRouteArgs> {
   ClassworkSubjectRoute({
-    _i71.Key? key,
+    _i73.Key? key,
     required String className,
     required DateTime selectedDate,
-    List<_i70.PageRouteInfo>? children,
+    List<_i72.PageRouteInfo>? children,
   }) : super(
          ClassworkSubjectRoute.name,
          args: ClassworkSubjectRouteArgs(
@@ -533,11 +569,11 @@ class ClassworkSubjectRoute
 
   static const String name = 'ClassworkSubjectRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<ClassworkSubjectRouteArgs>();
-      return _i14.ClassworkSubjectPage(
+      return _i16.ClassworkSubjectPage(
         key: args.key,
         className: args.className,
         selectedDate: args.selectedDate,
@@ -553,7 +589,7 @@ class ClassworkSubjectRouteArgs {
     required this.selectedDate,
   });
 
-  final _i71.Key? key;
+  final _i73.Key? key;
 
   final String className;
 
@@ -578,12 +614,12 @@ class ClassworkSubjectRouteArgs {
 }
 
 /// generated route for
-/// [_i15.ConcernDetailsPage]
-class ConcernDetailsRoute extends _i70.PageRouteInfo<ConcernDetailsRouteArgs> {
+/// [_i17.ConcernDetailsPage]
+class ConcernDetailsRoute extends _i72.PageRouteInfo<ConcernDetailsRouteArgs> {
   ConcernDetailsRoute({
-    _i71.Key? key,
-    required _i72.ConcernModel concern,
-    List<_i70.PageRouteInfo>? children,
+    _i73.Key? key,
+    required _i74.ConcernModel concern,
+    List<_i72.PageRouteInfo>? children,
   }) : super(
          ConcernDetailsRoute.name,
          args: ConcernDetailsRouteArgs(key: key, concern: concern),
@@ -592,11 +628,11 @@ class ConcernDetailsRoute extends _i70.PageRouteInfo<ConcernDetailsRouteArgs> {
 
   static const String name = 'ConcernDetailsRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<ConcernDetailsRouteArgs>();
-      return _i15.ConcernDetailsPage(key: args.key, concern: args.concern);
+      return _i17.ConcernDetailsPage(key: args.key, concern: args.concern);
     },
   );
 }
@@ -604,9 +640,9 @@ class ConcernDetailsRoute extends _i70.PageRouteInfo<ConcernDetailsRouteArgs> {
 class ConcernDetailsRouteArgs {
   const ConcernDetailsRouteArgs({this.key, required this.concern});
 
-  final _i71.Key? key;
+  final _i73.Key? key;
 
-  final _i72.ConcernModel concern;
+  final _i74.ConcernModel concern;
 
   @override
   String toString() {
@@ -625,92 +661,92 @@ class ConcernDetailsRouteArgs {
 }
 
 /// generated route for
-/// [_i16.ConcernPage]
-class ConcernRoute extends _i70.PageRouteInfo<void> {
-  const ConcernRoute({List<_i70.PageRouteInfo>? children})
+/// [_i18.ConcernPage]
+class ConcernRoute extends _i72.PageRouteInfo<void> {
+  const ConcernRoute({List<_i72.PageRouteInfo>? children})
     : super(ConcernRoute.name, initialChildren: children);
 
   static const String name = 'ConcernRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i16.ConcernPage();
+      return const _i18.ConcernPage();
     },
   );
 }
 
 /// generated route for
-/// [_i17.DashboardPage]
-class DashboardRoute extends _i70.PageRouteInfo<void> {
-  const DashboardRoute({List<_i70.PageRouteInfo>? children})
+/// [_i19.DashboardPage]
+class DashboardRoute extends _i72.PageRouteInfo<void> {
+  const DashboardRoute({List<_i72.PageRouteInfo>? children})
     : super(DashboardRoute.name, initialChildren: children);
 
   static const String name = 'DashboardRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i17.DashboardPage();
+      return const _i19.DashboardPage();
     },
   );
 }
 
 /// generated route for
-/// [_i18.EmployeePhotoPage]
-class EmployeePhotoRoute extends _i70.PageRouteInfo<void> {
-  const EmployeePhotoRoute({List<_i70.PageRouteInfo>? children})
+/// [_i20.EmployeePhotoPage]
+class EmployeePhotoRoute extends _i72.PageRouteInfo<void> {
+  const EmployeePhotoRoute({List<_i72.PageRouteInfo>? children})
     : super(EmployeePhotoRoute.name, initialChildren: children);
 
   static const String name = 'EmployeePhotoRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i18.EmployeePhotoPage();
+      return const _i20.EmployeePhotoPage();
     },
   );
 }
 
 /// generated route for
-/// [_i19.ExamTimeTablePage]
-class ExamTimeTableRoute extends _i70.PageRouteInfo<void> {
-  const ExamTimeTableRoute({List<_i70.PageRouteInfo>? children})
+/// [_i21.ExamTimeTablePage]
+class ExamTimeTableRoute extends _i72.PageRouteInfo<void> {
+  const ExamTimeTableRoute({List<_i72.PageRouteInfo>? children})
     : super(ExamTimeTableRoute.name, initialChildren: children);
 
   static const String name = 'ExamTimeTableRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return _i70.WrappedRoute(child: const _i19.ExamTimeTablePage());
+      return _i72.WrappedRoute(child: const _i21.ExamTimeTablePage());
     },
   );
 }
 
 /// generated route for
-/// [_i20.ForgotPasswordPage]
-class ForgotPasswordRoute extends _i70.PageRouteInfo<void> {
-  const ForgotPasswordRoute({List<_i70.PageRouteInfo>? children})
+/// [_i22.ForgotPasswordPage]
+class ForgotPasswordRoute extends _i72.PageRouteInfo<void> {
+  const ForgotPasswordRoute({List<_i72.PageRouteInfo>? children})
     : super(ForgotPasswordRoute.name, initialChildren: children);
 
   static const String name = 'ForgotPasswordRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i20.ForgotPasswordPage();
+      return const _i22.ForgotPasswordPage();
     },
   );
 }
 
 /// generated route for
-/// [_i21.GalleryDetailPage]
-class GalleryDetailRoute extends _i70.PageRouteInfo<GalleryDetailRouteArgs> {
+/// [_i23.GalleryDetailPage]
+class GalleryDetailRoute extends _i72.PageRouteInfo<GalleryDetailRouteArgs> {
   GalleryDetailRoute({
-    _i71.Key? key,
-    required _i73.GalleryModel gallery,
-    List<_i70.PageRouteInfo>? children,
+    _i73.Key? key,
+    required _i75.GalleryModel gallery,
+    List<_i72.PageRouteInfo>? children,
   }) : super(
          GalleryDetailRoute.name,
          args: GalleryDetailRouteArgs(key: key, gallery: gallery),
@@ -719,11 +755,11 @@ class GalleryDetailRoute extends _i70.PageRouteInfo<GalleryDetailRouteArgs> {
 
   static const String name = 'GalleryDetailRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<GalleryDetailRouteArgs>();
-      return _i21.GalleryDetailPage(key: args.key, gallery: args.gallery);
+      return _i23.GalleryDetailPage(key: args.key, gallery: args.gallery);
     },
   );
 }
@@ -731,9 +767,9 @@ class GalleryDetailRoute extends _i70.PageRouteInfo<GalleryDetailRouteArgs> {
 class GalleryDetailRouteArgs {
   const GalleryDetailRouteArgs({this.key, required this.gallery});
 
-  final _i71.Key? key;
+  final _i73.Key? key;
 
-  final _i73.GalleryModel gallery;
+  final _i75.GalleryModel gallery;
 
   @override
   String toString() {
@@ -752,15 +788,15 @@ class GalleryDetailRouteArgs {
 }
 
 /// generated route for
-/// [_i22.GalleryImageViewerPage]
+/// [_i24.GalleryImageViewerPage]
 class GalleryImageViewerRoute
-    extends _i70.PageRouteInfo<GalleryImageViewerRouteArgs> {
+    extends _i72.PageRouteInfo<GalleryImageViewerRouteArgs> {
   GalleryImageViewerRoute({
-    _i71.Key? key,
+    _i73.Key? key,
     required String galleryId,
     required int initialIndex,
-    List<_i74.GalleryImageModel>? images,
-    List<_i70.PageRouteInfo>? children,
+    List<_i76.GalleryImageModel>? images,
+    List<_i72.PageRouteInfo>? children,
   }) : super(
          GalleryImageViewerRoute.name,
          args: GalleryImageViewerRouteArgs(
@@ -774,11 +810,11 @@ class GalleryImageViewerRoute
 
   static const String name = 'GalleryImageViewerRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<GalleryImageViewerRouteArgs>();
-      return _i22.GalleryImageViewerPage(
+      return _i24.GalleryImageViewerPage(
         key: args.key,
         galleryId: args.galleryId,
         initialIndex: args.initialIndex,
@@ -796,13 +832,13 @@ class GalleryImageViewerRouteArgs {
     this.images,
   });
 
-  final _i71.Key? key;
+  final _i73.Key? key;
 
   final String galleryId;
 
   final int initialIndex;
 
-  final List<_i74.GalleryImageModel>? images;
+  final List<_i76.GalleryImageModel>? images;
 
   @override
   String toString() {
@@ -816,7 +852,7 @@ class GalleryImageViewerRouteArgs {
     return key == other.key &&
         galleryId == other.galleryId &&
         initialIndex == other.initialIndex &&
-        const _i75.ListEquality<_i74.GalleryImageModel>().equals(
+        const _i77.ListEquality<_i76.GalleryImageModel>().equals(
           images,
           other.images,
         );
@@ -827,81 +863,81 @@ class GalleryImageViewerRouteArgs {
       key.hashCode ^
       galleryId.hashCode ^
       initialIndex.hashCode ^
-      const _i75.ListEquality<_i74.GalleryImageModel>().hash(images);
+      const _i77.ListEquality<_i76.GalleryImageModel>().hash(images);
 }
 
 /// generated route for
-/// [_i23.GalleryPage]
-class GalleryRoute extends _i70.PageRouteInfo<void> {
-  const GalleryRoute({List<_i70.PageRouteInfo>? children})
+/// [_i25.GalleryPage]
+class GalleryRoute extends _i72.PageRouteInfo<void> {
+  const GalleryRoute({List<_i72.PageRouteInfo>? children})
     : super(GalleryRoute.name, initialChildren: children);
 
   static const String name = 'GalleryRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i23.GalleryPage();
+      return const _i25.GalleryPage();
     },
   );
 }
 
 /// generated route for
-/// [_i24.GatePassPage]
-class GatePassRoute extends _i70.PageRouteInfo<void> {
-  const GatePassRoute({List<_i70.PageRouteInfo>? children})
+/// [_i26.GatePassPage]
+class GatePassRoute extends _i72.PageRouteInfo<void> {
+  const GatePassRoute({List<_i72.PageRouteInfo>? children})
     : super(GatePassRoute.name, initialChildren: children);
 
   static const String name = 'GatePassRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i24.GatePassPage();
+      return const _i26.GatePassPage();
     },
   );
 }
 
 /// generated route for
-/// [_i25.HolidayHwPage]
-class HolidayHwRoute extends _i70.PageRouteInfo<void> {
-  const HolidayHwRoute({List<_i70.PageRouteInfo>? children})
+/// [_i27.HolidayHwPage]
+class HolidayHwRoute extends _i72.PageRouteInfo<void> {
+  const HolidayHwRoute({List<_i72.PageRouteInfo>? children})
     : super(HolidayHwRoute.name, initialChildren: children);
 
   static const String name = 'HolidayHwRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i25.HolidayHwPage();
+      return const _i27.HolidayHwPage();
     },
   );
 }
 
 /// generated route for
-/// [_i26.HomePage]
-class HomeRoute extends _i70.PageRouteInfo<void> {
-  const HomeRoute({List<_i70.PageRouteInfo>? children})
+/// [_i28.HomePage]
+class HomeRoute extends _i72.PageRouteInfo<void> {
+  const HomeRoute({List<_i72.PageRouteInfo>? children})
     : super(HomeRoute.name, initialChildren: children);
 
   static const String name = 'HomeRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i26.HomePage();
+      return const _i28.HomePage();
     },
   );
 }
 
 /// generated route for
-/// [_i27.HomeworkEntryPage]
-class HomeworkEntryRoute extends _i70.PageRouteInfo<HomeworkEntryRouteArgs> {
+/// [_i29.HomeworkEntryPage]
+class HomeworkEntryRoute extends _i72.PageRouteInfo<HomeworkEntryRouteArgs> {
   HomeworkEntryRoute({
-    _i71.Key? key,
+    _i73.Key? key,
     required String className,
     required DateTime selectedDate,
-    List<_i70.PageRouteInfo>? children,
+    List<_i72.PageRouteInfo>? children,
   }) : super(
          HomeworkEntryRoute.name,
          args: HomeworkEntryRouteArgs(
@@ -914,11 +950,11 @@ class HomeworkEntryRoute extends _i70.PageRouteInfo<HomeworkEntryRouteArgs> {
 
   static const String name = 'HomeworkEntryRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<HomeworkEntryRouteArgs>();
-      return _i27.HomeworkEntryPage(
+      return _i29.HomeworkEntryPage(
         key: args.key,
         className: args.className,
         selectedDate: args.selectedDate,
@@ -934,7 +970,7 @@ class HomeworkEntryRouteArgs {
     required this.selectedDate,
   });
 
-  final _i71.Key? key;
+  final _i73.Key? key;
 
   final String className;
 
@@ -959,28 +995,28 @@ class HomeworkEntryRouteArgs {
 }
 
 /// generated route for
-/// [_i28.HomeworkPage]
-class HomeworkRoute extends _i70.PageRouteInfo<void> {
-  const HomeworkRoute({List<_i70.PageRouteInfo>? children})
+/// [_i30.HomeworkPage]
+class HomeworkRoute extends _i72.PageRouteInfo<void> {
+  const HomeworkRoute({List<_i72.PageRouteInfo>? children})
     : super(HomeworkRoute.name, initialChildren: children);
 
   static const String name = 'HomeworkRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i28.HomeworkPage();
+      return const _i30.HomeworkPage();
     },
   );
 }
 
 /// generated route for
-/// [_i29.LeaveDetailPage]
-class LeaveDetailRoute extends _i70.PageRouteInfo<LeaveDetailRouteArgs> {
+/// [_i31.LeaveDetailPage]
+class LeaveDetailRoute extends _i72.PageRouteInfo<LeaveDetailRouteArgs> {
   LeaveDetailRoute({
-    _i71.Key? key,
+    _i73.Key? key,
     String? leaveId,
-    List<_i70.PageRouteInfo>? children,
+    List<_i72.PageRouteInfo>? children,
   }) : super(
          LeaveDetailRoute.name,
          args: LeaveDetailRouteArgs(key: key, leaveId: leaveId),
@@ -990,14 +1026,14 @@ class LeaveDetailRoute extends _i70.PageRouteInfo<LeaveDetailRouteArgs> {
 
   static const String name = 'LeaveDetailRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
       final pathParams = data.inheritedPathParams;
       final args = data.argsAs<LeaveDetailRouteArgs>(
         orElse: () => LeaveDetailRouteArgs(leaveId: pathParams.optString('id')),
       );
-      return _i29.LeaveDetailPage(key: args.key, leaveId: args.leaveId);
+      return _i31.LeaveDetailPage(key: args.key, leaveId: args.leaveId);
     },
   );
 }
@@ -1005,7 +1041,7 @@ class LeaveDetailRoute extends _i70.PageRouteInfo<LeaveDetailRouteArgs> {
 class LeaveDetailRouteArgs {
   const LeaveDetailRouteArgs({this.key, this.leaveId});
 
-  final _i71.Key? key;
+  final _i73.Key? key;
 
   final String? leaveId;
 
@@ -1026,76 +1062,76 @@ class LeaveDetailRouteArgs {
 }
 
 /// generated route for
-/// [_i30.LeavePage]
-class LeaveRoute extends _i70.PageRouteInfo<void> {
-  const LeaveRoute({List<_i70.PageRouteInfo>? children})
+/// [_i32.LeavePage]
+class LeaveRoute extends _i72.PageRouteInfo<void> {
+  const LeaveRoute({List<_i72.PageRouteInfo>? children})
     : super(LeaveRoute.name, initialChildren: children);
 
   static const String name = 'LeaveRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i30.LeavePage();
+      return const _i32.LeavePage();
     },
   );
 }
 
 /// generated route for
-/// [_i31.LoginPage]
-class LoginRoute extends _i70.PageRouteInfo<void> {
-  const LoginRoute({List<_i70.PageRouteInfo>? children})
+/// [_i33.LoginPage]
+class LoginRoute extends _i72.PageRouteInfo<void> {
+  const LoginRoute({List<_i72.PageRouteInfo>? children})
     : super(LoginRoute.name, initialChildren: children);
 
   static const String name = 'LoginRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i31.LoginPage();
+      return const _i33.LoginPage();
     },
   );
 }
 
 /// generated route for
-/// [_i32.MealMenuClassesPage]
-class MealMenuClassesRoute extends _i70.PageRouteInfo<void> {
-  const MealMenuClassesRoute({List<_i70.PageRouteInfo>? children})
+/// [_i34.MealMenuClassesPage]
+class MealMenuClassesRoute extends _i72.PageRouteInfo<void> {
+  const MealMenuClassesRoute({List<_i72.PageRouteInfo>? children})
     : super(MealMenuClassesRoute.name, initialChildren: children);
 
   static const String name = 'MealMenuClassesRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i32.MealMenuClassesPage();
+      return const _i34.MealMenuClassesPage();
     },
   );
 }
 
 /// generated route for
-/// [_i33.MealMenuDetailsPage]
-class MealMenuDetailsRoute extends _i70.PageRouteInfo<void> {
-  const MealMenuDetailsRoute({List<_i70.PageRouteInfo>? children})
+/// [_i35.MealMenuDetailsPage]
+class MealMenuDetailsRoute extends _i72.PageRouteInfo<void> {
+  const MealMenuDetailsRoute({List<_i72.PageRouteInfo>? children})
     : super(MealMenuDetailsRoute.name, initialChildren: children);
 
   static const String name = 'MealMenuDetailsRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i33.MealMenuDetailsPage();
+      return const _i35.MealMenuDetailsPage();
     },
   );
 }
 
 /// generated route for
-/// [_i34.MyClassPage]
-class MyClassRoute extends _i70.PageRouteInfo<MyClassRouteArgs> {
+/// [_i36.MyClassPage]
+class MyClassRoute extends _i72.PageRouteInfo<MyClassRouteArgs> {
   MyClassRoute({
-    _i71.Key? key,
-    _i76.ScrollAwareBottomBarController? bottomBarController,
-    List<_i70.PageRouteInfo>? children,
+    _i73.Key? key,
+    _i78.ScrollAwareBottomBarController? bottomBarController,
+    List<_i72.PageRouteInfo>? children,
   }) : super(
          MyClassRoute.name,
          args: MyClassRouteArgs(
@@ -1107,13 +1143,13 @@ class MyClassRoute extends _i70.PageRouteInfo<MyClassRouteArgs> {
 
   static const String name = 'MyClassRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<MyClassRouteArgs>(
         orElse: () => const MyClassRouteArgs(),
       );
-      return _i34.MyClassPage(
+      return _i36.MyClassPage(
         key: args.key,
         bottomBarController: args.bottomBarController,
       );
@@ -1124,9 +1160,9 @@ class MyClassRoute extends _i70.PageRouteInfo<MyClassRouteArgs> {
 class MyClassRouteArgs {
   const MyClassRouteArgs({this.key, this.bottomBarController});
 
-  final _i71.Key? key;
+  final _i73.Key? key;
 
-  final _i76.ScrollAwareBottomBarController? bottomBarController;
+  final _i78.ScrollAwareBottomBarController? bottomBarController;
 
   @override
   String toString() {
@@ -1145,108 +1181,108 @@ class MyClassRouteArgs {
 }
 
 /// generated route for
-/// [_i35.NewAdmissionPage]
-class NewAdmissionRoute extends _i70.PageRouteInfo<void> {
-  const NewAdmissionRoute({List<_i70.PageRouteInfo>? children})
+/// [_i37.NewAdmissionPage]
+class NewAdmissionRoute extends _i72.PageRouteInfo<void> {
+  const NewAdmissionRoute({List<_i72.PageRouteInfo>? children})
     : super(NewAdmissionRoute.name, initialChildren: children);
 
   static const String name = 'NewAdmissionRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i35.NewAdmissionPage();
+      return const _i37.NewAdmissionPage();
     },
   );
 }
 
 /// generated route for
-/// [_i36.NewPasswordPage]
-class NewPasswordRoute extends _i70.PageRouteInfo<void> {
-  const NewPasswordRoute({List<_i70.PageRouteInfo>? children})
+/// [_i38.NewPasswordPage]
+class NewPasswordRoute extends _i72.PageRouteInfo<void> {
+  const NewPasswordRoute({List<_i72.PageRouteInfo>? children})
     : super(NewPasswordRoute.name, initialChildren: children);
 
   static const String name = 'NewPasswordRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i36.NewPasswordPage();
+      return const _i38.NewPasswordPage();
     },
   );
 }
 
 /// generated route for
-/// [_i37.NotificationPage]
-class NotificationRoute extends _i70.PageRouteInfo<void> {
-  const NotificationRoute({List<_i70.PageRouteInfo>? children})
+/// [_i39.NotificationPage]
+class NotificationRoute extends _i72.PageRouteInfo<void> {
+  const NotificationRoute({List<_i72.PageRouteInfo>? children})
     : super(NotificationRoute.name, initialChildren: children);
 
   static const String name = 'NotificationRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i37.NotificationPage();
+      return const _i39.NotificationPage();
     },
   );
 }
 
 /// generated route for
-/// [_i38.OnboardingPage]
-class OnboardingRoute extends _i70.PageRouteInfo<void> {
-  const OnboardingRoute({List<_i70.PageRouteInfo>? children})
+/// [_i40.OnboardingPage]
+class OnboardingRoute extends _i72.PageRouteInfo<void> {
+  const OnboardingRoute({List<_i72.PageRouteInfo>? children})
     : super(OnboardingRoute.name, initialChildren: children);
 
   static const String name = 'OnboardingRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i38.OnboardingPage();
+      return const _i40.OnboardingPage();
     },
   );
 }
 
 /// generated route for
-/// [_i39.PaperPage]
-class PaperRoute extends _i70.PageRouteInfo<void> {
-  const PaperRoute({List<_i70.PageRouteInfo>? children})
+/// [_i41.PaperPage]
+class PaperRoute extends _i72.PageRouteInfo<void> {
+  const PaperRoute({List<_i72.PageRouteInfo>? children})
     : super(PaperRoute.name, initialChildren: children);
 
   static const String name = 'PaperRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i39.PaperPage();
+      return const _i41.PaperPage();
     },
   );
 }
 
 /// generated route for
-/// [_i40.ParentPhotoPage]
-class ParentPhotoRoute extends _i70.PageRouteInfo<void> {
-  const ParentPhotoRoute({List<_i70.PageRouteInfo>? children})
+/// [_i42.ParentPhotoPage]
+class ParentPhotoRoute extends _i72.PageRouteInfo<void> {
+  const ParentPhotoRoute({List<_i72.PageRouteInfo>? children})
     : super(ParentPhotoRoute.name, initialChildren: children);
 
   static const String name = 'ParentPhotoRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i40.ParentPhotoPage();
+      return const _i42.ParentPhotoPage();
     },
   );
 }
 
 /// generated route for
-/// [_i41.PasswordLoginPage]
-class PasswordLoginRoute extends _i70.PageRouteInfo<PasswordLoginRouteArgs> {
+/// [_i43.PasswordLoginPage]
+class PasswordLoginRoute extends _i72.PageRouteInfo<PasswordLoginRouteArgs> {
   PasswordLoginRoute({
-    _i71.Key? key,
+    _i73.Key? key,
     required String email,
-    List<_i70.PageRouteInfo>? children,
+    List<_i72.PageRouteInfo>? children,
   }) : super(
          PasswordLoginRoute.name,
          args: PasswordLoginRouteArgs(key: key, email: email),
@@ -1255,11 +1291,11 @@ class PasswordLoginRoute extends _i70.PageRouteInfo<PasswordLoginRouteArgs> {
 
   static const String name = 'PasswordLoginRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<PasswordLoginRouteArgs>();
-      return _i41.PasswordLoginPage(key: args.key, email: args.email);
+      return _i43.PasswordLoginPage(key: args.key, email: args.email);
     },
   );
 }
@@ -1267,7 +1303,7 @@ class PasswordLoginRoute extends _i70.PageRouteInfo<PasswordLoginRouteArgs> {
 class PasswordLoginRouteArgs {
   const PasswordLoginRouteArgs({this.key, required this.email});
 
-  final _i71.Key? key;
+  final _i73.Key? key;
 
   final String email;
 
@@ -1288,29 +1324,29 @@ class PasswordLoginRouteArgs {
 }
 
 /// generated route for
-/// [_i42.PasswordSuccessPage]
-class PasswordSuccessRoute extends _i70.PageRouteInfo<void> {
-  const PasswordSuccessRoute({List<_i70.PageRouteInfo>? children})
+/// [_i44.PasswordSuccessPage]
+class PasswordSuccessRoute extends _i72.PageRouteInfo<void> {
+  const PasswordSuccessRoute({List<_i72.PageRouteInfo>? children})
     : super(PasswordSuccessRoute.name, initialChildren: children);
 
   static const String name = 'PasswordSuccessRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i42.PasswordSuccessPage();
+      return const _i44.PasswordSuccessPage();
     },
   );
 }
 
 /// generated route for
-/// [_i43.PdfViewerPage]
-class PdfViewerRoute extends _i70.PageRouteInfo<PdfViewerRouteArgs> {
+/// [_i45.PdfViewerPage]
+class PdfViewerRoute extends _i72.PageRouteInfo<PdfViewerRouteArgs> {
   PdfViewerRoute({
-    _i71.Key? key,
+    _i73.Key? key,
     required String pdfUrl,
     required String title,
-    List<_i70.PageRouteInfo>? children,
+    List<_i72.PageRouteInfo>? children,
   }) : super(
          PdfViewerRoute.name,
          args: PdfViewerRouteArgs(key: key, pdfUrl: pdfUrl, title: title),
@@ -1319,11 +1355,11 @@ class PdfViewerRoute extends _i70.PageRouteInfo<PdfViewerRouteArgs> {
 
   static const String name = 'PdfViewerRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<PdfViewerRouteArgs>();
-      return _i43.PdfViewerPage(
+      return _i45.PdfViewerPage(
         key: args.key,
         pdfUrl: args.pdfUrl,
         title: args.title,
@@ -1339,7 +1375,7 @@ class PdfViewerRouteArgs {
     required this.title,
   });
 
-  final _i71.Key? key;
+  final _i73.Key? key;
 
   final String pdfUrl;
 
@@ -1362,44 +1398,44 @@ class PdfViewerRouteArgs {
 }
 
 /// generated route for
-/// [_i44.ProfilePage]
-class ProfileRoute extends _i70.PageRouteInfo<void> {
-  const ProfileRoute({List<_i70.PageRouteInfo>? children})
+/// [_i46.ProfilePage]
+class ProfileRoute extends _i72.PageRouteInfo<void> {
+  const ProfileRoute({List<_i72.PageRouteInfo>? children})
     : super(ProfileRoute.name, initialChildren: children);
 
   static const String name = 'ProfileRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i44.ProfilePage();
+      return const _i46.ProfilePage();
     },
   );
 }
 
 /// generated route for
-/// [_i45.PtmPage]
-class PtmRoute extends _i70.PageRouteInfo<void> {
-  const PtmRoute({List<_i70.PageRouteInfo>? children})
+/// [_i47.PtmPage]
+class PtmRoute extends _i72.PageRouteInfo<void> {
+  const PtmRoute({List<_i72.PageRouteInfo>? children})
     : super(PtmRoute.name, initialChildren: children);
 
   static const String name = 'PtmRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i45.PtmPage();
+      return const _i47.PtmPage();
     },
   );
 }
 
 /// generated route for
-/// [_i46.RemarkDetailPage]
-class RemarkDetailRoute extends _i70.PageRouteInfo<RemarkDetailRouteArgs> {
+/// [_i48.RemarkDetailPage]
+class RemarkDetailRoute extends _i72.PageRouteInfo<RemarkDetailRouteArgs> {
   RemarkDetailRoute({
-    _i71.Key? key,
-    required _i77.RemarkModel remark,
-    List<_i70.PageRouteInfo>? children,
+    _i73.Key? key,
+    required _i79.RemarkModel remark,
+    List<_i72.PageRouteInfo>? children,
   }) : super(
          RemarkDetailRoute.name,
          args: RemarkDetailRouteArgs(key: key, remark: remark),
@@ -1408,11 +1444,11 @@ class RemarkDetailRoute extends _i70.PageRouteInfo<RemarkDetailRouteArgs> {
 
   static const String name = 'RemarkDetailRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<RemarkDetailRouteArgs>();
-      return _i46.RemarkDetailPage(key: args.key, remark: args.remark);
+      return _i48.RemarkDetailPage(key: args.key, remark: args.remark);
     },
   );
 }
@@ -1420,9 +1456,9 @@ class RemarkDetailRoute extends _i70.PageRouteInfo<RemarkDetailRouteArgs> {
 class RemarkDetailRouteArgs {
   const RemarkDetailRouteArgs({this.key, required this.remark});
 
-  final _i71.Key? key;
+  final _i73.Key? key;
 
-  final _i77.RemarkModel remark;
+  final _i79.RemarkModel remark;
 
   @override
   String toString() {
@@ -1441,47 +1477,47 @@ class RemarkDetailRouteArgs {
 }
 
 /// generated route for
-/// [_i47.RemarksEntryPage]
-class RemarksEntryRoute extends _i70.PageRouteInfo<void> {
-  const RemarksEntryRoute({List<_i70.PageRouteInfo>? children})
+/// [_i49.RemarksEntryPage]
+class RemarksEntryRoute extends _i72.PageRouteInfo<void> {
+  const RemarksEntryRoute({List<_i72.PageRouteInfo>? children})
     : super(RemarksEntryRoute.name, initialChildren: children);
 
   static const String name = 'RemarksEntryRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i47.RemarksEntryPage();
+      return const _i49.RemarksEntryPage();
     },
   );
 }
 
 /// generated route for
-/// [_i48.RemarksPage]
-class RemarksRoute extends _i70.PageRouteInfo<void> {
-  const RemarksRoute({List<_i70.PageRouteInfo>? children})
+/// [_i50.RemarksPage]
+class RemarksRoute extends _i72.PageRouteInfo<void> {
+  const RemarksRoute({List<_i72.PageRouteInfo>? children})
     : super(RemarksRoute.name, initialChildren: children);
 
   static const String name = 'RemarksRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i48.RemarksPage();
+      return const _i50.RemarksPage();
     },
   );
 }
 
 /// generated route for
-/// [_i49.RemarksStudentSelectionPage]
+/// [_i51.RemarksStudentSelectionPage]
 class RemarksStudentSelectionRoute
-    extends _i70.PageRouteInfo<RemarksStudentSelectionRouteArgs> {
+    extends _i72.PageRouteInfo<RemarksStudentSelectionRouteArgs> {
   RemarksStudentSelectionRoute({
-    _i71.Key? key,
+    _i73.Key? key,
     required String remarkCategory,
     required String remarkName,
-    required _i78.RemarksEntryBloc remarksEntryBloc,
-    List<_i70.PageRouteInfo>? children,
+    required _i80.RemarksEntryBloc remarksEntryBloc,
+    List<_i72.PageRouteInfo>? children,
   }) : super(
          RemarksStudentSelectionRoute.name,
          args: RemarksStudentSelectionRouteArgs(
@@ -1495,11 +1531,11 @@ class RemarksStudentSelectionRoute
 
   static const String name = 'RemarksStudentSelectionRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<RemarksStudentSelectionRouteArgs>();
-      return _i49.RemarksStudentSelectionPage(
+      return _i51.RemarksStudentSelectionPage(
         key: args.key,
         remarkCategory: args.remarkCategory,
         remarkName: args.remarkName,
@@ -1517,13 +1553,13 @@ class RemarksStudentSelectionRouteArgs {
     required this.remarksEntryBloc,
   });
 
-  final _i71.Key? key;
+  final _i73.Key? key;
 
   final String remarkCategory;
 
   final String remarkName;
 
-  final _i78.RemarksEntryBloc remarksEntryBloc;
+  final _i80.RemarksEntryBloc remarksEntryBloc;
 
   @override
   String toString() {
@@ -1549,159 +1585,159 @@ class RemarksStudentSelectionRouteArgs {
 }
 
 /// generated route for
-/// [_i50.ReportCardPage]
-class ReportCardRoute extends _i70.PageRouteInfo<void> {
-  const ReportCardRoute({List<_i70.PageRouteInfo>? children})
+/// [_i52.ReportCardPage]
+class ReportCardRoute extends _i72.PageRouteInfo<void> {
+  const ReportCardRoute({List<_i72.PageRouteInfo>? children})
     : super(ReportCardRoute.name, initialChildren: children);
 
   static const String name = 'ReportCardRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i50.ReportCardPage();
+      return const _i52.ReportCardPage();
     },
   );
 }
 
 /// generated route for
-/// [_i51.ResetPasswordPage]
-class ResetPasswordRoute extends _i70.PageRouteInfo<void> {
-  const ResetPasswordRoute({List<_i70.PageRouteInfo>? children})
+/// [_i53.ResetPasswordPage]
+class ResetPasswordRoute extends _i72.PageRouteInfo<void> {
+  const ResetPasswordRoute({List<_i72.PageRouteInfo>? children})
     : super(ResetPasswordRoute.name, initialChildren: children);
 
   static const String name = 'ResetPasswordRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i51.ResetPasswordPage();
+      return const _i53.ResetPasswordPage();
     },
   );
 }
 
 /// generated route for
-/// [_i52.SchoolPage]
-class SchoolRoute extends _i70.PageRouteInfo<void> {
-  const SchoolRoute({List<_i70.PageRouteInfo>? children})
+/// [_i54.SchoolPage]
+class SchoolRoute extends _i72.PageRouteInfo<void> {
+  const SchoolRoute({List<_i72.PageRouteInfo>? children})
     : super(SchoolRoute.name, initialChildren: children);
 
   static const String name = 'SchoolRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i52.SchoolPage();
+      return const _i54.SchoolPage();
     },
   );
 }
 
 /// generated route for
-/// [_i53.ServicePage]
-class ServiceRoute extends _i70.PageRouteInfo<void> {
-  const ServiceRoute({List<_i70.PageRouteInfo>? children})
+/// [_i55.ServicePage]
+class ServiceRoute extends _i72.PageRouteInfo<void> {
+  const ServiceRoute({List<_i72.PageRouteInfo>? children})
     : super(ServiceRoute.name, initialChildren: children);
 
   static const String name = 'ServiceRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i53.ServicePage();
+      return const _i55.ServicePage();
     },
   );
 }
 
 /// generated route for
-/// [_i54.SplashPage]
-class SplashRoute extends _i70.PageRouteInfo<void> {
-  const SplashRoute({List<_i70.PageRouteInfo>? children})
+/// [_i56.SplashPage]
+class SplashRoute extends _i72.PageRouteInfo<void> {
+  const SplashRoute({List<_i72.PageRouteInfo>? children})
     : super(SplashRoute.name, initialChildren: children);
 
   static const String name = 'SplashRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return _i70.WrappedRoute(child: const _i54.SplashPage());
+      return _i72.WrappedRoute(child: const _i56.SplashPage());
     },
   );
 }
 
 /// generated route for
-/// [_i55.StudentInfoPage]
-class StudentInfoRoute extends _i70.PageRouteInfo<void> {
-  const StudentInfoRoute({List<_i70.PageRouteInfo>? children})
+/// [_i57.StudentInfoPage]
+class StudentInfoRoute extends _i72.PageRouteInfo<void> {
+  const StudentInfoRoute({List<_i72.PageRouteInfo>? children})
     : super(StudentInfoRoute.name, initialChildren: children);
 
   static const String name = 'StudentInfoRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i55.StudentInfoPage();
+      return const _i57.StudentInfoPage();
     },
   );
 }
 
 /// generated route for
-/// [_i56.StudentNoticePage]
-class StudentNoticeRoute extends _i70.PageRouteInfo<void> {
-  const StudentNoticeRoute({List<_i70.PageRouteInfo>? children})
+/// [_i58.StudentNoticePage]
+class StudentNoticeRoute extends _i72.PageRouteInfo<void> {
+  const StudentNoticeRoute({List<_i72.PageRouteInfo>? children})
     : super(StudentNoticeRoute.name, initialChildren: children);
 
   static const String name = 'StudentNoticeRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i56.StudentNoticePage();
+      return const _i58.StudentNoticePage();
     },
   );
 }
 
 /// generated route for
-/// [_i57.StudentPhotoUploadPage]
-class StudentPhotoUploadRoute extends _i70.PageRouteInfo<void> {
-  const StudentPhotoUploadRoute({List<_i70.PageRouteInfo>? children})
+/// [_i59.StudentPhotoUploadPage]
+class StudentPhotoUploadRoute extends _i72.PageRouteInfo<void> {
+  const StudentPhotoUploadRoute({List<_i72.PageRouteInfo>? children})
     : super(StudentPhotoUploadRoute.name, initialChildren: children);
 
   static const String name = 'StudentPhotoUploadRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i57.StudentPhotoUploadPage();
+      return const _i59.StudentPhotoUploadPage();
     },
   );
 }
 
 /// generated route for
-/// [_i58.StudentProfilePage]
-class StudentProfileRoute extends _i70.PageRouteInfo<void> {
-  const StudentProfileRoute({List<_i70.PageRouteInfo>? children})
+/// [_i60.StudentProfilePage]
+class StudentProfileRoute extends _i72.PageRouteInfo<void> {
+  const StudentProfileRoute({List<_i72.PageRouteInfo>? children})
     : super(StudentProfileRoute.name, initialChildren: children);
 
   static const String name = 'StudentProfileRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i58.StudentProfilePage();
+      return const _i60.StudentProfilePage();
     },
   );
 }
 
 /// generated route for
-/// [_i59.SubjectWiseHomeworkEntryPage]
+/// [_i61.SubjectWiseHomeworkEntryPage]
 class SubjectWiseHomeworkEntryRoute
-    extends _i70.PageRouteInfo<SubjectWiseHomeworkEntryRouteArgs> {
+    extends _i72.PageRouteInfo<SubjectWiseHomeworkEntryRouteArgs> {
   SubjectWiseHomeworkEntryRoute({
-    _i71.Key? key,
+    _i73.Key? key,
     required String className,
     required DateTime selectedDate,
     required String subjectName,
-    List<_i70.PageRouteInfo>? children,
+    List<_i72.PageRouteInfo>? children,
   }) : super(
          SubjectWiseHomeworkEntryRoute.name,
          args: SubjectWiseHomeworkEntryRouteArgs(
@@ -1715,11 +1751,11 @@ class SubjectWiseHomeworkEntryRoute
 
   static const String name = 'SubjectWiseHomeworkEntryRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<SubjectWiseHomeworkEntryRouteArgs>();
-      return _i59.SubjectWiseHomeworkEntryPage(
+      return _i61.SubjectWiseHomeworkEntryPage(
         key: args.key,
         className: args.className,
         selectedDate: args.selectedDate,
@@ -1737,7 +1773,7 @@ class SubjectWiseHomeworkEntryRouteArgs {
     required this.subjectName,
   });
 
-  final _i71.Key? key;
+  final _i73.Key? key;
 
   final String className;
 
@@ -1769,30 +1805,30 @@ class SubjectWiseHomeworkEntryRouteArgs {
 }
 
 /// generated route for
-/// [_i60.SubjectWiseHomeworkPage]
-class SubjectWiseHomeworkRoute extends _i70.PageRouteInfo<void> {
-  const SubjectWiseHomeworkRoute({List<_i70.PageRouteInfo>? children})
+/// [_i62.SubjectWiseHomeworkPage]
+class SubjectWiseHomeworkRoute extends _i72.PageRouteInfo<void> {
+  const SubjectWiseHomeworkRoute({List<_i72.PageRouteInfo>? children})
     : super(SubjectWiseHomeworkRoute.name, initialChildren: children);
 
   static const String name = 'SubjectWiseHomeworkRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i60.SubjectWiseHomeworkPage();
+      return const _i62.SubjectWiseHomeworkPage();
     },
   );
 }
 
 /// generated route for
-/// [_i61.SubjectWiseHomeworkSubjectPage]
+/// [_i63.SubjectWiseHomeworkSubjectPage]
 class SubjectWiseHomeworkSubjectRoute
-    extends _i70.PageRouteInfo<SubjectWiseHomeworkSubjectRouteArgs> {
+    extends _i72.PageRouteInfo<SubjectWiseHomeworkSubjectRouteArgs> {
   SubjectWiseHomeworkSubjectRoute({
-    _i71.Key? key,
+    _i73.Key? key,
     required String className,
     required DateTime selectedDate,
-    List<_i70.PageRouteInfo>? children,
+    List<_i72.PageRouteInfo>? children,
   }) : super(
          SubjectWiseHomeworkSubjectRoute.name,
          args: SubjectWiseHomeworkSubjectRouteArgs(
@@ -1805,11 +1841,11 @@ class SubjectWiseHomeworkSubjectRoute
 
   static const String name = 'SubjectWiseHomeworkSubjectRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<SubjectWiseHomeworkSubjectRouteArgs>();
-      return _i61.SubjectWiseHomeworkSubjectPage(
+      return _i63.SubjectWiseHomeworkSubjectPage(
         key: args.key,
         className: args.className,
         selectedDate: args.selectedDate,
@@ -1825,7 +1861,7 @@ class SubjectWiseHomeworkSubjectRouteArgs {
     required this.selectedDate,
   });
 
-  final _i71.Key? key;
+  final _i73.Key? key;
 
   final String className;
 
@@ -1850,76 +1886,76 @@ class SubjectWiseHomeworkSubjectRouteArgs {
 }
 
 /// generated route for
-/// [_i62.SyllabusPage]
-class SyllabusRoute extends _i70.PageRouteInfo<void> {
-  const SyllabusRoute({List<_i70.PageRouteInfo>? children})
+/// [_i64.SyllabusPage]
+class SyllabusRoute extends _i72.PageRouteInfo<void> {
+  const SyllabusRoute({List<_i72.PageRouteInfo>? children})
     : super(SyllabusRoute.name, initialChildren: children);
 
   static const String name = 'SyllabusRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i62.SyllabusPage();
+      return const _i64.SyllabusPage();
     },
   );
 }
 
 /// generated route for
-/// [_i63.TimeTablePage]
-class TimeTableRoute extends _i70.PageRouteInfo<void> {
-  const TimeTableRoute({List<_i70.PageRouteInfo>? children})
+/// [_i65.TimeTablePage]
+class TimeTableRoute extends _i72.PageRouteInfo<void> {
+  const TimeTableRoute({List<_i72.PageRouteInfo>? children})
     : super(TimeTableRoute.name, initialChildren: children);
 
   static const String name = 'TimeTableRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return _i70.WrappedRoute(child: const _i63.TimeTablePage());
+      return _i72.WrappedRoute(child: const _i65.TimeTablePage());
     },
   );
 }
 
 /// generated route for
-/// [_i64.TransportAttendancePage]
-class TransportAttendanceRoute extends _i70.PageRouteInfo<void> {
-  const TransportAttendanceRoute({List<_i70.PageRouteInfo>? children})
+/// [_i66.TransportAttendancePage]
+class TransportAttendanceRoute extends _i72.PageRouteInfo<void> {
+  const TransportAttendanceRoute({List<_i72.PageRouteInfo>? children})
     : super(TransportAttendanceRoute.name, initialChildren: children);
 
   static const String name = 'TransportAttendanceRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i64.TransportAttendancePage();
+      return const _i66.TransportAttendancePage();
     },
   );
 }
 
 /// generated route for
-/// [_i65.VerificationPage]
-class VerificationRoute extends _i70.PageRouteInfo<void> {
-  const VerificationRoute({List<_i70.PageRouteInfo>? children})
+/// [_i67.VerificationPage]
+class VerificationRoute extends _i72.PageRouteInfo<void> {
+  const VerificationRoute({List<_i72.PageRouteInfo>? children})
     : super(VerificationRoute.name, initialChildren: children);
 
   static const String name = 'VerificationRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i65.VerificationPage();
+      return const _i67.VerificationPage();
     },
   );
 }
 
 /// generated route for
-/// [_i66.VideoDetailPage]
-class VideoDetailRoute extends _i70.PageRouteInfo<VideoDetailRouteArgs> {
+/// [_i68.VideoDetailPage]
+class VideoDetailRoute extends _i72.PageRouteInfo<VideoDetailRouteArgs> {
   VideoDetailRoute({
-    _i71.Key? key,
-    required _i79.VideoModel video,
-    List<_i70.PageRouteInfo>? children,
+    _i73.Key? key,
+    required _i81.VideoModel video,
+    List<_i72.PageRouteInfo>? children,
   }) : super(
          VideoDetailRoute.name,
          args: VideoDetailRouteArgs(key: key, video: video),
@@ -1928,11 +1964,11 @@ class VideoDetailRoute extends _i70.PageRouteInfo<VideoDetailRouteArgs> {
 
   static const String name = 'VideoDetailRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<VideoDetailRouteArgs>();
-      return _i66.VideoDetailPage(key: args.key, video: args.video);
+      return _i68.VideoDetailPage(key: args.key, video: args.video);
     },
   );
 }
@@ -1940,9 +1976,9 @@ class VideoDetailRoute extends _i70.PageRouteInfo<VideoDetailRouteArgs> {
 class VideoDetailRouteArgs {
   const VideoDetailRouteArgs({this.key, required this.video});
 
-  final _i71.Key? key;
+  final _i73.Key? key;
 
-  final _i79.VideoModel video;
+  final _i81.VideoModel video;
 
   @override
   String toString() {
@@ -1961,14 +1997,14 @@ class VideoDetailRouteArgs {
 }
 
 /// generated route for
-/// [_i67.VideoViewerPage]
-class VideoViewerRoute extends _i70.PageRouteInfo<VideoViewerRouteArgs> {
+/// [_i69.VideoViewerPage]
+class VideoViewerRoute extends _i72.PageRouteInfo<VideoViewerRouteArgs> {
   VideoViewerRoute({
-    _i71.Key? key,
+    _i73.Key? key,
     required String videoAlbumId,
     required int initialIndex,
-    List<_i80.VideoItemModel>? videos,
-    List<_i70.PageRouteInfo>? children,
+    List<_i82.VideoItemModel>? videos,
+    List<_i72.PageRouteInfo>? children,
   }) : super(
          VideoViewerRoute.name,
          args: VideoViewerRouteArgs(
@@ -1982,11 +2018,11 @@ class VideoViewerRoute extends _i70.PageRouteInfo<VideoViewerRouteArgs> {
 
   static const String name = 'VideoViewerRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<VideoViewerRouteArgs>();
-      return _i67.VideoViewerPage(
+      return _i69.VideoViewerPage(
         key: args.key,
         videoAlbumId: args.videoAlbumId,
         initialIndex: args.initialIndex,
@@ -2004,13 +2040,13 @@ class VideoViewerRouteArgs {
     this.videos,
   });
 
-  final _i71.Key? key;
+  final _i73.Key? key;
 
   final String videoAlbumId;
 
   final int initialIndex;
 
-  final List<_i80.VideoItemModel>? videos;
+  final List<_i82.VideoItemModel>? videos;
 
   @override
   String toString() {
@@ -2024,7 +2060,7 @@ class VideoViewerRouteArgs {
     return key == other.key &&
         videoAlbumId == other.videoAlbumId &&
         initialIndex == other.initialIndex &&
-        const _i75.ListEquality<_i80.VideoItemModel>().equals(
+        const _i77.ListEquality<_i82.VideoItemModel>().equals(
           videos,
           other.videos,
         );
@@ -2035,37 +2071,37 @@ class VideoViewerRouteArgs {
       key.hashCode ^
       videoAlbumId.hashCode ^
       initialIndex.hashCode ^
-      const _i75.ListEquality<_i80.VideoItemModel>().hash(videos);
+      const _i77.ListEquality<_i82.VideoItemModel>().hash(videos);
 }
 
 /// generated route for
-/// [_i68.VideosPage]
-class VideosRoute extends _i70.PageRouteInfo<void> {
-  const VideosRoute({List<_i70.PageRouteInfo>? children})
+/// [_i70.VideosPage]
+class VideosRoute extends _i72.PageRouteInfo<void> {
+  const VideosRoute({List<_i72.PageRouteInfo>? children})
     : super(VideosRoute.name, initialChildren: children);
 
   static const String name = 'VideosRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i68.VideosPage();
+      return const _i70.VideosPage();
     },
   );
 }
 
 /// generated route for
-/// [_i69.ViewTransportAttendancePage]
-class ViewTransportAttendanceRoute extends _i70.PageRouteInfo<void> {
-  const ViewTransportAttendanceRoute({List<_i70.PageRouteInfo>? children})
+/// [_i71.ViewTransportAttendancePage]
+class ViewTransportAttendanceRoute extends _i72.PageRouteInfo<void> {
+  const ViewTransportAttendanceRoute({List<_i72.PageRouteInfo>? children})
     : super(ViewTransportAttendanceRoute.name, initialChildren: children);
 
   static const String name = 'ViewTransportAttendanceRoute';
 
-  static _i70.PageInfo page = _i70.PageInfo(
+  static _i72.PageInfo page = _i72.PageInfo(
     name,
     builder: (data) {
-      return const _i69.ViewTransportAttendancePage();
+      return const _i71.ViewTransportAttendancePage();
     },
   );
 }

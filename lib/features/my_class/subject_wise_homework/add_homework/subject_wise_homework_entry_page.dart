@@ -88,14 +88,17 @@ class _SubjectWiseHomeworkEntryContent extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        className.toUpperCase(),
-                        style: TextStyle(
-                          color: context.colors.primary,
-                          fontSize: context.scaleFont(14),
-                          fontWeight: FontWeight.bold,
+                      Expanded(
+                        child: Text(
+                          className.toUpperCase(),
+                          style: TextStyle(
+                            color: context.colors.primary,
+                            fontSize: context.scaleFont(14),
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
+                      SizedBox(width: context.scale(8)),
                       Text(
                         DateFormat('dd-MMM-yyyy').format(selectedDate),
                         style: TextStyle(
@@ -114,13 +117,17 @@ class _SubjectWiseHomeworkEntryContent extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      _SectionLabel('Homework Content', isRequired: true),
-                      Text(
-                        subjectName.toUpperCase(),
-                        style: TextStyle(
-                          fontSize: context.scaleFont(14),
-                          fontWeight: FontWeight.bold,
-                          color: context.colors.primary,
+                      const _SectionLabel('Homework Content', isRequired: true),
+                      SizedBox(width: context.scale(8)),
+                      Expanded(
+                        child: Text(
+                          subjectName.toUpperCase(),
+                          textAlign: TextAlign.end,
+                          style: TextStyle(
+                            fontSize: context.scaleFont(14),
+                            fontWeight: FontWeight.bold,
+                            color: context.colors.primary,
+                          ),
                         ),
                       ),
                     ],
@@ -225,6 +232,7 @@ class _SectionLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           text,
