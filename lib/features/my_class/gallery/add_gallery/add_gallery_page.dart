@@ -50,35 +50,36 @@ class _AddGalleryContent extends StatelessWidget {
             ).showSnackBar(SnackBar(content: Text(state.error!)));
           }
         },
-        child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(
-            horizontal: context.scale(20),
-            vertical: context.scaleHeight(20),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const _SectionLabel('Album Title', isRequired: true),
-              SizedBox(height: context.scaleHeight(12)),
-              const _TitleField(),
-              SizedBox(height: context.scaleHeight(24)),
-              BlocSelector<AddGalleryBloc, AddGalleryState, int>(
-                selector: (state) => state.images.length,
-                builder: (context, count) {
-                  return _SectionLabel(
-                    'Select Images ($count/40)',
-                    isRequired: true,
-                  );
-                },
+        child: CustomScrollView(
+          cacheExtent: 1000,
+          slivers: [
+            SliverPadding(
+              padding: EdgeInsets.symmetric(
+                horizontal: context.scale(20),
+                vertical: context.scaleHeight(20),
               ),
-              SizedBox(height: context.scaleHeight(12)),
-              const _ImagePickerSection(),
-              SizedBox(height: context.scaleHeight(24)),
-              const _SelectedImagesGrid(),
-              SizedBox(height: context.scaleHeight(40)),
-              const _SubmitButton(),
-            ],
-          ),
+              sliver: SliverList(
+                delegate: SliverChildListDelegate([
+                  const _SectionLabel('Album Title', isRequired: true),
+                  SizedBox(height: context.scaleHeight(12)),
+                  const _TitleField(),
+                  SizedBox(height: context.scaleHeight(24)),
+                  const _ImageCountLabel(),
+                  SizedBox(height: context.scaleHeight(12)),
+                  const _ImagePickerSection(),
+                  SizedBox(height: context.scaleHeight(24)),
+                ]),
+              ),
+            ),
+            const _SelectedImagesGrid(),
+            SliverPadding(
+              padding: EdgeInsets.symmetric(
+                horizontal: context.scale(20),
+                vertical: context.scaleHeight(40),
+              ),
+              sliver: const SliverToBoxAdapter(child: _SubmitButton()),
+            ),
+          ],
         ),
       ),
     );
@@ -99,8 +100,34 @@ class _TitleField extends StatelessWidget {
   }
 }
 
+class _ImageCountLabel extends StatelessWidget {
+  const _ImageCountLabel();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocSelector<AddGalleryBloc, AddGalleryState, int>(
+      selector: (state) => state.images.length,
+      builder: (context, count) {
+        return _SectionLabel(
+          'Select Images (Count: $count / Max: 40)',
+          isRequired: true,
+        );
+      },
+    );
+  }
+}
+
 class _ImagePickerSection extends StatelessWidget {
   const _ImagePickerSection();
+
+  @override
+  Widget build(BuildContext context) {
+    return const RepaintBoundary(child: _ImagePickerButton());
+  }
+}
+
+class _ImagePickerButton extends StatelessWidget {
+  const _ImagePickerButton();
 
   @override
   Widget build(BuildContext context) {
@@ -126,20 +153,23 @@ class _SelectedImagesGrid extends StatelessWidget {
     return BlocSelector<AddGalleryBloc, AddGalleryState, List<XFile>>(
       selector: (state) => state.images,
       builder: (context, images) {
-        if (images.isEmpty) return const SizedBox.shrink();
+        if (images.isEmpty)
+          return const SliverToBoxAdapter(child: SizedBox.shrink());
 
-        return GridView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            crossAxisSpacing: context.scale(12),
-            mainAxisSpacing: context.scaleHeight(12),
+        return SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: context.scale(20)),
+          sliver: SliverGrid(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              crossAxisSpacing: context.scale(12),
+              mainAxisSpacing: context.scaleHeight(12),
+            ),
+            delegate: SliverChildBuilderDelegate((context, index) {
+              return RepaintBoundary(
+                child: _ImageItem(image: images[index], index: index),
+              );
+            }, childCount: images.length),
           ),
-          itemCount: images.length,
-          itemBuilder: (context, index) {
-            return _ImageItem(image: images[index], index: index);
-          },
         );
       },
     );
@@ -196,15 +226,18 @@ class _SubmitButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AddGalleryBloc, AddGalleryState>(
-      builder: (context, state) {
+    return BlocSelector<AddGalleryBloc, AddGalleryState, (bool, bool)>(
+      selector: (state) => (state.isLoading, state.isFormValid),
+      builder: (context, data) {
+        final isLoading = data.$1;
+        final isFormValid = data.$2;
         return AppPrimaryButton(
-          onPressed: (state.isLoading || !state.isFormValid)
+          onPressed: (isLoading || !isFormValid)
               ? null
               : () {
                   context.read<AddGalleryBloc>().add(SubmitGallery());
                 },
-          text: state.isLoading ? 'UPLOADING...' : 'SAVE GALLERY',
+          text: isLoading ? 'UPLOADING...' : 'SAVE GALLERY',
         );
       },
     );

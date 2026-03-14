@@ -50,35 +50,36 @@ class _AddVideoContent extends StatelessWidget {
             ).showSnackBar(SnackBar(content: Text(state.error!)));
           }
         },
-        child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(
-            horizontal: context.scale(20),
-            vertical: context.scaleHeight(20),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const _SectionLabel('Album Title', isRequired: true),
-              SizedBox(height: context.scaleHeight(12)),
-              const _TitleField(),
-              SizedBox(height: context.scaleHeight(24)),
-              BlocSelector<AddVideoBloc, AddVideoState, int>(
-                selector: (state) => state.videos.length,
-                builder: (context, count) {
-                  return _SectionLabel(
-                    'Select Videos ($count/10)',
-                    isRequired: true,
-                  );
-                },
+        child: CustomScrollView(
+          cacheExtent: 1000,
+          slivers: [
+            SliverPadding(
+              padding: EdgeInsets.symmetric(
+                horizontal: context.scale(20),
+                vertical: context.scaleHeight(20),
               ),
-              SizedBox(height: context.scaleHeight(12)),
-              const _VideoPickerSection(),
-              SizedBox(height: context.scaleHeight(24)),
-              const _SelectedVideosList(),
-              SizedBox(height: context.scaleHeight(40)),
-              const _SubmitButton(),
-            ],
-          ),
+              sliver: SliverList(
+                delegate: SliverChildListDelegate([
+                  const _SectionLabel('Album Title', isRequired: true),
+                  SizedBox(height: context.scaleHeight(12)),
+                  const _TitleField(),
+                  SizedBox(height: context.scaleHeight(24)),
+                  const _VideoCountLabel(),
+                  SizedBox(height: context.scaleHeight(12)),
+                  const _VideoPickerSection(),
+                  SizedBox(height: context.scaleHeight(24)),
+                ]),
+              ),
+            ),
+            const _SelectedVideosList(),
+            SliverPadding(
+              padding: EdgeInsets.symmetric(
+                horizontal: context.scale(20),
+                vertical: context.scaleHeight(40),
+              ),
+              sliver: const SliverToBoxAdapter(child: _SubmitButton()),
+            ),
+          ],
         ),
       ),
     );
@@ -99,8 +100,34 @@ class _TitleField extends StatelessWidget {
   }
 }
 
+class _VideoCountLabel extends StatelessWidget {
+  const _VideoCountLabel();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocSelector<AddVideoBloc, AddVideoState, int>(
+      selector: (state) => state.videos.length,
+      builder: (context, count) {
+        return _SectionLabel(
+          'Select Videos (Count: $count / Max: 10)',
+          isRequired: true,
+        );
+      },
+    );
+  }
+}
+
 class _VideoPickerSection extends StatelessWidget {
   const _VideoPickerSection();
+
+  @override
+  Widget build(BuildContext context) {
+    return const RepaintBoundary(child: _VideoPickerButton());
+  }
+}
+
+class _VideoPickerButton extends StatelessWidget {
+  const _VideoPickerButton();
 
   @override
   Widget build(BuildContext context) {
@@ -128,17 +155,21 @@ class _SelectedVideosList extends StatelessWidget {
     return BlocSelector<AddVideoBloc, AddVideoState, List<XFile>>(
       selector: (state) => state.videos,
       builder: (context, videos) {
-        if (videos.isEmpty) return const SizedBox.shrink();
+        if (videos.isEmpty)
+          return const SliverToBoxAdapter(child: SizedBox.shrink());
 
-        return ListView.separated(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: videos.length,
-          separatorBuilder: (context, index) =>
-              SizedBox(height: context.scaleHeight(12)),
-          itemBuilder: (context, index) {
-            return _VideoItem(video: videos[index], index: index);
-          },
+        return SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: context.scale(20)),
+          sliver: SliverList(
+            delegate: SliverChildBuilderDelegate((context, index) {
+              return RepaintBoundary(
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: context.scaleHeight(12)),
+                  child: _VideoItem(video: videos[index], index: index),
+                ),
+              );
+            }, childCount: videos.length),
+          ),
         );
       },
     );
@@ -192,15 +223,18 @@ class _SubmitButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AddVideoBloc, AddVideoState>(
-      builder: (context, state) {
+    return BlocSelector<AddVideoBloc, AddVideoState, (bool, bool)>(
+      selector: (state) => (state.isLoading, state.isFormValid),
+      builder: (context, data) {
+        final isLoading = data.$1;
+        final isFormValid = data.$2;
         return AppPrimaryButton(
-          onPressed: (state.isLoading || !state.isFormValid)
+          onPressed: (isLoading || !isFormValid)
               ? null
               : () {
                   context.read<AddVideoBloc>().add(SubmitVideo());
                 },
-          text: state.isLoading ? 'UPLOADING...' : 'SAVE VIDEOS',
+          text: isLoading ? 'UPLOADING...' : 'SAVE VIDEOS',
         );
       },
     );
