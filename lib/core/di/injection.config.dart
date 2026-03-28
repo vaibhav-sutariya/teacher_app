@@ -23,6 +23,8 @@ import 'package:teachers_app/features/my_class/holiday_hw/repositories/holiday_h
     as _i1045;
 import 'package:teachers_app/features/my_class/paper/repositories/paper_repository.dart'
     as _i720;
+import 'package:teachers_app/features/my_class/student_info/repositories/student_info_repository.dart'
+    as _i1019;
 import 'package:teachers_app/features/my_class/syllabus/repositories/syllabus_repository.dart'
     as _i8;
 import 'package:teachers_app/features/my_class/time_table/bloc/time_table_bloc.dart'
@@ -47,6 +49,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i361.Dio>(() => registerModule.dio);
     gh.lazySingleton<_i390.ExamTimeTableRepository>(
       () => _i390.ExamTimeTableRepositoryImpl(),
+    );
+    gh.lazySingleton<_i1019.StudentInfoRepository>(
+      () => _i1019.StudentInfoRepositoryImpl(),
     );
     gh.factory<_i568.SplashRepository>(() => _i243.SplashRepositoryImpl());
     gh.factory<_i360.ConnectionChecker>(

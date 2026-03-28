@@ -4,7 +4,23 @@ abstract class StudentInfoEvent extends Equatable {
   const StudentInfoEvent();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
-class LoadStudentInfo extends StudentInfoEvent {}
+class ChangeTabEvent extends StudentInfoEvent {
+  final int index;
+  const ChangeTabEvent(this.index);
+
+  @override
+  List<Object?> get props => [index];
+}
+
+class LoadClassesEvent extends StudentInfoEvent {}
+
+class SearchStudentsEvent extends StudentInfoEvent {
+  final String query;
+  const SearchStudentsEvent(this.query);
+
+  @override
+  List<Object?> get props => [query];
+}

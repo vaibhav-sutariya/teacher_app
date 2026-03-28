@@ -6,11 +6,16 @@ class StudentProfileModel extends Equatable {
   final String className;
   final String profileImageUrl;
   final String aboutMe;
+  final String schoolName;
+  final String grNo;
+  final String rollNo;
+  final String phoneNumber;
   final FamilyInfo familyInfo;
   final BasicInfo basicInfo;
   final CommunicationInfo communicationInfo;
   final AcademicInfo academicInfo;
   final List<DocumentInfo> documents;
+  final EnquiryInfo enquiryInfo;
 
   const StudentProfileModel({
     required this.name,
@@ -18,57 +23,75 @@ class StudentProfileModel extends Equatable {
     required this.className,
     required this.profileImageUrl,
     required this.aboutMe,
+    required this.schoolName,
+    required this.grNo,
+    required this.rollNo,
+    required this.phoneNumber,
     required this.familyInfo,
     required this.basicInfo,
     required this.communicationInfo,
     required this.academicInfo,
     required this.documents,
+    required this.enquiryInfo,
   });
 
   static StudentProfileModel get mockData => const StudentProfileModel(
-    name: 'Alex Johnson',
+    name: 'THAKKAR HARSH KEYUR',
     studentId: '#STU-10293',
-    className: 'CLASS 10-A',
-    profileImageUrl: 'assets/images/student_profile.png', // Placeholder
+    className: 'Jr.KG - JAL',
+    schoolName: 'SSGITS - Maninagar',
+    profileImageUrl: 'https://avatar.iran.liara.run/public/boy?username=harsh',
+    grNo: 'T525',
+    rollNo: '40',
+    phoneNumber: '7874632208, 9727118158',
     aboutMe:
-        '"Enthusiastic learner with a passion for robotics and mathematics. Aiming to participate in the national science fair this year and pursue engineering in the future."',
+        '"Enthusiastic learner with a passion for robotics and mathematics."',
     familyInfo: FamilyInfo(
-      fatherName: 'BHARATBHAI PATEL',
+      fatherName: 'KEYUR',
       fatherOccupation: 'Business',
-      fatherContact: '+91 7359235345',
-      motherName: 'ANITABEN PATEL',
+      fatherContact: '+91 7874632208',
+      motherName: 'SEJAL',
       motherOccupation: 'Housewife',
-      motherContact: '+91 9876543210',
-      guardianName: 'SURESHBHAI PATEL',
-      guardianOccupation: 'Farmer',
-      guardianContact: '+91 1122334455',
-      siblingName: 'Rahul Patel',
-      siblingClass: 'Class 8-B',
+      motherContact: '+91 9727118158',
+      guardianName: '-',
+      guardianOccupation: '-',
+      guardianContact: '-',
+      siblingName: '-',
+      siblingClass: '-',
     ),
     basicInfo: BasicInfo(
-      dob: '12 Oct 2008',
+      dob: '06/02/2021',
       gender: 'Male',
-      bloodGroup: 'O Positive',
+      bloodGroup: 'O+',
     ),
     communicationInfo: CommunicationInfo(
-      address: '123 Maple Street, High-Tech City Park, Springfield',
-      pincode: '400102',
-      mobile: '+1 (555) 123-4567',
-      email: 'alex.j@schoolmail.edu',
+      address:
+          '404, OMKAR APPARTMENT, DHANLAXMI SOCIETY, NR. SWAMINARAYAN MANDIR, MANINAGAR, AHMEDABAD - 38008',
+      pincode: '380008',
+      mobile: '7874632208',
+      email: 'harsh.p@schoolmail.edu',
     ),
     academicInfo: AcademicInfo(
       penNumber: 'PEN-8890122',
       admissionId: 'ADM/2023/044',
-      dateOfAdmission: '05 June 2023',
+      dateOfAdmission: '13/06/2024',
       rteStudent: 'No',
-      previousSchool: 'Northview Elementary International School',
-      house: 'Tigers',
-      classTeacher: 'Mr. David Smith',
+      previousSchool: '-',
+      house: '-',
+      classTeacher: 'Miss. Patel',
     ),
     documents: [
-      DocumentInfo(name: 'AADHAAR CARD', number: '691636379924'),
-      DocumentInfo(name: 'AADHAAR DISE', number: '240712043171910067'),
+      DocumentInfo(name: 'Aadhar Card', number: '-'),
+      DocumentInfo(name: 'Aadhar dise', number: '-'),
+      DocumentInfo(name: 'Unique Id', number: '-'),
+      DocumentInfo(name: 'Board Registration No', number: '-'),
     ],
+    enquiryInfo: EnquiryInfo(
+      dateOfEnquiry: '02/12/2023',
+      dateOfRegistration: '02/12/2023',
+      refPersonName: '-',
+      remarks: '-',
+    ),
   );
 
   @override
@@ -78,11 +101,16 @@ class StudentProfileModel extends Equatable {
     className,
     profileImageUrl,
     aboutMe,
+    schoolName,
+    grNo,
+    rollNo,
+    phoneNumber,
     familyInfo,
     basicInfo,
     communicationInfo,
     academicInfo,
     documents,
+    enquiryInfo,
   ];
 }
 
@@ -200,4 +228,22 @@ class DocumentInfo extends Equatable {
 
   @override
   List<Object?> get props => [name, number];
+}
+
+class EnquiryInfo extends Equatable {
+  final String dateOfEnquiry;
+  final String dateOfRegistration;
+  final String refPersonName;
+  final String remarks;
+
+  const EnquiryInfo({
+    required this.dateOfEnquiry,
+    required this.dateOfRegistration,
+    required this.refPersonName,
+    required this.remarks,
+  });
+
+  @override
+  List<Object?> get props =>
+      [dateOfEnquiry, dateOfRegistration, refPersonName, remarks];
 }
