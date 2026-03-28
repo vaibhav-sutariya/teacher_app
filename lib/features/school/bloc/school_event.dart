@@ -7,6 +7,6 @@ abstract class SchoolEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class LoadSchoolData extends SchoolEvent {}
+class LoadSchoolModules extends SchoolEvent {}
 
-class RefreshSchoolData extends SchoolEvent {}
+class RefreshSchoolModules extends SchoolEvent {}

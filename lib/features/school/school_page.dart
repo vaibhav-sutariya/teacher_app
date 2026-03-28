@@ -1,12 +1,11 @@
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:teachers_app/core/helpers/extensions/responsive_extensions.dart';
+import 'package:teachers_app/features/my_class/my_class_screen/widgets/my_class_header.dart';
 
-import '../../core/helpers/extensions/responsive_extensions.dart';
-import '../../core/widgets/app_loader.dart';
-import '../../cubit/theme_cubit.dart';
 import 'bloc/school_bloc.dart';
-import 'widgets/school_widgets.dart';
+import 'widgets/school_management_list_tile.dart';
 
 @RoutePage()
 class SchoolPage extends StatelessWidget {
@@ -15,73 +14,120 @@ class SchoolPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SchoolBloc()..add(LoadSchoolData()),
-      child: Scaffold(
-        backgroundColor: context.colors.background,
-        body: BlocBuilder<SchoolBloc, SchoolState>(
-          builder: (context, state) {
-            if (state is SchoolLoading) {
-              return const Center(child: AppLoader());
-            }
+      create: (context) => SchoolBloc()..add(LoadSchoolModules()),
+      child: const _SchoolPageContent(),
+    );
+  }
+}
 
-            if (state is SchoolError) {
-              return Center(child: Text(state.message));
-            }
+class _SchoolPageContent extends StatelessWidget {
+  const _SchoolPageContent();
 
-            if (state is SchoolLoaded) {
-              final summary = state.summary;
-              return RefreshIndicator(
-                onRefresh: () async {
-                  context.read<SchoolBloc>().add(RefreshSchoolData());
-                },
-                child: SingleChildScrollView(
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SchoolHeader(model: summary.header),
-                      SizedBox(height: context.scaleHeight(20)),
-                      AttendancePill(status: summary.attendanceStatus),
-                      SizedBox(height: context.scaleHeight(24)),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: context.scale(20),
-                        ),
-                        child: Divider(color: context.colors.surface200),
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          // 1. Teal Header Background (Standard for MyClass suite)
+          Container(
+            height: context.scaleHeight(185),
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: const Color(0xFF00695C),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(context.scale(20)),
+                bottomRight: Radius.circular(context.scale(20)),
+              ),
+            ),
+          ),
+
+          // 2. Main content wrapping MyClassHeader and Modules List
+          SafeArea(
+            bottom: false,
+            child: Column(
+              children: [
+                SizedBox(height: context.scaleHeight(10)),
+                // Synchronized MyClassHeader
+                const MyClassHeader(),
+
+                SizedBox(height: context.scaleHeight(15)),
+
+                // Content Card
+                Expanded(
+                  child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(context.scale(25)),
+                        topRight: Radius.circular(context.scale(25)),
                       ),
-                      SizedBox(height: context.scaleHeight(16)),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: context.scale(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.1),
+                          blurRadius: 20,
+                          offset: const Offset(0, -5),
                         ),
-                        child: Text(
-                          'Top picks from Adademics',
-                          style: context.textTheme.titleLarge?.copyWith(
-                            color: context.colors.surface900,
-                            fontWeight: FontWeight.bold,
+                      ],
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(context.scale(25)),
+                        topRight: Radius.circular(context.scale(25)),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: context.scale(20)),
+                          // Modules List (Tightened for single-screen fit)
+                          Expanded(
+                            child: BlocBuilder<SchoolBloc, SchoolState>(
+                              builder: (context, state) {
+                                if (state.status ==
+                                    SchoolManagementStatus.loading) {
+                                  return const Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                }
+
+                                if (state.status ==
+                                    SchoolManagementStatus.error) {
+                                  return Center(
+                                    child: Text(
+                                      state.errorMessage ??
+                                          'Error Loading Dashboard',
+                                    ),
+                                  );
+                                }
+
+                                return ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  physics:
+                                      const NeverScrollableScrollPhysics(), // Non-scrollable singleton view
+                                  itemCount: state.modules.length,
+                                  itemBuilder: (context, index) {
+                                    final module = state.modules[index];
+                                    return SchoolManagementListTile(
+                                      module: module,
+                                      onTap: () {
+                                        // TODO: Implement navigation
+                                      },
+                                    );
+                                  },
+                                );
+                              },
+                            ),
                           ),
-                        ),
+                        ],
                       ),
-                      SizedBox(height: context.scaleHeight(16)),
-                      ...summary.academicPicks.map(
-                        (pick) => AcademicCard(model: pick),
-                      ),
-                      SizedBox(height: context.scaleHeight(16)),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: context.scale(20),
-                        ),
-                        child: Divider(color: context.colors.surface200),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
-              );
-            }
-
-            return const SizedBox.shrink();
-          },
-        ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

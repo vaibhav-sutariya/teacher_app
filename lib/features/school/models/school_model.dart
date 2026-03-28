@@ -1,107 +1,110 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
-class SchoolModel extends Equatable {
-  final SchoolHeaderModel header;
-  final String attendanceStatus;
-  final List<AcademicPickModel> academicPicks;
+class SchoolModuleModel extends Equatable {
+  final String id;
+  final String title;
+  final String subtitle;
+  final IconData icon;
+  final Color iconColor;
+  final Color backgroundColor;
+  final String? badgeText;
+  final bool showArrow;
 
-  const SchoolModel({
-    required this.header,
-    required this.attendanceStatus,
-    required this.academicPicks,
+  const SchoolModuleModel({
+    required this.id,
+    required this.title,
+    required this.subtitle,
+    required this.icon,
+    required this.iconColor,
+    required this.backgroundColor,
+    this.badgeText,
+    this.showArrow = true,
   });
 
   @override
-  List<Object?> get props => [header, attendanceStatus, academicPicks];
+  List<Object?> get props => [
+        id,
+        title,
+        subtitle,
+        icon,
+        iconColor,
+        backgroundColor,
+        badgeText,
+        showArrow,
+      ];
+}
 
-  static SchoolModel getMockData() {
-    return SchoolModel(
-      header: SchoolHeaderModel.getDynamicHeader('DHARMA'),
-      attendanceStatus: 'You are present today',
-      academicPicks: const [
-        AcademicPickModel(
-          id: '1',
-          title: "Today's Class work",
-          subtitle: 'Notes given on chp-11.',
-          type: AcademicPickType.classwork,
+class SchoolManagementModel extends Equatable {
+  final List<SchoolModuleModel> modules;
+
+  const SchoolManagementModel({required this.modules});
+
+  @override
+  List<Object?> get props => [modules];
+
+  static SchoolManagementModel getMockModules() {
+    return const SchoolManagementModel(
+      modules: [
+        SchoolModuleModel(
+          id: 'fees',
+          title: 'Fees',
+          subtitle: 'Collection and reconciliation',
+          icon: Icons.account_balance_wallet_outlined,
+          iconColor: Color(0xFF2E7D32), // Green
+          backgroundColor: Color(0xFFE8F5E9),
+        ),
+        SchoolModuleModel(
+          id: 'staff_attendance',
+          title: 'Staff Attendance',
+          subtitle: 'Daily logs and leave management',
+          icon: Icons.how_to_reg_outlined,
+          iconColor: Color(0xFF1976D2), // Blue
+          backgroundColor: Color(0xFFE3F2FD),
+        ),
+        SchoolModuleModel(
+          id: 'staff_details',
+          title: 'Staff Details',
+          subtitle: 'Employee profiles and contact',
+          icon: Icons.badge_outlined,
+          iconColor: Color(0xFF7B1FA2), // Purple
+          backgroundColor: Color(0xFFF3E5F5),
+        ),
+        SchoolModuleModel(
+          id: 'notice',
+          title: 'Notice & Circulars',
+          subtitle: 'Broadcast announcements',
+          icon: Icons.campaign_outlined,
+          iconColor: Color(0xFFF57C00), // Orange
+          backgroundColor: Color(0xFFFFF3E0),
+        ),
+        SchoolModuleModel(
+          id: 'enquiry',
+          title: 'Enquiry',
+          subtitle: 'Admission leads and queries',
+          icon: Icons.help_outline_rounded,
+          iconColor: Color(0xFF00796B), // Teal
+          backgroundColor: Color(0xFFE0F2F1),
+        ),
+        SchoolModuleModel(
+          id: 'strength',
+          title: 'School Strength',
+          subtitle: 'Live count per class',
+          icon: Icons.people_outline_rounded,
+          iconColor: Color(0xFF455A64), // Blue Grey
+          backgroundColor: Color(0xFFECEFF1),
+          badgeText: 'ACTIVE',
+          showArrow: false,
+        ),
+        SchoolModuleModel(
+          id: 'bus',
+          title: 'Bus Tracking',
+          subtitle: 'Real-time GPS monitoring',
+          icon: Icons.directions_bus_outlined,
+          iconColor: Color(0xFF388E3C), // Green
+          backgroundColor: Color(0xFFE8F5E9),
         ),
       ],
     );
   }
-}
-
-class SchoolHeaderModel extends Equatable {
-  final String date;
-  final String greeting;
-  final String userName;
-
-  const SchoolHeaderModel({
-    required this.date,
-    required this.greeting,
-    required this.userName,
-  });
-
-  static SchoolHeaderModel getDynamicHeader(String userName) {
-    final now = DateTime.now();
-    final hour = now.hour;
-    String greeting;
-
-    if (hour < 12) {
-      greeting = 'Good Morning';
-    } else if (hour < 17) {
-      greeting = 'Good Afternoon';
-    } else if (hour < 19) {
-      greeting = 'Good Evening';
-    } else {
-      greeting = 'Good Night';
-    }
-
-    // Format: 14-Feb-2026
-    final day = now.day.toString().padLeft(2, '0');
-    final year = now.year.toString();
-    final months = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ];
-    final month = months[now.month - 1];
-    final formattedDate = '$day-$month-$year';
-
-    return SchoolHeaderModel(
-      date: formattedDate,
-      greeting: greeting,
-      userName: userName,
-    );
-  }
-
-  @override
-  List<Object?> get props => [date, greeting, userName];
-}
-
-enum AcademicPickType { classwork, homework, exam, event }
-
-class AcademicPickModel extends Equatable {
-  final String id;
-  final String title;
-  final String subtitle;
-  final AcademicPickType type;
-
-  const AcademicPickModel({
-    required this.id,
-    required this.title,
-    required this.subtitle,
-    required this.type,
-  });
-
-  @override
-  List<Object?> get props => [id, title, subtitle, type];
 }

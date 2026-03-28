@@ -1,38 +1,34 @@
 part of 'school_bloc.dart';
 
-abstract class SchoolState extends Equatable {
-  const SchoolState();
+enum SchoolManagementStatus { initial, loading, loaded, error }
 
-  @override
-  List<Object?> get props => [];
-}
-
-class SchoolInitial extends SchoolState {}
-
-class SchoolLoading extends SchoolState {}
-
-class SchoolLoaded extends SchoolState {
-  final SchoolModel summary;
+class SchoolState extends Equatable {
+  final SchoolManagementStatus status;
+  final List<SchoolModuleModel> modules;
+  final String? errorMessage;
   final bool isRefreshing;
 
-  const SchoolLoaded({required this.summary, this.isRefreshing = false});
+  const SchoolState({
+    this.status = SchoolManagementStatus.loaded,
+    this.modules = const [],
+    this.errorMessage,
+    this.isRefreshing = false,
+  });
 
-  SchoolLoaded copyWith({SchoolModel? summary, bool? isRefreshing}) {
-    return SchoolLoaded(
-      summary: summary ?? this.summary,
+  SchoolState copyWith({
+    SchoolManagementStatus? status,
+    List<SchoolModuleModel>? modules,
+    String? errorMessage,
+    bool? isRefreshing,
+  }) {
+    return SchoolState(
+      status: status ?? this.status,
+      modules: modules ?? this.modules,
+      errorMessage: errorMessage ?? this.errorMessage,
       isRefreshing: isRefreshing ?? this.isRefreshing,
     );
   }
 
   @override
-  List<Object?> get props => [summary, isRefreshing];
-}
-
-class SchoolError extends SchoolState {
-  final String message;
-
-  const SchoolError(this.message);
-
-  @override
-  List<Object?> get props => [message];
+  List<Object?> get props => [status, modules, errorMessage, isRefreshing];
 }

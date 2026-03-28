@@ -1,48 +1,48 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:equatable/equatable.dart';
 import '../models/school_model.dart';
 
 part 'school_event.dart';
 part 'school_state.dart';
 
 class SchoolBloc extends Bloc<SchoolEvent, SchoolState> {
-  SchoolBloc() : super(SchoolInitial()) {
-    on<LoadSchoolData>(_onLoadSchoolData);
-    on<RefreshSchoolData>(_onRefreshSchoolData);
+  SchoolBloc()
+      : super(SchoolState(
+          status: SchoolManagementStatus.loaded,
+          modules: SchoolManagementModel.getMockModules().modules,
+        )) {
+    on<LoadSchoolModules>(_onLoadSchoolModules);
+    on<RefreshSchoolModules>(_onRefreshSchoolModules);
   }
 
-  Future<void> _onLoadSchoolData(
-    LoadSchoolData event,
+  void _onLoadSchoolModules(
+    LoadSchoolModules event,
     Emitter<SchoolState> emit,
-  ) async {
-    emit(SchoolLoading());
-    try {
-      // Simulate API delay
-      await Future.delayed(const Duration(milliseconds: 1000));
-
-      final mockData = SchoolModel.getMockData();
-      emit(SchoolLoaded(summary: mockData));
-    } catch (e) {
-      emit(SchoolError(e.toString()));
-    }
+  ) {
+    // Current state already has modules from constructor
+    emit(state.copyWith(status: SchoolManagementStatus.loaded));
   }
 
-  Future<void> _onRefreshSchoolData(
-    RefreshSchoolData event,
+  Future<void> _onRefreshSchoolModules(
+    RefreshSchoolModules event,
     Emitter<SchoolState> emit,
   ) async {
-    if (state is SchoolLoaded) {
-      final currentState = state as SchoolLoaded;
-      emit(currentState.copyWith(isRefreshing: true));
+    if (state.status == SchoolManagementStatus.loaded) {
+      emit(state.copyWith(isRefreshing: true));
       try {
-        // Simulate API delay
         await Future.delayed(const Duration(milliseconds: 800));
-
-        final mockData = SchoolModel.getMockData();
-        emit(SchoolLoaded(summary: mockData));
+        final mockModules = SchoolManagementModel.getMockModules();
+        emit(state.copyWith(
+          status: SchoolManagementStatus.loaded,
+          modules: mockModules.modules,
+          isRefreshing: false,
+        ));
       } catch (e) {
-        emit(SchoolError(e.toString()));
+        emit(state.copyWith(
+          status: SchoolManagementStatus.error,
+          errorMessage: e.toString(),
+          isRefreshing: false,
+        ));
       }
     }
   }
