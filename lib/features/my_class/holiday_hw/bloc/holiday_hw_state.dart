@@ -7,15 +7,17 @@ abstract class HolidayHwState extends Equatable {
   List<Object> get props => [];
 }
 
+class HolidayHwInitial extends HolidayHwState {}
+
 class HolidayHwLoading extends HolidayHwState {}
 
 class HolidayHwLoadedState extends HolidayHwState {
-  final List<HolidayHwModel> holidayHwList;
+  final List<HolidayHwModel> hwList;
 
-  const HolidayHwLoadedState(this.holidayHwList);
+  const HolidayHwLoadedState(this.hwList);
 
   @override
-  List<Object> get props => [holidayHwList];
+  List<Object> get props => [hwList];
 }
 
 class HolidayHwError extends HolidayHwState {

@@ -12,12 +12,12 @@ class ExamTimeTableInitial extends ExamTimeTableState {}
 class ExamTimeTableLoading extends ExamTimeTableState {}
 
 class ExamTimeTableLoaded extends ExamTimeTableState {
-  final String filePath;
+  final List<ExamTimeTableModel> examTimeTables;
 
-  const ExamTimeTableLoaded(this.filePath);
+  const ExamTimeTableLoaded(this.examTimeTables);
 
   @override
-  List<Object> get props => [filePath];
+  List<Object> get props => [examTimeTables];
 }
 
 class ExamTimeTableError extends ExamTimeTableState {

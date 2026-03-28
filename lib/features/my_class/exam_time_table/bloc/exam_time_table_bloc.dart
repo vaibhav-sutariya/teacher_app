@@ -1,17 +1,16 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../pdf_viewer/repositories/pdf_repository.dart';
+import '../models/exam_time_table_model.dart';
+import '../repositories/exam_time_table_repository.dart';
 
 part 'exam_time_table_event.dart';
 part 'exam_time_table_state.dart';
 
 class ExamTimeTableBloc extends Bloc<ExamTimeTableEvent, ExamTimeTableState> {
-  final PdfRepository _repository;
+  final ExamTimeTableRepository repository;
 
-  ExamTimeTableBloc({required PdfRepository repository})
-    : _repository = repository,
-      super(ExamTimeTableInitial()) {
+  ExamTimeTableBloc({required this.repository}) : super(ExamTimeTableInitial()) {
     on<LoadExamTimeTable>(_onLoadExamTimeTable);
   }
 
@@ -20,15 +19,10 @@ class ExamTimeTableBloc extends Bloc<ExamTimeTableEvent, ExamTimeTableState> {
     Emitter<ExamTimeTableState> emit,
   ) async {
     emit(ExamTimeTableLoading());
-    // Simulated URL - reusing same sample PDF for now
-    const pdfUrl =
-        'https://www.aeee.in/wp-content/uploads/2020/08/Sample-pdf.pdf';
-
-    final result = await _repository.getPdf(url: pdfUrl);
-
+    final result = await repository.getExamTimeTables();
     result.fold(
       (failure) => emit(ExamTimeTableError(failure.message)),
-      (filePath) => emit(ExamTimeTableLoaded(filePath)),
+      (list) => emit(ExamTimeTableLoaded(list)),
     );
   }
 }

@@ -7,4 +7,4 @@ abstract class HolidayHwEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class HolidayHwLoaded extends HolidayHwEvent {}
+class LoadHolidayHw extends HolidayHwEvent {}
