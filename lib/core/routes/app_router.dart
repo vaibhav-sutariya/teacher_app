@@ -80,6 +80,8 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: EmployeePhotoRoute.page),
     AutoRoute(page: StudentPhotoUploadRoute.page),
     AutoRoute(page: NewAdmissionRoute.page),
+    AutoRoute(page: AdmissionDetailsRoute.page),
+    AutoRoute(page: AdmissionStudentListRoute.page),
     AutoRoute(page: BirthdayRoute.page),
     AutoRoute(page: CalendarRoute.page),
     AutoRoute(page: StudentInfoRoute.page),
