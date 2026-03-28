@@ -1,4 +1,4 @@
-part of 'view_transport_attendance_bloc.dart';
+import 'package:equatable/equatable.dart';
 
 abstract class ViewTransportAttendanceEvent extends Equatable {
   const ViewTransportAttendanceEvent();
@@ -7,4 +7,20 @@ abstract class ViewTransportAttendanceEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class LoadViewTransportAttendance extends ViewTransportAttendanceEvent {}
+class LoadRoutesForDateEvent extends ViewTransportAttendanceEvent {}
+
+class ChangeTabEvent extends ViewTransportAttendanceEvent {
+  final int index;
+  const ChangeTabEvent(this.index);
+
+  @override
+  List<Object> get props => [index];
+}
+
+class SelectDateEvent extends ViewTransportAttendanceEvent {
+  final DateTime date;
+  const SelectDateEvent(this.date);
+
+  @override
+  List<Object> get props => [date];
+}

@@ -1,17 +1,23 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import '../models/student_notice_model.dart';
+
+import '../repositories/student_notice_repository.dart';
 
 part 'student_notice_event.dart';
 part 'student_notice_state.dart';
 
 class StudentNoticeBloc extends Bloc<StudentNoticeEvent, StudentNoticeState> {
-  StudentNoticeBloc() : super(StudentNoticeInitial()) {
+  final StudentNoticeRepository _repository;
+
+  StudentNoticeBloc({StudentNoticeRepository? repository})
+    : _repository = repository ?? StudentNoticeRepository(),
+      super(StudentNoticeInitial()) {
     on<LoadStudentNotice>((event, emit) async {
       emit(StudentNoticeLoading());
       try {
-        // Simulate network delay
-        await Future.delayed(const Duration(seconds: 1));
-        emit(StudentNoticeLoaded());
+        final notices = await _repository.getNotices();
+        emit(StudentNoticeLoaded(notices));
       } catch (e) {
         emit(StudentNoticeError(e.toString()));
       }

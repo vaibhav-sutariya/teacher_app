@@ -11,7 +11,13 @@ class StudentNoticeInitial extends StudentNoticeState {}
 
 class StudentNoticeLoading extends StudentNoticeState {}
 
-class StudentNoticeLoaded extends StudentNoticeState {}
+class StudentNoticeLoaded extends StudentNoticeState {
+  final List<StudentNoticeModel> notices;
+  const StudentNoticeLoaded(this.notices);
+
+  @override
+  List<Object> get props => [notices];
+}
 
 class StudentNoticeError extends StudentNoticeState {
   final String message;

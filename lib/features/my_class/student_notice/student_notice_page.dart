@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:teachers_app/cubit/theme_cubit.dart';
+import '../../../../core/routes/app_router.gr.dart';
 
 import 'bloc/student_notice_bloc.dart';
 import 'widgets/student_notice_card.dart';
@@ -29,9 +30,18 @@ class StudentNoticePage extends StatelessWidget {
             if (state is StudentNoticeLoading) {
               return const Center(child: CircularProgressIndicator());
             } else if (state is StudentNoticeLoaded) {
+              if (state.notices.isEmpty) {
+                return Center(
+                  child: Text(
+                    'No notices found.',
+                    style: TextStyle(color: context.colors.textSecondary),
+                  ),
+                );
+              }
               return ListView.builder(
-                itemCount: 3,
-                itemBuilder: (context, index) => const StudentNoticeCard(),
+                itemCount: state.notices.length,
+                itemBuilder: (context, index) =>
+                    StudentNoticeCard(notice: state.notices[index]),
               );
             } else if (state is StudentNoticeError) {
               return Center(
@@ -43,6 +53,13 @@ class StudentNoticePage extends StatelessWidget {
             }
             return const SizedBox();
           },
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            context.router.push(const AddStudentNoticeRoute());
+          },
+          backgroundColor: context.colors.primary,
+          child: const Icon(Icons.add, color: Colors.white),
         ),
       ),
     );

@@ -1,21 +1,51 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:equatable/equatable.dart';
+import '../repositories/view_transport_attendance_repository.dart';
+import 'view_transport_attendance_event.dart';
+import 'view_transport_attendance_state.dart';
 
-part 'view_transport_attendance_event.dart';
-part 'view_transport_attendance_state.dart';
+export 'view_transport_attendance_event.dart';
+export 'view_transport_attendance_state.dart';
 
 class ViewTransportAttendanceBloc
     extends Bloc<ViewTransportAttendanceEvent, ViewTransportAttendanceState> {
-  ViewTransportAttendanceBloc() : super(ViewTransportAttendanceInitial()) {
-    on<LoadViewTransportAttendance>((event, emit) async {
-      emit(ViewTransportAttendanceLoading());
+  final ViewTransportAttendanceRepository _repository;
+
+  ViewTransportAttendanceBloc({ViewTransportAttendanceRepository? repository})
+    : _repository = repository ?? ViewTransportAttendanceRepository(),
+      super(ViewTransportAttendanceState.initial()) {
+    on<LoadRoutesForDateEvent>((event, emit) async {
+      emit(state.clearError().copyWith(isLoading: true));
       try {
-        // Simulate network delay
-        await Future.delayed(const Duration(seconds: 1));
-        emit(ViewTransportAttendanceLoaded());
+        final routes = await _repository.getRoutesByDate(state.selectedDate);
+        final pending = routes.where((r) => !r.isMarked).toList();
+        final marked = routes.where((r) => r.isMarked).toList();
+        emit(
+          state.copyWith(
+            isLoading: false,
+            pendingRoutes: pending,
+            markedRoutes: marked,
+          ),
+        );
       } catch (e) {
-        emit(ViewTransportAttendanceError(e.toString()));
+        emit(state.copyWith(isLoading: false, errorMessage: e.toString()));
       }
     });
+
+    on<ChangeTabEvent>((event, emit) {
+      if (state.selectedTabIndex != event.index) {
+        emit(state.copyWith(selectedTabIndex: event.index));
+      }
+    });
+
+    on<SelectDateEvent>((event, emit) {
+      if (state.selectedDate != event.date) {
+        emit(state.copyWith(selectedDate: event.date));
+        add(LoadRoutesForDateEvent());
+      }
+    });
+
+    // on<RefreshRoutesEvent>((event, emit) {
+    //   add(LoadRoutesForDateEvent());
+    // });
   }
 }

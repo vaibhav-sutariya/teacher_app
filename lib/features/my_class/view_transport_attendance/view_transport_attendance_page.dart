@@ -1,8 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:teachers_app/cubit/theme_cubit.dart';
 
+import '../../../../core/helpers/extensions/responsive_extensions.dart';
+import '../../../../core/widgets/app_app_bar.dart';
+import '../../../../core/widgets/app_date_picker.dart';
+import '../../../../core/widgets/app_loader.dart';
+import '../../../../core/widgets/app_tab_bar.dart';
+import '../../../../core/widgets/error_state.dart';
+import '../../../../cubit/theme_cubit.dart';
+import '../../../core/routes/app_router.gr.dart';
 import 'bloc/view_transport_attendance_bloc.dart';
 import 'widgets/view_transport_attendance_card.dart';
 
@@ -14,43 +21,174 @@ class ViewTransportAttendancePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          ViewTransportAttendanceBloc()..add(LoadViewTransportAttendance()),
-      child: Scaffold(
-        backgroundColor: context.colors.surface,
-        appBar: AppBar(
-          backgroundColor: context.colors.primary,
-          title: Text(
-            'View Transport Attendance',
-            style: TextStyle(color: context.colors.textInverse),
-          ),
-          iconTheme: IconThemeData(color: context.colors.textInverse),
-        ),
-        body:
-            BlocBuilder<
-              ViewTransportAttendanceBloc,
-              ViewTransportAttendanceState
-            >(
-              builder: (context, state) {
-                if (state is ViewTransportAttendanceLoading) {
-                  return const Center(child: CircularProgressIndicator());
-                } else if (state is ViewTransportAttendanceLoaded) {
-                  return ListView.builder(
-                    itemCount: 3,
-                    itemBuilder: (context, index) =>
-                        const ViewTransportAttendanceCard(),
+          ViewTransportAttendanceBloc()..add(LoadRoutesForDateEvent()),
+      child: const _ViewTransportAttendanceContent(),
+    );
+  }
+}
+
+class _ViewTransportAttendanceContent extends StatelessWidget {
+  const _ViewTransportAttendanceContent();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<
+      ViewTransportAttendanceBloc,
+      ViewTransportAttendanceState
+    >(
+      buildWhen: (previous, current) =>
+          previous.isLoading != current.isLoading ||
+          previous.errorMessage != current.errorMessage ||
+          previous.selectedTabIndex != current.selectedTabIndex ||
+          previous.selectedDate != current.selectedDate,
+      builder: (context, state) {
+        return Scaffold(
+          backgroundColor: context.colors.surface100,
+          appBar: const AppAppBar(title: 'View Transport Attendance'),
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              // 1. Tab Bar
+              AppTabBar(
+                tabs: const ['PENDING', 'MARKED'],
+                selectedIndex: state.selectedTabIndex,
+                onTabChanged: (index) {
+                  context.read<ViewTransportAttendanceBloc>().add(
+                    ChangeTabEvent(index),
                   );
-                } else if (state is ViewTransportAttendanceError) {
-                  return Center(
-                    child: Text(
-                      state.message,
-                      style: TextStyle(color: context.colors.error),
+                },
+              ),
+
+              // 2. Date Picker
+              AppInlineDatePicker(
+                selectedDate: state.selectedDate,
+                onDateSelected: (date) {
+                  context.read<ViewTransportAttendanceBloc>().add(
+                    SelectDateEvent(date),
+                  );
+                },
+              ),
+
+              // 3. Selection Title
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: context.scale(16),
+                  vertical: context.scaleHeight(16),
+                ),
+                child: Text(
+                  'SELECT TRANSPORT ROUTE',
+                  style: TextStyle(
+                    fontSize: context.scaleFont(14),
+                    fontWeight: FontWeight.bold,
+                    color: context.colors.primary,
+                    letterSpacing: 1.2,
+                  ),
+                ),
+              ),
+
+              // 4. Loading/Error/List States
+              Expanded(child: _buildListContent(context, state)),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildListContent(
+    BuildContext context,
+    ViewTransportAttendanceState state,
+  ) {
+    if (state.isLoading) {
+      return const Center(child: AppLoader());
+    }
+
+    if (state.errorMessage != null) {
+      return ErrorState(
+        message: state.errorMessage!,
+        onRetry: () => context.read<ViewTransportAttendanceBloc>().add(
+          LoadRoutesForDateEvent(),
+        ),
+      );
+    }
+
+    final isPendingTab = state.selectedTabIndex == 0;
+    final displayRoutes = isPendingTab
+        ? state.pendingRoutes
+        : state.markedRoutes;
+
+    return CustomScrollView(
+      slivers: [
+        if (displayRoutes.isEmpty)
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: Center(
+              child: Text(
+                isPendingTab ? 'No pending routes' : 'No marked routes',
+                style: TextStyle(
+                  color: context.colors.textSecondary,
+                  fontSize: context.scaleFont(16),
+                ),
+              ),
+            ),
+          )
+        else
+          SliverList(
+            delegate: SliverChildBuilderDelegate((context, index) {
+              final route = displayRoutes[index];
+              return ViewTransportAttendanceCard(
+                route: route,
+                onTap: () {
+                  context.router.push(
+                    ViewTransportAttendanceDetailRoute(
+                      routeModel: route,
+                      date: state.selectedDate,
                     ),
                   );
-                }
-                return const SizedBox();
-              },
+                },
+              );
+            }, childCount: displayRoutes.length),
+          ),
+
+        // Info card below pending items
+        if (isPendingTab && displayRoutes.isNotEmpty)
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.all(context.scale(16)),
+              child: Container(
+                padding: EdgeInsets.all(context.scale(16)),
+                decoration: BoxDecoration(
+                  color: context.colors.successLight,
+                  borderRadius: BorderRadius.circular(context.scale(12)),
+                  border: Border.all(
+                    color: context.colors.primary.withValues(alpha: 0.1),
+                  ),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Icon(
+                      Icons.info,
+                      color: context.colors.primary,
+                      size: context.scale(20),
+                    ),
+                    SizedBox(width: context.scale(12)),
+                    Expanded(
+                      child: Text(
+                        'Attendance for the remaining ${displayRoutes.length} transport routes is still pending for today. Please ensure all markings are completed before the end of the day.',
+                        style: TextStyle(
+                          color: context.colors.primary,
+                          fontSize: context.scaleFont(14),
+                          height: 1.4,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
-      ),
+          ),
+      ],
     );
   }
 }
