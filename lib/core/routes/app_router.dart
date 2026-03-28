@@ -90,5 +90,6 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: StudentNoticeStudentSelectionRoute.page),
     AutoRoute(page: AddGatePassRoute.page),
     AutoRoute(page: GatePassStudentSelectionRoute.page),
+    AutoRoute(page: AddTimeTableRoute.page),
   ];
 }

@@ -4,7 +4,7 @@ abstract class TimeTableState extends Equatable {
   const TimeTableState();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class TimeTableInitial extends TimeTableState {}
@@ -12,12 +12,12 @@ class TimeTableInitial extends TimeTableState {}
 class TimeTableLoading extends TimeTableState {}
 
 class TimeTableLoaded extends TimeTableState {
-  final String filePath;
+  final List<TimeTableModel> timetables;
 
-  const TimeTableLoaded(this.filePath);
+  const TimeTableLoaded(this.timetables);
 
   @override
-  List<Object> get props => [filePath];
+  List<Object?> get props => [timetables];
 }
 
 class TimeTableError extends TimeTableState {
@@ -26,5 +26,9 @@ class TimeTableError extends TimeTableState {
   const TimeTableError(this.message);
 
   @override
-  List<Object> get props => [message];
+  List<Object?> get props => [message];
 }
+
+class TimeTableAdding extends TimeTableState {}
+
+class TimeTableAdded extends TimeTableState {}
