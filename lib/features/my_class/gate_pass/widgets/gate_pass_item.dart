@@ -48,8 +48,15 @@ class GatePassItem extends StatelessWidget {
           _buildInfoRow(
             context,
             icon: Icons.person_outline,
-            label: 'Request By',
-            value: gatePass.requestBy,
+            label: 'Assigned To',
+            value: gatePass.studentName,
+          ),
+          SizedBox(height: context.scaleHeight(8)),
+          _buildInfoRow(
+            context,
+            icon: Icons.class_outlined,
+            label: 'Class',
+            value: gatePass.className,
           ),
           SizedBox(height: context.scaleHeight(8)),
           _buildInfoRow(

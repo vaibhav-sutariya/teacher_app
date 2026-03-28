@@ -88,5 +88,7 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: StudentNoticeRoute.page),
     AutoRoute(page: AddStudentNoticeRoute.page),
     AutoRoute(page: StudentNoticeStudentSelectionRoute.page),
+    AutoRoute(page: AddGatePassRoute.page),
+    AutoRoute(page: GatePassStudentSelectionRoute.page),
   ];
 }

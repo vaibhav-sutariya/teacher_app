@@ -6,7 +6,6 @@ import 'gate_pass_state.dart';
 class GatePassBloc extends Bloc<GatePassEvent, GatePassState> {
   GatePassBloc() : super(const GatePassState()) {
     on<LoadGatePasses>(_onLoadGatePasses);
-    on<SwitchTab>(_onSwitchTab);
   }
 
   void _onLoadGatePasses(
@@ -18,12 +17,11 @@ class GatePassBloc extends Bloc<GatePassEvent, GatePassState> {
       // Simulate network delay
       await Future.delayed(const Duration(milliseconds: 500));
       final allPasses = GatePassModel.getMockData();
-      final filtered = _filterPasses(allPasses, state.selectedTabIndex);
       emit(
         state.copyWith(
           status: GatePassPageStatus.loaded,
           allGatePasses: allPasses,
-          filteredGatePasses: filtered,
+          filteredGatePasses: allPasses,
         ),
       );
     } catch (e) {
@@ -33,24 +31,6 @@ class GatePassBloc extends Bloc<GatePassEvent, GatePassState> {
           errorMessage: 'Failed to load gate passes',
         ),
       );
-    }
-  }
-
-  void _onSwitchTab(SwitchTab event, Emitter<GatePassState> emit) {
-    final filtered = _filterPasses(state.allGatePasses, event.index);
-    emit(
-      state.copyWith(
-        selectedTabIndex: event.index,
-        filteredGatePasses: filtered,
-      ),
-    );
-  }
-
-  List<GatePassModel> _filterPasses(List<GatePassModel> passes, int index) {
-    if (index == 0) {
-      return passes.where((p) => p.type == GatePassType.student).toList();
-    } else {
-      return passes.where((p) => p.type == GatePassType.parent).toList();
     }
   }
 }

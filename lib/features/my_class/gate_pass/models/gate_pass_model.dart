@@ -12,7 +12,8 @@ class GatePassModel {
   final String formattedTime; // e.g., "10:00 AM - 12:00 PM" or just "10:00 AM"
   final GatePassType type;
   final GatePassStatus status;
-  final String requestBy; // Name of student or parent
+  final String studentName; // To whom the pass was assigned
+  final String className; // Class and section of the student
 
   const GatePassModel({
     required this.id,
@@ -22,7 +23,8 @@ class GatePassModel {
     required this.formattedTime,
     required this.type,
     required this.status,
-    required this.requestBy,
+    required this.studentName,
+    required this.className,
   });
 
   Color get statusColor {
@@ -58,7 +60,6 @@ class GatePassModel {
     }
   }
 
-  // Mock Data
   static List<GatePassModel> getMockData() {
     return [
       GatePassModel(
@@ -68,8 +69,9 @@ class GatePassModel {
         date: DateTime.now(),
         formattedTime: '10:30 AM',
         type: GatePassType.student,
-        status: GatePassStatus.pending,
-        requestBy: 'Vaibhav Sutariya',
+        status: GatePassStatus.approved,
+        studentName: 'Aarav Sharma',
+        className: 'Class X - A',
       ),
       GatePassModel(
         id: '2',
@@ -79,7 +81,8 @@ class GatePassModel {
         formattedTime: '01:00 PM',
         type: GatePassType.student,
         status: GatePassStatus.approved,
-        requestBy: 'Vaibhav Sutariya',
+        studentName: 'Vivaan Patel',
+        className: 'Class VIII - B',
       ),
       GatePassModel(
         id: '3',
@@ -88,8 +91,9 @@ class GatePassModel {
         date: DateTime.now().add(const Duration(days: 1)),
         formattedTime: '09:00 AM',
         type: GatePassType.parent,
-        status: GatePassStatus.pending,
-        requestBy: 'John Doe (Father)',
+        status: GatePassStatus.approved,
+        studentName: 'Diya Singh',
+        className: 'Class XII - Sci',
       ),
       GatePassModel(
         id: '4',
@@ -99,7 +103,8 @@ class GatePassModel {
         formattedTime: '11:00 AM',
         type: GatePassType.parent,
         status: GatePassStatus.approved,
-        requestBy: 'Jane Doe (Mother)',
+        studentName: 'Rohan Gupta',
+        className: 'Class IX - C',
       ),
     ];
   }

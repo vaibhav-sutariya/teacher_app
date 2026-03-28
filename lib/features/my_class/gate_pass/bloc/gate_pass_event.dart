@@ -8,11 +8,3 @@ abstract class GatePassEvent extends Equatable {
 }
 
 class LoadGatePasses extends GatePassEvent {}
-
-class SwitchTab extends GatePassEvent {
-  final int index;
-  const SwitchTab(this.index);
-
-  @override
-  List<Object?> get props => [index];
-}

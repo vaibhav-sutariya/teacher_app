@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import '../../../../core/routes/app_router.gr.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../../core/widgets/app_app_bar.dart';
 import '../../../../core/widgets/app_loader.dart';
-import '../../../../core/widgets/app_tab_bar.dart';
 import '../../../../core/widgets/end_of_list_indicator.dart';
 import 'bloc/gate_pass_bloc.dart';
 import 'bloc/gate_pass_event.dart';
@@ -35,20 +35,6 @@ class GatePassView extends StatelessWidget {
       appBar: const AppAppBar(title: 'Gate Pass'),
       body: Column(
         children: [
-          // Reusable Tab Bar
-          BlocSelector<GatePassBloc, GatePassState, int>(
-            selector: (state) => state.selectedTabIndex,
-            builder: (context, selectedIndex) {
-              return AppTabBar(
-                tabs: const ['Student', 'Parents'],
-                selectedIndex: selectedIndex,
-                onTabChanged: (index) {
-                  context.read<GatePassBloc>().add(SwitchTab(index));
-                },
-              );
-            },
-          ),
-
           Expanded(
             child: BlocBuilder<GatePassBloc, GatePassState>(
               builder: (context, state) {
@@ -81,6 +67,13 @@ class GatePassView extends StatelessWidget {
             ),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          context.router.push(const AddGatePassRoute());
+        },
+        backgroundColor: context.colors.primary,
+        child: const Icon(Icons.add, color: Colors.white),
       ),
     );
   }
