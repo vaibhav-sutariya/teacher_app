@@ -32,66 +32,87 @@ class _ViewTransportAttendanceContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<
-      ViewTransportAttendanceBloc,
-      ViewTransportAttendanceState
-    >(
-      buildWhen: (previous, current) =>
-          previous.isLoading != current.isLoading ||
-          previous.errorMessage != current.errorMessage ||
-          previous.selectedTabIndex != current.selectedTabIndex ||
-          previous.selectedDate != current.selectedDate,
-      builder: (context, state) {
-        return Scaffold(
-          backgroundColor: context.colors.surface100,
-          appBar: const AppAppBar(title: 'View Transport Attendance'),
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              // 1. Tab Bar
-              AppTabBar(
+    return Scaffold(
+      backgroundColor: context.colors.surface100,
+      appBar: const AppAppBar(title: 'View Transport Attendance'),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          // 1. Tab Bar
+          BlocSelector<
+            ViewTransportAttendanceBloc,
+            ViewTransportAttendanceState,
+            int
+          >(
+            selector: (state) => state.selectedTabIndex,
+            builder: (context, selectedIndex) {
+              return AppTabBar(
                 tabs: const ['PENDING', 'MARKED'],
-                selectedIndex: state.selectedTabIndex,
+                selectedIndex: selectedIndex,
                 onTabChanged: (index) {
                   context.read<ViewTransportAttendanceBloc>().add(
                     ChangeTabEvent(index),
                   );
                 },
-              ),
+              );
+            },
+          ),
 
-              // 2. Date Picker
-              AppInlineDatePicker(
-                selectedDate: state.selectedDate,
+          // 2. Date Picker
+          BlocSelector<
+            ViewTransportAttendanceBloc,
+            ViewTransportAttendanceState,
+            DateTime
+          >(
+            selector: (state) => state.selectedDate,
+            builder: (context, selectedDate) {
+              return AppInlineDatePicker(
+                selectedDate: selectedDate,
                 onDateSelected: (date) {
                   context.read<ViewTransportAttendanceBloc>().add(
                     SelectDateEvent(date),
                   );
                 },
-              ),
-
-              // 3. Selection Title
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: context.scale(16),
-                  vertical: context.scaleHeight(16),
-                ),
-                child: Text(
-                  'SELECT TRANSPORT ROUTE',
-                  style: TextStyle(
-                    fontSize: context.scaleFont(14),
-                    fontWeight: FontWeight.bold,
-                    color: context.colors.primary,
-                    letterSpacing: 1.2,
-                  ),
-                ),
-              ),
-
-              // 4. Loading/Error/List States
-              Expanded(child: _buildListContent(context, state)),
-            ],
+              );
+            },
           ),
-        );
-      },
+
+          // 3. Selection Title
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: context.scale(16),
+              vertical: context.scaleHeight(16),
+            ),
+            child: Text(
+              'SELECT TRANSPORT ROUTE',
+              style: TextStyle(
+                fontSize: context.scaleFont(14),
+                fontWeight: FontWeight.bold,
+                color: context.colors.primary,
+                letterSpacing: 1.2,
+              ),
+            ),
+          ),
+
+          // 4. Loading/Error/List States
+          Expanded(
+            child:
+                BlocBuilder<
+                  ViewTransportAttendanceBloc,
+                  ViewTransportAttendanceState
+                >(
+                  buildWhen: (previous, current) =>
+                      previous.isLoading != current.isLoading ||
+                      previous.errorMessage != current.errorMessage ||
+                      previous.pendingRoutes != current.pendingRoutes ||
+                      previous.markedRoutes != current.markedRoutes ||
+                      previous.selectedTabIndex != current.selectedTabIndex,
+                  builder: (context, state) =>
+                      _buildListContent(context, state),
+                ),
+          ),
+        ],
+      ),
     );
   }
 

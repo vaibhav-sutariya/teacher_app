@@ -48,93 +48,94 @@ class _ViewTransportAttendanceDetailContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<
-      ViewTransportAttendanceDetailBloc,
-      ViewTransportAttendanceDetailState
-    >(
-      // Only rebuild if critical loaded states shift
-      buildWhen: (previous, current) =>
-          previous.isLoading != current.isLoading ||
-          previous.errorMessage != current.errorMessage,
-      builder: (context, state) {
-        return Scaffold(
-          backgroundColor: context.colors.surface100,
-          appBar: const AppAppBar(title: 'Route Details'),
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              // Info Header
-              Container(
-                color: context.colors.surface,
-                padding: EdgeInsets.symmetric(
-                  horizontal: context.scale(16),
-                  vertical: context.scaleHeight(16),
+    return Scaffold(
+      backgroundColor: context.colors.surface100,
+      appBar: const AppAppBar(title: 'Route Details'),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          // Info Header
+          Container(
+            color: context.colors.surface,
+            padding: EdgeInsets.symmetric(
+              horizontal: context.scale(16),
+              vertical: context.scaleHeight(16),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        routeModel.routeName.toUpperCase(),
+                        style: TextStyle(
+                          fontSize: context.scaleFont(16),
+                          fontWeight: FontWeight.bold,
+                          color: context.colors.primary,
+                        ),
+                      ),
+                      SizedBox(height: context.scaleHeight(4)),
+                      Text(
+                        'Vehicle: ${routeModel.vehicleNumber}',
+                        style: TextStyle(
+                          fontSize: context.scaleFont(14),
+                          color: context.colors.textSecondary,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            routeModel.routeName.toUpperCase(),
-                            style: TextStyle(
-                              fontSize: context.scaleFont(16),
-                              fontWeight: FontWeight.bold,
-                              color: context.colors.primary,
-                            ),
-                          ),
-                          SizedBox(height: context.scaleHeight(4)),
-                          Text(
-                            'Vehicle: ${routeModel.vehicleNumber}',
-                            style: TextStyle(
-                              fontSize: context.scaleFont(14),
-                              color: context.colors.textSecondary,
-                            ),
-                          ),
-                        ],
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: context.scale(12),
+                    vertical: context.scaleHeight(6),
+                  ),
+                  decoration: BoxDecoration(
+                    color: context.colors.primary.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(context.scale(12)),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.calendar_today,
+                        size: context.scale(14),
+                        color: context.colors.primary,
                       ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: context.scale(12),
-                        vertical: context.scaleHeight(6),
+                      SizedBox(width: context.scale(6)),
+                      Text(
+                        DateFormat('dd MMM yyyy').format(date),
+                        style: TextStyle(
+                          fontSize: context.scaleFont(14),
+                          fontWeight: FontWeight.bold,
+                          color: context.colors.primary,
+                        ),
                       ),
-                      decoration: BoxDecoration(
-                        color: context.colors.primary.withValues(alpha: 0.1),
-                        borderRadius: BorderRadius.circular(context.scale(12)),
-                      ),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.calendar_today,
-                            size: context.scale(14),
-                            color: context.colors.primary,
-                          ),
-                          SizedBox(width: context.scale(6)),
-                          Text(
-                            DateFormat('dd MMM yyyy').format(date),
-                            style: TextStyle(
-                              fontSize: context.scaleFont(14),
-                              fontWeight: FontWeight.bold,
-                              color: context.colors.primary,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Divider(height: 1, color: context.colors.divider),
-
-              // Student List or Loader
-              Expanded(child: _buildBody(context, state)),
-            ],
+              ],
+            ),
           ),
-        );
-      },
+          Divider(height: 1, color: context.colors.divider),
+
+          // Student List or Loader
+          Expanded(
+            child:
+                BlocBuilder<
+                  ViewTransportAttendanceDetailBloc,
+                  ViewTransportAttendanceDetailState
+                >(
+                  buildWhen: (previous, current) =>
+                      previous.isLoading != current.isLoading ||
+                      previous.errorMessage != current.errorMessage ||
+                      previous.students != current.students,
+                  builder: (context, state) => _buildBody(context, state),
+                ),
+          ),
+        ],
+      ),
     );
   }
 
