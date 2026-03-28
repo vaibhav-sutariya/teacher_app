@@ -62,7 +62,7 @@ class AppTabBar extends StatelessWidget {
             child: _TabItem(
               label: tabs[index],
               isSelected: isSelected,
-              selectedColor: Colors.white,
+              selectedColor: selectedColor ?? Colors.white,
               unselectedColor: greyColor,
               indicatorColor: indicatorClr,
               onTap: () => onTabChanged(index),
