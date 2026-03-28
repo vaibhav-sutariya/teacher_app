@@ -4,7 +4,7 @@ abstract class StudentPhotoUploadEvent extends Equatable {
   const StudentPhotoUploadEvent();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
-class LoadStudentPhotoUpload extends StudentPhotoUploadEvent {}
+class LoadStudentPhotoClasses extends StudentPhotoUploadEvent {}
