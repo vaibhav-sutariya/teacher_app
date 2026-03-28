@@ -2,19 +2,17 @@ import 'package:flutter/material.dart';
 import '../../../../core/helpers/extensions/responsive_extensions.dart';
 
 class PhotoUploadBottomSheet extends StatelessWidget {
-  final String studentName;
+  final String title;
   final String? photoUrl;
   final VoidCallback onCamera;
   final VoidCallback onGallery;
-  final VoidCallback onView;
 
   const PhotoUploadBottomSheet({
     super.key,
-    required this.studentName,
+    required this.title,
     this.photoUrl,
     required this.onCamera,
     required this.onGallery,
-    required this.onView,
   });
 
   @override
@@ -41,7 +39,7 @@ class PhotoUploadBottomSheet extends StatelessWidget {
                 ),
                 Expanded(
                   child: Text(
-                    studentName,
+                    title,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: context.scaleFont(16),
@@ -50,7 +48,7 @@ class PhotoUploadBottomSheet extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: context.scale(48)),
+                SizedBox(width: context.scale(48)), // Placeholder for balance
               ],
             ),
             const Divider(),
@@ -91,12 +89,6 @@ class PhotoUploadBottomSheet extends StatelessWidget {
               ),
             ),
             SizedBox(height: context.scaleHeight(24)),
-            _buildOption(
-              context,
-              icon: Icons.image_outlined,
-              title: 'View Photo',
-              onTap: onView,
-            ),
             _buildOption(
               context,
               icon: Icons.camera_alt_outlined,
@@ -150,21 +142,20 @@ class PhotoUploadBottomSheet extends StatelessWidget {
 
 void showPhotoUploadBottomSheet({
   required BuildContext context,
-  required String studentName,
+  required String title,
   String? photoUrl,
   required VoidCallback onCamera,
   required VoidCallback onGallery,
-  required VoidCallback onView,
 }) {
   showModalBottomSheet(
     context: context,
     backgroundColor: Colors.transparent,
+    isScrollControlled: true,
     builder: (context) => PhotoUploadBottomSheet(
-      studentName: studentName,
+      title: title,
       photoUrl: photoUrl,
       onCamera: onCamera,
       onGallery: onGallery,
-      onView: onView,
     ),
   );
 }

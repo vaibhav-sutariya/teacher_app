@@ -114,7 +114,7 @@ class _ParentPhotoListPageContent extends StatelessWidget {
                       onTap: () {
                         showPhotoUploadBottomSheet(
                           context: context,
-                          studentName: parent.parentName, // Use parent name as title
+                          title: parent.parentName, // Use parent name as title
                           photoUrl: parent.photoUrl,
                           onCamera: () {
                             // Simulate upload
@@ -133,9 +133,6 @@ class _ParentPhotoListPageContent extends StatelessWidget {
                                     status: 'uploaded',
                                   ),
                                 );
-                          },
-                          onView: () {
-                            // TODO: Implement viewing
                           },
                         );
                       },
