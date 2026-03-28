@@ -18,6 +18,7 @@ class AssignmentLoadedState extends AssignmentState {
   List<Object> get props => [assignmentList];
 }
 
+
 class AssignmentError extends AssignmentState {
   final String message;
 

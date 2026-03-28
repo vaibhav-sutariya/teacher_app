@@ -7,4 +7,4 @@ abstract class AssignmentEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class AssignmentLoaded extends AssignmentEvent {}
+class FetchAssignments extends AssignmentEvent {}

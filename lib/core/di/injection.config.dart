@@ -15,6 +15,8 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:teachers_app/core/connection/connection_checker.dart' as _i360;
 import 'package:teachers_app/core/di/register_module.dart' as _i615;
+import 'package:teachers_app/features/my_class/assignment/repositories/assignment_repository.dart'
+    as _i773;
 import 'package:teachers_app/features/my_class/time_table/bloc/time_table_bloc.dart'
     as _i995;
 import 'package:teachers_app/features/my_class/time_table/repositories/time_table_repository.dart'
@@ -41,6 +43,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i379.PdfRepository>(
       () => _i379.PdfRepositoryImpl(gh<_i361.Dio>()),
+    );
+    gh.lazySingleton<_i773.AssignmentRepository>(
+      () => _i773.AssignmentRepositoryImpl(),
     );
     gh.lazySingleton<_i114.TimeTableRepository>(
       () => _i114.TimeTableRepositoryImpl(),
