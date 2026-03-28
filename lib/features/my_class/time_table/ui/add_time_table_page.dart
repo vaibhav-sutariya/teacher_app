@@ -33,7 +33,7 @@ class _AddTimeTablePageState extends State<AddTimeTablePage> {
   String? selectedClass;
   String? selectedType;
   final _teacherController = TextEditingController();
-  final _pdfUrlController = TextEditingController();
+  String? _pdfUrl;
 
   final List<String> classes = ['Sr.KG', 'Jr.KG', '1st', '2nd', '3rd', '4th', '5th'];
   final List<String> types = ['JAL', 'VAYU', 'AAKASH', 'PRITHVI', 'TEJ'];
@@ -41,7 +41,6 @@ class _AddTimeTablePageState extends State<AddTimeTablePage> {
   @override
   void dispose() {
     _teacherController.dispose();
-    _pdfUrlController.dispose();
     super.dispose();
   }
 
@@ -94,14 +93,6 @@ class _AddTimeTablePageState extends State<AddTimeTablePage> {
                   validator: (val) =>
                       val == null || val.isEmpty ? 'Please enter teacher name' : null,
                 ),
-                SizedBox(height: context.scaleHeight(16)),
-                AppTextField(
-                  labelText: 'PDF URL',
-                  controller: _pdfUrlController,
-                  validator: (val) =>
-                      val == null || val.isEmpty ? 'Please enter PDF URL' : null,
-                  hintText: 'https://example.com/timetable.pdf',
-                ),
                 SizedBox(height: context.scaleHeight(24)),
                 // Simulated Upload Button
                 AppDashedUploadButton(
@@ -109,8 +100,12 @@ class _AddTimeTablePageState extends State<AddTimeTablePage> {
                   label: 'Upload PDF Attachment',
                   onTap: () {
                     // Simulated file picking
-                    _pdfUrlController.text =
-                        'https://www.aeee.in/wp-content/uploads/2020/08/Sample-pdf.pdf';
+                    setState(() {
+                      _pdfUrl = 'https://www.aeee.in/wp-content/uploads/2020/08/Sample-pdf.pdf';
+                    });
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('PDF Attachment Uploaded')),
+                    );
                   },
                 ),
                 SizedBox(height: context.scaleHeight(40)),
@@ -121,12 +116,18 @@ class _AddTimeTablePageState extends State<AddTimeTablePage> {
                       isLoading: state is TimeTableAdding,
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
+                          if (_pdfUrl == null) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Please upload a PDF attachment')),
+                            );
+                            return;
+                          }
                           final model = TimeTableModel(
                             id: DateTime.now().millisecondsSinceEpoch.toString(),
                             className: selectedClass!,
-                            divisionName: selectedType!, // Using type as division for now
+                            divisionName: selectedType!,
                             classTeacherName: _teacherController.text,
-                            pdfUrl: _pdfUrlController.text,
+                            pdfUrl: _pdfUrl!,
                             type: selectedType,
                           );
                           context.read<TimeTableBloc>().add(AddTimeTable(model));

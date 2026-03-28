@@ -2,12 +2,15 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../models/syllabus_model.dart';
+import '../repositories/syllabus_repository.dart';
 
 part 'syllabus_event.dart';
 part 'syllabus_state.dart';
 
 class SyllabusBloc extends Bloc<SyllabusEvent, SyllabusState> {
-  SyllabusBloc() : super(SyllabusLoading()) {
+  final SyllabusRepository repository;
+
+  SyllabusBloc({required this.repository}) : super(SyllabusLoading()) {
     on<SyllabusLoaded>(_onSyllabusLoaded);
   }
 
@@ -16,17 +19,10 @@ class SyllabusBloc extends Bloc<SyllabusEvent, SyllabusState> {
     Emitter<SyllabusState> emit,
   ) async {
     emit(SyllabusLoading());
-
-    try {
-      // Simulate network delay
-      await Future.delayed(const Duration(milliseconds: 500));
-
-      // Load mock data
-      final syllabusList = SyllabusModel.getMockData();
-
-      emit(SyllabusLoadedState(syllabusList));
-    } catch (e) {
-      emit(SyllabusError('Failed to load syllabus: ${e.toString()}'));
-    }
+    final result = await repository.getSyllabus();
+    result.fold(
+      (failure) => emit(SyllabusError(failure.message)),
+      (syllabusList) => emit(SyllabusLoadedState(syllabusList)),
+    );
   }
 }
