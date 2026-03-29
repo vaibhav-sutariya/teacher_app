@@ -137,7 +137,8 @@ class _AttendanceContent extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: context.scale(16)),
               child: AppPrimaryButton(
-                onPressed: () => context.router.push(const StaffAttendanceDetailsRoute()),
+                onPressed: () =>
+                    context.router.push(const StaffAttendanceDetailsRoute()),
                 text: 'Month Wise Details',
                 color: context.colors.primary,
                 textColor: Colors.white,
