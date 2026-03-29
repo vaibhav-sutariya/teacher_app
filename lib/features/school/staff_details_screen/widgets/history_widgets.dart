@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:teachers_app/core/helpers/extensions/responsive_extensions.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 import '../models/history_model.dart';
 import '../models/staff_model.dart';
 
-class StaffHistoryHeader extends StatelessWidget implements PreferredSizeWidget {
+class StaffHistoryHeader extends StatelessWidget
+    implements PreferredSizeWidget {
   final StaffMember staff;
 
   const StaffHistoryHeader({super.key, required this.staff});
@@ -17,7 +19,7 @@ class StaffHistoryHeader extends StatelessWidget implements PreferredSizeWidget 
         bottom: context.scaleHeight(15),
       ),
       decoration: BoxDecoration(
-        color: const Color(0xFFFFC107), // Yellow as per screenshot
+        color: context.colors.primary, // Yellow as per screenshot
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(context.scale(25)),
           bottomRight: Radius.circular(context.scale(25)),
@@ -32,12 +34,12 @@ class StaffHistoryHeader extends StatelessWidget implements PreferredSizeWidget 
           CircleAvatar(
             radius: context.scale(22),
             backgroundColor: Colors.white24,
-            backgroundImage: staff.profileImage != null 
-              ? NetworkImage(staff.profileImage!) 
-              : null,
+            backgroundImage: staff.profileImage != null
+                ? NetworkImage(staff.profileImage!)
+                : null,
             child: staff.profileImage == null
-              ? const Icon(Icons.person, color: Colors.white)
-              : null,
+                ? const Icon(Icons.person, color: Colors.white)
+                : null,
           ),
           SizedBox(width: context.scale(12)),
           Expanded(
@@ -137,10 +139,7 @@ class AttendanceHistoryTile extends StatelessWidget {
               alignment: Alignment.center,
               children: [
                 // Horizontal Line
-                Container(
-                  height: 1,
-                  color: statusColor.withValues(alpha: 0.3),
-                ),
+                Container(height: 1, color: statusColor.withValues(alpha: 0.3)),
                 // Status Box
                 Container(
                   padding: EdgeInsets.symmetric(
@@ -149,7 +148,9 @@ class AttendanceHistoryTile extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    border: Border.all(color: statusColor.withValues(alpha: 0.5)),
+                    border: Border.all(
+                      color: statusColor.withValues(alpha: 0.5),
+                    ),
                     borderRadius: BorderRadius.circular(context.scale(4)),
                   ),
                   child: Text(
@@ -177,10 +178,7 @@ class AttendanceHistoryTile extends StatelessWidget {
 class AttendanceSummaryFooter extends StatelessWidget {
   final VoidCallback onTap;
 
-  const AttendanceSummaryFooter({
-    super.key,
-    required this.onTap,
-  });
+  const AttendanceSummaryFooter({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -245,7 +243,9 @@ class HistorySummaryBottomSheet extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(context.scale(20))),
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(context.scale(20)),
+        ),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -263,13 +263,33 @@ class HistorySummaryBottomSheet extends StatelessWidget {
             ),
           ),
           const Divider(height: 1),
-          
+
           // List Items
-          _SummaryItem(label: 'PRESENT DAYS', count: present.toDouble(), color: Colors.green),
-          _SummaryItem(label: 'ABSENT DAYS', count: absent.toDouble(), color: const Color(0xFFE57373)),
-          _SummaryItem(label: 'LEAVE DAYS', count: leave.toDouble(), color: Colors.orange),
-          _SummaryItem(label: 'HOLIDAY', count: holiday.toDouble(), color: Colors.blue),
-          _SummaryItem(label: 'WEEK OFF', count: weekOff.toDouble(), color: Colors.yellow.shade700),
+          _SummaryItem(
+            label: 'PRESENT DAYS',
+            count: present.toDouble(),
+            color: Colors.green,
+          ),
+          _SummaryItem(
+            label: 'ABSENT DAYS',
+            count: absent.toDouble(),
+            color: const Color(0xFFE57373),
+          ),
+          _SummaryItem(
+            label: 'LEAVE DAYS',
+            count: leave.toDouble(),
+            color: Colors.orange,
+          ),
+          _SummaryItem(
+            label: 'HOLIDAY',
+            count: holiday.toDouble(),
+            color: Colors.blue,
+          ),
+          _SummaryItem(
+            label: 'WEEK OFF',
+            count: weekOff.toDouble(),
+            color: Colors.yellow.shade700,
+          ),
         ],
       ),
     );
@@ -299,10 +319,7 @@ class _SummaryItem extends StatelessWidget {
           Container(
             width: context.scale(24),
             height: context.scale(24),
-            decoration: BoxDecoration(
-              color: color,
-              shape: BoxShape.circle,
-            ),
+            decoration: BoxDecoration(color: color, shape: BoxShape.circle),
           ),
           SizedBox(width: context.scale(16)),
           Text(

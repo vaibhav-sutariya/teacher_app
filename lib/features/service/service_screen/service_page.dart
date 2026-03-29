@@ -135,6 +135,16 @@ class ServicePage extends StatelessWidget {
                                             context.pushRoute(
                                               const AnnouncementsRoute(),
                                             );
+                                          } else if (item.label ==
+                                              'Performance') {
+                                            context.pushRoute(
+                                              const PerformanceRoute(),
+                                            );
+                                          } else if (item.label ==
+                                              'Student Leave') {
+                                            context.pushRoute(
+                                              const StudentLeaveRoute(),
+                                            );
                                           }
                                         },
                                       );

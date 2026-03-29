@@ -121,5 +121,7 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: PunchApprovalsRoute.page),
     AutoRoute(page: AnnouncementsRoute.page),
     AutoRoute(page: AnnouncementDetailsRoute.page),
+    AutoRoute(page: PerformanceRoute.page),
+    AutoRoute(page: StudentLeaveRoute.page),
   ];
 }
