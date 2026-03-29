@@ -115,6 +115,10 @@ class ServicePage extends StatelessWidget {
                                             context.pushRoute(
                                               const LeaveTrackerRoute(),
                                             );
+                                          } else if (item.label == 'Approvals') {
+                                            context.pushRoute(
+                                              const ApprovalsRoute(),
+                                            );
                                           }
                                         },
                                       );
