@@ -130,6 +130,11 @@ class ServicePage extends StatelessWidget {
                                             context.pushRoute(
                                               const PunchApprovalsRoute(),
                                             );
+                                          } else if (item.label ==
+                                              'Announcements') {
+                                            context.pushRoute(
+                                              const AnnouncementsRoute(),
+                                            );
                                           }
                                         },
                                       );
