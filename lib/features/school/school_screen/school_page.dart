@@ -2,9 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:teachers_app/core/helpers/extensions/responsive_extensions.dart';
+import 'package:teachers_app/core/routes/app_router.gr.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 import 'package:teachers_app/features/my_class/my_class_screen/widgets/my_class_header.dart';
 
 import 'bloc/school_bloc.dart';
+import 'models/school_model.dart';
 import 'widgets/school_management_list_tile.dart';
 
 @RoutePage()
@@ -26,108 +29,95 @@ class _SchoolPageContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Stack(
-        children: [
-          // 1. Teal Header Background (Standard for MyClass suite)
-          Container(
-            height: context.scaleHeight(185),
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: const Color(0xFF00695C),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(context.scale(20)),
-                bottomRight: Radius.circular(context.scale(20)),
+      backgroundColor: context.colors.surface100,
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            // 1. Teal Header Background
+            Container(
+              height: context.scaleHeight(185),
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: context.colors.primary,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(context.scale(20)),
+                  bottomRight: Radius.circular(context.scale(20)),
+                ),
               ),
             ),
-          ),
 
-          // 2. Main content wrapping MyClassHeader and Modules List
-          SafeArea(
-            bottom: false,
-            child: Column(
-              children: [
-                SizedBox(height: context.scaleHeight(10)),
-                // Synchronized MyClassHeader
-                const MyClassHeader(),
+            // 2. Main content wrapping MyClassHeader and Modules List
+            SafeArea(
+              bottom: false,
+              child: Column(
+                children: [
+                  SizedBox(height: context.scaleHeight(10)),
+                  // Synchronized MyClassHeader
+                  const MyClassHeader(),
 
-                SizedBox(height: context.scaleHeight(15)),
+                  SizedBox(height: context.scaleHeight(15)),
 
-                // Content Card
-                Expanded(
-                  child: Container(
+                  // Content Card
+                  Container(
                     width: double.infinity,
+                    margin: EdgeInsets.all(
+                      context.scale(16),
+                    ).copyWith(bottom: context.scaleHeight(100)),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(context.scale(25)),
-                        topRight: Radius.circular(context.scale(25)),
-                      ),
+                      borderRadius: BorderRadius.circular(context.scale(25)),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black.withValues(alpha: 0.1),
                           blurRadius: 20,
-                          offset: const Offset(0, -5),
+                          offset: const Offset(0, 10),
                         ),
                       ],
                     ),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(context.scale(25)),
-                        topRight: Radius.circular(context.scale(25)),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: context.scale(20)),
-                          // Modules List (Tightened for single-screen fit)
-                          Expanded(
-                            child: BlocBuilder<SchoolBloc, SchoolState>(
-                              builder: (context, state) {
-                                if (state.status ==
-                                    SchoolManagementStatus.loading) {
-                                  return const Center(
-                                    child: CircularProgressIndicator(),
+                      borderRadius: BorderRadius.circular(context.scale(25)),
+                      child:
+                          BlocSelector<
+                            SchoolBloc,
+                            SchoolState,
+                            List<SchoolModuleModel>
+                          >(
+                            selector: (state) => state.modules,
+                            builder: (context, modules) {
+                              return ListView.separated(
+                                padding: EdgeInsets.symmetric(
+                                  vertical: context.scale(20),
+                                ),
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: modules.length,
+                                separatorBuilder: (context, index) => Divider(
+                                  color: Colors.grey.withValues(alpha: 0.05),
+                                  height: 1,
+                                  indent: context.scale(20),
+                                  endIndent: context.scale(20),
+                                ),
+                                itemBuilder: (context, index) {
+                                  final module = modules[index];
+                                  return SchoolManagementListTile(
+                                    module: module,
+                                    onTap: () {
+                                      if (module.id == 'fees') {
+                                        context.router.push(const FeesRoute());
+                                      }
+                                    },
                                   );
-                                }
-
-                                if (state.status ==
-                                    SchoolManagementStatus.error) {
-                                  return Center(
-                                    child: Text(
-                                      state.errorMessage ??
-                                          'Error Loading Dashboard',
-                                    ),
-                                  );
-                                }
-
-                                return ListView.builder(
-                                  padding: EdgeInsets.zero,
-                                  physics:
-                                      const NeverScrollableScrollPhysics(), // Non-scrollable singleton view
-                                  itemCount: state.modules.length,
-                                  itemBuilder: (context, index) {
-                                    final module = state.modules[index];
-                                    return SchoolManagementListTile(
-                                      module: module,
-                                      onTap: () {
-                                        // TODO: Implement navigation
-                                      },
-                                    );
-                                  },
-                                );
-                              },
-                            ),
+                                },
+                              );
+                            },
                           ),
-                        ],
-                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
