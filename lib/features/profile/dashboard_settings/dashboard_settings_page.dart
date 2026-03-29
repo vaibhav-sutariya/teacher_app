@@ -16,12 +16,11 @@ class DashboardSettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => DashboardSettingsBloc()..add(LoadDashboardSettings()),
+      create: (context) =>
+          DashboardSettingsBloc()..add(LoadDashboardSettings()),
       child: Scaffold(
         backgroundColor: context.colors.surface100,
-        appBar: const AppAppBar(
-          title: 'Dashboard Settings',
-        ),
+        appBar: const AppAppBar(title: 'Dashboard Settings'),
         body: Column(
           children: [
             Container(
@@ -40,6 +39,15 @@ class DashboardSettingsPage extends StatelessWidget {
             SizedBox(height: context.scaleHeight(8)),
             Expanded(
               child: BlocBuilder<DashboardSettingsBloc, DashboardSettingsState>(
+                buildWhen: (previous, current) {
+                  // OPTIMIZATION: Only rebuild the entire list shell when transitioning states
+                  // (e.g. Loading -> Loaded) or if the total number of items changes.
+                  if (previous is DashboardSettingsLoaded &&
+                      current is DashboardSettingsLoaded) {
+                    return previous.settings.length != current.settings.length;
+                  }
+                  return previous.runtimeType != current.runtimeType;
+                },
                 builder: (context, state) {
                   if (state is DashboardSettingsLoading) {
                     return Center(
@@ -48,12 +56,38 @@ class DashboardSettingsPage extends StatelessWidget {
                       ),
                     );
                   } else if (state is DashboardSettingsLoaded) {
+                    // Extract IDs to build the static list shell
+                    final itemIds = state.settings.map((e) => e.id).toList();
+
                     return ListView.builder(
                       padding: EdgeInsets.all(context.scale(16)),
-                      itemCount: state.settings.length,
+                      itemCount: itemIds.length,
                       itemBuilder: (context, index) {
-                        return _SettingCard(
-                          item: state.settings[index],
+                        final id = itemIds[index];
+
+                        // OPTIMIZATION: Use BlocSelector to listen ONLY to changes for this specific item ID.
+                        // Other cards will completely ignore the state emission and Will NOT rebuild.
+                        return BlocSelector<
+                          DashboardSettingsBloc,
+                          DashboardSettingsState,
+                          DashboardSettingItem?
+                        >(
+                          selector: (selectorState) {
+                            if (selectorState is DashboardSettingsLoaded) {
+                              try {
+                                return selectorState.settings.firstWhere(
+                                  (item) => item.id == id,
+                                );
+                              } catch (_) {
+                                return null;
+                              }
+                            }
+                            return null;
+                          },
+                          builder: (context, item) {
+                            if (item == null) return const SizedBox();
+                            return _SettingCard(item: item);
+                          },
                         );
                       },
                     );
@@ -97,9 +131,9 @@ class _SettingCard extends StatelessWidget {
         child: InkWell(
           borderRadius: BorderRadius.circular(context.scale(16)),
           onTap: () {
-            context
-                .read<DashboardSettingsBloc>()
-                .add(ToggleDashboardSetting(item.id));
+            context.read<DashboardSettingsBloc>().add(
+              ToggleDashboardSetting(item.id),
+            );
           },
           child: Padding(
             padding: EdgeInsets.symmetric(
@@ -161,9 +195,9 @@ class _SettingCard extends StatelessWidget {
                   value: item.isEnabled,
                   activeColor: context.colors.primary,
                   onChanged: (bool value) {
-                    context
-                        .read<DashboardSettingsBloc>()
-                        .add(ToggleDashboardSetting(item.id));
+                    context.read<DashboardSettingsBloc>().add(
+                      ToggleDashboardSetting(item.id),
+                    );
                   },
                 ),
               ],
