@@ -195,7 +195,8 @@ import 'package:teachers_app/features/profile/reset_password/reset_password_page
     as _i65;
 import 'package:teachers_app/features/profile/student_profile/student_profile_page.dart'
     as _i75;
-import 'package:teachers_app/features/school/school_page.dart' as _i66;
+import 'package:teachers_app/features/school/school_screen/school_page.dart'
+    as _i66;
 import 'package:teachers_app/features/service/service_page.dart' as _i67;
 import 'package:teachers_app/features/splash/screens/ui/splash_screen.dart'
     as _i68;

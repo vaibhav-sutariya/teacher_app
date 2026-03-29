@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../core/helpers/extensions/responsive_extensions.dart';
+import '../../../../core/helpers/extensions/responsive_extensions.dart';
 import '../models/school_model.dart';
 
 class SchoolManagementListTile extends StatelessWidget {
