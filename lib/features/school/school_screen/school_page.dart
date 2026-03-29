@@ -108,6 +108,8 @@ class _SchoolPageContent extends StatelessWidget {
                                         context.router.push(const StaffAttendanceRoute());
                                       } else if (module.id == 'staff_details') {
                                         context.router.push(const StaffDetailsRoute());
+                                      } else if (module.id == 'notice') {
+                                        context.router.push(const NoticeCircularsRoute());
                                       }
                                     },
                                   );
