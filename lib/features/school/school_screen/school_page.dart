@@ -112,6 +112,8 @@ class _SchoolPageContent extends StatelessWidget {
                                         context.router.push(const NoticeCircularsRoute());
                                       } else if (module.id == 'enquiry') {
                                         context.router.push(const EnquiryRoute());
+                                      } else if (module.id == 'strength') {
+                                        context.router.push(const SchoolStrengthRoute());
                                       }
                                     },
                                   );
