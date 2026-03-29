@@ -40,6 +40,7 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: EnquiryRoute.page),
     AutoRoute(page: AdmittedDetailsRoute.page),
     AutoRoute(page: SchoolStrengthRoute.page),
+    AutoRoute(page: BusTrackingRoute.page),
     AutoRoute(page: AttendanceRoute.page),
     AutoRoute(page: AttendanceEntryRoute.page),
     AutoRoute(page: HomeworkRoute.page),
