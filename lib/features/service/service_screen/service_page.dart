@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:teachers_app/core/helpers/extensions/responsive_extensions.dart';
 import 'package:teachers_app/cubit/theme_cubit.dart';
-import '../my_class/my_class_screen/widgets/menu_item.dart';
-import '../my_class/my_class_screen/widgets/my_class_header.dart';
+import 'package:teachers_app/core/routes/app_router.gr.dart';
+import '../../my_class/my_class_screen/widgets/menu_item.dart';
+import '../../my_class/my_class_screen/widgets/my_class_header.dart';
 import 'bloc/service_bloc.dart';
 import 'widgets/service_search_bar.dart';
 
@@ -110,7 +111,11 @@ class ServicePage extends StatelessWidget {
                                         color: item.iconColor,
                                         backgroundColor: item.backgroundColor,
                                         onTap: () {
-                                          // Handle navigation
+                                          if (item.label == 'Leave') {
+                                            context.pushRoute(
+                                              const LeaveTrackerRoute(),
+                                            );
+                                          }
                                         },
                                       );
                                     },

@@ -19,7 +19,7 @@ import 'repositories/add_leave_repository.dart';
 import 'package:teachers_app/cubit/theme_cubit.dart';
 
 /// Add leave page with Bloc state management
-@RoutePage()
+// @RoutePage()
 class AddLeavePage extends StatefulWidget {
   const AddLeavePage({super.key});
 

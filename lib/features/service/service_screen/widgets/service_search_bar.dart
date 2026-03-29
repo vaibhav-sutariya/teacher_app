@@ -54,7 +54,9 @@ class _ServiceSearchBarState extends State<ServiceSearchBar> {
               child: TextField(
                 focusNode: _focusNode,
                 onChanged: (value) {
-                  context.read<ServiceBloc>().add(SearchServiceItems(query: value));
+                  context.read<ServiceBloc>().add(
+                    SearchServiceItems(query: value),
+                  );
                 },
                 onTapOutside: (_) {
                   _focusNode.unfocus();
