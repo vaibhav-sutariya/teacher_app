@@ -5,9 +5,9 @@ import '../../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../../core/widgets/app_app_bar.dart';
 import '../../../../core/widgets/app_tab_bar.dart';
 import 'package:teachers_app/cubit/theme_cubit.dart';
+import '../../../../core/widgets/empty_state_view.dart';
 import 'bloc/approvals_bloc.dart';
 import 'models/approval_models.dart';
-import 'widgets/empty_approvals_view.dart';
 
 @RoutePage()
 class ApprovalsPage extends StatelessWidget {
@@ -70,7 +70,7 @@ class ApprovalsPage extends StatelessWidget {
                     }
 
                     if (currentList.isEmpty) {
-                      return const EmptyApprovalsView();
+                      return const EmptyStateView();
                     }
 
                     return ListView.builder(

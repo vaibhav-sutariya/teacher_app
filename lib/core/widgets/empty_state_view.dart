@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
-import '../../../../core/helpers/extensions/responsive_extensions.dart';
-import 'package:teachers_app/cubit/theme_cubit.dart';
+import '../helpers/extensions/responsive_extensions.dart';
+import '../../cubit/theme_cubit.dart';
 
-class EmptyApprovalsView extends StatelessWidget {
-  const EmptyApprovalsView({super.key});
+class EmptyStateView extends StatelessWidget {
+  final String title;
+  final String subtitle;
+  final IconData? icon;
+
+  const EmptyStateView({
+    super.key,
+    this.title = 'Trust me, it is empty !',
+    this.subtitle = 'No Content found. Try after some time',
+    this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -11,16 +20,16 @@ class EmptyApprovalsView extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // Illustration Placeholder (matches the ghost-like figure in screenshot)
+          // Illustration Placeholder
           Icon(
-            Icons.sentiment_very_dissatisfied_outlined,
+            icon ?? Icons.sentiment_very_dissatisfied_outlined,
             size: context.scale(100),
             color: context.colors.primary.withValues(alpha: 0.1),
           ),
           SizedBox(height: context.scaleHeight(20)),
           
           Text(
-            'Trust me, it is empty !',
+            title,
             style: TextStyle(
               fontSize: context.scaleFont(18),
               fontWeight: FontWeight.bold,
@@ -30,9 +39,9 @@ class EmptyApprovalsView extends StatelessWidget {
           SizedBox(height: context.scaleHeight(8)),
           
           Text(
-            'No Content found. Try after some time',
+            subtitle,
             style: TextStyle(
-              fontSize: context.scaleFont(12),
+              fontSize: context.scaleFont(14),
               color: context.colors.textSecondary,
               fontWeight: FontWeight.w500,
             ),
