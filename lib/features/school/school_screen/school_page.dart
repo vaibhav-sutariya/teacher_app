@@ -104,6 +104,8 @@ class _SchoolPageContent extends StatelessWidget {
                                     onTap: () {
                                       if (module.id == 'fees') {
                                         context.router.push(const FeesRoute());
+                                      } else if (module.id == 'staff_attendance') {
+                                        context.router.push(const StaffAttendanceRoute());
                                       }
                                     },
                                   );
