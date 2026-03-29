@@ -1,129 +1,74 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
-/// Notice model - ready for API integration
 class ServiceModel extends Equatable {
   final String id;
-  final String title;
-  final String description;
-  final DateTime date;
-  final String postedBy;
-  final String? attachmentUrl;
+  final String label;
+  final IconData icon;
+  final Color iconColor;
+  final Color backgroundColor;
 
   const ServiceModel({
     required this.id,
-    required this.title,
-    required this.description,
-    required this.date,
-    required this.postedBy,
-    this.attachmentUrl,
+    required this.label,
+    required this.icon,
+    required this.iconColor,
+    required this.backgroundColor,
   });
 
   @override
-  List<Object?> get props => [
-    id,
-    title,
-    description,
-    date,
-    postedBy,
-    attachmentUrl,
-  ];
+  List<Object?> get props => [id, label, icon, iconColor, backgroundColor];
 
-  /// Static mock data for development
-  static List<ServiceModel> getMockData() {
-    final now = DateTime.now();
+  static List<ServiceModel> getServiceItems() {
     return [
-      // Current month notices
-      ServiceModel(
-        id: '1',
-        title: 'Annual Sports Meet 2024',
-        description:
-            'The annual sports meet for the academic year 2024 will be held on the last week of this month. All students are requested to participate.',
-        date: DateTime(now.year, now.month, 10),
-        postedBy: 'Admin Office',
+      const ServiceModel(
+        id: 'leave',
+        label: 'Leave',
+        icon: Icons.event_note_outlined,
+        iconColor: Color(0xFFE91E63),
+        backgroundColor: Color(0xFFFCE4EC),
       ),
-      ServiceModel(
-        id: '2',
-        title: 'Parent-Teacher Meeting',
-        description:
-            'PTM for the second term will be conducted this Friday. Please ensure your presence to discuss your ward\'s progress.',
-        date: DateTime(now.year, now.month, 12),
-        postedBy: 'Principal',
+      const ServiceModel(
+        id: 'approvals',
+        label: 'Approvals',
+        icon: Icons.fact_check_outlined,
+        iconColor: Color(0xFF4CAF50),
+        backgroundColor: Color(0xFFE8F5E9),
       ),
-      ServiceModel(
-        id: '3',
-        title: 'Holiday Notice: Independence Day',
-        description:
-            'The school will remain closed on 15th August on account of Independence Day. Flag hoisting ceremony starts at 8:00 AM.',
-        date: DateTime(now.year, now.month, 15),
-        postedBy: 'Principal',
+      const ServiceModel(
+        id: 'manual_punch',
+        label: 'Manual Punch',
+        icon: Icons.fingerprint_outlined,
+        iconColor: Color(0xFF2196F3),
+        backgroundColor: Color(0xFFE3F2FD),
       ),
-      ServiceModel(
-        id: '7',
-        title: 'Library Book Return',
-        description:
-            'Students are reminded to return all overdue library books by the end of this week to avoid late fees.',
-        date: DateTime(now.year, now.month, 18),
-        postedBy: 'Librarian',
+      const ServiceModel(
+        id: 'approve_punch',
+        label: 'Approve/Reject Manual Punch',
+        icon: Icons.how_to_reg_outlined,
+        iconColor: Color(0xFFFF9800),
+        backgroundColor: Color(0xFFFFF3E0),
       ),
-      ServiceModel(
-        id: '8',
-        title: 'School Fees Reminder',
-        description:
-            'This is a gentle reminder to settle the tuition fees for the third quarter. Please ignore if already paid.',
-        date: DateTime(now.year, now.month, 20),
-        postedBy: 'Accounts Dept',
+      const ServiceModel(
+        id: 'announcements',
+        label: 'Announcements',
+        icon: Icons.campaign_outlined,
+        iconColor: Color(0xFF9C27B0),
+        backgroundColor: Color(0xFFF3E5F5),
       ),
-      ServiceModel(
-        id: '9',
-        title: 'Drama Club Auditions',
-        description:
-            'Auditions for the upcoming theater production "The Brave Heart" will take place in the auditorium after school.',
-        date: DateTime(now.year, now.month, 22),
-        postedBy: 'Drama Club',
+      const ServiceModel(
+        id: 'performance',
+        label: 'Performance',
+        icon: Icons.speed_outlined,
+        iconColor: Color(0xFF00BCD4),
+        backgroundColor: Color(0xFFE0F7FA),
       ),
-
-      // Previous month notices
-      ServiceModel(
-        id: '4',
-        title: 'Final Exam Results',
-        description:
-            'Final examination results for the previous term have been declared. You can check them in the Report Card section.',
-        date: DateTime(now.year, now.month - 1, 25),
-        postedBy: 'Examination Dept',
-      ),
-      ServiceModel(
-        id: '5',
-        title: 'Summer Vacation Announcement',
-        description:
-            'Summer holidays will commence from next week. Homework assignments have been uploaded to the portal.',
-        date: DateTime(now.year, now.month - 1, 5),
-        postedBy: 'Admin Office',
-      ),
-      ServiceModel(
-        id: '10',
-        title: 'Internal Assessment Schedule',
-        description:
-            'The schedule for Internal Assessment-II has been posted on the notice board. Please review the dates carefully.',
-        date: DateTime(now.year, now.month - 1, 15),
-        postedBy: 'Principal',
-      ),
-
-      // Next month notices
-      ServiceModel(
-        id: '6',
-        title: 'Science Fair Enrollment',
-        description:
-            'Enrollment for the upcoming Inter-school Science Fair is now open. Interested students can register at the lab.',
-        date: DateTime(now.year, now.month + 1, 1),
-        postedBy: 'Science Dept',
-      ),
-      ServiceModel(
-        id: '11',
-        title: 'Teacher Training Workshop',
-        description:
-            'The school will be closed for students next Monday due to a mandatory faculty development workshop.',
-        date: DateTime(now.year, now.month + 1, 10),
-        postedBy: 'Admin Office',
+      const ServiceModel(
+        id: 'student_leave',
+        label: 'Student Leave',
+        icon: Icons.person_off_outlined,
+        iconColor: Color(0xFFFF5722),
+        backgroundColor: Color(0xFFFBE9E7),
       ),
     ];
   }

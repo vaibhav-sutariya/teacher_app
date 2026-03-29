@@ -7,39 +7,40 @@ abstract class ServiceState extends Equatable {
   List<Object?> get props => [];
 }
 
-class NoticeInitial extends ServiceState {}
+class ServiceInitial extends ServiceState {}
 
-class ServiceLoadedState extends ServiceState {
-  final List<ServiceModel> noticeList;
-  final DateTime selectedMonth;
-  final bool isLoading;
+class ServiceLoading extends ServiceState {}
 
-  const ServiceLoadedState({
-    required this.noticeList,
-    required this.selectedMonth,
-    this.isLoading = false,
+class ServiceLoaded extends ServiceState {
+  final List<ServiceModel> items;
+  final List<ServiceModel> filteredItems;
+  final String searchTerm;
+
+  const ServiceLoaded({
+    required this.items,
+    this.filteredItems = const [],
+    this.searchTerm = '',
   });
 
-  ServiceLoadedState copyWith({
-    List<ServiceModel>? noticeList,
-    DateTime? selectedMonth,
-    bool? isLoading,
+  ServiceLoaded copyWith({
+    List<ServiceModel>? items,
+    List<ServiceModel>? filteredItems,
+    String? searchTerm,
   }) {
-    return ServiceLoadedState(
-      noticeList: noticeList ?? this.noticeList,
-      selectedMonth: selectedMonth ?? this.selectedMonth,
-      isLoading: isLoading ?? this.isLoading,
+    return ServiceLoaded(
+      items: items ?? this.items,
+      filteredItems: filteredItems ?? this.filteredItems,
+      searchTerm: searchTerm ?? this.searchTerm,
     );
   }
 
   @override
-  List<Object?> get props => [noticeList, selectedMonth, isLoading];
+  List<Object?> get props => [items, filteredItems, searchTerm];
 }
 
 class ServiceError extends ServiceState {
   final String message;
-
-  const ServiceError(this.message);
+  const ServiceError({required this.message});
 
   @override
   List<Object?> get props => [message];

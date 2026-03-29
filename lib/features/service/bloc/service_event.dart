@@ -9,13 +9,12 @@ abstract class ServiceEvent extends Equatable {
 
 class LoadServiceData extends ServiceEvent {}
 
-class ServiceMonthChanged extends ServiceEvent {
-  final DateTime month;
+class RefreshServiceItems extends ServiceEvent {}
 
-  const ServiceMonthChanged(this.month);
+class SearchServiceItems extends ServiceEvent {
+  final String query;
+  const SearchServiceItems({required this.query});
 
   @override
-  List<Object?> get props => [month];
+  List<Object?> get props => [query];
 }
-
-class RefreshServiceData extends ServiceEvent {}
