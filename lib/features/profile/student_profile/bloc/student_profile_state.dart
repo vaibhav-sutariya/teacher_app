@@ -12,7 +12,7 @@ abstract class StudentProfileState extends Equatable {
 class StudentProfileLoading extends StudentProfileState {}
 
 class StudentProfileLoaded extends StudentProfileState {
-  final StudentProfileModel profile;
+  final TeacherProfileModel profile;
 
   const StudentProfileLoaded(this.profile);
 

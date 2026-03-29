@@ -18,7 +18,7 @@ class StudentProfileBloc
     try {
       // Simulate API delay
       await Future.delayed(const Duration(milliseconds: 1000));
-      emit(StudentProfileLoaded(StudentProfileModel.mockData));
+      emit(StudentProfileLoaded(TeacherProfileModel.mockData));
     } catch (e) {
       emit(StudentProfileError(e.toString()));
     }

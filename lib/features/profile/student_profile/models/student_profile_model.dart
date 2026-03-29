@@ -1,159 +1,85 @@
 import 'package:equatable/equatable.dart';
 
-class StudentProfileModel extends Equatable {
+class TeacherProfileModel extends Equatable {
   final String name;
-  final String studentId;
-  final String className;
+  final String employeeId;
+  final String designation;
   final String profileImageUrl;
   final String aboutMe;
   final String schoolName;
-  final String grNo;
-  final String rollNo;
+  final String department;
+  final String joiningDate;
+  final String qualification;
+  final String experience;
   final String phoneNumber;
-  final FamilyInfo familyInfo;
   final BasicInfo basicInfo;
   final CommunicationInfo communicationInfo;
-  final AcademicInfo academicInfo;
   final List<DocumentInfo> documents;
-  final EnquiryInfo enquiryInfo;
 
-  const StudentProfileModel({
+  const TeacherProfileModel({
     required this.name,
-    required this.studentId,
-    required this.className,
+    required this.employeeId,
+    required this.designation,
     required this.profileImageUrl,
     required this.aboutMe,
     required this.schoolName,
-    required this.grNo,
-    required this.rollNo,
+    required this.department,
+    required this.joiningDate,
+    required this.qualification,
+    required this.experience,
     required this.phoneNumber,
-    required this.familyInfo,
     required this.basicInfo,
     required this.communicationInfo,
-    required this.academicInfo,
     required this.documents,
-    required this.enquiryInfo,
   });
 
-  static StudentProfileModel get mockData => const StudentProfileModel(
-    name: 'THAKKAR HARSH KEYUR',
-    studentId: '#STU-10293',
-    className: 'Jr.KG - JAL',
+  static TeacherProfileModel get mockData => const TeacherProfileModel(
+    name: 'MISS PATEL DHRUVI',
+    employeeId: 'EMP-2041',
+    designation: 'Senior Teacher',
     schoolName: 'SSGITS - Maninagar',
-    profileImageUrl: 'https://avatar.iran.liara.run/public/boy?username=harsh',
-    grNo: 'T525',
-    rollNo: '40',
-    phoneNumber: '7874632208, 9727118158',
-    aboutMe:
-        '"Enthusiastic learner with a passion for robotics and mathematics."',
-    familyInfo: FamilyInfo(
-      fatherName: 'KEYUR',
-      fatherOccupation: 'Business',
-      fatherContact: '+91 7874632208',
-      motherName: 'SEJAL',
-      motherOccupation: 'Housewife',
-      motherContact: '+91 9727118158',
-      guardianName: '-',
-      guardianOccupation: '-',
-      guardianContact: '-',
-      siblingName: '-',
-      siblingClass: '-',
-    ),
+    profileImageUrl: 'https://avatar.iran.liara.run/public/girl?username=dhruvi',
+    department: 'Mathematics',
+    joiningDate: '15/06/2019',
+    qualification: 'M.Sc. Mathematics, B.Ed',
+    experience: '5 Years',
+    phoneNumber: '+91 9876543210',
+    aboutMe: '"Passionate about making mathematics accessible and enjoyable for all students."',
     basicInfo: BasicInfo(
-      dob: '06/02/2021',
-      gender: 'Male',
-      bloodGroup: 'O+',
+      dob: '22/08/1990',
+      gender: 'Female',
+      bloodGroup: 'B+',
+      maritalStatus: 'Unmarried',
     ),
     communicationInfo: CommunicationInfo(
-      address:
-          '404, OMKAR APPARTMENT, DHANLAXMI SOCIETY, NR. SWAMINARAYAN MANDIR, MANINAGAR, AHMEDABAD - 38008',
+      address: 'A-401, SWASTIK HEIGHTS, NEAR RING ROAD, AHMEDABAD - 380008',
       pincode: '380008',
-      mobile: '7874632208',
-      email: 'harsh.p@schoolmail.edu',
-    ),
-    academicInfo: AcademicInfo(
-      penNumber: 'PEN-8890122',
-      admissionId: 'ADM/2023/044',
-      dateOfAdmission: '13/06/2024',
-      rteStudent: 'No',
-      previousSchool: '-',
-      house: '-',
-      classTeacher: 'Miss. Patel',
+      mobile: '+91 9876543210',
+      email: 'dhruvi.patel@school.edu',
     ),
     documents: [
-      DocumentInfo(name: 'Aadhar Card', number: '-'),
-      DocumentInfo(name: 'Aadhar dise', number: '-'),
-      DocumentInfo(name: 'Unique Id', number: '-'),
-      DocumentInfo(name: 'Board Registration No', number: '-'),
+      DocumentInfo(name: 'Aadhar Card', number: 'XXXX-XXXX-1234'),
+      DocumentInfo(name: 'PAN Card', number: 'ABCDE1234F'),
+      DocumentInfo(name: 'Degree Certificate', number: 'Submitted'),
     ],
-    enquiryInfo: EnquiryInfo(
-      dateOfEnquiry: '02/12/2023',
-      dateOfRegistration: '02/12/2023',
-      refPersonName: '-',
-      remarks: '-',
-    ),
   );
 
   @override
   List<Object?> get props => [
     name,
-    studentId,
-    className,
+    employeeId,
+    designation,
     profileImageUrl,
     aboutMe,
     schoolName,
-    grNo,
-    rollNo,
+    department,
+    joiningDate,
+    qualification,
+    experience,
     phoneNumber,
-    familyInfo,
     basicInfo,
     communicationInfo,
-    academicInfo,
     documents,
-    enquiryInfo,
-  ];
-}
-
-class FamilyInfo extends Equatable {
-  final String fatherName;
-  final String fatherOccupation;
-  final String fatherContact;
-  final String motherName;
-  final String motherOccupation;
-  final String motherContact;
-  final String guardianName;
-  final String guardianOccupation;
-  final String guardianContact;
-  final String siblingName;
-  final String siblingClass;
-
-  const FamilyInfo({
-    required this.fatherName,
-    required this.fatherOccupation,
-    required this.fatherContact,
-    required this.motherName,
-    required this.motherOccupation,
-    required this.motherContact,
-    required this.guardianName,
-    required this.guardianOccupation,
-    required this.guardianContact,
-    required this.siblingName,
-    required this.siblingClass,
-  });
-
-  @override
-  List<Object?> get props => [
-    fatherName,
-    fatherOccupation,
-    fatherContact,
-    motherName,
-    motherOccupation,
-    motherContact,
-    guardianName,
-    guardianOccupation,
-    guardianContact,
-    siblingName,
-    siblingClass,
   ];
 }
 
@@ -161,15 +87,17 @@ class BasicInfo extends Equatable {
   final String dob;
   final String gender;
   final String bloodGroup;
+  final String maritalStatus;
 
   const BasicInfo({
     required this.dob,
     required this.gender,
     required this.bloodGroup,
+    required this.maritalStatus,
   });
 
   @override
-  List<Object?> get props => [dob, gender, bloodGroup];
+  List<Object?> get props => [dob, gender, bloodGroup, maritalStatus];
 }
 
 class CommunicationInfo extends Equatable {
@@ -189,37 +117,6 @@ class CommunicationInfo extends Equatable {
   List<Object?> get props => [address, pincode, mobile, email];
 }
 
-class AcademicInfo extends Equatable {
-  final String penNumber;
-  final String admissionId;
-  final String dateOfAdmission;
-  final String rteStudent;
-  final String previousSchool;
-  final String house;
-  final String classTeacher;
-
-  const AcademicInfo({
-    required this.penNumber,
-    required this.admissionId,
-    required this.dateOfAdmission,
-    required this.rteStudent,
-    required this.previousSchool,
-    required this.house,
-    required this.classTeacher,
-  });
-
-  @override
-  List<Object?> get props => [
-    penNumber,
-    admissionId,
-    dateOfAdmission,
-    rteStudent,
-    previousSchool,
-    house,
-    classTeacher,
-  ];
-}
-
 class DocumentInfo extends Equatable {
   final String name;
   final String number;
@@ -228,22 +125,4 @@ class DocumentInfo extends Equatable {
 
   @override
   List<Object?> get props => [name, number];
-}
-
-class EnquiryInfo extends Equatable {
-  final String dateOfEnquiry;
-  final String dateOfRegistration;
-  final String refPersonName;
-  final String remarks;
-
-  const EnquiryInfo({
-    required this.dateOfEnquiry,
-    required this.dateOfRegistration,
-    required this.refPersonName,
-    required this.remarks,
-  });
-
-  @override
-  List<Object?> get props =>
-      [dateOfEnquiry, dateOfRegistration, refPersonName, remarks];
 }

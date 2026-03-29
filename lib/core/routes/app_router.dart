@@ -123,5 +123,6 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: AnnouncementDetailsRoute.page),
     AutoRoute(page: PerformanceRoute.page),
     AutoRoute(page: StudentLeaveRoute.page),
+    AutoRoute(page: DashboardSettingsRoute.page),
   ];
 }

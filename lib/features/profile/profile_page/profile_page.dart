@@ -11,7 +11,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../my_class/my_class_screen/widgets/my_class_header.dart';
 import 'bloc/profile_bloc.dart';
-import 'widgets/academic_year_bottom_sheet.dart';
+
 import 'widgets/profile_menu_item.dart';
 
 @RoutePage()
@@ -96,24 +96,6 @@ class ProfilePage extends StatelessWidget {
                                     ),
                                     _buildDivider(context),
                                     ProfileMenuItem(
-                                      icon: Icons.calendar_today_rounded,
-                                      text: 'Select Academic Year',
-                                      onTap: () {
-                                        final profileBloc = context
-                                            .read<ProfileBloc>();
-                                        showModalBottomSheet(
-                                          context: context,
-                                          backgroundColor: Colors.transparent,
-                                          builder: (context) => BlocProvider.value(
-                                            value: profileBloc,
-                                            child:
-                                                const SelectAcademicYearBottomSheet(),
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                    _buildDivider(context),
-                                    ProfileMenuItem(
                                       icon: Icons.lock_outline_rounded,
                                       text: 'Reset Password',
                                       onTap: () {
@@ -155,6 +137,16 @@ class ProfilePage extends StatelessWidget {
                                             text:
                                                 'Check out this amazing school management app: https://play.google.com/store/apps/details?id=info.sgadi.shangardarshan&hl=en_IN',
                                           ),
+                                        );
+                                      },
+                                    ),
+                                    _buildDivider(context),
+                                    ProfileMenuItem(
+                                      icon: Icons.dashboard_customize_outlined,
+                                      text: 'Dashboard Settings',
+                                      onTap: () {
+                                        context.router.push(
+                                          const DashboardSettingsRoute(),
                                         );
                                       },
                                     ),

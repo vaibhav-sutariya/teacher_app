@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../../../core/helpers/extensions/responsive_extensions.dart';
+import 'package:teachers_app/cubit/theme_cubit.dart';
 import '../models/student_profile_model.dart';
 
 class StudentProfileHeader extends StatelessWidget {
-  final StudentProfileModel profile;
+  final TeacherProfileModel profile;
 
   const StudentProfileHeader({super.key, required this.profile});
 
@@ -11,7 +12,7 @@ class StudentProfileHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      color: const Color(0xFFFFCC00), // Yellow as per screenshot
+      color: context.colors.primary, // Using primary color instead of yellow
       padding: EdgeInsets.fromLTRB(
         context.scale(16),
         context.scaleHeight(40),
@@ -44,11 +45,20 @@ class StudentProfileHeader extends StatelessWidget {
           ),
           SizedBox(height: context.scaleHeight(4)),
           Text(
-            profile.schoolName,
+            profile.designation,
             style: TextStyle(
               color: Colors.white.withValues(alpha: 0.9),
-              fontSize: context.scaleFont(12),
+              fontSize: context.scaleFont(14),
               fontWeight: FontWeight.w500,
+            ),
+          ),
+          SizedBox(height: context.scaleHeight(2)),
+          Text(
+            profile.schoolName,
+            style: TextStyle(
+              color: Colors.white.withValues(alpha: 0.7),
+              fontSize: context.scaleFont(12),
+              fontWeight: FontWeight.w400,
             ),
           ),
           SizedBox(height: context.scaleHeight(20)),
@@ -56,23 +66,23 @@ class StudentProfileHeader extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               _ActionButton(
-                icon: Icons.person_outline,
-                label: 'Father',
+                icon: Icons.class_outlined,
+                label: 'Classes',
                 onTap: () {},
               ),
               _ActionButton(
-                icon: Icons.person_add_outlined,
-                label: 'Mother',
+                icon: Icons.menu_book_outlined,
+                label: 'Subjects',
                 onTap: () {},
               ),
               _ActionButton(
-                icon: Icons.group_outlined,
-                label: 'Guardian',
+                icon: Icons.schedule_outlined,
+                label: 'Timetable',
                 onTap: () {},
               ),
               _ActionButton(
-                icon: Icons.face_outlined,
-                label: 'Siblings Info',
+                icon: Icons.calendar_month_outlined,
+                label: 'Attendance',
                 onTap: () {},
               ),
             ],
@@ -108,7 +118,7 @@ class _ActionButton extends StatelessWidget {
             ),
             child: Icon(
               icon,
-              color: const Color(0xFF00ACC1), // Cyan/Blue as per screenshot
+              color: context.colors.primary, 
               size: context.scale(22),
             ),
           ),
