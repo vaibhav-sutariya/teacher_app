@@ -115,13 +115,20 @@ class ServicePage extends StatelessWidget {
                                             context.pushRoute(
                                               const LeaveTrackerRoute(),
                                             );
-                                          } else if (item.label == 'Approvals') {
+                                          } else if (item.label ==
+                                              'Approvals') {
                                             context.pushRoute(
                                               const ApprovalsRoute(),
                                             );
-                                          } else if (item.label == 'Manual Punch') {
+                                          } else if (item.label ==
+                                              'Manual Punch') {
                                             context.pushRoute(
                                               const PunchTrackerRoute(),
+                                            );
+                                          } else if (item.label ==
+                                              'Approve/Reject Manual Punch') {
+                                            context.pushRoute(
+                                              const PunchApprovalsRoute(),
                                             );
                                           }
                                         },

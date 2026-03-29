@@ -118,5 +118,6 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: ApprovalsRoute.page),
     AutoRoute(page: PunchTrackerRoute.page),
     AutoRoute(page: AddManualPunchRoute.page),
+    AutoRoute(page: PunchApprovalsRoute.page),
   ];
 }
