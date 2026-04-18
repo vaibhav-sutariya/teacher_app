@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import '../helpers/extensions/responsive_extensions.dart';
 import '../../cubit/theme_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../features/profile/multi_account/bloc/multi_account_bloc.dart';
-import '../../features/profile/multi_account/bloc/multi_account_state.dart';
-import '../../features/profile/multi_account/widgets/multi_account_bottom_sheet.dart';
+import '../../features/profile/screens/multi_account/bloc/multi_account_bloc.dart';
+import '../../features/profile/screens/multi_account/bloc/multi_account_state.dart';
+import '../../features/profile/screens/multi_account/widgets/multi_account_bottom_sheet.dart';
 
 /// Production-ready reusable AppBar widget
 /// Features:

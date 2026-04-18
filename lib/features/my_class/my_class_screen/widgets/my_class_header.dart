@@ -5,9 +5,9 @@ import '../../../../../core/helpers/extensions/responsive_extensions.dart';
 import '../../../../../core/routes/app_router.gr.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../profile/multi_account/bloc/multi_account_bloc.dart';
-import '../../../profile/multi_account/bloc/multi_account_state.dart';
-import '../../../profile/multi_account/widgets/multi_account_bottom_sheet.dart';
+import '../../../profile/screens/multi_account/bloc/multi_account_bloc.dart';
+import '../../../profile/screens/multi_account/bloc/multi_account_state.dart';
+import '../../../profile/screens/multi_account/widgets/multi_account_bottom_sheet.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:teachers_app/cubit/theme_cubit.dart';
 

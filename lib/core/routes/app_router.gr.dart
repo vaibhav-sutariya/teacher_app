@@ -28,227 +28,229 @@ import 'package:teachers_app/features/auth/screens/password_login/ui/password_lo
 import 'package:teachers_app/features/auth/screens/verification/ui/verification_page.dart'
     as _i105;
 import 'package:teachers_app/features/dashboard/dashboard_page.dart' as _i36;
-import 'package:teachers_app/features/home/home_page.dart' as _i49;
-import 'package:teachers_app/features/my_class/achievement/achievement_page.dart'
+import 'package:teachers_app/features/home/screens/ui/home_page.dart' as _i49;
+import 'package:teachers_app/features/my_class/achievement/screens/achievement_page.dart'
     as _i2;
-import 'package:teachers_app/features/my_class/assignment/assignment_page.dart'
-    as _i24;
-import 'package:teachers_app/features/my_class/assignment/ui/add_assignment_page.dart'
+import 'package:teachers_app/features/my_class/assignment/screens/add_assignment_screen/ui/add_assignment_page.dart'
     as _i3;
-import 'package:teachers_app/features/my_class/attendance/attendance_page.dart'
+import 'package:teachers_app/features/my_class/assignment/screens/assignment_screen/ui/assignment_page.dart'
+    as _i24;
+import 'package:teachers_app/features/my_class/attendance/screens/ui/attendance_page.dart'
     as _i26;
-import 'package:teachers_app/features/my_class/attendance_entry/attendance_entry_page.dart'
+import 'package:teachers_app/features/my_class/attendance_entry/screens/ui/attendance_entry_page.dart'
     as _i25;
-import 'package:teachers_app/features/my_class/birthday/birthday_page.dart'
+import 'package:teachers_app/features/my_class/birthday/screens/ui/birthday_page.dart'
     as _i27;
-import 'package:teachers_app/features/my_class/calendar/calendar_page.dart'
+import 'package:teachers_app/features/my_class/calendar/screens/ui/calendar_page.dart'
     as _i29;
-import 'package:teachers_app/features/my_class/class_test/class_test_page.dart'
+import 'package:teachers_app/features/my_class/class_test/screens/class_test_page.dart'
     as _i30;
-import 'package:teachers_app/features/my_class/classwork/add_classwork/classwork_entry_page.dart'
+import 'package:teachers_app/features/my_class/classwork/screens/add_classwork/ui/classwork_entry_page.dart'
     as _i32;
-import 'package:teachers_app/features/my_class/classwork/classwork/classwork_classes_page.dart'
+import 'package:teachers_app/features/my_class/classwork/screens/classwork/ui/classwork_classes_page.dart'
     as _i31;
-import 'package:teachers_app/features/my_class/classwork/subjects/classwork_subject_page.dart'
+import 'package:teachers_app/features/my_class/classwork/screens/subjects/ui/classwork_subject_page.dart'
     as _i33;
-import 'package:teachers_app/features/my_class/concern/concern_details/concern_details_page.dart'
-    as _i34;
-import 'package:teachers_app/features/my_class/concern/concern_page.dart'
-    as _i35;
 import 'package:teachers_app/features/my_class/concern/models/concern_model.dart'
     as _i114;
-import 'package:teachers_app/features/my_class/employee_photo/employee_photo_page.dart'
+import 'package:teachers_app/features/my_class/concern/screens/concern_details/concern_details_page.dart'
+    as _i34;
+import 'package:teachers_app/features/my_class/concern/screens/concern_screen/ui/concern_page.dart'
+    as _i35;
+import 'package:teachers_app/features/my_class/employee_photo/screens/ui/employee_photo_page.dart'
     as _i38;
-import 'package:teachers_app/features/my_class/exam_time_table/ui/add_exam_time_table_page.dart'
-    as _i4;
-import 'package:teachers_app/features/my_class/exam_time_table/ui/exam_time_table_page.dart'
+import 'package:teachers_app/features/my_class/exam_time_table/screens/add_exam_time_table/ui/exam_time_table_page.dart'
     as _i40;
-import 'package:teachers_app/features/my_class/gallery/add_gallery/add_gallery_page.dart'
-    as _i5;
-import 'package:teachers_app/features/my_class/gallery/gallery_details_screen/gallery_detail_page.dart'
-    as _i43;
-import 'package:teachers_app/features/my_class/gallery/gallery_screen/gallery_page.dart'
-    as _i45;
-import 'package:teachers_app/features/my_class/gallery/gallery_screen/models/gallery_image_model.dart'
+import 'package:teachers_app/features/my_class/exam_time_table/screens/exam_time_table_screen/ui/add_exam_time_table_page.dart'
+    as _i4;
+import 'package:teachers_app/features/my_class/gallery/models/gallery_image_model.dart'
     as _i116;
-import 'package:teachers_app/features/my_class/gallery/gallery_screen/models/gallery_model.dart'
+import 'package:teachers_app/features/my_class/gallery/models/gallery_model.dart'
     as _i115;
-import 'package:teachers_app/features/my_class/gallery/viewer_screen/gallery_image_viewer_page.dart'
+import 'package:teachers_app/features/my_class/gallery/screens/add_gallery/ui/add_gallery_page.dart'
+    as _i5;
+import 'package:teachers_app/features/my_class/gallery/screens/gallery_details_screen/ui/gallery_detail_page.dart'
+    as _i43;
+import 'package:teachers_app/features/my_class/gallery/screens/gallery_screen/ui/gallery_page.dart'
+    as _i45;
+import 'package:teachers_app/features/my_class/gallery/screens/viewer_screen/gallery_image_viewer_page.dart'
     as _i44;
-import 'package:teachers_app/features/my_class/gate_pass/add_gate_pass/add_gate_pass_page.dart'
-    as _i6;
-import 'package:teachers_app/features/my_class/gate_pass/add_gate_pass/bloc/add_gate_pass_bloc.dart'
+import 'package:teachers_app/features/my_class/gate_pass/screens/add_gate_pass/bloc/add_gate_pass_bloc.dart'
     as _i118;
-import 'package:teachers_app/features/my_class/gate_pass/add_gate_pass/gate_pass_student_selection_page.dart'
+import 'package:teachers_app/features/my_class/gate_pass/screens/add_gate_pass/ui/add_gate_pass_page.dart'
+    as _i6;
+import 'package:teachers_app/features/my_class/gate_pass/screens/add_gate_pass/ui/gate_pass_student_selection_page.dart'
     as _i47;
-import 'package:teachers_app/features/my_class/gate_pass/gate_pass_page.dart'
+import 'package:teachers_app/features/my_class/gate_pass/screens/gate_pass_screen/ui/gate_pass_page.dart'
     as _i46;
-import 'package:teachers_app/features/my_class/holiday_hw/holiday_hw_page.dart'
-    as _i48;
-import 'package:teachers_app/features/my_class/holiday_hw/ui/add_holiday_hw_page.dart'
+import 'package:teachers_app/features/my_class/holiday_hw/screens/add_holiday_hw_screen/ui/add_holiday_hw_page.dart'
     as _i7;
-import 'package:teachers_app/features/my_class/homework/add_homework/homework_entry_page.dart'
+import 'package:teachers_app/features/my_class/holiday_hw/screens/holiday_hw_screen/ui/holiday_hw_page.dart'
+    as _i48;
+import 'package:teachers_app/features/my_class/homework/screens/add_homework/ui/homework_entry_page.dart'
     as _i50;
-import 'package:teachers_app/features/my_class/homework/homework/homework_page.dart'
+import 'package:teachers_app/features/my_class/homework/screens/homework/ui/homework_page.dart'
     as _i51;
-import 'package:teachers_app/features/my_class/leave/leave_detail_screen/leave_detail_page.dart'
+import 'package:teachers_app/features/my_class/leave/screens/leave_detail_screen/ui/leave_detail_page.dart'
     as _i52;
-import 'package:teachers_app/features/my_class/leave/leave_screen/leave_page.dart'
+import 'package:teachers_app/features/my_class/leave/screens/leave_screen/ui/leave_page.dart'
     as _i53;
-import 'package:teachers_app/features/my_class/meal_menu/details/meal_menu_details_page.dart'
+import 'package:teachers_app/features/my_class/meal_menu/screens/details/ui/meal_menu_details_page.dart'
     as _i57;
-import 'package:teachers_app/features/my_class/meal_menu/mean_menu_screen/meal_menu_classes_page.dart'
+import 'package:teachers_app/features/my_class/meal_menu/screens/mean_menu_screen/ui/meal_menu_classes_page.dart'
     as _i56;
 import 'package:teachers_app/features/my_class/my_class_screen/my_class_page.dart'
     as _i58;
-import 'package:teachers_app/features/my_class/new_admission/admission_details_page.dart'
+import 'package:teachers_app/features/my_class/new_admission/screens/addmission_details_screen/ui/admission_details_page.dart'
     as _i17;
-import 'package:teachers_app/features/my_class/new_admission/admission_student_list_page.dart'
+import 'package:teachers_app/features/my_class/new_admission/screens/admission_student_list/ui/admission_student_list_page.dart'
     as _i18;
-import 'package:teachers_app/features/my_class/new_admission/new_admission_page.dart'
+import 'package:teachers_app/features/my_class/new_admission/screens/new_addmission_screen/ui/new_admission_page.dart'
     as _i59;
-import 'package:teachers_app/features/my_class/paper/paper_page.dart' as _i64;
-import 'package:teachers_app/features/my_class/paper/ui/add_paper_page.dart'
+import 'package:teachers_app/features/my_class/paper/screens/add_paper_screen/ui/add_paper_page.dart'
     as _i10;
-import 'package:teachers_app/features/my_class/parent_photo/parent_photo_list_page.dart'
+import 'package:teachers_app/features/my_class/paper/screens/paper_screen/ui/paper_page.dart'
+    as _i64;
+import 'package:teachers_app/features/my_class/parent_photo/screens/ui/parent_photo_list_page.dart'
     as _i65;
-import 'package:teachers_app/features/my_class/parent_photo/parent_photo_page.dart'
+import 'package:teachers_app/features/my_class/parent_photo/screens/ui/parent_photo_page.dart'
     as _i66;
-import 'package:teachers_app/features/my_class/ptm/add_ptm/add_ptm_page.dart'
+import 'package:teachers_app/features/my_class/ptm/screens/add_ptm/ui/add_ptm_page.dart'
     as _i11;
-import 'package:teachers_app/features/my_class/ptm/ptm_page.dart' as _i72;
-import 'package:teachers_app/features/my_class/remarks/remark_details_screen/remark_detail_page.dart'
-    as _i75;
-import 'package:teachers_app/features/my_class/remarks/remarks_screen/models/remark_model.dart'
+import 'package:teachers_app/features/my_class/ptm/screens/ptm_screen/ui/ptm_page.dart'
+    as _i72;
+import 'package:teachers_app/features/my_class/remarks/models/remark_model.dart'
     as _i120;
-import 'package:teachers_app/features/my_class/remarks/remarks_screen/remarks_page.dart'
+import 'package:teachers_app/features/my_class/remarks/screens/remark_details_screen/ui/remark_detail_page.dart'
+    as _i75;
+import 'package:teachers_app/features/my_class/remarks/screens/remarks_screen/ui/remarks_page.dart'
     as _i77;
-import 'package:teachers_app/features/my_class/remarks_entry/bloc/remarks_entry_bloc.dart'
+import 'package:teachers_app/features/my_class/remarks_entry/screens/bloc/remarks_entry_bloc.dart'
     as _i121;
-import 'package:teachers_app/features/my_class/remarks_entry/remarks_entry_page.dart'
+import 'package:teachers_app/features/my_class/remarks_entry/screens/ui/remarks_entry_page.dart'
     as _i76;
-import 'package:teachers_app/features/my_class/remarks_entry/remarks_student_selection_page.dart'
+import 'package:teachers_app/features/my_class/remarks_entry/screens/ui/remarks_student_selection_page.dart'
     as _i78;
-import 'package:teachers_app/features/my_class/report_card/report_card_page.dart'
+import 'package:teachers_app/features/my_class/report_card/screens/ui/report_card_page.dart'
     as _i79;
-import 'package:teachers_app/features/my_class/student_info/ui/student_info_page.dart'
+import 'package:teachers_app/features/my_class/student_info/screens/ui/student_info_page.dart'
     as _i91;
-import 'package:teachers_app/features/my_class/student_info/ui/student_list_page.dart'
+import 'package:teachers_app/features/my_class/student_info/screens/ui/student_list_page.dart'
     as _i93;
-import 'package:teachers_app/features/my_class/student_notice/add_student_notice/add_student_notice_page.dart'
-    as _i13;
-import 'package:teachers_app/features/my_class/student_notice/add_student_notice/bloc/add_student_notice_bloc.dart'
+import 'package:teachers_app/features/my_class/student_notice/screens/add_student_notice/bloc/add_student_notice_bloc.dart'
     as _i124;
-import 'package:teachers_app/features/my_class/student_notice/add_student_notice/student_notice_student_selection_page.dart'
+import 'package:teachers_app/features/my_class/student_notice/screens/add_student_notice/ui/add_student_notice_page.dart'
+    as _i13;
+import 'package:teachers_app/features/my_class/student_notice/screens/add_student_notice/ui/student_notice_student_selection_page.dart'
     as _i95;
-import 'package:teachers_app/features/my_class/student_notice/student_notice_page.dart'
+import 'package:teachers_app/features/my_class/student_notice/screens/student_notice_screen/ui/student_notice_page.dart'
     as _i94;
-import 'package:teachers_app/features/my_class/student_photo_upload/student_photo_list_page.dart'
+import 'package:teachers_app/features/my_class/student_photo_upload/screens/student_photo_list/ui/student_photo_list_page.dart'
     as _i96;
-import 'package:teachers_app/features/my_class/student_photo_upload/student_photo_upload_page.dart'
+import 'package:teachers_app/features/my_class/student_photo_upload/screens/student_photo_upload/ui/student_photo_upload_page.dart'
     as _i97;
-import 'package:teachers_app/features/my_class/subject_wise_homework/add_homework/subject_wise_homework_entry_page.dart'
+import 'package:teachers_app/features/my_class/subject_wise_homework/screens/add_homework/ui/subject_wise_homework_entry_page.dart'
     as _i99;
-import 'package:teachers_app/features/my_class/subject_wise_homework/subject_wise_homework/subject_wise_homework_page.dart'
+import 'package:teachers_app/features/my_class/subject_wise_homework/screens/subject_wise_homework/ui/subject_wise_homework_page.dart'
     as _i100;
-import 'package:teachers_app/features/my_class/subject_wise_homework/subjects/subject_wise_homework_subject_page.dart'
+import 'package:teachers_app/features/my_class/subject_wise_homework/screens/subjects/ui/subject_wise_homework_subject_page.dart'
     as _i101;
-import 'package:teachers_app/features/my_class/syllabus/syllabus_page.dart'
-    as _i102;
-import 'package:teachers_app/features/my_class/syllabus/ui/add_syllabus_page.dart'
+import 'package:teachers_app/features/my_class/syllabus/screens/add_syllabus_screen/ui/add_syllabus_page.dart'
     as _i14;
-import 'package:teachers_app/features/my_class/time_table/ui/add_time_table_page.dart'
+import 'package:teachers_app/features/my_class/syllabus/screens/syllabus_screen/ui/syllabus_page.dart'
+    as _i102;
+import 'package:teachers_app/features/my_class/time_table/screens/add_time_table_screen/ui/add_time_table_page.dart'
     as _i15;
-import 'package:teachers_app/features/my_class/time_table/ui/time_table_page.dart'
+import 'package:teachers_app/features/my_class/time_table/screens/time_table_screen/ui/time_table_page.dart'
     as _i103;
-import 'package:teachers_app/features/my_class/transport_attendance/transport_attendance_page.dart'
+import 'package:teachers_app/features/my_class/transport_attendance/screens/ui/transport_attendance_page.dart'
     as _i104;
-import 'package:teachers_app/features/my_class/videos/add_video/add_video_page.dart'
-    as _i16;
-import 'package:teachers_app/features/my_class/videos/detail/video_detail_page.dart'
-    as _i106;
-import 'package:teachers_app/features/my_class/videos/videos_screen/models/video_item_model.dart'
+import 'package:teachers_app/features/my_class/videos/models/video_item_model.dart'
     as _i126;
-import 'package:teachers_app/features/my_class/videos/videos_screen/models/video_model.dart'
+import 'package:teachers_app/features/my_class/videos/models/video_model.dart'
     as _i125;
-import 'package:teachers_app/features/my_class/videos/videos_screen/videos_page.dart'
+import 'package:teachers_app/features/my_class/videos/screens/add_video/ui/add_video_page.dart'
+    as _i16;
+import 'package:teachers_app/features/my_class/videos/screens/detail/ui/video_detail_page.dart'
+    as _i106;
+import 'package:teachers_app/features/my_class/videos/screens/videos_screen/ui/videos_page.dart'
     as _i108;
-import 'package:teachers_app/features/my_class/videos/viewer_screen/video_viewer_page.dart'
+import 'package:teachers_app/features/my_class/videos/screens/viewer_screen/ui/video_viewer_page.dart'
     as _i107;
 import 'package:teachers_app/features/my_class/view_transport_attendance/details/view_transport_attendance_detail_page.dart'
     as _i109;
 import 'package:teachers_app/features/my_class/view_transport_attendance/models/transport_route_model.dart'
     as _i127;
-import 'package:teachers_app/features/my_class/view_transport_attendance/view_transport_attendance_page.dart'
+import 'package:teachers_app/features/my_class/view_transport_attendance/screens/ui/view_transport_attendance_page.dart'
     as _i110;
-import 'package:teachers_app/features/notifications/notification_page.dart'
+import 'package:teachers_app/features/notifications/screens/ui/notification_page.dart'
     as _i62;
 import 'package:teachers_app/features/onboarding/onboarding_page.dart' as _i63;
 import 'package:teachers_app/features/pdf_viewer/pdf_viewer_page.dart' as _i69;
-import 'package:teachers_app/features/profile/about_app/about_app_page.dart'
+import 'package:teachers_app/features/profile/screens/about_app/about_app_page.dart'
     as _i1;
-import 'package:teachers_app/features/profile/dashboard_settings/dashboard_settings_page.dart'
+import 'package:teachers_app/features/profile/screens/dashboard_settings/ui/dashboard_settings_page.dart'
     as _i37;
-import 'package:teachers_app/features/profile/profile_page/profile_page.dart'
+import 'package:teachers_app/features/profile/screens/profile_page/ui/profile_page.dart'
     as _i71;
-import 'package:teachers_app/features/profile/reset_password/reset_password_page.dart'
+import 'package:teachers_app/features/profile/screens/reset_password/ui/reset_password_page.dart'
     as _i80;
-import 'package:teachers_app/features/profile/student_profile/student_profile_page.dart'
+import 'package:teachers_app/features/profile/screens/teachers_profile/ui/teachers_profile_page.dart'
     as _i98;
-import 'package:teachers_app/features/school/bus_tracking/bus_tracking_page.dart'
-    as _i28;
-import 'package:teachers_app/features/school/enquiry/admitted_details/admitted_details_page.dart'
-    as _i19;
-import 'package:teachers_app/features/school/enquiry/enquiry_page.dart' as _i39;
-import 'package:teachers_app/features/school/fees_screen/fees_page.dart'
-    as _i41;
-import 'package:teachers_app/features/school/notice_circulars_screen/notice_circulars_page.dart'
-    as _i61;
-import 'package:teachers_app/features/school/notice_circulars_screen/staff_notice/add_staff_notice_page.dart'
-    as _i12;
-import 'package:teachers_app/features/school/notice_circulars_screen/staff_notice/models/staff_notice_model.dart'
+import 'package:teachers_app/features/school/models/staff_model.dart' as _i122;
+import 'package:teachers_app/features/school/models/staff_notice_model.dart'
     as _i123;
-import 'package:teachers_app/features/school/notice_circulars_screen/staff_notice/staff_notice_details_page.dart'
-    as _i89;
-import 'package:teachers_app/features/school/notice_circulars_screen/staff_notice/staff_notice_list_page.dart'
+import 'package:teachers_app/features/school/screens/bus_tracking/ui/bus_tracking_page.dart'
+    as _i28;
+import 'package:teachers_app/features/school/screens/enquiry/admitted_details/ui/admitted_details_page.dart'
+    as _i19;
+import 'package:teachers_app/features/school/screens/enquiry/enquiry_screen/ui/enquiry_page.dart'
+    as _i39;
+import 'package:teachers_app/features/school/screens/fees_screen/ui/fees_page.dart'
+    as _i41;
+import 'package:teachers_app/features/school/screens/notice_circulars_screen/staff_notice/add_staff_notice_screen/ui/add_staff_notice_page.dart'
+    as _i12;
+import 'package:teachers_app/features/school/screens/notice_circulars_screen/staff_notice/staff_notice_screen/ui/notice_circulars_page.dart'
+    as _i61;
+import 'package:teachers_app/features/school/screens/notice_circulars_screen/staff_notice/staff_notice_screen/ui/staff_notice_list_page.dart'
     as _i90;
-import 'package:teachers_app/features/school/school_screen/school_page.dart'
+import 'package:teachers_app/features/school/screens/notice_circulars_screen/staff_notice_details_screen/staff_notice_details_page.dart'
+    as _i89;
+import 'package:teachers_app/features/school/screens/school_screen/ui/school_page.dart'
     as _i81;
-import 'package:teachers_app/features/school/school_strength/school_strength_page.dart'
+import 'package:teachers_app/features/school/screens/school_strength/ui/school_strength_page.dart'
     as _i82;
-import 'package:teachers_app/features/school/staff_attendance_screen/staff_attendance_details_page.dart'
+import 'package:teachers_app/features/school/screens/staff_attendance_screen/staff_attendance_details_screen/ui/staff_attendance_details_page.dart'
     as _i85;
-import 'package:teachers_app/features/school/staff_attendance_screen/staff_attendance_page.dart'
+import 'package:teachers_app/features/school/screens/staff_attendance_screen/staff_attendance_screen/ui/staff_attendance_page.dart'
     as _i87;
-import 'package:teachers_app/features/school/staff_details_screen/models/staff_model.dart'
-    as _i122;
-import 'package:teachers_app/features/school/staff_details_screen/staff_attendance_history_page.dart'
+import 'package:teachers_app/features/school/screens/staff_details_screen/staff_attendance_history_screen/ui/staff_attendance_history_page.dart'
     as _i86;
-import 'package:teachers_app/features/school/staff_details_screen/staff_details_page.dart'
+import 'package:teachers_app/features/school/screens/staff_details_screen/staff_details_screen/ui/staff_details_page.dart'
     as _i88;
-import 'package:teachers_app/features/service/announcements/announcement_details_page.dart'
-    as _i20;
-import 'package:teachers_app/features/service/announcements/announcements_page.dart'
-    as _i21;
-import 'package:teachers_app/features/service/announcements/models/announcement_model.dart'
+import 'package:teachers_app/features/service/models/announcement_model.dart'
     as _i113;
-import 'package:teachers_app/features/service/approvals/approvals_page.dart'
+import 'package:teachers_app/features/service/screens/announcement_screen/ui/announcement_details_page.dart'
+    as _i20;
+import 'package:teachers_app/features/service/screens/announcement_screen/ui/announcements_page.dart'
+    as _i21;
+import 'package:teachers_app/features/service/screens/approvals/approvals_page.dart'
     as _i23;
-import 'package:teachers_app/features/service/leave_tracker/add_leave/add_leave_page.dart'
+import 'package:teachers_app/features/service/screens/leave_tracker/add_leave/add_leave_page.dart'
     as _i8;
-import 'package:teachers_app/features/service/leave_tracker/leave_tracker_page.dart'
+import 'package:teachers_app/features/service/screens/leave_tracker/leave_tracker_screen/ui/leave_tracker_page.dart'
     as _i54;
-import 'package:teachers_app/features/service/manual_punch/add_manual_punch/add_manual_punch_page.dart'
+import 'package:teachers_app/features/service/screens/manual_punch/add_manual_punch/add_manual_punch_page.dart'
     as _i9;
-import 'package:teachers_app/features/service/manual_punch/punch_approvals/punch_approvals_page.dart'
+import 'package:teachers_app/features/service/screens/manual_punch/punch_approvals/punch_approvals_page.dart'
     as _i73;
-import 'package:teachers_app/features/service/manual_punch/punch_tracker_page.dart'
+import 'package:teachers_app/features/service/screens/manual_punch/punch_tracker_page.dart'
     as _i74;
-import 'package:teachers_app/features/service/performance/performance_page.dart'
+import 'package:teachers_app/features/service/screens/performance/ui/performance_page.dart'
     as _i70;
-import 'package:teachers_app/features/service/service_screen/service_page.dart'
+import 'package:teachers_app/features/service/screens/service_screen/service_page.dart'
     as _i83;
-import 'package:teachers_app/features/service/student_leave/student_leave_page.dart'
+import 'package:teachers_app/features/service/screens/student_leave/student_leave_page.dart'
     as _i92;
 import 'package:teachers_app/features/splash/screens/ui/splash_screen.dart'
     as _i84;

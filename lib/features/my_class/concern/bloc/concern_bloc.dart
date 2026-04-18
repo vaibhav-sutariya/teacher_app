@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../models/concern_model.dart';
-import '../repositories/concern_repository.dart';
+import '../repository/concern_repository.dart';
 
 part 'concern_event.dart';
 part 'concern_state.dart';

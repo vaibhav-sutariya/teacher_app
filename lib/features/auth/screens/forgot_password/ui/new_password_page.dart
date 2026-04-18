@@ -5,7 +5,7 @@ import 'package:teachers_app/core/routes/app_router.gr.dart';
 import '../../../../../core/widgets/app_primary_button.dart';
 import '../../../../../core/widgets/app_text_field.dart';
 import '../../../../../cubit/theme_cubit.dart';
-import '../../../common/auth_header.dart';
+import '../../login/ui/widgets/auth_header.dart';
 import 'package:teachers_app/cubit/theme_cubit.dart';
 
 @RoutePage()
